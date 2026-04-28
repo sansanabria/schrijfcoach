@@ -1,0 +1,12 @@
+# Claude memory and private config
+.claude/
+
+# Empty helper folder
+Assistant/
+
+# Generated PDF output (large file, regeneratable)
+Nederlands_Lezen_A1_A2.pdf
+
+# OS files
+.DS_Store
+Thumbs.db
