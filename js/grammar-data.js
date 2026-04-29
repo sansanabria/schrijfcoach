@@ -1125,7 +1125,7 @@ const lessonPlanData = {
           verbFocus: ["werken", "maken", "proberen", "vertellen", "wachten", "veranderen", "zoeken", "betalen", "vergeten", "beginnen", "kiezen", "brengen"],
           vocabTopics: [{level:"A2",topic:"werkwoorden"},{level:"A2",topic:"dagelijks"},{level:"A2",topic:"gezondheid"},{level:"A2",topic:"hobby"},{level:"A2",topic:"kleding"}],
           sentenceFilter: "tijden",
-          readingTexts: ['r-001', 'r-002', 'r-003', 'r-004'],
+          readingTexts: ['r-001', 'r-002', 'r-a2-005', 'r-a2-006'],
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Bestudeer bijvoeglijke naamwoorden — buigingsregel: wel/geen -e (een groot huis, de grote kamer).", descEn: "Day 1–2: Study adjective inflection rule: with/without -e (een groot huis, de grote kamer)." },
             { type: "werkwoorden", desc: "Dag 1–3: Leer OVT (onvoltooid verleden tijd) — regelmatige werkwoorden: stam + -te(n)/-de(n). Oefen 15 werkwoorden.", descEn: "Day 1–3: Learn OVT (simple past) — regular verbs: stem + -te(n)/-de(n). Practise 15 verbs." },
@@ -1144,7 +1144,7 @@ const lessonPlanData = {
           verbFocus: ["vinden", "denken", "geloven", "lijken", "houden", "voelen", "weten", "menen", "vergelijken", "betekenen", "hopen", "verwachten"],
           vocabTopics: [{level:"A2",topic:"bijvoeglijk"},{level:"A2",topic:"sport"},{level:"A2",topic:"natuur"},{level:"A2",topic:"winkelen"},{level:"A2",topic:"verbindingswoorden"}],
           sentenceFilter: "all",
-          readingTexts: ['r-001', 'r-002', 'r-003', 'r-004'],
+          readingTexts: ['r-003', 'r-004', 'r-a2-007', 'r-a2-008'],
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Leer de vergrotende trap (-er) en overtreffende trap (-st). Onregelmatig: goed-beter-best, veel-meer-meest.", descEn: "Day 1–2: Learn comparative (-er) and superlative (-st). Irregular: goed-beter-best, veel-meer-meest." },
             { type: "grammatica", desc: "Dag 3–4: Bestudeer nevenschikkende voegwoorden: en, maar, want, dus, of, toch. Oefen de woordvolgorde (geen inversie).", descEn: "Day 3–4: Study coordinating conjunctions: en, maar, want, dus, of, toch. Practise word order (no inversion)." },
@@ -1242,7 +1242,7 @@ const lessonPlanData = {
           verbFocus: ["zeggen", "beweren", "vragen", "antwoorden", "uitleggen", "overtuigen", "tegenspreken", "beargumenteren", "concluderen", "samenvatten", "toevoegen", "benadrukken"],
           vocabTopics: [{level:"B1",topic:"communicatie"},{level:"B1",topic:"onderwijs"},{level:"B1",topic:"bijvoeglijk"},{level:"B1",topic:"woordfamilie"},{level:"B1",topic:"verbindingswoorden"},{level:"B1",topic:"voorzetsels"}],
           sentenceFilter: "bijzin",
-          readingTexts: ['r-b1-001', 'r-b1-002', 'r-b1-003', 'r-b1-004'],
+          readingTexts: ['r-b1-c-001', 'r-b1-c-002', 'r-b1-c-003', 'r-b1-c-004'],
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Leer indirecte rede: 'Hij zegt dat...', 'Ze vroeg of...'. Let op tijdsverschuiving en woordvolgorde.", descEn: "Day 1–2: Learn reported speech: 'Hij zegt dat...', 'Ze vroeg of...'. Pay attention to tense shift and word order." },
             { type: "grammatica", desc: "Dag 3–4: Bestudeer gevorderde onderschikkende voegwoorden: hoewel, tenzij, mits, zodat, doordat, naarmate.", descEn: "Day 3–4: Study advanced subordinating conjunctions: hoewel, tenzij, mits, zodat, doordat, naarmate." },
@@ -1278,7 +1278,7 @@ const lessonPlanData = {
           verbFocus: ["zijn", "hebben", "worden", "kunnen", "moeten", "willen", "zullen", "gaan", "komen", "laten", "doen", "blijven"],
           vocabTopics: [{level:"B1",topic:"economie"},{level:"B1",topic:"karakter"},{level:"B1",topic:"gezondheid"},{level:"B1",topic:"sport"},{level:"B1",topic:"relaties"},{level:"B1",topic:"werk"}],
           sentenceFilter: "all",
-          readingTexts: ['r-b1-001', 'r-b1-002', 'r-b1-003', 'r-b1-004'],
+          readingTexts: ['r-b1-c-001', 'r-b1-c-002', 'r-b1-c-003', 'r-b1-c-004'],
           activities: [
             { type: "werkwoorden", desc: "Dag 1–2: Herhalingsronde alle tijden: oefen werkwoorden 340–466 in OTT, OVT, VTT, VVT. Test 20 werkwoorden.", descEn: "Day 1–2: Revision round all tenses: practise verbs 340–466 in OTT, OVT, VTT, VVT. Test 20 verbs." },
             { type: "grammatica", desc: "Dag 2–3: Herhaal alle B1-grammatica: passief, betrekkelijke bijzinnen, indirecte rede, conditionaal. Maak per onderwerp 3 zinnen.", descEn: "Day 2–3: Revise all B1 grammar: passive, relative clauses, reported speech, conditional. Make 3 sentences per topic." },

@@ -4547,13 +4547,19 @@ function renderReading() {
   if (navInfo) navInfo.textContent = (idx + 1) + ' / ' + readingTexts.length + (isToday ? ' · vandaag' : '');
 
   // Recent history
-  // All texts library
+  // All texts library — grouped by level
   const histEl = document.getElementById('reading-history');
   if (histEl) {
     const byId = history.byId || {};
-    histEl.innerHTML = '<h3 class="reading-section-title">Alle teksten · All texts</h3>' +
-      '<ul class="reading-library-list">' +
-      readingTexts.map(function(tt, i) {
+    const levelOrder = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+    const groups = {};
+    readingTexts.forEach(function(tt, i) {
+      if (!groups[tt.level]) groups[tt.level] = [];
+      groups[tt.level].push({ tt: tt, i: i });
+    });
+    const html = levelOrder.filter(function(lv) { return groups[lv]; }).map(function(lv) {
+      const items = groups[lv].map(function(entry) {
+        const tt = entry.tt, i = entry.i;
         const dates = byId[tt.id] || [];
         const everRead = dates.length > 0;
         const lastDate = dates.length ? dates[dates.length - 1] : null;
@@ -4565,14 +4571,16 @@ function renderReading() {
             '<span class="reading-library-title-en">' + _escapeHtml(tt.titleEn) + '</span>' +
           '</span>' +
           '<span class="reading-library-meta">' +
-            '<span class="badge badge-' + tt.level.toLowerCase() + '">' + tt.level + '</span>' +
             (everRead
               ? '<span class="reading-library-read">✓ ' + lastDate + '</span>'
               : '<span class="reading-library-unread">Niet gelezen</span>') +
           '</span>' +
           '</button></li>';
-      }).join('') +
-      '</ul>';
+      }).join('');
+      return '<h3 class="reading-section-title"><span class="badge badge-' + lv.toLowerCase() + '">' + lv + '</span> ' + groups[lv].length + ' teksten</h3>' +
+        '<ul class="reading-library-list">' + items + '</ul>';
+    }).join('');
+    histEl.innerHTML = html;
   }
 }
 

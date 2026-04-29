@@ -1200,5 +1200,636 @@ They talk about the working day, plans for the weekend, and a colleague who is g
         aEn: 'He taps his phone on the payment terminal.'
       }
     ]
+  },
+
+  {
+    id: 'r-a2-005',
+    title: 'Op het station',
+    titleEn: 'At the train station',
+    level: 'A2',
+    topic: 'reizen',
+    topicEn: 'travel',
+    topicEmoji: '🚆',
+    wordCount: 220,
+    readMinutes: 3,
+    text:
+`In Nederland reist men veel met de trein. NS — de Nederlandse Spoorwegen — rijdt elke dag op honderden routes door het hele land. Om te reizen heb je een OV-chipkaart nodig. Je laadt er geld op en houdt hem bij het incheckpalen aan de ingang en bij het uitcheckpalen bij de uitgang.
+
+Bas moet vandaag van Amsterdam naar Den Haag reizen voor een vergadering. Hij gaat naar het station en kijkt op het grote informatiebord. Zijn trein vertrekt om kwart over tien van spoor vier. Hij heeft nog twintig minuten.
+
+Bij een automaat koopt hij een kopje koffie. Dan loopt hij rustig naar spoor vier. De trein staat er al. Hij stapt in en zoekt een vrije zitplaats. De trein is niet zo druk op dit tijdstip, dus hij kan makkelijk een raam kiezen.
+
+Om kwart voor elf zegt de omroeper: "Dames en heren, wij naderen Den Haag Centraal. Over vijf minuten zijn wij er." Bas pakt zijn tas en loopt naar de deur. Als de trein stopt, checkt hij uit met zijn OV-chipkaart.
+
+Buiten het station pakt hij zijn fiets uit het fietsenstalling. In Nederland kun je een stationsfiets huren via de OV-fiets-app, maar Bas heeft zijn eigen fiets hier staan. Vijf minuten later is hij op zijn werk.`,
+    textEn:
+`In the Netherlands, people travel a lot by train. NS — the Dutch Railways — runs every day on hundreds of routes throughout the country. To travel, you need an OV-chipkaart (public transport smart card). You load money onto it and hold it against the check-in poles at the entrance and the check-out poles at the exit.
+
+Bas needs to travel from Amsterdam to The Hague today for a meeting. He goes to the station and looks at the large information board. His train departs at quarter past ten from platform four. He still has twenty minutes.
+
+At a vending machine, he buys a cup of coffee. Then he walks calmly to platform four. The train is already there. He gets on and looks for a free seat. The train is not very busy at this time, so he can easily choose a window seat.
+
+At quarter to eleven, the announcer says: "Ladies and gentlemen, we are approaching Den Haag Centraal. We will be there in five minutes." Bas picks up his bag and walks to the door. When the train stops, he checks out with his OV-chipkaart.
+
+Outside the station, he gets his bike from the bike storage. In the Netherlands you can rent a station bike via the OV-fiets app, but Bas has his own bike parked here. Five minutes later he is at work.`,
+    vocabulary: [
+      { nl: 'de Nederlandse Spoorwegen', en: 'Dutch Railways (NS)' },
+      { nl: 'de OV-chipkaart', en: 'public transport smart card' },
+      { nl: 'opladen', en: 'to top up / charge', matches: ['laadt op'] },
+      { nl: 'inchecken / uitchecken', en: 'to check in / check out', matches: ['incheckpalen', 'uitcheckpalen', 'checkt uit'] },
+      { nl: 'het spoor', en: 'platform / track', matches: ['spoor'] },
+      { nl: 'de zitplaats', en: 'seat', matches: ['zitplaats'] },
+      { nl: 'het tijdstip', en: 'time / moment' },
+      { nl: 'de omroeper', en: 'announcer' },
+      { nl: 'naderen', en: 'to approach', matches: ['naderen', 'naderen'] },
+      { nl: 'de fietsenstalling', en: 'bike storage / bike shed' }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Men + werkwoord (algemeen gebruik)',
+        example: 'In Nederland reist men veel met de trein.',
+        explanation: '"Men" (one / people) is an impersonal subject used for general statements about habits. It always takes a singular verb. Very common in describing Dutch customs and practices.'
+      },
+      {
+        pattern: 'Tijdsuitdrukkingen: kwart over / kwart voor',
+        example: 'kwart over tien · kwart voor elf',
+        explanation: 'Dutch tells time using "over" (past) and "voor" (to). Half means half past, not half to: "half elf" = 10:30. This often surprises English speakers.'
+      },
+      {
+        pattern: 'Als-zin + inversion',
+        example: 'Als de trein stopt, checkt hij uit met zijn OV-chipkaart.',
+        explanation: 'When "als" (when/if) opens the sentence, the main clause inverts: verb comes before subject. "checkt hij uit" — not "hij checkt uit".'
+      }
+    ],
+    questions: [
+      {
+        q: 'Wat heb je nodig om met de trein te reizen in Nederland?',
+        qEn: 'What do you need to travel by train in the Netherlands?',
+        a: 'Een OV-chipkaart.',
+        aEn: 'An OV-chipkaart.'
+      },
+      {
+        q: 'Van welk spoor vertrekt de trein van Bas?',
+        qEn: 'From which platform does Bas\'s train depart?',
+        a: 'Van spoor vier.',
+        aEn: 'From platform four.'
+      },
+      {
+        q: 'Hoe gaat Bas van het station naar zijn werk?',
+        qEn: 'How does Bas get from the station to work?',
+        a: 'Met zijn eigen fiets uit de fietsenstalling.',
+        aEn: 'With his own bike from the bike storage.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-a2-006',
+    title: 'In de supermarkt',
+    titleEn: 'At the supermarket',
+    level: 'A2',
+    topic: 'dagelijks',
+    topicEn: 'daily life',
+    topicEmoji: '🛍️',
+    wordCount: 218,
+    readMinutes: 3,
+    text:
+`Nederlanders doen hun boodschappen bij supermarkten zoals Albert Heijn, Jumbo en Lidl. De meeste mensen gaan een of twee keer per week naar de supermarkt. Sommige mensen bestellen online en laten hun boodschappen thuisbezorgen.
+
+Nina gaat elke dinsdag naar de Albert Heijn om de hoek. Ze heeft een boodschappenlijstje gemaakt op haar telefoon. Bij de ingang pakt ze een winkelwagen en begint met de groenten en het fruit. Ze kijkt goed naar de aanbiedingen: deze week zijn aardbeien in de aanbieding.
+
+Bij de kassa staat een rij van vijf mensen. Nina kiest de zelfscankassa. Ze scant elk product zelf en legt het in haar tas. Sommige producten zijn moeilijk te scannen, maar een medewerker helpt haar even. Als ze klaar is, tikt ze haar bankpas op de betaalautomaat. "Heeft u een bonuskaart?" vraagt het scherm. Nina houdt haar telefoon voor de scanner: de Appie-app werkt als digitale bonuskaart.
+
+Met een volle tas loopt ze naar buiten. In Nederland betaal je voor een plastic tas, dus de meeste mensen nemen een eigen tas mee. Nina gebruikt altijd haar grote canvas tas.
+
+Thuis zet ze de boodschappen in de koelkast en de kasten. Ze heeft voor vier dagen eten gekocht. Morgen kookt ze voor haar vriendin en overmorgen gaat ze uit eten.`,
+    textEn:
+`Dutch people do their shopping at supermarkets such as Albert Heijn, Jumbo, and Lidl. Most people go to the supermarket once or twice a week. Some people order online and have their groceries delivered at home.
+
+Nina goes to the Albert Heijn around the corner every Tuesday. She has made a shopping list on her phone. At the entrance, she picks up a shopping trolley and starts with the vegetables and fruit. She pays close attention to the deals: this week strawberries are on offer.
+
+At the checkout, there is a queue of five people. Nina chooses the self-scan checkout. She scans each product herself and puts it in her bag. Some products are hard to scan, but a staff member helps her briefly. When she is done, she taps her bank card on the payment terminal. "Do you have a bonus card?" the screen asks. Nina holds her phone in front of the scanner: the Appie app works as a digital bonus card.
+
+With a full bag, she walks outside. In the Netherlands you pay for a plastic bag, so most people bring their own bag. Nina always uses her large canvas bag.
+
+At home, she puts the shopping in the fridge and the cupboards. She has bought food for four days. Tomorrow she will cook for her friend and the day after tomorrow she is going out for dinner.`,
+    vocabulary: [
+      { nl: 'thuisbezorgen', en: 'to deliver at home', matches: ['thuisbezorgen'] },
+      { nl: 'het boodschappenlijstje', en: 'shopping list' },
+      { nl: 'de winkelwagen', en: 'shopping trolley' },
+      { nl: 'de aanbieding', en: 'deal / offer', matches: ['aanbiedingen', 'aanbieding'] },
+      { nl: 'de zelfscankassa', en: 'self-scan checkout' },
+      { nl: 'de medewerker', en: 'staff member / employee', matches: ['medewerker'] },
+      { nl: 'de bonuskaart', en: 'loyalty card' },
+      { nl: 'de koelkast', en: 'fridge / refrigerator' },
+      { nl: 'overmorgen', en: 'the day after tomorrow' },
+      { nl: 'canvas tas', en: 'canvas bag / reusable bag' }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'In de aanbieding zijn',
+        example: 'Deze week zijn aardbeien in de aanbieding.',
+        explanation: '"In de aanbieding zijn" is the fixed Dutch phrase for "to be on offer/on sale". Note: subject comes after verb when a time expression opens the sentence (inversion).'
+      },
+      {
+        pattern: 'Toekomst met gaan + infinitief',
+        example: 'Morgen kookt ze voor haar vriendin · overmorgen gaat ze uit eten.',
+        explanation: 'Dutch future can use "gaan + infinitief" (going to) or simply present tense + future time word. Both are correct: "Ze kookt morgen" and "Ze gaat morgen koken" mean the same.'
+      },
+      {
+        pattern: 'Betalen voor (iets)',
+        example: 'In Nederland betaal je voor een plastic tas.',
+        explanation: '"Betalen voor" = to pay for. The impersonal "je" (you/one) is used here for general statements about what everyone does, similar to English "you" in "you have to pay".'
+      }
+    ],
+    questions: [
+      {
+        q: 'Hoe gebruikt Nina haar bonuskaart?',
+        qEn: 'How does Nina use her bonus card?',
+        a: 'Via de Appie-app op haar telefoon, die werkt als digitale bonuskaart.',
+        aEn: 'Via the Appie app on her phone, which works as a digital bonus card.'
+      },
+      {
+        q: 'Waarom nemen de meeste Nederlanders een eigen tas mee?',
+        qEn: 'Why do most Dutch people bring their own bag?',
+        a: 'Omdat je in Nederland betaalt voor een plastic tas.',
+        aEn: 'Because in the Netherlands you pay for a plastic bag.'
+      },
+      {
+        q: 'Voor hoeveel dagen heeft Nina boodschappen gedaan?',
+        qEn: 'How many days\' worth of shopping has Nina done?',
+        a: 'Voor vier dagen.',
+        aEn: 'For four days.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-a2-007',
+    title: 'Naar de kapper',
+    titleEn: 'At the hairdresser\'s',
+    level: 'A2',
+    topic: 'dagelijks',
+    topicEn: 'daily life',
+    topicEmoji: '✂️',
+    wordCount: 216,
+    readMinutes: 3,
+    text:
+`Omar gaat eens in de zes weken naar de kapper. Hij belt van tevoren op om een afspraak te maken. "Kapper De Leeuw, goedemiddag." "Hallo, ik wil graag een afspraak maken voor een knipbeurt." "Wanneer wilt u komen?" "Kan het zaterdag aan het einde van de middag?" "Zaterdag om vijf uur kan nog. Is dat goed?" "Ja, prima. Op welke naam?" "Op Omar." "Tot zaterdag!"
+
+Op zaterdag loopt Omar de kapperswinkel in. Het ruikt naar haarlak en shampoo. De kapster, Lena, begroet hem hartelijk. "Ga zitten! Wat mag het vandaag zijn?" "Hetzelfde als altijd: aan de zijkanten kort en bovenop iets langer. En de baard even bijwerken, alsjeblieft." "Wordt gedaan!"
+
+Lena wast zijn haar eerst en droogt het daarna met een handdoek. Dan begint ze te knippen. Ze praten over het weekend, over de zomer die eraan komt en over haar vakantieplannen. Omar vertelt dat hij in augustus naar Spanje gaat.
+
+Als ze klaar is, houdt Lena een spiegel achter zijn hoofd zodat hij de achterkant kan zien. "Ziet er goed uit!" zegt Omar. Hij betaalt vijfentwintig euro en laat een fooi van twee euro achter. "Tot volgende keer!" zegt Lena. "Tot de volgende keer!" antwoordt Omar.`,
+    textEn:
+`Omar goes to the hairdresser once every six weeks. He calls ahead to make an appointment. "Kapper De Leeuw, good afternoon." "Hello, I'd like to make an appointment for a haircut." "When would you like to come?" "Can it be Saturday late afternoon?" "Saturday at five o'clock is still possible. Is that good?" "Yes, fine. Under what name?" "Under Omar." "See you Saturday!"
+
+On Saturday, Omar walks into the barbershop. It smells of hairspray and shampoo. The hairdresser, Lena, greets him warmly. "Have a seat! What can I do for you today?" "The same as always: short on the sides and a bit longer on top. And tidy up the beard a little, please." "Consider it done!"
+
+Lena washes his hair first and then dries it with a towel. Then she starts cutting. They talk about the weekend, about the summer that is coming, and about her holiday plans. Omar tells her he is going to Spain in August.
+
+When she is done, Lena holds a mirror behind his head so he can see the back. "Looks great!" says Omar. He pays twenty-five euros and leaves a two-euro tip. "Until next time!" says Lena. "Until next time!" answers Omar.`,
+    vocabulary: [
+      { nl: 'de kapper', en: 'hairdresser / barber', matches: ['kapper', 'kapperswinkel'] },
+      { nl: 'de knipbeurt', en: 'haircut (appointment)' },
+      { nl: 'bijwerken', en: 'to tidy up / touch up', matches: ['bijwerken'] },
+      { nl: 'de haarlak', en: 'hairspray' },
+      { nl: 'de kapster', en: 'female hairdresser' },
+      { nl: 'hartelijk', en: 'warmly / heartily' },
+      { nl: 'de baard', en: 'beard' },
+      { nl: 'de handdoek', en: 'towel' },
+      { nl: 'de spiegel', en: 'mirror' },
+      { nl: 'de fooi', en: 'tip (gratuity)' },
+      { nl: 'Wordt gedaan!', en: 'Consider it done! / Will do!' }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Afspraak maken: telefoongesprek',
+        example: '"Kan het zaterdag aan het einde van de middag?" "Zaterdag om vijf uur kan nog."',
+        explanation: '"Kan nog" means "is still possible" — a useful phrase when checking availability. In appointment-making, Dutch often drops the subject in short replies: "Zaterdag om vijf uur kan (dat nog)" → "Kan nog."'
+      },
+      {
+        pattern: 'Worden + voltooid deelwoord (passief)',
+        example: 'Wordt gedaan! · zodat hij de achterkant kan zien',
+        explanation: '"Wordt gedaan" is passive: "(it) is being done / will be done." The passive uses "worden" + past participle. "Zodat" (so that) is a subordinating conjunction sending the verb to the end.'
+      },
+      {
+        pattern: 'Eraan komen (to be approaching)',
+        example: 'de zomer die eraan komt',
+        explanation: '"Eraan komen" means something is coming / approaching. "Die eraan komt" is a relative clause: "die" refers to "de zomer" and "eraan" is a prepositional pronoun meaning "toward it/here".'
+      }
+    ],
+    questions: [
+      {
+        q: 'Hoe maakt Omar een afspraak bij de kapper?',
+        qEn: 'How does Omar make an appointment at the hairdresser\'s?',
+        a: 'Hij belt van tevoren op.',
+        aEn: 'He calls ahead.'
+      },
+      {
+        q: 'Wat vraagt Omar de kapster te doen?',
+        qEn: 'What does Omar ask the hairdresser to do?',
+        a: 'Aan de zijkanten kort knippen, bovenop iets langer laten en de baard bijwerken.',
+        aEn: 'Cut it short on the sides, leave it a bit longer on top, and tidy up the beard.'
+      },
+      {
+        q: 'Hoeveel betaalt Omar en hoeveel fooi geeft hij?',
+        qEn: 'How much does Omar pay and how much tip does he leave?',
+        a: 'Hij betaalt vijfentwintig euro en laat twee euro fooi achter.',
+        aEn: 'He pays twenty-five euros and leaves a two-euro tip.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-a2-008',
+    title: 'Een avond thuis',
+    titleEn: 'An evening at home',
+    level: 'A2',
+    topic: 'dagelijks',
+    topicEn: 'daily life',
+    topicEmoji: '🏠',
+    wordCount: 215,
+    readMinutes: 3,
+    text:
+`Na een lange werkdag is Aisha blij om thuis te zijn. Ze gooit haar jas op de haak, doet haar schoenen uit en loopt naar de keuken. Ze is moe, dus ze wil niet lang koken. Ze pakt pasta uit de kast, snijdt wat groenten en maakt een eenvoudige tomatensaus. Na twintig minuten staat het eten op tafel.
+
+Terwijl ze eet, kijkt ze op haar telefoon. Er zijn een paar berichten van vrienden in de appgroep. Iemand stelt voor om zaterdag samen te eten. "Goed idee!" typt Aisha terug. "Bij mij thuis of ergens buiten?" "Buiten! Dat Turkse restaurant waar we vorig jaar waren?" "Perfect."
+
+Na het eten wast ze de vaat af en maakt het aanrecht schoon. Dan gaat ze op de bank zitten. Ze wil eigenlijk een boek lezen, maar ze is te moe om te concentreren. Ze zet de televisie aan en kijkt naar een Nederlandse serie op NPO. De serie gaat over een familie in Amsterdam in de jaren zestig. Ze vindt het heel interessant.
+
+Om half tien begint ze slaperig te worden. Ze zet de televisie uit, poetst haar tanden en gaat naar bed. Ze leest nog vijf minuten op haar e-reader. Dan doet ze het licht uit. Morgen moet ze vroeg op — ze heeft om acht uur een vergadering.`,
+    textEn:
+`After a long working day, Aisha is glad to be home. She throws her coat on the hook, takes off her shoes, and walks to the kitchen. She is tired, so she does not want to cook for long. She gets pasta from the cupboard, cuts some vegetables, and makes a simple tomato sauce. After twenty minutes, the food is on the table.
+
+While she eats, she looks at her phone. There are a few messages from friends in the group chat. Someone suggests eating together on Saturday. "Good idea!" types Aisha back. "At my place or somewhere out?" "Out! That Turkish restaurant where we were last year?" "Perfect."
+
+After eating, she does the dishes and cleans the worktop. Then she sits on the sofa. She actually wants to read a book, but she is too tired to concentrate. She switches on the television and watches a Dutch series on NPO. The series is about a family in Amsterdam in the 1960s. She finds it very interesting.
+
+At half past nine she starts to feel sleepy. She turns off the television, brushes her teeth, and goes to bed. She reads for five more minutes on her e-reader. Then she turns off the light. Tomorrow she has to be up early — she has a meeting at eight o'clock.`,
+    vocabulary: [
+      { nl: 'de haak', en: 'hook (coat hook)', matches: ['haak'] },
+      { nl: 'eenvoudig', en: 'simple / easy' },
+      { nl: 'de tomatensaus', en: 'tomato sauce' },
+      { nl: 'de appgroep', en: 'WhatsApp group chat' },
+      { nl: 'de vaat afwassen', en: 'to do the dishes', matches: ['vaat af'] },
+      { nl: 'het aanrecht', en: 'worktop / counter' },
+      { nl: 'de bank', en: 'sofa / couch' },
+      { nl: 'slaperig worden', en: 'to become sleepy', matches: ['slaperig'] },
+      { nl: 'tandjes poetsen', en: 'to brush teeth', matches: ['tanden', 'poetst'] },
+      { nl: 'de e-reader', en: 'e-reader' }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Terwijl + bijzin (while)',
+        example: 'Terwijl ze eet, kijkt ze op haar telefoon.',
+        explanation: '"Terwijl" (while) is a subordinating conjunction: verb goes to the end of its clause. When "terwijl" opens the sentence, inversion follows in the main clause: "kijkt ze" not "ze kijkt".'
+      },
+      {
+        pattern: 'Te moe om te + infinitief',
+        example: 'Ze is te moe om te concentreren.',
+        explanation: '"Te + adjective + om te + infinitief" = too [adjective] to [do something]. This is a very common structure: "te druk om te bellen", "te ver om te lopen".'
+      },
+      {
+        pattern: 'Reflexief begin: beginnen te + infinitief',
+        example: 'Ze begint slaperig te worden.',
+        explanation: '"Beginnen te + infinitief" expresses the start of a process. Similar to "to start to" in English. Also common: "beginnen met + substantief/gerund".'
+      }
+    ],
+    questions: [
+      {
+        q: 'Waarom kookt Aisha iets eenvoudigs?',
+        qEn: 'Why does Aisha cook something simple?',
+        a: 'Omdat ze moe is en niet lang wil koken.',
+        aEn: 'Because she is tired and does not want to cook for long.'
+      },
+      {
+        q: 'Wat plannen Aisha en haar vrienden voor zaterdag?',
+        qEn: 'What do Aisha and her friends plan for Saturday?',
+        a: 'Ze gaan samen eten in een Turks restaurant.',
+        aEn: 'They are going to eat together at a Turkish restaurant.'
+      },
+      {
+        q: 'Waarom leest Aisha geen boek die avond?',
+        qEn: 'Why doesn\'t Aisha read a book that evening?',
+        a: 'Ze is te moe om te concentreren.',
+        aEn: 'She is too tired to concentrate.'
+      }
+    ]
+  },
+
+  // ── B1 DAILY CONVERSATIONS ──────────────────────────────────────────────────
+
+  {
+    id: 'r-b1-c-001',
+    title: 'Op het werk',
+    titleEn: 'At work',
+    level: 'B1',
+    topic: 'werk',
+    topicEn: 'work',
+    topicEmoji: '💼',
+    wordCount: 222,
+    readMinutes: 3,
+    text:
+`Het moderne Nederlandse kantoor is informeel vergeleken met veel andere landen. Collega's spreken elkaar aan met de voornaam — ook de baas. Er is veel aandacht voor werkplezier, een goede werk-privébalans en open communicatie. Vergaderingen beginnen vaak met een rondje waarbij iedereen vertelt hoe het gaat.
+
+Sanne werkt als projectmanager bij een middelgroot IT-bedrijf in Rotterdam. Elke maandagochtend is er een teamvergadering van een uur. Ze zit aan de vergadertafel met haar zes collega's. De manager, Joost, opent de vergadering. "Goedemorgen allemaal. Voordat we beginnen: heeft iemand nog iets van het weekend?" Er wordt gelachen en iemand vertelt over een wandeling in de Biesbosch.
+
+Na de informele opening bespreekt het team de taken van de week. Sanne presenteert een update over het nieuwe softwareproject. "We lopen iets achter op schema, maar we halen het wel als we het tempo erbij houden," zegt ze. "Wat heb je nodig?" vraagt Joost. "Nog twee dagen van Ravi," antwoordt Sanne. Joost knikt. "Ravi, is dat te doen?" "Ja, ik maak er tijd voor vrij."
+
+Na de vergadering drinken ze koffie bij het koffieapparaat. Sanne bespreekt even informeel een idee met een collega. In Nederlandse bedrijven gaat veel informeel: een korte gang-conversatie lost soms meer op dan een formele meeting.`,
+    textEn:
+`The modern Dutch office is informal compared to many other countries. Colleagues address each other by first name — including the boss. There is a lot of attention to job satisfaction, a good work-life balance, and open communication. Meetings often begin with a round where everyone says how they are doing.
+
+Sanne works as a project manager at a medium-sized IT company in Rotterdam. Every Monday morning there is a team meeting lasting one hour. She sits at the meeting table with her six colleagues. The manager, Joost, opens the meeting. "Good morning everyone. Before we start: does anyone have anything from the weekend?" People laugh and someone tells about a walk in the Biesbosch.
+
+After the informal opening, the team discusses the tasks for the week. Sanne presents an update on the new software project. "We are running a little behind schedule, but we will make it if we keep up the pace," she says. "What do you need?" asks Joost. "Two more days of Ravi," answers Sanne. Joost nods. "Ravi, can you manage that?" "Yes, I'll make time for it."
+
+After the meeting, they drink coffee at the coffee machine. Sanne briefly discusses an idea informally with a colleague. In Dutch companies, much happens informally: a short corridor conversation sometimes solves more than a formal meeting.`,
+    vocabulary: [
+      { nl: 'de werk-privébalans', en: 'work-life balance' },
+      { nl: 'de vergadering', en: 'meeting', matches: ['vergadering', 'vergadertafel'] },
+      { nl: 'het rondje', en: 'round / quick check-in' },
+      { nl: 'de projectmanager', en: 'project manager' },
+      { nl: 'achter op schema lopen', en: 'to be behind schedule', matches: ['achter op schema'] },
+      { nl: 'het tempo erbij houden', en: 'to keep up the pace' },
+      { nl: 'tijd vrijmaken', en: 'to free up time', matches: ['vrij'] },
+      { nl: 'informeel', en: 'informal' },
+      { nl: 'oplossen', en: 'to solve / resolve', matches: ['oplossen', 'lost op'] },
+      { nl: 'de voornaam', en: 'first name' }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Er wordt + voltooid deelwoord (passief zonder agens)',
+        example: 'Er wordt gelachen.',
+        explanation: '"Er wordt" + past participle forms an impersonal passive — no specific subject mentioned. "Er wordt gelachen" = people laugh / laughter is heard. Very common for describing social situations.'
+      },
+      {
+        pattern: 'Als-zin voor voorwaarde',
+        example: 'we halen het wel als we het tempo erbij houden.',
+        explanation: '"Als" (if) introduces a conditional. "Het halen" (to make it / to meet the deadline) is a common work idiom. "Wel" softens the certainty: "we will manage it, don\'t worry".'
+      },
+      {
+        pattern: 'Vergelijkingen met vergeleken met',
+        example: 'informeel vergeleken met veel andere landen.',
+        explanation: '"Vergeleken met" (compared to/with) is a fixed participial phrase used in comparisons. It always comes after the adjective it modifies and before the comparison target.'
+      }
+    ],
+    questions: [
+      {
+        q: 'Hoe spreken collega\'s elkaar aan in het Nederlandse kantoor?',
+        qEn: 'How do colleagues address each other in the Dutch office?',
+        a: 'Met de voornaam, ook de baas.',
+        aEn: 'By first name, including the boss.'
+      },
+      {
+        q: 'Wat is het probleem met het softwareproject van Sanne?',
+        qEn: 'What is the problem with Sanne\'s software project?',
+        a: 'Ze lopen iets achter op schema.',
+        aEn: 'They are running a little behind schedule.'
+      },
+      {
+        q: 'Wat lost soms meer op dan een formele meeting?',
+        qEn: 'What sometimes solves more than a formal meeting?',
+        a: 'Een korte gang-conversatie.',
+        aEn: 'A short corridor conversation.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-b1-c-002',
+    title: 'Een kamer zoeken',
+    titleEn: 'Looking for a room',
+    level: 'B1',
+    topic: 'wonen',
+    topicEn: 'housing',
+    topicEmoji: '🏠',
+    wordCount: 224,
+    readMinutes: 3,
+    text:
+`Een kamer of appartement vinden in Nederland is niet eenvoudig. In grote steden zoals Amsterdam, Utrecht en Rotterdam is de huurmarkt erg krap. Mensen staan soms jarenlang op een wachtlijst voor een sociale huurwoning. Wie snel iets wil huren, zoekt via websites als Kamernet, Pararius of Facebook-groepen.
+
+Yara is tweeëntwintig jaar oud en studeert in Leiden. Ze woont nu nog bij haar ouders in Den Haag, maar ze wil graag op zichzelf wonen om dichter bij haar universiteit te zijn. Ze plaatst een bericht op een studentengroep op Facebook: "Hallo! Ik zoek een kamer in Leiden. Ik ben een rustige, nette student die graag kookt. Liefst een kamer met eigen wasgelegenheid. Budget: maximaal €700 per maand inclusief."
+
+Ze krijgt tien reacties in twee dagen. De meeste kamers zijn te duur of te ver van de campus. Maar één advertentie ziet er goed uit: een kamer van veertien vierkante meter in een huis met drie andere studenten, voor €680 inclusief internet en gas/water/licht.
+
+Ze mailt de verhuurder en maakt een bezichtiging. Het huis is netjes en de housemates zijn vriendelijk. De kamer heeft een groot raam en genoeg ruimte voor een bureau en een bed. Na een week bedenktijd beslist Yara: ze neemt de kamer. Ze tekent het contract en betaalt de borg van twee maanden huur.`,
+    textEn:
+`Finding a room or apartment in the Netherlands is not easy. In large cities such as Amsterdam, Utrecht, and Rotterdam, the rental market is very tight. People are sometimes on a waiting list for years for social housing. Those who want to rent something quickly search via websites such as Kamernet, Pararius, or Facebook groups.
+
+Yara is twenty-two years old and studies in Leiden. She still lives with her parents in The Hague, but she would like to live independently to be closer to her university. She posts a message in a student group on Facebook: "Hello! I am looking for a room in Leiden. I am a quiet, tidy student who likes to cook. Ideally a room with private washing facilities. Budget: maximum €700 per month all-in."
+
+She receives ten replies within two days. Most rooms are too expensive or too far from campus. But one advertisement looks promising: a room of fourteen square metres in a house with three other students, for €680 including internet and gas/water/electricity.
+
+She emails the landlord and arranges a viewing. The house is tidy and the housemates are friendly. The room has a large window and enough space for a desk and a bed. After a week of consideration, Yara decides: she takes the room. She signs the contract and pays the deposit of two months' rent.`,
+    vocabulary: [
+      { nl: 'krap', en: 'tight / scarce' },
+      { nl: 'de wachtlijst', en: 'waiting list' },
+      { nl: 'de sociale huurwoning', en: 'social housing / council flat' },
+      { nl: 'op zichzelf wonen', en: 'to live independently / alone' },
+      { nl: 'de wasgelegenheid', en: 'washing / laundry facilities' },
+      { nl: 'inclusief', en: 'inclusive / all-in', matches: ['inclusief'] },
+      { nl: 'de verhuurder', en: 'landlord' },
+      { nl: 'de bezichtiging', en: 'viewing (of a property)' },
+      { nl: 'de bedenktijd', en: 'time to think / consideration period' },
+      { nl: 'de borg', en: 'deposit (rental)' }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Wie + bijzin (whoever / those who)',
+        example: 'Wie snel iets wil huren, zoekt via Kamernet.',
+        explanation: '"Wie" (whoever / those who) starts a subject clause. The verb goes to the end of the "wie" clause, and the main clause inverts. Very common in general statements: "Wie wil slagen, moet oefenen."'
+      },
+      {
+        pattern: 'Liefst (ideally / preferably)',
+        example: 'Liefst een kamer met eigen wasgelegenheid.',
+        explanation: '"Liefst" is the superlative of "graag" (gladly → most gladly → ideally). In ads and requests it means "preferably". Also written: "bij voorkeur".'
+      },
+      {
+        pattern: 'Na + tijdsuitdrukking + VTT',
+        example: 'Na een week bedenktijd beslist Yara: ze neemt de kamer.',
+        explanation: '"Na + tijdsperiode" at the start triggers inversion in the main clause. The VTT (perfect) is not used here because the decision is presented as final and clear, so simple present works.'
+      }
+    ],
+    questions: [
+      {
+        q: 'Waarom wil Yara op zichzelf wonen?',
+        qEn: 'Why does Yara want to live independently?',
+        a: 'Om dichter bij haar universiteit te zijn.',
+        aEn: 'To be closer to her university.'
+      },
+      {
+        q: 'Wat zijn de voorwaarden in Yara\'s zoekadvertentie?',
+        qEn: 'What are the conditions in Yara\'s search ad?',
+        a: 'Een rustige, nette student, liefst eigen wasgelegenheid, budget maximaal €700 per maand inclusief.',
+        aEn: 'A quiet, tidy student, ideally private washing facilities, budget maximum €700 per month all-in.'
+      },
+      {
+        q: 'Wat moet Yara betalen als borg?',
+        qEn: 'What does Yara have to pay as a deposit?',
+        a: 'Twee maanden huur.',
+        aEn: 'Two months\' rent.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-b1-c-003',
+    title: 'Openbaar vervoer in Nederland',
+    titleEn: 'Public transport in the Netherlands',
+    level: 'B1',
+    topic: 'reizen',
+    topicEn: 'travel',
+    topicEmoji: '🚌',
+    wordCount: 221,
+    readMinutes: 3,
+    text:
+`Nederland heeft een uitgebreid netwerk van treinen, bussen, trams en metro's. Het openbaar vervoer — kortweg OV — wordt door miljoenen mensen dagelijks gebruikt. Met één OV-chipkaart kun je reizen met bijna alle vervoersbedrijven in het land: NS, GVB, RET, HTM en tientallen andere.
+
+Het OV-systeem werkt op basis van inchecken en uitchecken. Als je dat vergeet, wordt het maximumtarief in rekening gebracht — dat kan flink oplopen. Sommige reizigers maken die fout maar één keer.
+
+Naast de OV-chipkaart is er nu ook de mogelijkheid om met een bankpas of creditcard in te checken, dankzij het OVpay-systeem. Dit is handig voor toeristen die geen OV-chipkaart willen aanschaffen.
+
+Marta is Poolse en woont al drie jaar in Amsterdam. Ze reist elke dag met de tram naar haar werk. In het begin vond ze het OV-systeem ingewikkeld, maar nu gaat het vanzelf. "Het grootste voordeel van de tram is dat ik niet over parkeren hoef na te denken," zegt ze. "En ik kan onderweg een boek lezen."
+
+Wat ze minder prettig vindt, is dat de tram soms vol is in de spits. Dan is er geen zitplaats en moet ze staand reizen. Maar dat is een kleine prijs voor het gemak van het OV. "Vergeleken met Polen zijn de bussen hier veel stipter," voegt ze er lachend aan toe.`,
+    textEn:
+`The Netherlands has an extensive network of trains, buses, trams, and metros. Public transport — OV for short — is used by millions of people daily. With one OV-chipkaart you can travel with almost all transport companies in the country: NS, GVB, RET, HTM, and dozens of others.
+
+The OV system works on the basis of checking in and out. If you forget to do that, the maximum fare is charged — which can add up considerably. Some travellers make that mistake only once.
+
+In addition to the OV-chipkaart, there is now also the option to check in with a bank card or credit card, thanks to the OVpay system. This is handy for tourists who do not want to purchase an OV-chipkaart.
+
+Marta is Polish and has been living in Amsterdam for three years. She travels by tram to work every day. At first she found the OV system complicated, but now it comes naturally. "The biggest advantage of the tram is that I don't have to think about parking," she says. "And I can read a book on the way."
+
+What she finds less pleasant is that the tram is sometimes full during rush hour. Then there is no seat and she has to travel standing. But that is a small price for the convenience of public transport. "Compared to Poland, the buses here are much more punctual," she adds with a laugh.`,
+    vocabulary: [
+      { nl: 'uitgebreid', en: 'extensive / comprehensive' },
+      { nl: 'het vervoersbedrijf', en: 'transport company', matches: ['vervoersbedrijven'] },
+      { nl: 'in rekening brengen', en: 'to charge (a fee)', matches: ['in rekening gebracht'] },
+      { nl: 'flink oplopen', en: 'to add up considerably' },
+      { nl: 'aanschaffen', en: 'to purchase / acquire', matches: ['aanschaffen'] },
+      { nl: 'vanzelf gaan', en: 'to come naturally / go automatically', matches: ['vanzelf'] },
+      { nl: 'de spits', en: 'rush hour' },
+      { nl: 'staand reizen', en: 'to travel standing up' },
+      { nl: 'stipt', en: 'punctual / on time' },
+      { nl: 'het gemak', en: 'convenience / ease' }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Kortweg (abbreviated as / for short)',
+        example: 'het openbaar vervoer — kortweg OV',
+        explanation: '"Kortweg" (literally: briefly / in short) is used to introduce abbreviations or shortened names. Very common in formal and informational Dutch writing.'
+      },
+      {
+        pattern: 'Al + tijdsduur (duration up to now)',
+        example: 'Ze woont al drie jaar in Amsterdam.',
+        explanation: '"Al" with a time period and present tense expresses an ongoing action. English uses "for": "She has been living in Amsterdam for three years." Dutch uses present tense + "al + period".'
+      },
+      {
+        pattern: 'Hoeven te + infinitief (niet hoeven = don\'t need to)',
+        example: 'ik hoef niet over parkeren na te denken.',
+        explanation: '"Niet hoeven te" is the Dutch equivalent of "don\'t have to / need not". The "te" stays with the infinitive. With separable verbs: "niet hoeven na te denken" (te goes between parts).'
+      }
+    ],
+    questions: [
+      {
+        q: 'Wat gebeurt er als je vergeet uit te checken in het OV?',
+        qEn: 'What happens if you forget to check out in public transport?',
+        a: 'Het maximumtarief wordt in rekening gebracht.',
+        aEn: 'The maximum fare is charged.'
+      },
+      {
+        q: 'Wat is het grootste voordeel van de tram voor Marta?',
+        qEn: 'What is the biggest advantage of the tram for Marta?',
+        a: 'Ze hoeft niet over parkeren na te denken, en ze kan onderweg een boek lezen.',
+        aEn: 'She doesn\'t have to think about parking, and she can read a book on the way.'
+      },
+      {
+        q: 'Hoe vergelijkt Marta het Nederlandse OV met Polen?',
+        qEn: 'How does Marta compare Dutch public transport to Poland?',
+        a: 'De bussen in Nederland zijn veel stipter dan in Polen.',
+        aEn: 'The buses in the Netherlands are much more punctual than in Poland.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-b1-c-004',
+    title: 'Een klacht indienen',
+    titleEn: 'Making a complaint',
+    level: 'B1',
+    topic: 'dagelijks',
+    topicEn: 'daily life',
+    topicEmoji: '📞',
+    wordCount: 223,
+    readMinutes: 3,
+    text:
+`Nederlanders staan bekend om hun directheid. Als iets niet goed gaat, zeggen ze dat zonder omwegen. Dat geldt ook voor klantenservice: als een product kapot is of een dienst niet naar wens verloopt, nemen mensen contact op met de klantenservice om het probleem op te lossen.
+
+Kevin heeft vorige week een nieuwe wasmachine besteld bij een online winkel. De bezorger heeft de machine afgeleverd, maar bij het installeren merkt Kevin dat de deur niet goed sluit. Hij belt de klantenservice.
+
+"Goedemiddag, u spreekt met Kevin Smit. Ik bel omdat ik vorige week een wasmachine heb besteld en die vandaag is afgeleverd, maar de deur sluit niet goed." "Wat vervelend! Heeft u het bestelnummer bij de hand?" Kevin leest het nummer voor. "Ik zie het hier. Kunt u foto's maken van het defect en die mailen naar service@..." "Ja, dat doe ik direct." "Dan nemen wij zo snel mogelijk contact met u op. U kunt een nieuwe machine verwachten binnen vijf werkdagen of u krijgt het bedrag teruggestort."
+
+Kevin maakt de foto's en mailt ze. Drie dagen later krijgt hij een bevestigingsmail: de nieuwe wasmachine wordt vrijdag bezorgd. Twee weken geleden zou hij misschien een negatieve recensie hebben geplaatst en de zaak hebben laten zitten. Nu is hij blij dat hij heeft gebeld. Een beleefd maar duidelijk gesprek lost veel op.`,
+    textEn:
+`Dutch people are known for their directness. If something is not right, they say so without beating around the bush. That also applies to customer service: if a product is broken or a service does not go as desired, people contact customer service to resolve the problem.
+
+Kevin ordered a new washing machine from an online shop last week. The delivery person delivered the machine, but when installing it, Kevin notices that the door does not close properly. He calls customer service.
+
+"Good afternoon, you are speaking with Kevin Smit. I am calling because I ordered a washing machine last week and it was delivered today, but the door does not close properly." "How annoying! Do you have the order number handy?" Kevin reads out the number. "I can see it here. Can you take photos of the defect and email them to service@..." "Yes, I'll do that right away." "Then we will contact you as soon as possible. You can expect a new machine within five working days or the amount will be refunded."
+
+Kevin takes the photos and emails them. Three days later he receives a confirmation email: the new washing machine will be delivered on Friday. Two weeks ago, he might have left a negative review and let the matter go. Now he is glad he called. A polite but clear conversation resolves a lot.`,
+    vocabulary: [
+      { nl: 'bekendstaan om', en: 'to be known for', matches: ['staan bekend'] },
+      { nl: 'de directheid', en: 'directness' },
+      { nl: 'zonder omwegen', en: 'without beating around the bush / directly' },
+      { nl: 'de klantenservice', en: 'customer service' },
+      { nl: 'naar wens verlopen', en: 'to go as desired', matches: ['naar wens'] },
+      { nl: 'afleveren', en: 'to deliver', matches: ['afgeleverd', 'bezorgd'] },
+      { nl: 'bij de hand hebben', en: 'to have handy / on hand', matches: ['bij de hand'] },
+      { nl: 'het defect', en: 'defect / fault' },
+      { nl: 'terugstorten', en: 'to refund / transfer back', matches: ['teruggestort'] },
+      { nl: 'de werkdag', en: 'working day', matches: ['werkdagen'] }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Conditioneel verleden: zou + hebben + infinitief',
+        example: 'Twee weken geleden zou hij misschien een negatieve recensie hebben geplaatst.',
+        explanation: 'The conditional perfect (would have done) = "zou + infinitief hebben + voltooid deelwoord". It describes what might have happened under different circumstances. "Misschien" softens the hypothetical.'
+      },
+      {
+        pattern: 'Telefoneren: vaste uitdrukkingen',
+        example: 'U spreekt met Kevin Smit · Heeft u het bestelnummer bij de hand?',
+        explanation: '"U spreekt met..." (you are speaking with...) is the formal way to introduce yourself on the phone. "Bij de hand hebben" (to have handy) is a fixed phrase for having something readily available.'
+      },
+      {
+        pattern: 'Binnen + tijdsduur (within)',
+        example: 'binnen vijf werkdagen',
+        explanation: '"Binnen" + time period = within [time]. Very common in service contexts: "binnen 24 uur", "binnen een week". Do not confuse with "in" — "in vijf dagen" means in/after five days, not within.'
+      }
+    ],
+    questions: [
+      {
+        q: 'Wat is het probleem met de wasmachine van Kevin?',
+        qEn: 'What is the problem with Kevin\'s washing machine?',
+        a: 'De deur sluit niet goed.',
+        aEn: 'The door does not close properly.'
+      },
+      {
+        q: 'Wat vraagt de klantenservice aan Kevin te doen?',
+        qEn: 'What does customer service ask Kevin to do?',
+        a: 'Foto\'s maken van het defect en die mailen.',
+        aEn: 'Take photos of the defect and email them.'
+      },
+      {
+        q: 'Wat leert Kevin van deze ervaring?',
+        qEn: 'What does Kevin learn from this experience?',
+        a: 'Dat een beleefd maar duidelijk gesprek veel oplost.',
+        aEn: 'That a polite but clear conversation resolves a lot.'
+      }
+    ]
   }
 ];
