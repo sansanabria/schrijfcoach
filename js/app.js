@@ -256,17 +256,8 @@ function _getVocabList() {
   });
 }
 
-function renderVocab() {
-  const hidden = document.getElementById('vocab-hide-cb')?.checked;
-  const list = _getVocabList();
-
-  document.getElementById('vocab-count-badge').textContent = list.length + ' woorden';
-
-  // Show practice button only when a unit is active
-  const practiceBtn = document.getElementById('vocab-practice-btn');
-  if (practiceBtn) practiceBtn.style.display = (vocabUnitTopics && list.length > 0) ? '' : 'none';
-
-  document.getElementById('vocab-grid').innerHTML = list.map(w => `
+function _vocabCardHtml(w, hidden) {
+  return `
     <div class="vocab-card" onclick="this.classList.toggle('revealed')">
       <div class="vocab-top">
         <span class="vocab-word">${w.nl}</span>
@@ -277,26 +268,59 @@ function renderVocab() {
         <span class="vocab-topic-tag">${topicLabels[w.topic] || w.topic}</span>
       </div>
       <div class="vocab-translation ${hidden ? 'hidden-translation' : ''}">${w.en}</div>
-    </div>`).join('');
+    </div>`;
+}
+
+function renderVocab() {
+  const hidden = document.getElementById('vocab-hide-cb')?.checked;
+  const list = _getVocabList();
+
+  document.getElementById('vocab-count-badge').textContent = list.length + ' woorden';
+
+  const practiceBtn = document.getElementById('vocab-practice-btn');
+  if (practiceBtn) practiceBtn.style.display = (vocabUnitTopics && list.length > 0) ? '' : 'none';
+
+  const grid = document.getElementById('vocab-grid');
+
+  if (!vocabUnitTopics && vocabTopic === 'all') {
+    const groups = {};
+    list.forEach(w => { if (!groups[w.topic]) groups[w.topic] = []; groups[w.topic].push(w); });
+    const sortedTopics = Object.keys(groups).sort((a, b) =>
+      (topicLabels[a] || a).localeCompare(topicLabels[b] || b, 'nl'));
+    grid.className = 'vocab-grouped';
+    grid.innerHTML = sortedTopics.map(topic => {
+      const words = groups[topic].slice().sort((a, b) => a.nl.localeCompare(b.nl, 'nl'));
+      return `
+        <div class="vocab-section">
+          <div class="vocab-section-header">
+            ${topicLabels[topic] || topic}
+            <span class="vocab-section-count">${words.length}</span>
+          </div>
+          <div class="vocab-grid-inner">${words.map(w => _vocabCardHtml(w, hidden)).join('')}</div>
+        </div>`;
+    }).join('');
+  } else {
+    grid.className = 'vocab-grid';
+    grid.innerHTML = list.map(w => _vocabCardHtml(w, hidden)).join('');
+  }
 
   renderTopicFilters();
-  // Keep unit bar word count in sync
   if (vocabUnitTopics) renderUnitBar('woordenschat');
 }
 
 function renderTopicFilters() {
-  // When a unit is active, hide the topic filter bar (unit controls the topics)
   const wrap = document.getElementById('vocab-topic-filters');
   if (vocabUnitTopics) { wrap.innerHTML = ''; return; }
-  const topics = [...new Set(
-    vocabulary
-      .filter(w => vocabLevel === 'all' || w.level === vocabLevel)
-      .map(w => w.topic)
-  )];
+  const filtered = vocabulary.filter(w => vocabLevel === 'all' || w.level === vocabLevel);
+  const countByTopic = {};
+  filtered.forEach(w => { countByTopic[w.topic] = (countByTopic[w.topic] || 0) + 1; });
+  const topics = Object.keys(countByTopic).sort((a, b) =>
+    (topicLabels[a] || a).localeCompare(topicLabels[b] || b, 'nl'));
+  const totalCount = filtered.length;
   wrap.innerHTML =
-    `<button class="filter-btn ${vocabTopic==='all'?'active':''}" onclick="setVocabTopic('all',this)">Alle thema's</button>` +
+    `<button class="filter-btn ${vocabTopic==='all'?'active':''}" onclick="setVocabTopic('all',this)">Alle thema's <span class="vf-count">${totalCount}</span></button>` +
     topics.map(t =>
-      `<button class="filter-btn ${vocabTopic===t?'active':''}" data-vtopic="${t}" onclick="setVocabTopic('${t}',this)">${topicLabels[t]||t}</button>`
+      `<button class="filter-btn ${vocabTopic===t?'active':''}" data-vtopic="${t}" onclick="setVocabTopic('${t}',this)">${topicLabels[t]||t} <span class="vf-count">${countByTopic[t]}</span></button>`
     ).join('');
 }
 

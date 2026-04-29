@@ -198,6 +198,9 @@ main {
 .badge-a1 { background: #E6F4ED; color: var(--a1-color); border: 1px solid #C3E4D2; }
 .badge-a2 { background: #EBF0FA; color: var(--a2-color); border: 1px solid #C5D3F0; }
 .badge-b1 { background: #FEF3E2; color: var(--b1-color); border: 1px solid #F5D9AD; }
+.badge-b2 { background: #F3E8FF; color: #6b21a8; border: 1px solid #d8b4fe; }
+.badge-c1 { background: #FEE2E2; color: #991b1b; border: 1px solid #fca5a5; }
+.badge-c2 { background: #1e293b; color: #e2e8f0; border: 1px solid #475569; }
 
 /* ── TAB PANELS ──────────────────────────────────────────────────────── */
 .panel { display: none; }
@@ -876,6 +879,38 @@ footer {
   opacity: 1;
   color: var(--text-muted);
   background: transparent;
+}
+
+.vocab-grouped {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.vocab-section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding-bottom: 8px;
+  border-bottom: 1.5px solid var(--border-light);
+  margin-bottom: 10px;
+}
+.vocab-section-count {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--border-light);
+  padding: 1px 7px;
+  border-radius: 99px;
+}
+.vocab-grid-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
 }
 
 /* ── EDIT TABLE ──────────────────────────────────────────────────────── */
@@ -1859,6 +1894,7 @@ details[open] .tense-ref-summary::before { transform:rotate(90deg); }
 
   /* Vocabulary grid */
   .vocab-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+  .vocab-grid-inner { grid-template-columns: 1fr 1fr; gap: 6px; }
   .vocab-card { padding: 8px; }
 
   /* Grammar */
