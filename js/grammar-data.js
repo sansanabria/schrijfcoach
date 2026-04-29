@@ -1162,7 +1162,7 @@ const lessonPlanData = {
           verbFocus: ["oplossen", "opbellen", "aankomen", "uitgaan", "vertrekken", "meenemen", "terugkomen", "afspreken", "opstaan", "instappen", "uitleggen", "opruimen"],
           vocabTopics: [{level:"A2",topic:"reizen"},{level:"A2",topic:"voorzetsels"},{level:"A2",topic:"communicatie"},{level:"A2",topic:"dagelijks"},{level:"A2",topic:"werkwoorden"}],
           sentenceFilter: "bijzin",
-          readingTexts: ['r-001', 'r-002', 'r-003', 'r-004'],
+          readingTexts: ['r-a2-001', 'r-a2-002', 'r-a2-003', 'r-a2-004'],
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Bestudeer onderschikkende voegwoorden (omdat, als, dat, terwijl, toen) — werkwoord naar het einde!", descEn: "Day 1–2: Study subordinating conjunctions (omdat, als, dat, terwijl, toen) — verb to the end!" },
             { type: "grammatica", desc: "Dag 3–4: Leer het er-systeem: er als onderwerp, er + voorzetsel, er van plaats, er van hoeveelheid.", descEn: "Day 3–4: Learn the er system: er as subject, er + preposition, er of place, er of quantity." },
@@ -1181,7 +1181,7 @@ const lessonPlanData = {
           verbFocus: ["werken", "studeren", "solliciteren", "presenteren", "overleggen", "samenwerken", "verdienen", "zich voorstellen", "zich aanmelden", "vergaderen", "beoordelen", "organiseren"],
           vocabTopics: [{level:"A2",topic:"werk"},{level:"A2",topic:"onderwijs"},{level:"A2",topic:"geld"},{level:"A2",topic:"hobby"},{level:"A2",topic:"gezondheid"}],
           sentenceFilter: "all",
-          readingTexts: ['r-001', 'r-002', 'r-003', 'r-004'],
+          readingTexts: ['r-a2-001', 'r-a2-002', 'r-a2-003', 'r-a2-004'],
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Leer voorwerpvoornaamwoorden (mij/me, jou/je, hem, haar, ons, hen/hun) en formeel 'u' (u, uw).", descEn: "Day 1–2: Learn object pronouns (mij/me, jou/je, hem, haar, ons, hen/hun) and formal 'u' (u, uw)." },
             { type: "grammatica", desc: "Dag 2–3: Herhaal telwoorden: rangtelwoorden (eerste, tweede), breuken, percentages, data.", descEn: "Day 2–3: Revise numbers: ordinal numbers (eerste, tweede), fractions, percentages, dates." },

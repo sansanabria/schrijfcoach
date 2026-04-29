@@ -876,5 +876,329 @@ The European Union has attempted to answer these questions with the AI Act, but 
         aEn: 'Responsibility when harm occurs, biases in training data, and protecting democracy against disinformation.'
       }
     ]
+  },
+
+  // ── DAILY CONVERSATIONS ────────────────────────────────────────────────────
+
+  {
+    id: 'r-a2-001',
+    title: 'Op de markt',
+    titleEn: 'At the market',
+    level: 'A2',
+    topic: 'dagelijks',
+    topicEn: 'daily life',
+    topicEmoji: '🛒',
+    wordCount: 221,
+    readMinutes: 3,
+    text:
+`Op zaterdagochtend gaat Emma naar de markt in het centrum. Er zijn veel kramen met groenten, fruit, kaas, vis en bloemen. De markt begint vroeg: om acht uur 's ochtends zijn de eerste verkopers er al. Emma gaat elke week, want de producten zijn vaak verser en goedkoper dan in de supermarkt.
+
+Bij een groentekraam ziet ze mooie tomaten. "Hoeveel kosten die tomaten?" vraagt ze. "Twee euro per kilo," zegt de verkoper. "Dan neem ik een kilo, alstublieft," antwoordt Emma. De verkoper legt de tomaten in een zak en geeft ze aan haar. Emma betaalt met muntgeld.
+
+Daarna gaat ze naar een kaaskraam. Daar mag je altijd proeven voor je koopt. Emma proeft drie soorten kaas. Ze kiest uiteindelijk voor de belegen Goudse kaas, want die is niet te sterk en niet te zacht. Kaas op de markt is duurder dan in de supermarkt, maar de smaak is veel beter.
+
+Aan het einde van de ochtend heeft Emma een volle tas. Ze heeft groenten, fruit, kaas en een boeket tulpen gekocht. Op de markt voel je de gezelligheid van de stad. Je praat even met de verkopers en soms zie je buren of vrienden. Emma betaalt altijd contant, want niet alle kramen accepteren pinpassen.`,
+    textEn:
+`On Saturday morning, Emma goes to the market in the city centre. There are many stalls with vegetables, fruit, cheese, fish, and flowers. The market starts early: at eight o'clock in the morning, the first vendors are already there. Emma goes every week, because the products are often fresher and cheaper than in the supermarket.
+
+At a vegetable stall, she sees beautiful tomatoes. "How much do those tomatoes cost?" she asks. "Two euros per kilo," says the vendor. "Then I'll take a kilo, please," Emma replies. The vendor puts the tomatoes in a bag and hands them to her. Emma pays with coins.
+
+Then she goes to a cheese stall. There you can always taste before you buy. Emma tastes three kinds of cheese. She ultimately chooses the medium-aged Gouda cheese, because it is not too strong and not too mild. Cheese at the market is more expensive than at the supermarket, but the taste is much better.
+
+By the end of the morning, Emma has a full bag. She has bought vegetables, fruit, cheese, and a bunch of tulips. At the market you feel the cosiness of the city. You chat briefly with the vendors and sometimes see neighbours or friends. Emma always pays cash, because not all stalls accept card payments.`,
+    vocabulary: [
+      { nl: 'de kraam', en: 'market stall', matches: ['kraam', 'kramen'] },
+      { nl: 'de verkoper', en: 'vendor / seller', matches: ['verkoper', 'verkopers'] },
+      { nl: 'proeven', en: 'to taste / to try' },
+      { nl: 'belegen', en: 'medium-aged (cheese)' },
+      { nl: 'muntgeld', en: 'coins / loose change' },
+      { nl: 'het boeket', en: 'bouquet', matches: ['boeket'] },
+      { nl: 'contant betalen', en: 'to pay cash' },
+      { nl: 'de pinpas', en: 'debit card', matches: ['pinpassen'] },
+      { nl: 'de gezelligheid', en: 'cosiness / conviviality' },
+      { nl: 'uiteindelijk', en: 'ultimately / in the end' }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Dan + inversion',
+        example: 'Dan neem ik een kilo.',
+        explanation: 'When a sentence starts with "dan" (then), the verb comes before the subject. This is standard Dutch inversion: any non-subject element in first position triggers verb-subject flip.'
+      },
+      {
+        pattern: 'Voltooid tegenwoordige tijd (VTT) met hebben',
+        example: 'Ze heeft groenten, fruit en kaas gekocht.',
+        explanation: 'Completed actions use hebben/zijn + past participle. Regular verbs: ge- + stem + -d or -t. "Gekocht" (bought) is the irregular past participle of "kopen".'
+      },
+      {
+        pattern: 'Want vs. omdat (because)',
+        example: 'want de producten zijn verser · omdat de producten verser zijn',
+        explanation: '"Want" keeps normal word order. "Omdat" sends the verb to the end of its clause. Both mean "because" — choose "want" for direct, informal explanation; "omdat" to emphasise the reason.'
+      }
+    ],
+    questions: [
+      {
+        q: 'Waarom gaat Emma elke week naar de markt?',
+        qEn: 'Why does Emma go to the market every week?',
+        a: 'Omdat de producten vaak verser en goedkoper zijn dan in de supermarkt.',
+        aEn: 'Because the products are often fresher and cheaper than in the supermarket.'
+      },
+      {
+        q: 'Wat doet Emma bij de kaaskraam voor ze iets koopt?',
+        qEn: 'What does Emma do at the cheese stall before buying anything?',
+        a: 'Ze proeft drie soorten kaas.',
+        aEn: 'She tastes three kinds of cheese.'
+      },
+      {
+        q: 'Waarom betaalt Emma altijd contant op de markt?',
+        qEn: 'Why does Emma always pay cash at the market?',
+        a: 'Niet alle kramen accepteren pinpassen.',
+        aEn: 'Not all stalls accept card payments.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-a2-002',
+    title: 'Bij de huisarts',
+    titleEn: 'At the doctor\'s',
+    level: 'A2',
+    topic: 'gezondheid',
+    topicEn: 'health',
+    topicEmoji: '🩺',
+    wordCount: 224,
+    readMinutes: 3,
+    text:
+`In Nederland heeft bijna iedereen een vaste huisarts. De huisarts is de eerste dokter die je bezoekt als je ziek bent. Voor specialistische zorg heb je altijd een doorverwijzing nodig.
+
+Thomas voelt zich al drie dagen niet goed. Hij heeft hoofdpijn, keelpijn en koorts. Hij belt de praktijk. Een assistente neemt op: "Met de praktijk van dokter Van der Berg, waarmee kan ik u helpen?" Thomas legt zijn klachten uit. "Kunt u morgenochtend om tien uur komen?" vraagt de assistente. "Ja, dat lukt," zegt Thomas.
+
+De volgende ochtend fietst Thomas naar de huisarts. In de wachtkamer zitten twee andere mensen. Na vijf minuten mag hij naar binnen. Dokter Van der Berg stelt een paar vragen: "Hoe lang heeft u deze klachten al? Heeft u ook hoest? Kunt u uw mond opendoen?"
+
+Ze bekijkt zijn keel en meet zijn temperatuur: 38,5 graden. "U heeft een virusinfectie," zegt ze. "Rust veel uit, drink genoeg water en neem paracetamol als de pijn te erg wordt. Als u na vijf dagen niet beter bent, moet u terugkomen."
+
+Thomas is blij dat hij geen antibiotica nodig heeft. Hij gaat naar huis, trekt zijn pyjama aan en slaapt de rest van de dag. De volgende dag voelt hij zich al iets beter.`,
+    textEn:
+`In the Netherlands, almost everyone has a regular GP (general practitioner). The GP is the first doctor you visit when you are ill. For specialist care you always need a referral.
+
+Thomas has been feeling unwell for three days. He has a headache, sore throat, and fever. He calls the practice. A receptionist picks up: "This is the practice of Doctor Van der Berg, how can I help you?" Thomas explains his symptoms. "Can you come tomorrow morning at ten o'clock?" the receptionist asks. "Yes, that works," says Thomas.
+
+The following morning, Thomas cycles to the GP. Two other people are sitting in the waiting room. After five minutes he is called in. Doctor Van der Berg asks a few questions: "How long have you had these symptoms? Do you also have a cough? Can you open your mouth?"
+
+She examines his throat and takes his temperature: 38.5 degrees. "You have a viral infection," she says. "Rest a lot, drink enough water, and take paracetamol if the pain becomes too severe. If you're not better in five days, you must come back."
+
+Thomas is glad he does not need antibiotics. He goes home, puts on his pyjamas, and sleeps for the rest of the day. The next day he already feels a little better.`,
+    vocabulary: [
+      { nl: 'de huisarts', en: 'GP / family doctor', matches: ['huisarts'] },
+      { nl: 'de doorverwijzing', en: 'referral', matches: ['doorverwijzing'] },
+      { nl: 'de klacht', en: 'complaint / symptom', matches: ['klachten'] },
+      { nl: 'de assistente', en: 'receptionist / assistant' },
+      { nl: 'de wachtkamer', en: 'waiting room' },
+      { nl: 'de koorts', en: 'fever' },
+      { nl: 'de hoest', en: 'cough' },
+      { nl: 'de virusinfectie', en: 'viral infection' },
+      { nl: 'paracetamol', en: 'paracetamol (pain reliever)' },
+      { nl: 'antibiotica', en: 'antibiotics' },
+      { nl: 'uitrusten', en: 'to rest', matches: ['rust uit'] }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Modaal werkwoord + infinitief achteraan',
+        example: 'Kunt u morgenochtend om tien uur komen?',
+        explanation: 'Modal verbs (kunnen, moeten, mogen, willen) push the main infinitive to the end of the clause. In a question, the modal inverts with the subject: "Kunt u...komen?"'
+      },
+      {
+        pattern: 'Gebiedende wijs (imperative)',
+        example: 'Rust veel uit · Drink genoeg water · Neem paracetamol.',
+        explanation: 'The imperative for giving instructions or advice uses the verb stem alone. For separable verbs like "uitrusten", the prefix moves to the end: "Rust uit."'
+      },
+      {
+        pattern: 'Als-zin (conditional clause)',
+        example: 'Als de pijn te erg wordt, neem dan paracetamol.',
+        explanation: '"Als" (if/when) starts a subordinate clause where the verb goes to the end. The main clause that follows often starts with "dan" and uses inversion.'
+      }
+    ],
+    questions: [
+      {
+        q: 'Wanneer heb je in Nederland een doorverwijzing nodig?',
+        qEn: 'When do you need a referral in the Netherlands?',
+        a: 'Voor specialistische zorg.',
+        aEn: 'For specialist care.'
+      },
+      {
+        q: 'Wat zijn de klachten van Thomas?',
+        qEn: 'What are Thomas\'s symptoms?',
+        a: 'Hoofdpijn, keelpijn en koorts.',
+        aEn: 'Headache, sore throat, and fever.'
+      },
+      {
+        q: 'Wat adviseert de dokter aan Thomas?',
+        qEn: 'What does the doctor advise Thomas?',
+        a: 'Veel rusten, genoeg water drinken en paracetamol nemen als de pijn te erg wordt.',
+        aEn: 'Rest a lot, drink enough water, and take paracetamol if the pain becomes too severe.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-a2-003',
+    title: 'Een verjaardag vieren',
+    titleEn: 'Celebrating a birthday',
+    level: 'A2',
+    topic: 'dagelijks',
+    topicEn: 'daily life',
+    topicEmoji: '🎂',
+    wordCount: 219,
+    readMinutes: 3,
+    text:
+`Een verjaardag vieren in Nederland gaat vaak anders dan in andere landen. Nederlanders feliciteren niet alleen de jarige, maar ook de familie. Als iemand jarig is, zegt men: "Gefeliciteerd met je verjaardag!" Maar ook tegen de moeder of broer van de jarige: "Gefeliciteerd met je dochter!" of "Gefeliciteerd met je broer!" Dit is een typisch Nederlandse gewoonte.
+
+Bij een verjaardag hoort altijd taart of gebak. De jarige trakteert: hij of zij brengt iets lekkers mee naar het werk of school. Thuis krijg je als jarige bezoek van familie en vrienden. Ze zitten samen in een kring in de woonkamer en drinken koffie of thee met cake.
+
+Sofia viert vandaag haar dertigste verjaardag. Haar familie en vrienden komen 's avonds langs. Ze heeft een slagroomtaart gekocht bij de bakker en de woonkamer versierd met slingers en ballonnen. Haar moeder brengt zelfgemaakte appelgebak mee.
+
+Als de gasten binnenkomen, zegt iedereen "Gefeliciteerd!" en geeft Sofia een kus op drie wangen. Ze zitten de hele avond gezellig bij elkaar, praten en lachen. Om tien uur gaan de eerste gasten naar huis.
+
+"Een verjaardag in Nederland is altijd gezellig," zegt Sofia. "Je bent de hele dag omringd door mensen die van je houden."`,
+    textEn:
+`Celebrating a birthday in the Netherlands is often different from other countries. Dutch people congratulate not only the birthday person, but also the family. When someone has a birthday, people say: "Congratulations on your birthday!" But also to the mother or brother of the birthday person: "Congratulations on your daughter!" or "Congratulations on your brother!" This is a typically Dutch custom.
+
+A birthday always involves cake or pastry. The birthday person treats: he or she brings something tasty to work or school. At home, the birthday person receives visits from family and friends. They sit together in a circle in the living room and drink coffee or tea with cake.
+
+Sofia is celebrating her thirtieth birthday today. Her family and friends come by in the evening. She has bought a cream cake from the bakery and decorated the living room with garlands and balloons. Her mother brings homemade apple cake.
+
+When the guests arrive, everyone says "Congratulations!" and gives Sofia a kiss on three cheeks. They sit cosily together the whole evening, talking and laughing. At ten o'clock, the first guests go home.
+
+"A birthday in the Netherlands is always fun," says Sofia. "You are surrounded by people who love you all day long."`,
+    vocabulary: [
+      { nl: 'feliciteren', en: 'to congratulate', matches: ['feliciteren', 'gefeliciteerd'] },
+      { nl: 'de jarige', en: 'the birthday person' },
+      { nl: 'trakteren', en: 'to treat (bring food for others)', matches: ['trakteert'] },
+      { nl: 'de slagroomtaart', en: 'cream cake' },
+      { nl: 'de slinger', en: 'garland / bunting', matches: ['slingers'] },
+      { nl: 'de ballon', en: 'balloon', matches: ['ballonnen'] },
+      { nl: 'de woonkamer', en: 'living room' },
+      { nl: 'de wang', en: 'cheek', matches: ['wangen'] },
+      { nl: 'omringd door', en: 'surrounded by' },
+      { nl: 'de gewoonte', en: 'custom / habit' }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Men + werkwoord (impersonal "one")',
+        example: 'Als iemand jarig is, zegt men: "Gefeliciteerd!"',
+        explanation: '"Men" is the impersonal subject meaning "one" or "people in general". It always takes a third-person singular verb. Formal but common in Dutch descriptions of customs and habits.'
+      },
+      {
+        pattern: 'Als-zin met inversion in de hoofdzin',
+        example: 'Als de gasten binnenkomen, zegt iedereen "Gefeliciteerd!"',
+        explanation: 'When "als" starts the sentence, the verb comes right after the comma in the main clause (inversion). The subject "iedereen" follows the verb "zegt".'
+      },
+      {
+        pattern: 'Possessief + relatief (wiens/haar/zijn)',
+        example: 'hij of zij brengt iets lekkers mee naar het werk',
+        explanation: '"Iets lekkers" = something tasty. After "iets", "niets", "wat", Dutch uses an adjective + -s (genitive form): "iets lekkers", "niets nieuws", "wat anders".'
+      }
+    ],
+    questions: [
+      {
+        q: 'Wat is een typisch Nederlandse verjaardag gewoonte?',
+        qEn: 'What is a typically Dutch birthday custom?',
+        a: 'Je feliciteert niet alleen de jarige, maar ook zijn of haar familie.',
+        aEn: 'You congratulate not only the birthday person, but also their family.'
+      },
+      {
+        q: 'Wat betekent "trakteren" in de context van een verjaardag?',
+        qEn: 'What does "trakteren" mean in the context of a birthday?',
+        a: 'De jarige brengt iets lekkers mee naar het werk of school voor anderen.',
+        aEn: 'The birthday person brings something tasty to work or school for others.'
+      },
+      {
+        q: 'Hoe begroet Sofia haar gasten?',
+        qEn: 'How does Sofia greet her guests?',
+        a: 'Ze zegt "Gefeliciteerd!" en geeft een kus op drie wangen.',
+        aEn: 'She says "Congratulations!" and gives a kiss on three cheeks.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-a2-004',
+    title: 'In het café',
+    titleEn: 'At the café',
+    level: 'A2',
+    topic: 'eten',
+    topicEn: 'food & drink',
+    topicEmoji: '☕',
+    wordCount: 217,
+    readMinutes: 3,
+    text:
+`Nederland heeft veel bruine kroegen en moderne koffiebars. Een "bruin café" is een traditioneel café met houten meubels, donkere muren en een gezellige sfeer. De naam komt van het bruine interieur. In een bruin café bestel je meestal bier, wijn of koffie met een bitterbal.
+
+Lena en haar collega Mark gaan na het werk naar een café in de buurt van kantoor. Ze gaan aan een tafeltje bij het raam zitten. Even later komt de ober naar hen toe.
+
+"Wat mag het zijn?" vraagt de ober. "Ik neem een cappuccino, alstublieft," zegt Lena. "En voor mij een biertje," zegt Mark. "Wilt u ook iets eten?" vraagt de ober. "Ja, graag. Heeft u toevallig bitterballen?" vraagt Mark. "Jazeker," zegt de ober. "Dan nemen we er een portie van."
+
+Even later brengt de ober de drankjes en een schaaltje bitterballen. Mark pakt er een en waait er een beetje op, want ze zijn heet van binnen. Lena lacht. "Altijd ongeduldig," zegt ze.
+
+Ze praten over de werkdag, plannen voor het weekend en een collega die binnenkort trouwt. Na een uur vraagt Lena om de rekening. "Betalen we apart?" vraagt ze. "Nee, ik trakteer," zegt Mark. "Dat is dan vijftien euro tachtig," zegt de ober. Mark tikt zijn telefoon op de betaalautomaat. "Dank u wel!" zegt de ober.`,
+    textEn:
+`The Netherlands has many "brown pubs" and modern coffee bars. A "brown café" is a traditional pub with wooden furniture, dark walls, and a cosy atmosphere. The name comes from the brown interior. In a brown café you usually order beer, wine, or coffee with a bitterbal (deep-fried snack).
+
+Lena and her colleague Mark go to a café near the office after work. They sit down at a table by the window. Shortly after, the waiter comes over to them.
+
+"What can I get you?" asks the waiter. "I'll have a cappuccino, please," says Lena. "And a beer for me," says Mark. "Would you also like something to eat?" asks the waiter. "Yes, please. Do you happen to have bitterballen?" asks Mark. "Certainly," says the waiter. "Then we'll have a portion."
+
+Shortly after, the waiter brings the drinks and a small dish of bitterballen. Mark picks one up and blows on it a little, because they are hot inside. Lena laughs. "Always impatient," she says.
+
+They talk about the working day, plans for the weekend, and a colleague who is getting married soon. After an hour, Lena asks for the bill. "Are we paying separately?" she asks. "No, it's on me," says Mark. "That's fifteen euros eighty," says the waiter. Mark taps his phone on the payment terminal. "Thank you!" says the waiter.`,
+    vocabulary: [
+      { nl: 'het bruine café', en: 'traditional Dutch pub', matches: ['bruin café', 'bruine kroegen'] },
+      { nl: 'de ober', en: 'waiter', matches: ['ober'] },
+      { nl: 'de bitterbal', en: 'bitterbal (deep-fried snack)', matches: ['bitterbal', 'bitterballen'] },
+      { nl: 'de portie', en: 'portion / serving' },
+      { nl: 'het schaaltje', en: 'small dish / bowl' },
+      { nl: 'waait op', en: 'blows on (to cool down)', matches: ['waait'] },
+      { nl: 'ongeduldig', en: 'impatient' },
+      { nl: 'de rekening', en: 'the bill' },
+      { nl: 'apart betalen', en: 'to pay separately', matches: ['apart'] },
+      { nl: 'trakteren', en: 'to treat / pay for someone else', matches: ['trakteer'] },
+      { nl: 'de betaalautomaat', en: 'payment terminal', matches: ['betaalautomaat'] }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Toevallig in vragen (softener)',
+        example: 'Heeft u toevallig bitterballen?',
+        explanation: '"Toevallig" (by any chance) makes requests more polite and tentative. It signals you do not expect the answer to be yes. Very common in Dutch conversational questions.'
+      },
+      {
+        pattern: 'Dan-inversion in bestelling',
+        example: 'Dan nemen we er een portie van.',
+        explanation: '"Dan" at the start triggers inversion: verb before subject. "Er...van" is a pronoun referring back to "bitterballen". This construction "er + number/quantity + van" is typical for ordering.'
+      },
+      {
+        pattern: 'Want-clause (explanation)',
+        example: 'hij waait erop, want ze zijn heet van binnen.',
+        explanation: '"Want" introduces an explanation and keeps normal word order (subject-verb). Compare "omdat ze heet zijn van binnen" — with "omdat" the verb goes to the end.'
+      }
+    ],
+    questions: [
+      {
+        q: 'Wat is een "bruin café"?',
+        qEn: 'What is a "brown café"?',
+        a: 'Een traditioneel café met houten meubels, donkere muren en een gezellige sfeer.',
+        aEn: 'A traditional café with wooden furniture, dark walls, and a cosy atmosphere.'
+      },
+      {
+        q: 'Waarom waait Mark op zijn bitterbal?',
+        qEn: 'Why does Mark blow on his bitterbal?',
+        a: 'Omdat ze heet van binnen zijn.',
+        aEn: 'Because they are hot inside.'
+      },
+      {
+        q: 'Hoe betaalt Mark de rekening?',
+        qEn: 'How does Mark pay the bill?',
+        a: 'Hij tikt zijn telefoon op de betaalautomaat.',
+        aEn: 'He taps his phone on the payment terminal.'
+      }
+    ]
   }
 ];
