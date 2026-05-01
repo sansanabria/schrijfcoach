@@ -467,7 +467,7 @@ main {
 .ex-acc-restart:hover { background: var(--surface2); color: var(--text); }
 
 /* ── INPUT MODE ROW ──────────────────────────────────────────────────── */
-.input-mode-row { display: flex; gap: 8px; margin: 10px 0 6px; }
+.input-mode-row { display: flex; gap: 8px; margin: 10px 0 6px; flex-wrap: wrap; }
 
 /* ── WORD TILES ──────────────────────────────────────────────────────── */
 .tile-built {
@@ -2617,4 +2617,81 @@ details[open] .tense-ref-summary::before { transform:rotate(90deg); }
   .reading-nav-info {
     text-align: center;
   }
+}
+
+/* ── Mobile text & layout fixes ──────────────────────────────────────────── */
+
+/* Prevent any element from causing page-wide horizontal scroll */
+body { overflow-x: hidden; }
+
+@media (max-width: 768px) {
+  /* Exercise card: give text more horizontal room */
+  .exercise-card { padding: 16px; }
+
+  /* Sentence table: scroll horizontally inside its container */
+  #panel-zinnen .card-body { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .sentence-table { min-width: 480px; }
+
+  /* Edit table: same treatment */
+  #panel-bewerken .card-body { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* Reading toolbar: tighter buttons so they fit on one or two lines */
+  .reading-toolbar .btn { padding: 5px 10px; font-size: 0.76rem; }
+
+  /* Unit bar select: don't exceed screen width */
+  .unit-bar-select { max-width: 100%; }
+
+  /* Input mode buttons: allow wrapping */
+  .input-mode-row { gap: 6px; }
+  .input-mode-row .ex-mode-btn { font-size: 0.74rem; padding: 5px 10px; }
+}
+
+@media (max-width: 480px) {
+  /* Exercise card: compact padding on small phones */
+  .exercise-card { padding: 14px 12px; }
+
+  /* Exercise prompt: slightly smaller so long sentences don't overflow */
+  .exercise-prompt { font-size: 1.08rem; }
+
+  /* Input row: stack input + button vertically */
+  .input-row { flex-direction: column; }
+  .input-row .btn { width: 100%; justify-content: center; }
+
+  /* Exercise mode buttons: tighter */
+  .ex-mode-row { padding: 8px 12px; gap: 6px; }
+  .ex-mode-btn { font-size: 0.72rem; padding: 4px 10px; }
+
+  /* Input mode row: smaller buttons that wrap */
+  .input-mode-row .ex-mode-btn { font-size: 0.7rem; padding: 4px 9px; }
+
+  /* Sentence table: horizontal scroll */
+  #panel-zinnen .card-body { padding: 0; }
+  #panel-zinnen .filter-row { padding: 12px 12px 0; }
+  .sentence-table { min-width: 420px; }
+  .sentence-table th,
+  .sentence-table td { padding: 8px 10px; font-size: 0.8rem; }
+
+  /* Reading text: comfortable reading size */
+  .reading-text { margin: 0 0 20px; }
+  .reading-para-nl { font-size: 0.97rem; line-height: 1.75; }
+  .reading-para-en { font-size: 0.85rem; }
+  .reading-toolbar { gap: 6px; }
+  .reading-toolbar .btn { padding: 5px 8px; font-size: 0.73rem; }
+
+  /* Grammar hint body: wrap long lines */
+  .ex-hint-body { word-break: break-word; }
+
+  /* Feedback box: slightly smaller on tiny screens */
+  .feedback-box { font-size: 0.82rem; padding: 10px 12px; }
+
+  /* Unit bar: allow select to take full width */
+  .unit-bar { gap: 6px; }
+  .unit-bar-select { max-width: 100%; width: 100%; }
+
+  /* De/Het buttons: full width on tiny screens */
+  .dehet-buttons { gap: 10px; }
+  .dehet-btn { flex: 1; min-width: 0; }
+
+  /* Verb exercise input rows */
+  .vex-input-row { flex-wrap: wrap; }
 }
