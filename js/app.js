@@ -59,7 +59,15 @@ function switchTab(id) {
   if (id === 'grammatica')   { renderGrammarContent(); renderUnitBar('grammatica'); }
   if (id === 'leerplan')     renderLessonPlan();
   if (id === 'ontkenning')   _initNegExercises();
-  if (id === 'lezen')        renderReading();
+  if (id === 'lezen')        { renderReading(); setTimeout(function() {
+    var vw = document.documentElement.clientWidth;
+    document.querySelectorAll('#panel-lezen .card-body, #panel-lezen .reading-text, #panel-lezen .reading-toolbar, #panel-lezen .reading-section').forEach(function(el) {
+      el.style.setProperty('overflow-x', 'hidden', 'important');
+      el.style.setProperty('max-width', '100%', 'important');
+      el.style.setProperty('word-break', 'break-word', 'important');
+      el.style.setProperty('overflow-wrap', 'break-word', 'important');
+    });
+  }, 50); }
   if (id === 'mijnwoorden')  renderMijnWoorden();
 }
 
@@ -3914,6 +3922,41 @@ renderLessonPlan();
 
 renderFlagsSection();
 renderHome();
+
+// ─── MOBILE HORIZONTAL OVERFLOW FIX ──────────────────────────────────────────
+// Inline styles override all CSS, including cached stylesheets.
+// This is the most reliable way to prevent horizontal scroll on Chrome Android.
+(function _fixMobileOverflow() {
+  const html = document.documentElement;
+  const body = document.body;
+  html.style.setProperty('overflow-x', 'hidden', 'important');
+  html.style.setProperty('max-width', '100%', 'important');
+  body.style.setProperty('overflow-x', 'hidden', 'important');
+  body.style.setProperty('max-width', '100%', 'important');
+
+  // Also clamp any element that is already wider than the viewport
+  function _clampOverflowing() {
+    const vw = document.documentElement.clientWidth;
+    document.querySelectorAll(
+      '#panel-lezen .card-body, #panel-lezen .reading-toolbar, ' +
+      '#panel-lezen .reading-text, #panel-lezen .reading-section'
+    ).forEach(function(el) {
+      if (el.scrollWidth > vw) {
+        el.style.setProperty('overflow-x', 'hidden', 'important');
+        el.style.setProperty('max-width', '100%', 'important');
+        el.style.setProperty('box-sizing', 'border-box', 'important');
+      }
+    });
+  }
+
+  // Run once on load and again after lezen renders
+  _clampOverflowing();
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('[data-tab="lezen"], #panel-lezen')) {
+      setTimeout(_clampOverflowing, 100);
+    }
+  });
+})();
 
 // ─── WOORDENSCHAT OEFENMODUS ──────────────────────────────────────────────────
 
