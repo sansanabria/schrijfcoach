@@ -4544,53 +4544,60 @@ function renderReadingLibrary() {
 const _hoverCache = {};     // normalized word → fetched translation (session)
 const _hoverAttempted = {}; // normalized word → true (already tried this session)
 
+let _touchHideTimer = null;
+
+function _triggerWordTip(span, autoHideMs) {
+  const word = span.textContent.trim();
+  const k = _normalizeWord(word);
+  if (!k) return;
+  const tip = document.getElementById('reading-hover-tip');
+  if (!tip) return;
+  const currentText = (typeof readingTexts !== 'undefined' && readingTexts.length)
+    ? readingTexts[_currentReadingIndex()] : null;
+  const info = _buildWordInfo(word, span, currentText);
+  _showRichHoverTip(tip, span, info, k);
+  if (info.grammarNote !== null) _pulseGrammarNote(info.grammarNote);
+  if (!info.translation && !_hoverAttempted[k]) {
+    _hoverAttempted[k] = true;
+    const url = 'https://api.mymemory.translated.net/get?q=' +
+      encodeURIComponent(word) + '&langpair=nl|en';
+    fetch(url)
+      .then(function(r) { return r.ok ? r.json() : null; })
+      .then(function(data) {
+        if (!data || !data.responseData) return;
+        let en = (data.responseData.translatedText || '').trim();
+        if (!en || /^mymemory warning/i.test(en) || en.toLowerCase() === word.toLowerCase()) return;
+        _hoverCache[k] = en;
+        if (tip.dataset.word === k && tip.classList.contains('rht-visible')) {
+          const parts2 = en.split(/\s*[\/·]\s*/).map(function(s){return s.trim();}).filter(Boolean);
+          info.translation = parts2[0] || en;
+          info.alternatives = parts2.slice(1);
+          _showRichHoverTip(tip, span, info, k);
+        }
+      })
+      .catch(function() {});
+  }
+  if (autoHideMs) {
+    clearTimeout(_touchHideTimer);
+    _touchHideTimer = setTimeout(function() {
+      tip.classList.remove('rht-visible');
+    }, autoHideMs);
+  }
+}
+
 function _initReadingHoverTooltip() {
   const textEl = document.getElementById('reading-text');
   if (!textEl || textEl._hoverInited) return;
   textEl._hoverInited = true;
   let _lastTarget = null;
 
+  // Desktop: mouseover
   textEl.addEventListener('mouseover', function(e) {
     const span = e.target.closest && e.target.closest('.tts-word');
     if (!span || span === _lastTarget) return;
     _lastTarget = span;
-    const word = span.textContent.trim();
-    const k = _normalizeWord(word);
-    if (!k) return;
-
-    const tip = document.getElementById('reading-hover-tip');
-    if (!tip) return;
-
-    const currentText = (typeof readingTexts !== 'undefined' && readingTexts.length)
-      ? readingTexts[_currentReadingIndex()] : null;
-    const info = _buildWordInfo(word, span, currentText);
-
-    if (info.translation) {
-      _showRichHoverTip(tip, span, info, k);
-      if (info.grammarNote !== null) _pulseGrammarNote(info.grammarNote);
-    } else {
-      _showRichHoverTip(tip, span, info, k);
-      if (!_hoverAttempted[k]) {
-        _hoverAttempted[k] = true;
-        const url = 'https://api.mymemory.translated.net/get?q=' +
-          encodeURIComponent(word) + '&langpair=nl|en';
-        fetch(url)
-          .then(function(r) { return r.ok ? r.json() : null; })
-          .then(function(data) {
-            if (!data || !data.responseData) return;
-            let en = (data.responseData.translatedText || '').trim();
-            if (!en || /^mymemory warning/i.test(en) || en.toLowerCase() === word.toLowerCase()) return;
-            _hoverCache[k] = en;
-            if (tip.dataset.word === k && tip.classList.contains('rht-visible')) {
-              const parts2 = en.split(/\s*[\/·]\s*/).map(function(s){return s.trim();}).filter(Boolean);
-              info.translation = parts2[0] || en;
-              info.alternatives = parts2.slice(1);
-              _showRichHoverTip(tip, span, info, k);
-            }
-          })
-          .catch(function() {});
-      }
-    }
+    clearTimeout(_touchHideTimer);
+    _triggerWordTip(span, 0);
   });
 
   textEl.addEventListener('mouseleave', function() {
@@ -4598,6 +4605,19 @@ function _initReadingHoverTooltip() {
     const tip = document.getElementById('reading-hover-tip');
     if (tip) tip.classList.remove('rht-visible');
   });
+
+  // Mobile: touchstart — show tooltip, auto-hide after 3 s
+  textEl.addEventListener('touchstart', function(e) {
+    const span = e.target.closest && e.target.closest('.tts-word');
+    if (!span) {
+      // Tapped outside a word — hide immediately
+      const tip = document.getElementById('reading-hover-tip');
+      if (tip) tip.classList.remove('rht-visible');
+      clearTimeout(_touchHideTimer);
+      return;
+    }
+    _triggerWordTip(span, 3000);
+  }, { passive: true });
 }
 
 // Build a rich info object for a hovered word.
@@ -4671,8 +4691,19 @@ function _showRichHoverTip(tip, span, info, k) {
   tip.dataset.word = k;
   tip.classList.add('rht-visible');
   const rect = span.getBoundingClientRect();
-  tip.style.left = (rect.left + rect.width / 2 + window.scrollX) + 'px';
-  tip.style.top  = (rect.top  + window.scrollY) + 'px';
+  const cx = rect.left + rect.width / 2 + window.scrollX;
+  // Flip below the word if too close to top of viewport
+  if (rect.top < 60) {
+    tip.style.transform = 'translate(-50%, 8px)';
+    tip.style.top = (rect.bottom + window.scrollY) + 'px';
+  } else {
+    tip.style.transform = 'translate(-50%, calc(-100% - 10px))';
+    tip.style.top = (rect.top + window.scrollY) + 'px';
+  }
+  // Clamp left so tooltip never goes off screen edge
+  const tipHalfW = 115;
+  const safeLeft = Math.max(tipHalfW, Math.min(cx, window.innerWidth - tipHalfW));
+  tip.style.left = safeLeft + 'px';
 }
 
 // Briefly flash-highlight the n-th grammar note card so the user's eye is drawn to it.
