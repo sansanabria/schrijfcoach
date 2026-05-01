@@ -4606,17 +4606,31 @@ function _initReadingHoverTooltip() {
     if (tip) tip.classList.remove('rht-visible');
   });
 
-  // Mobile: touchstart — show tooltip, auto-hide after 3 s
+  // Mobile: show tooltip while finger is held on a word, hide on lift
   textEl.addEventListener('touchstart', function(e) {
     const span = e.target.closest && e.target.closest('.tts-word');
+    const tip = document.getElementById('reading-hover-tip');
     if (!span) {
-      // Tapped outside a word — hide immediately
-      const tip = document.getElementById('reading-hover-tip');
       if (tip) tip.classList.remove('rht-visible');
-      clearTimeout(_touchHideTimer);
       return;
     }
-    _triggerWordTip(span, 3000);
+    clearTimeout(_touchHideTimer);
+    _triggerWordTip(span, 0);
+  }, { passive: true });
+
+  textEl.addEventListener('touchend', function() {
+    // Small delay so the tooltip is still readable for a moment after lifting
+    clearTimeout(_touchHideTimer);
+    _touchHideTimer = setTimeout(function() {
+      const tip = document.getElementById('reading-hover-tip');
+      if (tip) tip.classList.remove('rht-visible');
+    }, 1200);
+  }, { passive: true });
+
+  textEl.addEventListener('touchcancel', function() {
+    clearTimeout(_touchHideTimer);
+    const tip = document.getElementById('reading-hover-tip');
+    if (tip) tip.classList.remove('rht-visible');
   }, { passive: true });
 }
 
