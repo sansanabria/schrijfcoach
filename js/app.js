@@ -59,7 +59,7 @@ function switchTab(id) {
   if (id === 'grammatica')   { renderGrammarContent(); renderUnitBar('grammatica'); }
   if (id === 'leerplan')     renderLessonPlan();
   if (id === 'ontkenning')   _initNegExercises();
-  if (id === 'lezen')        { renderReading(); setTimeout(function() {
+  if (id === 'lezen')        { openReadingLibrary(); setTimeout(function() {
     var vw = document.documentElement.clientWidth;
     document.querySelectorAll('#panel-lezen .card-body, #panel-lezen .reading-text, #panel-lezen .reading-toolbar, #panel-lezen .reading-section').forEach(function(el) {
       el.style.setProperty('overflow-x', 'hidden', 'important');
@@ -777,6 +777,8 @@ function loadSentence() {
   const fillCheckBtn = document.getElementById('ex-check-btn-fillblank');
   if (fillCheckBtn) fillCheckBtn.style.display = '';
   document.getElementById('ex-next-btn').style.display = 'none';
+  const retryBtnLoad = document.getElementById('ex-retry-btn');
+  if (retryBtnLoad) retryBtnLoad.style.display = 'none';
   document.getElementById('ex-btn-row').style.display  = '';
   document.getElementById('ex-congrats').classList.remove('show');
   hideFeedback();
@@ -826,6 +828,8 @@ function checkAnswer() {
     document.getElementById('ex-check-btn').style.display = 'none';
   }
   document.getElementById('ex-next-btn').style.display = '';
+  const retryBtn = document.getElementById('ex-retry-btn');
+  if (retryBtn) retryBtn.style.display = correct ? 'none' : '';
   showFeedback(correct, correctAnswer);
   if (correct) exScore++;
   document.getElementById('ex-score-label').textContent = exScore + ' goed';
@@ -859,6 +863,8 @@ function hideFeedback() {
 }
 
 function nextSentence() { exIdx++; _autoSaveIdx(); loadSentence(); }
+
+function retrySentence() { loadSentence(); }
 
 function skipSentence() {
   if (!exAnswered) {
@@ -4118,6 +4124,7 @@ function stopVocabPractice() {
 // ═══════════════════════════════════════════════════════════════════════════════
 
 let _lezenViewIndex = null;
+let _lezenView = 'library';  // 'library' | 'article'
 let _lezenShowEn = false;
 let _lezenShowVocabHighlights = true;
 let _lezenMarkMode = false;  // when true, clicking a word toggles its "unknown" status
@@ -4210,6 +4217,15 @@ function _wordStemCandidates(k) {
     const stem = k.slice(0, -2);
     if (stem[stem.length - 1] === stem[stem.length - 2]) {
       add(stem.slice(0, -1));
+    }
+  }
+  // Doubled-consonant adjectives: "dunne" -> "dunn" -> "dun", "dikke" -> "dikk" -> "dik"
+  // After stripping -e, if result ends with doubled consonant, try de-doubling
+  if (k.endsWith('e') && k.length >= 4) {
+    const base = k.slice(0, -1); // strip -e
+    const last = base[base.length - 1];
+    if (last && 'aeiou'.indexOf(last) === -1 && base[base.length - 2] === last) {
+      add(base.slice(0, -1)); // de-double: "dunn" -> "dun"
     }
   }
   // Single-vowel doubling for plurals: "boeken" -> "boek" already handled by -en strip
@@ -4454,6 +4470,227 @@ function _renderReadingPara(rawPara, vocab, paraStartOffset) {
   return html;
 }
 
+function openReadingLibrary() {
+  _stopAudio();
+  _lezenMarkMode = false;
+  _lezenView = 'library';
+  const libView = document.getElementById('reading-library-view');
+  const artView = document.getElementById('reading-article-view');
+  if (libView) libView.style.display = '';
+  if (artView) artView.style.display = 'none';
+  renderReadingLibrary();
+}
+
+function openReadingArticle() {
+  _lezenView = 'article';
+  const libView = document.getElementById('reading-library-view');
+  const artView = document.getElementById('reading-article-view');
+  if (libView) libView.style.display = 'none';
+  if (artView) artView.style.display = '';
+}
+
+function renderReadingLibrary() {
+  const el = document.getElementById('reading-library-content');
+  if (!el) return;
+  if (typeof readingTexts === 'undefined' || !readingTexts.length) {
+    el.innerHTML = '<p>Geen leesteksten beschikbaar.</p>';
+    return;
+  }
+  const history = _readingHistory();
+  const byId = history.byId || {};
+  const todayKey = _todayKey();
+  const todayIdx = getDailyReadingIndex();
+  const levelOrder = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+  const groups = {};
+  readingTexts.forEach(function(t, i) {
+    if (!groups[t.level]) groups[t.level] = [];
+    groups[t.level].push({ t: t, i: i });
+  });
+  const html = levelOrder.filter(function(lv) { return groups[lv]; }).map(function(lv) {
+    const items = groups[lv].map(function(entry) {
+      const t = entry.t, i = entry.i;
+      const dates = byId[t.id] || [];
+      const readToday = dates.indexOf(todayKey) !== -1;
+      const everRead = dates.length > 0;
+      const lastDate = dates.length ? dates[dates.length - 1] : null;
+      const isToday = i === todayIdx;
+      let statusHtml;
+      if (readToday) {
+        statusHtml = '<span class="rl-status rl-status--done">✓ Gelezen vandaag</span>';
+      } else if (everRead) {
+        statusHtml = '<span class="rl-status rl-status--read">✓ Gelezen · ' + lastDate + '</span>';
+      } else {
+        statusHtml = '<span class="rl-status rl-status--unread">Nog niet gelezen</span>';
+      }
+      const todayBadge = isToday ? '<span class="rl-today-badge">Vandaag</span>' : '';
+      return '<li><button class="rl-item" onclick="openReadingText(' + i + ')">' +
+        '<span class="rl-emoji">' + (t.topicEmoji || '📖') + '</span>' +
+        '<span class="rl-info">' +
+          '<span class="rl-title">' + _escapeHtml(t.title) + todayBadge + '</span>' +
+          '<span class="rl-title-en">' + _escapeHtml(t.titleEn || '') + '</span>' +
+          '<span class="rl-meta">' + _escapeHtml(t.level) + ' · ≈ ' + (t.readMinutes || '?') + ' min</span>' +
+        '</span>' +
+        statusHtml +
+        '</button></li>';
+    }).join('');
+    return '<h3 class="reading-section-title"><span class="badge badge-' + lv.toLowerCase() + '">' + lv + '</span> ' +
+      groups[lv].length + ' teksten</h3>' +
+      '<ul class="rl-list">' + items + '</ul>';
+  }).join('');
+  el.innerHTML = html;
+}
+
+// ── Per-word hover tooltip (all words, not just vocab-tagged ones) ──────────
+const _hoverCache = {};     // normalized word → fetched translation (session)
+const _hoverAttempted = {}; // normalized word → true (already tried this session)
+
+function _initReadingHoverTooltip() {
+  const textEl = document.getElementById('reading-text');
+  if (!textEl || textEl._hoverInited) return;
+  textEl._hoverInited = true;
+  let _lastTarget = null;
+
+  textEl.addEventListener('mouseover', function(e) {
+    const span = e.target.closest && e.target.closest('.tts-word');
+    if (!span || span === _lastTarget) return;
+    _lastTarget = span;
+    const word = span.textContent.trim();
+    const k = _normalizeWord(word);
+    if (!k) return;
+
+    const tip = document.getElementById('reading-hover-tip');
+    if (!tip) return;
+
+    const currentText = (typeof readingTexts !== 'undefined' && readingTexts.length)
+      ? readingTexts[_currentReadingIndex()] : null;
+    const info = _buildWordInfo(word, span, currentText);
+
+    if (info.translation) {
+      _showRichHoverTip(tip, span, info, k);
+      if (info.grammarNote !== null) _pulseGrammarNote(info.grammarNote);
+    } else {
+      _showRichHoverTip(tip, span, info, k);
+      if (!_hoverAttempted[k]) {
+        _hoverAttempted[k] = true;
+        const url = 'https://api.mymemory.translated.net/get?q=' +
+          encodeURIComponent(word) + '&langpair=nl|en';
+        fetch(url)
+          .then(function(r) { return r.ok ? r.json() : null; })
+          .then(function(data) {
+            if (!data || !data.responseData) return;
+            let en = (data.responseData.translatedText || '').trim();
+            if (!en || /^mymemory warning/i.test(en) || en.toLowerCase() === word.toLowerCase()) return;
+            _hoverCache[k] = en;
+            if (tip.dataset.word === k && tip.classList.contains('rht-visible')) {
+              const parts2 = en.split(/\s*[\/·]\s*/).map(function(s){return s.trim();}).filter(Boolean);
+              info.translation = parts2[0] || en;
+              info.alternatives = parts2.slice(1);
+              _showRichHoverTip(tip, span, info, k);
+            }
+          })
+          .catch(function() {});
+      }
+    }
+  });
+
+  textEl.addEventListener('mouseleave', function() {
+    _lastTarget = null;
+    const tip = document.getElementById('reading-hover-tip');
+    if (tip) tip.classList.remove('rht-visible');
+  });
+}
+
+// Build a rich info object for a hovered word.
+function _buildWordInfo(word, span, currentText) {
+  const k = _normalizeWord(word);
+
+  // Translation: text-specific vocab first (most context-accurate), then general lookup
+  let rawTr = span.getAttribute('data-en') || '';
+  if (!rawTr) rawTr = _lookupTranslation(word);
+  if (!rawTr) { const uw = _unknownWords(); if (uw[k]) rawTr = uw[k].en || ''; }
+  if (!rawTr) rawTr = _hoverCache[k] || '';
+
+  // Split primary translation from alternatives (separated by / or ·)
+  const parts = rawTr ? rawTr.split(/\s*[\/·]\s*/).map(function(s) { return s.trim(); }).filter(Boolean) : [];
+  const translation = parts[0] || '';
+  const alternatives = parts.slice(1);
+
+  // Separable verb detection: match against vtype=scheidbaar verbs
+  let separable = null;
+  if (typeof verbs !== 'undefined') {
+    for (let i = 0; i < verbs.length; i++) {
+      const v = verbs[i];
+      if (v.vtype !== 'scheidbaar') continue;
+      const inf = _normalizeWord(v.inf);
+      // Match infinitive directly
+      if (inf === k) { separable = { inf: v.inf, prefix: v.prefix, meaning: v.meaning }; break; }
+      // Match conjugated forms: forms are like "leg uit", "legt uit" — check stem (first word)
+      const forms = v.forms || [];
+      for (let j = 0; j < forms.length; j++) {
+        const stem = _normalizeWord((forms[j] + '').split(' ')[0]);
+        if (stem === k) { separable = { inf: v.inf, prefix: v.prefix, meaning: v.meaning }; break; }
+      }
+      if (separable) break;
+    }
+  }
+
+  // Grammar note detection: check if word appears in any grammar note's example
+  let grammarNote = null;
+  if (currentText && currentText.grammarNotes) {
+    for (let i = 0; i < currentText.grammarNotes.length; i++) {
+      const note = currentText.grammarNotes[i];
+      const tokens = (note.example || '').split(/[\s·,;]+/).map(function(t) { return _normalizeWord(t); }).filter(Boolean);
+      if (tokens.indexOf(k) !== -1) { grammarNote = i; break; }
+    }
+  }
+
+  return { translation: translation, alternatives: alternatives, separable: separable, grammarNote: grammarNote };
+}
+
+// Render the tooltip with translation, separable info, grammar hint, and alternatives.
+function _showRichHoverTip(tip, span, info, k) {
+  let html = '';
+  if (info.translation) {
+    html += '<span class="rht-main">' + _escapeHtml(info.translation) + '</span>';
+  } else {
+    html += '<span class="rht-main rht-pending">…</span>';
+  }
+  if (info.separable) {
+    const base = info.separable.inf.slice(info.separable.prefix.length);
+    html += '<span class="rht-tag rht-sep">🔗 scheidbaar: ' +
+      _escapeHtml(info.separable.prefix) + ' + ' + _escapeHtml(base) + '</span>';
+  }
+  if (info.grammarNote !== null) {
+    html += '<span class="rht-tag rht-grammar">📖 grammatica hieronder ↓</span>';
+  }
+  if (info.alternatives.length) {
+    html += '<span class="rht-alts">' +
+      info.alternatives.map(function(a) { return _escapeHtml(a); }).join(' · ') + '</span>';
+  }
+  tip.innerHTML = html;
+  tip.dataset.word = k;
+  tip.classList.add('rht-visible');
+  const rect = span.getBoundingClientRect();
+  tip.style.left = (rect.left + rect.width / 2 + window.scrollX) + 'px';
+  tip.style.top  = (rect.top  + window.scrollY) + 'px';
+}
+
+// Briefly flash-highlight the n-th grammar note card so the user's eye is drawn to it.
+function _pulseGrammarNote(index) {
+  const notes = document.querySelectorAll('.reading-grammar-note');
+  const el = notes[index];
+  if (!el) return;
+  el.classList.remove('reading-grammar-note--pulse');
+  void el.offsetWidth; // reflow to restart animation
+  el.classList.add('reading-grammar-note--pulse');
+}
+
+function openReadingText(i) {
+  _lezenViewIndex = i;
+  openReadingArticle();
+  renderReading();
+}
+
 function renderReading() {
   if (typeof readingTexts === 'undefined' || !readingTexts.length) {
     const el = document.getElementById('reading-text');
@@ -4625,6 +4862,8 @@ function renderReading() {
     }).join('');
     histEl.innerHTML = html;
   }
+  // Bind hover tooltip once (guarded by _hoverInited flag)
+  _initReadingHoverTooltip();
 }
 
 function markReadingComplete() {
@@ -4639,6 +4878,7 @@ function markReadingComplete() {
   h.lastReadDate = today;
   _saveReadingHistory(h);
   renderReading();
+  renderReadingLibrary();
   renderHome();
   if (typeof showToast === 'function') showToast('Mooi! Tekst gelezen ✓');
 }
@@ -4655,6 +4895,7 @@ function navigateReading(delta) {
 function jumpToReading(i) {
   _stopAudio();
   _lezenViewIndex = i;
+  openReadingArticle();
   renderReading();
 }
 
@@ -4664,7 +4905,9 @@ function navigateToReadingText(id) {
   if (idx < 0) return;
   _stopAudio();
   _lezenViewIndex = idx;
+  // Switch tab without triggering library; open article directly
   switchTab('lezen');
+  openReadingText(idx);
 }
 
 function toggleReadingTranslation() {
@@ -4730,7 +4973,7 @@ function _buildUnknownWordsHTML(list) {
   if (_practiceUnknownActive) return _renderPracticeCard(list);
 
   return '<div class="reading-unknown-header">' +
-      '<h3 class="reading-section-title">Mijn moeilijke woorden · My difficult words <span class="reading-unknown-count">(' + list.length + ')</span></h3>' +
+      '<h3 class="reading-section-title">Alle moeilijke woorden · All difficult words <span class="reading-unknown-count">(' + list.length + ')</span></h3>' +
       '<div class="reading-unknown-actions">' +
         '<button class="btn btn-primary btn-small" onclick="startUnknownPractice()">📚 Oefenen · Practice</button>' +
         '<button class="btn btn-secondary btn-small" onclick="clearAllUnknownWords()">🗑 Alles wissen</button>' +
@@ -4789,6 +5032,41 @@ function _autoFetchMissingTranslations(list) {
   }
 }
 
+function renderSessionWords() {
+  const el = document.getElementById('reading-session-words');
+  if (!el) return;
+  if (typeof readingTexts === 'undefined' || !readingTexts.length) { el.innerHTML = ''; return; }
+  const t = readingTexts[_currentReadingIndex()];
+  const list = _unknownWordsSorted().filter(function(item) { return item.word.readingId === t.id; });
+  if (!list.length) { el.innerHTML = ''; return; }
+  el.innerHTML = '<h3 class="reading-section-title">Gemarkeerde woorden · Words you marked in this text <span class="reading-unknown-count">(' + list.length + ')</span></h3>' +
+    '<ul class="reading-unknown-list">' +
+    list.map(function(item) {
+      const w = item.word;
+      const nlRaw = w.nl || item.key;
+      const nlEsc = _escapeHtml(nlRaw);
+      const enText = w.en || _lookupTranslation(nlRaw);
+      const isPending = _pendingTransFetches[item.key];
+      let enHtml;
+      if (enText) {
+        enHtml = '<span class="reading-unknown-en">' + _escapeHtml(enText) + '</span>';
+      } else if (isPending) {
+        enHtml = '<span class="reading-unknown-en reading-unknown-en--pending">vertalen…</span>';
+      } else {
+        enHtml = '<span class="reading-unknown-en reading-unknown-en--missing">geen vertaling</span>';
+      }
+      return '<li class="reading-unknown-item">' +
+        '<div class="reading-unknown-row">' +
+          '<button class="reading-unknown-word" data-word="' + nlEsc +
+            '" onclick="speakWord(this.dataset.word)" title="Klik om uit te spreken">🔊 ' + nlEsc + '</button>' +
+          enHtml +
+          '<button class="reading-unknown-remove" data-word="' + nlEsc +
+            '" onclick="clearUnknownWord(this.dataset.word)" aria-label="Verwijderen" title="Verwijderen">✕</button>' +
+        '</div></li>';
+    }).join('') +
+    '</ul>';
+}
+
 function renderUnknownWords() {
   const list = _unknownWordsSorted();
   const html = list.length ? _buildUnknownWordsHTML(list) : '';
@@ -4802,6 +5080,9 @@ function renderUnknownWords() {
   const mwEmpty = document.getElementById('mijnwoorden-empty');
   if (mwContent) mwContent.innerHTML = html;
   if (mwEmpty) mwEmpty.style.display = list.length ? 'none' : '';
+
+  // Keep per-text session words in sync
+  renderSessionWords();
 
   // Fire MyMemory fetches in the background for entries that still lack a translation
   if (list.length) _autoFetchMissingTranslations(list);
@@ -4867,8 +5148,8 @@ function jumpToReadingById(id) {
   if (idx < 0) return;
   closeUnknownPractice();
   _stopAudio();
-  _lezenViewIndex = idx;
-  switchTab('lezen');  // also re-renders reading via switchTab dispatch
+  switchTab('lezen');
+  openReadingText(idx);
   const el = document.getElementById('reading-text');
   if (el) setTimeout(function() { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 0);
 }

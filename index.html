@@ -392,6 +392,7 @@
 
             <div class="btn-row" id="ex-btn-row">
               <button class="btn btn-secondary" onclick="skipSentence()">Overslaan</button>
+              <button class="btn btn-secondary" id="ex-retry-btn" style="display:none" onclick="retrySentence()">↩ Opnieuw proberen</button>
               <button class="btn btn-primary" id="ex-next-btn" style="display:none" onclick="nextSentence()">Volgende →</button>
             </div>
             <div style="text-align:right;margin-top:8px">
@@ -533,9 +534,22 @@
 
       <!-- LEZEN -->
       <div id="panel-lezen" class="panel">
-        <div class="card">
+
+        <!-- LIBRARY VIEW -->
+        <div id="reading-library-view" class="card">
+          <div class="card-header">
+            <span class="card-title">📚 Leesbibliotheek · Reading library</span>
+          </div>
+          <div class="card-body">
+            <div id="reading-library-content"></div>
+          </div>
+        </div>
+
+        <!-- ARTICLE VIEW -->
+        <div id="reading-article-view" class="card" style="display:none;">
           <div class="card-header reading-header">
             <div class="reading-header-left">
+              <button class="btn btn-secondary reading-back-btn" onclick="openReadingLibrary()">← Bibliotheek</button>
               <span class="reading-day-label" id="reading-day-label">Vandaag · Today</span>
               <span class="card-title" id="reading-title"></span>
               <span class="reading-title-en" id="reading-title-en"></span>
@@ -562,8 +576,9 @@
 
             <div class="reading-section" id="reading-vocab"></div>
             <div class="reading-section" id="reading-grammar"></div>
-            <div class="reading-section" id="reading-unknown-words"></div>
             <div class="reading-section" id="reading-questions"></div>
+            <div class="reading-section" id="reading-session-words"></div>
+            <div class="reading-section" id="reading-unknown-words"></div>
 
             <button class="reading-complete-btn" id="reading-complete-btn" onclick="markReadingComplete()">✓ Gelezen · Mark as read</button>
 
@@ -572,10 +587,9 @@
               <span class="reading-nav-info" id="reading-nav-info"></span>
               <button class="btn btn-secondary" onclick="navigateReading(1)">Volgend artikel →</button>
             </div>
-
-            <div class="reading-section" id="reading-history"></div>
           </div>
         </div>
+
       </div>
 
       <!-- MIJN WOORDEN — difficult-words list & flashcard practice -->
@@ -866,5 +880,6 @@
 <script src="js/grammar-data.js"></script>
 <script src="js/reading-data.js"></script>
 <script src="js/app.js"></script>
+<div id="reading-hover-tip" aria-hidden="true"></div>
 </body>
 </html>
