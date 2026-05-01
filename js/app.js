@@ -4128,6 +4128,7 @@ let _lezenView = 'library';  // 'library' | 'article'
 let _lezenShowEn = false;
 let _lezenShowVocabHighlights = true;
 let _lezenMarkMode = false;  // when true, clicking a word toggles its "unknown" status
+let _lezenQuizState = {}; // keyed by "textId_qIndex" → {selected, correct}
 
 const UNKNOWN_WORDS_KEY = 'schrijfcoach_unknown_words';
 
@@ -4836,22 +4837,54 @@ function renderReading() {
   // Unknown-words list (across all readings)
   renderUnknownWords();
 
-  // Comprehension questions
+  // Comprehension questions — multiple choice
   const questionsEl = document.getElementById('reading-questions');
   if (questionsEl && t.questions && t.questions.length) {
     questionsEl.innerHTML = '<h3 class="reading-section-title">Begripsvragen · Comprehension questions</h3>' +
       t.questions.map(function(q, i) {
-        return '<details class="reading-question">' +
-          '<summary>' +
+        const correct = q.a;
+        const distractors = t.questions.filter(function(_, j) { return j !== i; }).map(function(o) { return o.a; });
+        const options = [correct].concat(distractors).slice(0, 4);
+        // Deterministic shuffle seeded by question position
+        let seed = i * 31 + t.id.length * 7;
+        for (let k = options.length - 1; k > 0; k--) {
+          seed = (seed * 1664525 + 1013904223) & 0x7fffffff;
+          const j = seed % (k + 1);
+          const tmp = options[k]; options[k] = options[j]; options[j] = tmp;
+        }
+        const qKey = t.id + '_' + i;
+        const state = _lezenQuizState[qKey];
+        const answered = !!state;
+        return '<div class="reading-question" id="rq-' + _escapeHtml(qKey) + '">' +
+          '<div class="reading-q-text">' +
             '<span class="reading-q-num">' + (i + 1) + '.</span> ' +
             '<span class="reading-q-nl">' + _escapeHtml(q.q) + '</span>' +
-            (q.qEn ? ' <span class="reading-q-en">(' + _escapeHtml(q.qEn) + ')</span>' : '') +
-          '</summary>' +
-          '<div class="reading-q-answer">' +
-            '<strong>' + _escapeHtml(q.a) + '</strong>' +
-            (q.aEn ? ' <span class="reading-q-answer-en">— ' + _escapeHtml(q.aEn) + '</span>' : '') +
+            (q.qEn ? '<div class="reading-q-en">(' + _escapeHtml(q.qEn) + ')</div>' : '') +
           '</div>' +
-          '</details>';
+          '<div class="reading-q-options">' +
+            options.map(function(opt) {
+              let cls = 'reading-q-option';
+              if (answered) {
+                if (opt === correct) cls += ' reading-q-option--correct';
+                else if (opt === state.selected) cls += ' reading-q-option--wrong';
+              }
+              return '<button class="' + cls + '" ' +
+                'data-qkey="' + _escapeHtml(qKey) + '" ' +
+                'data-sel="' + _escapeHtml(opt) + '" ' +
+                'data-cor="' + _escapeHtml(correct) + '" ' +
+                (answered ? 'disabled ' : '') +
+                'onclick="answerReadingQuestion(this.dataset.qkey,this.dataset.sel,this.dataset.cor)">' +
+                _escapeHtml(opt) + '</button>';
+            }).join('') +
+          '</div>' +
+          (answered
+            ? '<div class="reading-q-feedback ' + (state.correct ? 'reading-q-feedback--correct' : 'reading-q-feedback--wrong') + '">' +
+                (state.correct
+                  ? '✓ Juist! · Correct!'
+                  : '✗ Onjuist. Antwoord: <strong>' + _escapeHtml(correct) + '</strong>' + (q.aEn ? ' — ' + _escapeHtml(q.aEn) : '')) +
+              '</div>'
+            : '') +
+        '</div>';
       }).join('');
   }
 
@@ -4926,6 +4959,12 @@ function markReadingComplete() {
   renderReadingLibrary();
   renderHome();
   if (typeof showToast === 'function') showToast('Mooi! Tekst gelezen ✓');
+}
+
+function answerReadingQuestion(qKey, selected, correct) {
+  if (_lezenQuizState[qKey]) return;
+  _lezenQuizState[qKey] = { selected: selected, correct: selected === correct };
+  renderReading();
 }
 
 function navigateReading(delta) {
@@ -5083,9 +5122,9 @@ function renderSessionWords() {
   if (typeof readingTexts === 'undefined' || !readingTexts.length) { el.innerHTML = ''; return; }
   const t = readingTexts[_currentReadingIndex()];
   const list = _unknownWordsSorted().filter(function(item) { return item.word.readingId === t.id; });
-  if (!list.length) { el.innerHTML = ''; return; }
-  el.innerHTML = '<h3 class="reading-section-title">Gemarkeerde woorden · Words you marked in this text <span class="reading-unknown-count">(' + list.length + ')</span></h3>' +
-    '<ul class="reading-unknown-list">' +
+  if (!list.length) { _sessionPracticeActive = false; el.innerHTML = ''; return; }
+
+  const wordListHtml = '<ul class="reading-unknown-list">' +
     list.map(function(item) {
       const w = item.word;
       const nlRaw = w.nl || item.key;
@@ -5110,6 +5149,146 @@ function renderSessionWords() {
         '</div></li>';
     }).join('') +
     '</ul>';
+
+  const practiceHtml = _sessionPracticeActive
+    ? _renderSessionPracticeCard(list)
+    : '<button class="btn btn-primary btn-small session-practice-btn" onclick="startSessionPractice()">📚 Oefenen · Practice</button>';
+
+  el.innerHTML =
+    '<div class="reading-unknown-header">' +
+      '<h3 class="reading-section-title">Gemarkeerde woorden · Words you marked <span class="reading-unknown-count">(' + list.length + ')</span></h3>' +
+    '</div>' +
+    wordListHtml +
+    practiceHtml;
+}
+
+function _renderSessionPracticeCard(list) {
+  if (!list.length) return '';
+  if (_sessionPracticeIdx >= list.length) _sessionPracticeIdx = 0;
+  const cur = list[_sessionPracticeIdx];
+  const w = cur.word;
+  const nlRaw = w.nl || cur.key;
+  const nlEsc = _escapeHtml(nlRaw);
+  const correct = w.en || _lookupTranslation(nlRaw);
+
+  if (!correct) {
+    return '<div class="practice-card">' +
+      '<div class="practice-header"><h3 class="reading-section-title">📚 Oefenen</h3>' +
+        '<button class="practice-close" onclick="closeSessionPractice()">✕</button></div>' +
+      '<div class="practice-counter">' + (_sessionPracticeIdx + 1) + ' / ' + list.length + '</div>' +
+      '<div class="practice-word">' + nlEsc + '</div>' +
+      '<div class="practice-en practice-en--missing">Geen vertaling beschikbaar.</div>' +
+      '<div class="practice-actions">' +
+        '<button class="btn btn-secondary" onclick="prevSessionWord()">← Vorige</button>' +
+        '<button class="btn btn-secondary" onclick="nextSessionWord()">Volgende →</button>' +
+      '</div></div>';
+  }
+
+  const distractors = list
+    .filter(function(_, j) { return j !== _sessionPracticeIdx; })
+    .map(function(item) { return item.word.en || _lookupTranslation(item.word.nl || item.key); })
+    .filter(Boolean);
+  // Supplement with Mijn Woorden translations if needed
+  if (distractors.length < 3) {
+    _unknownWordsSorted().forEach(function(item) {
+      const en = item.word.en || _lookupTranslation(item.word.nl || item.key);
+      if (en && en !== correct && distractors.indexOf(en) === -1) distractors.push(en);
+    });
+  }
+  const options = [correct].concat(distractors.slice(0, 3));
+  let seed = _sessionPracticeIdx * 31 + list.length * 11;
+  for (let k = options.length - 1; k > 0; k--) {
+    seed = (seed * 1664525 + 1013904223) & 0x7fffffff;
+    const j = seed % (k + 1);
+    const tmp = options[k]; options[k] = options[j]; options[j] = tmp;
+  }
+  const state = _sessionPracticeAnswerState;
+  const answered = !!state;
+  const gotRight = answered && state.correct;
+
+  return '<div class="practice-card">' +
+    '<div class="practice-header"><h3 class="reading-section-title">📚 Oefenen · Practice</h3>' +
+      '<button class="practice-close" onclick="closeSessionPractice()" aria-label="Sluiten">✕</button></div>' +
+    '<div class="practice-counter">' + (_sessionPracticeIdx + 1) + ' / ' + list.length + '</div>' +
+    '<div class="practice-word">' + nlEsc +
+      '<button class="practice-listen" data-word="' + nlEsc + '" onclick="speakWord(this.dataset.word)">🔊</button>' +
+    '</div>' +
+    '<div class="reading-q-options">' +
+      options.map(function(opt) {
+        let cls = 'reading-q-option';
+        if (answered) {
+          if (opt === correct) cls += ' reading-q-option--correct';
+          else if (opt === state.selected) cls += ' reading-q-option--wrong';
+        }
+        return '<button class="' + cls + '" ' +
+          'data-sel="' + _escapeHtml(opt) + '" ' +
+          'data-cor="' + _escapeHtml(correct) + '" ' +
+          (answered ? 'disabled ' : '') +
+          'onclick="answerSessionWordMC(this.dataset.sel,this.dataset.cor)">' +
+          _escapeHtml(opt) + '</button>';
+      }).join('') +
+    '</div>' +
+    (answered
+      ? '<div class="reading-q-feedback ' + (state.correct ? 'reading-q-feedback--correct' : 'reading-q-feedback--wrong') + '">' +
+          (state.correct ? '✓ Juist! · Correct!' : '✗ Onjuist. Antwoord: <strong>' + _escapeHtml(correct) + '</strong>') +
+        '</div>'
+      : '') +
+    '<div class="practice-actions">' +
+      '<button class="btn btn-secondary" onclick="prevSessionWord()">← Vorige</button>' +
+      (answered ? '<button class="btn btn-secondary" onclick="nextSessionWord()">Volgende →</button>' : '') +
+    '</div>' +
+  '</div>';
+}
+
+function startSessionPractice() {
+  _sessionPracticeActive = true;
+  _sessionPracticeIdx = 0;
+  _sessionPracticeAnswerState = null;
+  renderSessionWords();
+}
+
+function closeSessionPractice() {
+  _sessionPracticeActive = false;
+  _sessionPracticeAnswerState = null;
+  renderSessionWords();
+}
+
+function nextSessionWord() {
+  if (typeof readingTexts === 'undefined') return;
+  const t = readingTexts[_currentReadingIndex()];
+  const list = _unknownWordsSorted().filter(function(item) { return item.word.readingId === t.id; });
+  _sessionPracticeIdx = (_sessionPracticeIdx + 1) % Math.max(list.length, 1);
+  _sessionPracticeAnswerState = null;
+  renderSessionWords();
+}
+
+function prevSessionWord() {
+  if (typeof readingTexts === 'undefined') return;
+  const t = readingTexts[_currentReadingIndex()];
+  const list = _unknownWordsSorted().filter(function(item) { return item.word.readingId === t.id; });
+  _sessionPracticeIdx = (_sessionPracticeIdx - 1 + Math.max(list.length, 1)) % Math.max(list.length, 1);
+  _sessionPracticeAnswerState = null;
+  renderSessionWords();
+}
+
+function answerSessionWordMC(selected, correct) {
+  if (_sessionPracticeAnswerState) return;
+  _sessionPracticeAnswerState = { selected: selected, correct: selected === correct };
+  renderSessionWords();
+}
+
+function markSessionWordKnown() {
+  if (typeof readingTexts === 'undefined') return;
+  const t = readingTexts[_currentReadingIndex()];
+  const list = _unknownWordsSorted().filter(function(item) { return item.word.readingId === t.id; });
+  if (!list.length) { closeSessionPractice(); return; }
+  const cur = list[_sessionPracticeIdx];
+  if (cur) clearUnknownWord(cur.word.nl || cur.key);
+  const newList = _unknownWordsSorted().filter(function(item) { return item.word.readingId === t.id; });
+  if (!newList.length) { closeSessionPractice(); return; }
+  if (_sessionPracticeIdx >= newList.length) _sessionPracticeIdx = 0;
+  _sessionPracticeAnswerState = null;
+  renderSessionWords();
 }
 
 function renderUnknownWords() {
@@ -5141,12 +5320,18 @@ function renderMijnWoorden() {
 // ── Practice session ─────────────────────────────────────────────────────────
 let _practiceUnknownActive = false;
 let _practiceUnknownIdx = 0;
+let _practiceUnknownAnswerState = null; // null | {selected, correct}
+
+let _sessionPracticeActive = false;
+let _sessionPracticeIdx = 0;
+let _sessionPracticeAnswerState = null;
 
 function startUnknownPractice() {
   const list = _unknownWordsSorted();
   if (!list.length) return;
   _practiceUnknownActive = true;
   _practiceUnknownIdx = 0;
+  _practiceUnknownAnswerState = null;
   renderUnknownWords();
   // Scroll into view so the user sees the card
   const el = document.getElementById('reading-unknown-words');
@@ -5155,6 +5340,7 @@ function startUnknownPractice() {
 
 function closeUnknownPractice() {
   _practiceUnknownActive = false;
+  _practiceUnknownAnswerState = null;
   renderUnknownWords();
 }
 
@@ -5162,6 +5348,7 @@ function nextPracticeWord() {
   const list = _unknownWordsSorted();
   if (!list.length) { closeUnknownPractice(); return; }
   _practiceUnknownIdx = (_practiceUnknownIdx + 1) % list.length;
+  _practiceUnknownAnswerState = null;
   renderUnknownWords();
 }
 
@@ -5169,6 +5356,13 @@ function prevPracticeWord() {
   const list = _unknownWordsSorted();
   if (!list.length) { closeUnknownPractice(); return; }
   _practiceUnknownIdx = (_practiceUnknownIdx - 1 + list.length) % list.length;
+  _practiceUnknownAnswerState = null;
+  renderUnknownWords();
+}
+
+function answerPracticeWordMC(selected, correct) {
+  if (_practiceUnknownAnswerState) return;
+  _practiceUnknownAnswerState = { selected: selected, correct: selected === correct };
   renderUnknownWords();
 }
 
@@ -5181,6 +5375,7 @@ function markPracticeKnown() {
   const newList = _unknownWordsSorted();
   if (!newList.length) { closeUnknownPractice(); return; }
   if (_practiceUnknownIdx >= newList.length) _practiceUnknownIdx = 0;
+  _practiceUnknownAnswerState = null;
   renderUnknownWords();
 }
 
@@ -5207,26 +5402,72 @@ function _renderPracticeCard(list) {
   const nlRaw = w.nl || cur.key;
   const nlEsc = _escapeHtml(nlRaw);
   const enText = w.en || _lookupTranslation(nlRaw);
-  const isPending = _pendingTransFetches[cur.key];
-  let enHtml;
-  if (enText) {
-    enHtml = '<div class="practice-en">' + _escapeHtml(enText) +
-      ' <button class="practice-en-edit" data-word="' + nlEsc +
-      '" onclick="editUnknownTranslation(this.dataset.word)" aria-label="Bewerken" title="Bewerken">✏</button></div>';
-  } else if (isPending) {
-    enHtml = '<div class="practice-en practice-en--missing">vertalen…</div>';
-  } else {
-    enHtml = '<div class="practice-en practice-en--missing">geen vertaling beschikbaar' +
-      ' <button class="practice-en-edit" data-word="' + nlEsc +
-      '" onclick="editUnknownTranslation(this.dataset.word)" aria-label="Handmatig invullen" title="Handmatig invullen">✏</button></div>';
-  }
+
   const src = _readingById(w.readingId);
   const srcHtml = src
-    ? '<div class="practice-source">📖 Uit: <button class="practice-source-btn" data-rid="' +
+    ? '<div class="practice-source">📖 <button class="practice-source-btn" data-rid="' +
       _escapeHtml(w.readingId) + '" onclick="jumpToReadingById(this.dataset.rid)">' +
       _escapeHtml(src.title) + '</button></div>'
-    : '<div class="practice-source practice-source--missing">Bron onbekend</div>';
-  const addedAt = w.addedAt ? '<div class="practice-added">Gemarkeerd op ' + _escapeHtml(w.addedAt) + '</div>' : '';
+    : '';
+
+  // Build multiple choice options
+  const correct = enText || null;
+  let optionsHtml = '';
+  if (!correct) {
+    // No translation yet — show edit prompt
+    const isPending = _pendingTransFetches[cur.key];
+    optionsHtml = '<div class="practice-en practice-en--missing">' +
+      (isPending ? 'vertalen…' : 'Geen vertaling. ') +
+      (!isPending ? '<button class="practice-en-edit" data-word="' + nlEsc +
+        '" onclick="editUnknownTranslation(this.dataset.word)">✏ Voeg vertaling toe</button>' : '') +
+      '</div>';
+  } else {
+    // Collect distractors from other items in the unknown words list
+    const distractors = list
+      .filter(function(item, j) { return j !== _practiceUnknownIdx; })
+      .map(function(item) { return item.word.en || _lookupTranslation(item.word.nl || item.key); })
+      .filter(Boolean);
+    // Also pull from the source reading text's vocabulary if needed
+    if (distractors.length < 3 && src) {
+      src.vocabulary.forEach(function(v) {
+        if (v.en !== correct && distractors.indexOf(v.en) === -1) distractors.push(v.en);
+      });
+    }
+    const options = [correct].concat(distractors.slice(0, 3));
+    let seed = _practiceUnknownIdx * 31 + list.length * 7;
+    for (let k = options.length - 1; k > 0; k--) {
+      seed = (seed * 1664525 + 1013904223) & 0x7fffffff;
+      const j = seed % (k + 1);
+      const tmp = options[k]; options[k] = options[j]; options[j] = tmp;
+    }
+    const state = _practiceUnknownAnswerState;
+    const answered = !!state;
+    optionsHtml = '<div class="reading-q-options">' +
+      options.map(function(opt) {
+        let cls = 'reading-q-option';
+        if (answered) {
+          if (opt === correct) cls += ' reading-q-option--correct';
+          else if (opt === state.selected) cls += ' reading-q-option--wrong';
+        }
+        return '<button class="' + cls + '" ' +
+          'data-sel="' + _escapeHtml(opt) + '" ' +
+          'data-cor="' + _escapeHtml(correct) + '" ' +
+          (answered ? 'disabled ' : '') +
+          'onclick="answerPracticeWordMC(this.dataset.sel,this.dataset.cor)">' +
+          _escapeHtml(opt) + '</button>';
+      }).join('') +
+      '</div>' +
+      (answered
+        ? '<div class="reading-q-feedback ' + (state.correct ? 'reading-q-feedback--correct' : 'reading-q-feedback--wrong') + '">' +
+            (state.correct
+              ? '✓ Juist! · Correct!'
+              : '✗ Onjuist. Antwoord: <strong>' + _escapeHtml(correct) + '</strong>') +
+          '</div>'
+        : '');
+  }
+
+  const answered = !!_practiceUnknownAnswerState;
+  const gotRight = answered && _practiceUnknownAnswerState.correct;
 
   return '<div class="practice-card">' +
     '<div class="practice-header">' +
@@ -5234,16 +5475,15 @@ function _renderPracticeCard(list) {
       '<button class="practice-close" onclick="closeUnknownPractice()" aria-label="Sluiten" title="Sluiten">✕</button>' +
     '</div>' +
     '<div class="practice-counter">' + (_practiceUnknownIdx + 1) + ' / ' + list.length + '</div>' +
-    '<div class="practice-word">' + nlEsc + '</div>' +
-    '<button class="practice-listen" data-word="' + nlEsc +
-      '" onclick="speakWord(this.dataset.word)" title="Luisteren">🔊 Luisteren</button>' +
-    enHtml +
+    '<div class="practice-word">' + nlEsc +
+      '<button class="practice-listen" data-word="' + nlEsc +
+        '" onclick="speakWord(this.dataset.word)" title="Luisteren">🔊</button>' +
+    '</div>' +
     srcHtml +
-    addedAt +
+    optionsHtml +
     '<div class="practice-actions">' +
       '<button class="btn btn-secondary" onclick="prevPracticeWord()">← Vorige</button>' +
-      '<button class="btn btn-primary" onclick="markPracticeKnown()">✓ Ik ken het nu</button>' +
-      '<button class="btn btn-secondary" onclick="nextPracticeWord()">Volgende →</button>' +
+      (answered ? '<button class="btn btn-secondary" onclick="nextPracticeWord()">Volgende →</button>' : '') +
     '</div>' +
     '</div>';
 }
