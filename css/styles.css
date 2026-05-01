@@ -2621,8 +2621,33 @@ details[open] .tense-ref-summary::before { transform:rotate(90deg); }
 
 /* ── Mobile text & layout fixes ──────────────────────────────────────────── */
 
-/* Prevent any element from causing page-wide horizontal scroll */
-body { overflow-x: hidden; }
+/* Chrome on Android requires BOTH html AND body to stop horizontal scroll */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Contain the reading word tooltip so it never widens the page */
+.reading-word { overflow: visible; }
+.reading-word::after { max-width: 200px; white-space: normal; text-align: center; }
+
+/* Reading panel: hard clamp so nothing inside ever pushes past the card edge */
+#panel-lezen .card { overflow: hidden; }
+#panel-lezen .card-body {
+  overflow-x: hidden;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+.reading-text {
+  width: 100%;
+  box-sizing: border-box;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+.reading-para-nl, .reading-para-en {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
 
 @media (max-width: 768px) {
   /* Exercise card: give text more horizontal room */
@@ -2636,7 +2661,11 @@ body { overflow-x: hidden; }
   #panel-bewerken .card-body { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
   /* Reading toolbar: tighter buttons so they fit on one or two lines */
-  .reading-toolbar .btn { padding: 5px 10px; font-size: 0.76rem; }
+  .reading-toolbar { flex-wrap: wrap; gap: 6px; }
+  .reading-toolbar .btn { padding: 5px 10px; font-size: 0.76rem; flex-shrink: 1; }
+
+  /* Reading vocab grid: single column on tablet too */
+  .reading-vocab-grid { grid-template-columns: 1fr; }
 
   /* Unit bar select: don't exceed screen width */
   .unit-bar-select { max-width: 100%; }
