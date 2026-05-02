@@ -846,12 +846,14 @@ function checkAnswer() {
     const prompt = document.getElementById('ex-prompt');
     if (prompt) { prompt.textContent = s.nl; prompt.style.display = ''; }
   }
-  // Auto-advance after feedback delay
+  // Auto-advance after feedback delay (correct answers only)
   if (_exAutoAdvanceTimer) clearTimeout(_exAutoAdvanceTimer);
-  _exAutoAdvanceTimer = setTimeout(function() {
-    _exAutoAdvanceTimer = null;
-    if (exAnswered) nextSentence();
-  }, correct ? 1000 : 1600);
+  if (correct) {
+    _exAutoAdvanceTimer = setTimeout(function() {
+      _exAutoAdvanceTimer = null;
+      if (exAnswered) nextSentence();
+    }, 1000);
+  }
 }
 
 function showFeedback(correct, answer) {
@@ -2544,8 +2546,8 @@ function _pickQuizOption(btn, isCorrect) {
     document.getElementById('vquiz-wrong').textContent = '✗ ' + vquizWrong;
   }
 
-  // Auto-advance after a short delay
-  setTimeout(() => { vquizIdx++; _renderQuizCard(); }, isCorrect ? 600 : 1500);
+  // Auto-advance after a short delay (correct answers only)
+  if (isCorrect) setTimeout(() => { vquizIdx++; _renderQuizCard(); }, 600);
 }
 
 // ─── NIET & GEEN EXERCISES ─────────────────────────────────────────────────────
