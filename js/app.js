@@ -400,6 +400,7 @@ function _saveLastPosition(unitNum, tab) {
   _lsSet(LAST_POSITION_KEY, JSON.stringify(lastStudyPosition));
 }
 let sentenceFlags = {};   // key: s.nl → { starred: bool, comment: string }
+let _exAutoAdvanceTimer = null;
 let exMode = 'all';       // 'all' | 'errors' | 'spaced'
 let exLevel = 'all';      // 'all' | 'A1' | 'A2' | 'B1' | 'B2'
 let exGrammar = 'all';    // 'all' | grammar key
@@ -845,6 +846,12 @@ function checkAnswer() {
     const prompt = document.getElementById('ex-prompt');
     if (prompt) { prompt.textContent = s.nl; prompt.style.display = ''; }
   }
+  // Auto-advance after feedback delay
+  if (_exAutoAdvanceTimer) clearTimeout(_exAutoAdvanceTimer);
+  _exAutoAdvanceTimer = setTimeout(function() {
+    _exAutoAdvanceTimer = null;
+    if (exAnswered) nextSentence();
+  }, correct ? 1000 : 1600);
 }
 
 function showFeedback(correct, answer) {
@@ -862,7 +869,10 @@ function hideFeedback() {
   document.getElementById('ex-feedback').className = 'feedback-box';
 }
 
-function nextSentence() { exIdx++; _autoSaveIdx(); loadSentence(); }
+function nextSentence() {
+  if (_exAutoAdvanceTimer) { clearTimeout(_exAutoAdvanceTimer); _exAutoAdvanceTimer = null; }
+  exIdx++; _autoSaveIdx(); loadSentence();
+}
 
 function retrySentence() { loadSentence(); }
 
@@ -5122,7 +5132,9 @@ function renderSessionWords() {
   if (typeof readingTexts === 'undefined' || !readingTexts.length) { el.innerHTML = ''; return; }
   const t = readingTexts[_currentReadingIndex()];
   const list = _unknownWordsSorted().filter(function(item) { return item.word.readingId === t.id; });
-  if (!list.length) { _sessionPracticeActive = false; el.innerHTML = ''; return; }
+  const practiceList = _getSessionPracticeList(t);
+  if (!practiceList.length) { _sessionPracticeActive = false; el.innerHTML = ''; return; }
+  if (!list.length && !_sessionPracticeActive) { _sessionPracticeActive = false; }
 
   const wordListHtml = '<ul class="reading-unknown-list">' +
     list.map(function(item) {
@@ -5151,15 +5163,17 @@ function renderSessionWords() {
     '</ul>';
 
   const practiceHtml = _sessionPracticeActive
-    ? _renderSessionPracticeCard(list)
+    ? _renderSessionPracticeCard(practiceList)
     : '<button class="btn btn-primary btn-small session-practice-btn" onclick="startSessionPractice()">📚 Oefenen · Practice</button>';
 
-  el.innerHTML =
-    '<div class="reading-unknown-header">' +
-      '<h3 class="reading-section-title">Gemarkeerde woorden · Words you marked <span class="reading-unknown-count">(' + list.length + ')</span></h3>' +
-    '</div>' +
-    wordListHtml +
-    practiceHtml;
+  const wordSection = list.length
+    ? '<div class="reading-unknown-header">' +
+        '<h3 class="reading-section-title">Gemarkeerde woorden · Words you marked <span class="reading-unknown-count">(' + list.length + ')</span></h3>' +
+      '</div>' +
+      wordListHtml
+    : '';
+
+  el.innerHTML = wordSection + practiceHtml;
 }
 
 function _renderSessionPracticeCard(list) {
@@ -5256,7 +5270,7 @@ function closeSessionPractice() {
 function nextSessionWord() {
   if (typeof readingTexts === 'undefined') return;
   const t = readingTexts[_currentReadingIndex()];
-  const list = _unknownWordsSorted().filter(function(item) { return item.word.readingId === t.id; });
+  const list = _getSessionPracticeList(t);
   _sessionPracticeIdx = (_sessionPracticeIdx + 1) % Math.max(list.length, 1);
   _sessionPracticeAnswerState = null;
   renderSessionWords();
@@ -5265,7 +5279,7 @@ function nextSessionWord() {
 function prevSessionWord() {
   if (typeof readingTexts === 'undefined') return;
   const t = readingTexts[_currentReadingIndex()];
-  const list = _unknownWordsSorted().filter(function(item) { return item.word.readingId === t.id; });
+  const list = _getSessionPracticeList(t);
   _sessionPracticeIdx = (_sessionPracticeIdx - 1 + Math.max(list.length, 1)) % Math.max(list.length, 1);
   _sessionPracticeAnswerState = null;
   renderSessionWords();
@@ -5273,18 +5287,22 @@ function prevSessionWord() {
 
 function answerSessionWordMC(selected, correct) {
   if (_sessionPracticeAnswerState) return;
-  _sessionPracticeAnswerState = { selected: selected, correct: selected === correct };
+  const isCorrect = selected === correct;
+  _sessionPracticeAnswerState = { selected: selected, correct: isCorrect };
   renderSessionWords();
+  setTimeout(function() {
+    if (_sessionPracticeAnswerState) nextSessionWord();
+  }, isCorrect ? 1000 : 1600);
 }
 
 function markSessionWordKnown() {
   if (typeof readingTexts === 'undefined') return;
   const t = readingTexts[_currentReadingIndex()];
-  const list = _unknownWordsSorted().filter(function(item) { return item.word.readingId === t.id; });
+  const list = _getSessionPracticeList(t);
   if (!list.length) { closeSessionPractice(); return; }
   const cur = list[_sessionPracticeIdx];
-  if (cur) clearUnknownWord(cur.word.nl || cur.key);
-  const newList = _unknownWordsSorted().filter(function(item) { return item.word.readingId === t.id; });
+  if (cur && cur.word.readingId === t.id) clearUnknownWord(cur.word.nl || cur.key);
+  const newList = _getSessionPracticeList(t);
   if (!newList.length) { closeSessionPractice(); return; }
   if (_sessionPracticeIdx >= newList.length) _sessionPracticeIdx = 0;
   _sessionPracticeAnswerState = null;
@@ -5318,6 +5336,19 @@ function renderMijnWoorden() {
 }
 
 // ── Practice session ─────────────────────────────────────────────────────────
+
+// Returns marked words for the reading PLUS the text's own vocabulary list,
+// so the practice always has something even when nothing was manually marked.
+function _getSessionPracticeList(t) {
+  const marked = _unknownWordsSorted().filter(function(item) { return item.word.readingId === t.id; });
+  if (!t.vocabulary || !t.vocabulary.length) return marked;
+  const seen = new Set(marked.map(function(item) { return (item.word.nl || item.key).toLowerCase(); }));
+  const vocabItems = t.vocabulary
+    .filter(function(v) { return v.nl && v.en && !seen.has(v.nl.toLowerCase()); })
+    .map(function(v) { return { key: v.nl, word: { nl: v.nl, en: v.en, readingId: t.id } }; });
+  return marked.concat(vocabItems);
+}
+
 let _practiceUnknownActive = false;
 let _practiceUnknownIdx = 0;
 let _practiceUnknownAnswerState = null; // null | {selected, correct}
@@ -5362,8 +5393,12 @@ function prevPracticeWord() {
 
 function answerPracticeWordMC(selected, correct) {
   if (_practiceUnknownAnswerState) return;
-  _practiceUnknownAnswerState = { selected: selected, correct: selected === correct };
+  const isCorrect = selected === correct;
+  _practiceUnknownAnswerState = { selected: selected, correct: isCorrect };
   renderUnknownWords();
+  setTimeout(function() {
+    if (_practiceUnknownAnswerState) nextPracticeWord();
+  }, isCorrect ? 1000 : 1600);
 }
 
 function markPracticeKnown() {
