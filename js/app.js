@@ -860,10 +860,12 @@ function showFeedback(correct, answer) {
   const box = document.getElementById('ex-feedback');
   if (correct) {
     box.className = 'feedback-box show success';
-    box.innerHTML = '✓ Correct! <span class="answer">' + answer + '</span>';
+    box.innerHTML = '✓ Correct! <span class="answer">' + answer + '</span> <span style="font-size:0.8em;opacity:0.7">(tik om verder te gaan)</span>';
+    box.onclick = function() { box.onclick = null; nextSentence(); };
   } else {
     box.className = 'feedback-box show error';
     box.innerHTML = '✗ Niet helemaal. Het juiste antwoord: <span class="answer">' + answer + '</span>';
+    box.onclick = null;
   }
 }
 
