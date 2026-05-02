@@ -2972,21 +2972,28 @@ function answerDeHet(choice) {
   const reasonHtml = w.reason
     ? `<div class="dh-reason">🇳🇱 ${w.reason}${w.reasonEn ? `<br>🇬🇧 ${w.reasonEn}` : ''}</div>`
     : '';
+  const fb = document.getElementById('dh-feedback');
   if (correct) {
     chosenBtn.className = 'dehet-btn selected-correct';
     dhCorrect++;
-    document.getElementById('dh-feedback').innerHTML = '✓ Correct! <strong>' + w.article + ' ' + w.word + '</strong>' + reasonHtml;
-    document.getElementById('dh-feedback').className = 'dehet-feedback correct';
+    fb.innerHTML = '✓ Correct! <strong>' + w.article + ' ' + w.word + '</strong>' + reasonHtml +
+      '<span style="font-size:0.8em;opacity:0.7;display:block;margin-top:4px">(tik om verder te gaan)</span>';
+    fb.className = 'dehet-feedback correct';
+    fb.style.cursor = 'pointer';
+    fb.onclick = function() { fb.onclick = null; fb.style.cursor = ''; nextDeHet(); };
+    setTimeout(function() { if (fb.onclick) { fb.onclick = null; fb.style.cursor = ''; nextDeHet(); } }, 1000);
   } else {
     chosenBtn.className = 'dehet-btn selected-wrong';
     correctBtn.className = 'dehet-btn reveal-correct';
     dhWrong++;
-    document.getElementById('dh-feedback').innerHTML = '✗ Fout. Het is: <strong>' + w.article + ' ' + w.word + '</strong>' + reasonHtml;
-    document.getElementById('dh-feedback').className = 'dehet-feedback wrong';
+    fb.innerHTML = '✗ Fout. Het is: <strong>' + w.article + ' ' + w.word + '</strong>' + reasonHtml;
+    fb.className = 'dehet-feedback wrong';
+    fb.onclick = null;
+    fb.style.cursor = '';
+    document.getElementById('dh-next-btn').style.display = 'inline-flex';
   }
   document.getElementById('dh-correct').textContent = dhCorrect;
   document.getElementById('dh-wrong').textContent = dhWrong;
-  document.getElementById('dh-next-btn').style.display = 'inline-flex';
 }
 
 function nextDeHet() {
