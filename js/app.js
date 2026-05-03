@@ -676,7 +676,7 @@ let exInputMode = 'type';  // 'type' | 'tiles'
 let tilePool = [], tileBuilt = [];
 
 function normalize(s) {
-  return s.trim().toLowerCase();
+  return s.trim().toLowerCase().replace(/\.$/, '');
 }
 
 // ── Hint ──────────────────────────────────────────────────────────────────────
