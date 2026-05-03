@@ -2980,12 +2980,9 @@ function answerDeHet(choice) {
   if (correct) {
     chosenBtn.className = 'dehet-btn selected-correct';
     dhCorrect++;
-    fb.innerHTML = '✓ Correct! <strong>' + w.article + ' ' + w.word + '</strong>' + reasonHtml +
-      '<span style="font-size:0.8em;opacity:0.7;display:block;margin-top:4px">(tik om verder te gaan)</span>';
+    fb.innerHTML = '✓ Correct! <strong>' + w.article + ' ' + w.word + '</strong>' + reasonHtml;
     fb.className = 'dehet-feedback correct';
-    fb.style.cursor = 'pointer';
-    fb.onclick = function() { fb.onclick = null; fb.style.cursor = ''; nextDeHet(); };
-    setTimeout(function() { if (fb.onclick) { fb.onclick = null; fb.style.cursor = ''; nextDeHet(); } }, 1000);
+    setTimeout(function() { nextDeHet(); }, 1000);
   } else {
     chosenBtn.className = 'dehet-btn selected-wrong';
     correctBtn.className = 'dehet-btn reveal-correct';
