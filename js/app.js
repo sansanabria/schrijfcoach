@@ -363,6 +363,7 @@ function _loadUnitProgress() {
 
 function _saveUnitProgress() {
   _lsSet(UNIT_PROGRESS_KEY, JSON.stringify(unitProgress));
+  syncSchedulePush();
 }
 
 function _ensureUP(n) {
@@ -615,6 +616,7 @@ let _currentSentenceFilter = 'all';
 
 function _saveFlags() {
   _lsSet(FLAGS_KEY, JSON.stringify(sentenceFlags));
+  syncSchedulePush();
 }
 
 function _refreshFlaggedViews() {
@@ -909,6 +911,7 @@ function skipSentence() {
     if (!sentenceStats[s.nl]) sentenceStats[s.nl] = { c: 0, w: 0 };
     sentenceStats[s.nl].w++;
     _lsSet(STATS_KEY, JSON.stringify(sentenceStats));
+    syncSchedulePush();
   }
 }
 
@@ -1014,6 +1017,7 @@ function updateSRS(nl, correct) {
   entry.nextReview = next.toISOString();
   _lsSet(SRS_KEY, JSON.stringify(srsData));
   updateDueBadge();
+  syncSchedulePush();
 }
 
 function updateDueBadge() {
@@ -3122,6 +3126,7 @@ function saveProgress() {
   _lsSet(STORAGE_KEY, JSON.stringify(data));
   showToast('✓ Voortgang opgeslagen!');
   updateSaveDate(data.savedAt);
+  clearTimeout(_syncTimer); _syncPush();
   const btn = document.getElementById('save-btn');
   btn.classList.add('saved');
   setTimeout(() => btn.classList.remove('saved'), 1500);
@@ -3285,6 +3290,7 @@ function _goNextUnitStep(fromTab) {
 function markGrammarTopicRead(id) {
   grammarReadData[id] = true;
   _lsSet(GRAMMAR_READ_KEY, JSON.stringify(grammarReadData));
+  syncSchedulePush();
   // Update the button in place
   const btn = document.querySelector(`[data-gtread="${id}"]`);
   if (btn) {
@@ -4161,6 +4167,7 @@ function _unknownWords() {
 
 function _saveUnknownWords(map) {
   _lsSet(UNKNOWN_WORDS_KEY, JSON.stringify(map));
+  syncSchedulePush();
 }
 
 function _normalizeWord(w) {
