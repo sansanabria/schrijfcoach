@@ -27,6 +27,39 @@ function _lsRemove(key) {
   try { localStorage.removeItem(key); } catch (e) { _logError('lsRemove:' + key, e); }
 }
 
+// ─── MISTAKES TRACKING ───────────────────────────────────────────────────────
+
+const MISTAKES_KEY = 'schrijfcoach_mistakes';
+
+function _getMistakes() {
+  try { return JSON.parse(_lsGet(MISTAKES_KEY)) || { dehet: {}, vocab: {}, verbMeaning: {} }; }
+  catch (e) { return { dehet: {}, vocab: {}, verbMeaning: {} }; }
+}
+function _saveMistakes(m) { _lsSet(MISTAKES_KEY, JSON.stringify(m)); }
+
+function _addMistake(cat, key, data) {
+  const m = _getMistakes();
+  if (!m[cat]) m[cat] = {};
+  const prev = m[cat][key] || { ...data, wrongCount: 0 };
+  prev.wrongCount = (prev.wrongCount || 0) + 1;
+  prev.lastSeen = Date.now();
+  m[cat][key] = prev;
+  _saveMistakes(m);
+}
+function _clearMistake(cat, key) {
+  const m = _getMistakes();
+  if (m[cat]) { delete m[cat][key]; _saveMistakes(m); }
+}
+function _mistakeCount(cat) {
+  return Object.keys(_getMistakes()[cat] || {}).length;
+}
+function _sentenceMistakeCount() {
+  return sentences.filter(s => { const st = sentenceStats[s.nl]; return st && st.w > 0; }).length;
+}
+function _totalMistakeCount() {
+  return _mistakeCount('dehet') + _mistakeCount('vocab') + _mistakeCount('verbMeaning') + _sentenceMistakeCount();
+}
+
 // ─── ACTIVE SENTENCES (overrideable by localStorage) ─────────────────────────
 
 let sentences = [...defaultSentences];
@@ -163,6 +196,8 @@ function renderHome() {
     _setStat('home-stat-grammatica', grammarStat);
   }
   _setStat('home-stat-leerplan', '4 niveaus · 18 units');
+  const totalErr = _totalMistakeCount();
+  _setStat('home-stat-fouten', totalErr > 0 ? totalErr + ' fouten om te oefenen' : '✓ Geen fouten');
   _setStat('home-stat-zinnen', sentences.length + ' zinnen totaal');
   const flagCount = Object.values(sentenceFlags).filter(f => f.starred).length;
   const editStat = sentences.length + ' zinnen' + (flagCount ? ' · ' + flagCount + ' gemarkeerd' : '');
@@ -181,6 +216,154 @@ function renderHome() {
     if (desc) desc.textContent = (todayText.topicEmoji || '') + ' ' + todayText.title;
     _setStat('home-stat-lezen', todayText.level + ' · ≈ ' + todayText.readMinutes + ' min');
   }
+}
+
+// ─── MISTAKES REPORT & PRACTICE ──────────────────────────────────────────────
+
+function renderMistakesReport() {
+  const panel = document.getElementById('mistakes-report-panel');
+  if (!panel) return;
+  const m = _getMistakes();
+  const dehetItems = Object.values(m.dehet || {}).sort((a, b) => b.wrongCount - a.wrongCount);
+  const vocabItems = Object.values(m.vocab || {}).sort((a, b) => b.wrongCount - a.wrongCount);
+  const verbItems  = Object.values(m.verbMeaning || {}).sort((a, b) => b.wrongCount - a.wrongCount);
+  const sentItems  = sentences
+    .filter(s => { const st = sentenceStats[s.nl]; return st && st.w > 0; })
+    .sort((a, b) => {
+      const stA = sentenceStats[a.nl], stB = sentenceStats[b.nl];
+      return (stB.w - stB.c) - (stA.w - stA.c);
+    })
+    .slice(0, 30);
+
+  const total = dehetItems.length + vocabItems.length + verbItems.length + sentItems.length;
+  if (total === 0) {
+    panel.innerHTML = `<div class="mistakes-empty">✓ Geen fouten gevonden — goed bezig!</div>`;
+    return;
+  }
+
+  function section(title, titleEn, items, renderItem, practiceBtn) {
+    if (!items.length) return '';
+    return `
+      <div class="mistakes-section">
+        <div class="mistakes-section-header">
+          <span class="mistakes-section-title">${title} <span class="mistakes-section-en">· ${titleEn}</span></span>
+          <span class="mistakes-section-count">${items.length}</span>
+          ${practiceBtn}
+        </div>
+        <div class="mistakes-list">
+          ${items.map(renderItem).join('')}
+        </div>
+      </div>`;
+  }
+
+  const dehetSection = section('De / Het', 'Articles', dehetItems,
+    w => `<div class="mistake-item">
+      <span class="mistake-answer"><strong>${w.article}</strong> ${w.word}</span>
+      <span class="mistake-en">${w.en}</span>
+      <span class="mistake-count">${w.wrongCount}×</span>
+      <button class="mistake-clear-btn" onclick="_clearMistake('dehet','${w.word.replace(/'/g,"\\'")}');renderMistakesReport();renderHome()">✕</button>
+    </div>`,
+    dehetItems.length ? `<button class="btn btn-primary mistakes-practice-btn" onclick="practiceDeHetMistakes()">Oefen →</button>` : '');
+
+  const vocabSection = section('Woordenschat', 'Vocabulary', vocabItems,
+    w => `<div class="mistake-item">
+      <span class="mistake-answer"><strong>${w.nl}</strong></span>
+      <span class="mistake-en">${w.en}</span>
+      <span class="mistake-count">${w.wrongCount}×</span>
+      <button class="mistake-clear-btn" onclick="_clearMistake('vocab','${w.nl.replace(/'/g,"\\'")}');renderMistakesReport();renderHome()">✕</button>
+    </div>`,
+    vocabItems.length ? `<button class="btn btn-primary mistakes-practice-btn" onclick="practiceVocabMistakes()">Oefen →</button>` : '');
+
+  const verbSection = section('Werkwoorden', 'Verb meanings', verbItems,
+    v => `<div class="mistake-item">
+      <span class="mistake-answer"><strong>${v.inf}</strong></span>
+      <span class="mistake-en">${v.meaning}</span>
+      <span class="mistake-count">${v.wrongCount}×</span>
+      <button class="mistake-clear-btn" onclick="_clearMistake('verbMeaning','${v.inf.replace(/'/g,"\\'")}');renderMistakesReport();renderHome()">✕</button>
+    </div>`,
+    verbItems.length ? `<button class="btn btn-primary mistakes-practice-btn" onclick="practiceVerbMistakes()">Oefen →</button>` : '');
+
+  const sentSection = section('Zinnen', 'Sentences', sentItems,
+    s => { const st = sentenceStats[s.nl]; return `<div class="mistake-item mistake-item--sentence">
+      <span class="mistake-answer">${s.nl}</span>
+      <span class="mistake-en">${s.en}</span>
+      <span class="mistake-count">${st.w} fout / ${st.c} goed</span>
+    </div>`; },
+    sentItems.length ? `<button class="btn btn-primary mistakes-practice-btn" onclick="practiceSentenceMistakes()">Oefen →</button>` : '');
+
+  panel.innerHTML = `
+    <div class="mistakes-report">
+      <div class="mistakes-report-header">
+        <span class="mistakes-total">${total} fouten om te oefenen</span>
+        <button class="btn btn-secondary" style="font-size:0.8rem" onclick="clearAllMistakes()">Alles wissen</button>
+      </div>
+      ${dehetSection}${vocabSection}${verbSection}${sentSection}
+    </div>`;
+}
+
+function clearAllMistakes() {
+  _saveMistakes({ dehet: {}, vocab: {}, verbMeaning: {} });
+  renderMistakesReport();
+  renderHome();
+}
+
+function practiceDeHetMistakes() {
+  const words = Object.values(_getMistakes().dehet || {});
+  if (!words.length) return;
+  dhOrder = words.map(w => ({ word: w.word, article: w.article, en: w.en || '', level: 'A1', topic: 'fouten' }));
+  dhIdx = 0; dhCorrect = 0; dhWrong = 0;
+  document.getElementById('dh-correct').textContent = 0;
+  document.getElementById('dh-wrong').textContent = 0;
+  switchTab('dehet');
+  loadDeHet();
+}
+
+function practiceVocabMistakes() {
+  const words = Object.values(_getMistakes().vocab || {});
+  if (!words.length) return;
+  _vpList = _shuffleArray([...words]);
+  _vpIdx = 0; _vpCorrect = 0; _vpWrong = 0;
+  switchTab('woordenschat');
+  document.getElementById('vocab-grid-area').style.display = 'none';
+  document.getElementById('vocab-practice-area').style.display = '';
+  _renderVpCard();
+}
+
+function practiceVerbMistakes() {
+  const infSet = new Set(Object.keys(_getMistakes().verbMeaning || {}));
+  if (!infSet.size) return;
+  const indices = verbs.map((v, i) => i).filter(i => infSet.has(verbs[i].inf));
+  if (!indices.length) return;
+  showVerbMeaningQuiz();
+  vquizOrder = _shuffleArray([...indices]);
+  vquizIdx = 0; vquizCorrect = 0; vquizWrong = 0;
+  document.getElementById('vquiz-correct').textContent = '✓ 0';
+  document.getElementById('vquiz-wrong').textContent   = '✗ 0';
+  _renderQuizCard();
+}
+
+function practiceSentenceMistakes() {
+  const wrong = sentences
+    .filter(s => { const st = sentenceStats[s.nl]; return st && st.w > 0; })
+    .sort((a, b) => {
+      const stA = sentenceStats[a.nl], stB = sentenceStats[b.nl];
+      return (stB.w - stB.c) - (stA.w - stA.c);
+    });
+  if (!wrong.length) return;
+  activeSentences = wrong;
+  exIdx = 0;
+  switchTab('oefening');
+  loadSentence();
+}
+
+function toggleMistakesPanel() {
+  const panel = document.getElementById('mistakes-report-panel');
+  if (!panel) return;
+  const isVisible = panel.style.display !== 'none';
+  panel.style.display = isVisible ? 'none' : '';
+  if (!isVisible) renderMistakesReport();
+  const toggle = document.getElementById('mistakes-toggle-arrow');
+  if (toggle) toggle.textContent = isVisible ? '›' : '‹';
 }
 
 function _mergeGrammarMeta(nl, level, en) {
@@ -2585,6 +2768,7 @@ function _renderQuizCard() {
 function _pickQuizOption(btn, isCorrect) {
   if (vquizLocked) return;
   vquizLocked = true;
+  const v = verbs[vquizOrder[vquizIdx]];
 
   // Highlight all buttons
   document.querySelectorAll('.vquiz-option').forEach(b => {
@@ -2596,12 +2780,14 @@ function _pickQuizOption(btn, isCorrect) {
   if (isCorrect) {
     btn.classList.add('vquiz-opt-correct');
     vquizCorrect++;
+    _clearMistake('verbMeaning', v.inf);
     document.getElementById('vquiz-correct').textContent = '✓ ' + vquizCorrect;
     setTimeout(() => { vquizIdx++; _renderQuizCard(); }, 600);
   } else {
     btn.classList.remove('vquiz-opt-wrong-dim');
     btn.classList.add('vquiz-opt-wrong');
     vquizWrong++;
+    _addMistake('verbMeaning', v.inf, { inf: v.inf, meaning: v.meaning || '' });
     document.getElementById('vquiz-wrong').textContent = '✗ ' + vquizWrong;
     const nextBtn = document.createElement('button');
     nextBtn.className = 'btn btn-primary vquiz-next-btn';
@@ -3035,6 +3221,7 @@ function answerDeHet(choice) {
   if (correct) {
     chosenBtn.className = 'dehet-btn selected-correct';
     dhCorrect++;
+    _clearMistake('dehet', w.word);
     fb.innerHTML = '✓ Correct! <strong>' + w.article + ' ' + w.word + '</strong>' + reasonHtml;
     fb.className = 'dehet-feedback correct';
     setTimeout(function() { nextDeHet(); }, 1000);
@@ -3042,6 +3229,7 @@ function answerDeHet(choice) {
     chosenBtn.className = 'dehet-btn selected-wrong';
     correctBtn.className = 'dehet-btn reveal-correct';
     dhWrong++;
+    _addMistake('dehet', w.word, { word: w.word, article: w.article, en: w.en || '' });
     fb.innerHTML = '✗ Fout. Het is: <strong>' + w.article + ' ' + w.word + '</strong>' + reasonHtml;
     fb.className = 'dehet-feedback wrong';
     fb.onclick = null;
@@ -4146,7 +4334,13 @@ function gradeVocabMC(idx) {
     clicked.style.borderColor = '#dc2626';
   }
 
-  if (isCorrect) _vpCorrect++; else _vpWrong++;
+  if (isCorrect) {
+    _vpCorrect++;
+    _clearMistake('vocab', w.nl);
+  } else {
+    _vpWrong++;
+    _addMistake('vocab', w.nl, { nl: w.nl, en: w.en, level: w.level, topic: w.topic, type: w.type || '' });
+  }
   _vpIdx++;
   setTimeout(() => _renderVpCard(), isCorrect ? 600 : 1200);
 }

@@ -1591,6 +1591,27 @@ details[open] .tense-ref-summary::before { transform:rotate(90deg); }
 }
 .home-card--accent { border-left: 3px solid var(--accent); }
 .home-card--muted { background: var(--surface2); }
+.home-card--mistakes { border-left: 3px solid var(--error); }
+
+/* ── Mistakes report ─────────────────────────────────────────────────────── */
+.mistakes-report { padding: 4px 0 12px; }
+.mistakes-report-header { display:flex; align-items:center; justify-content:space-between; padding: 8px 4px 12px; }
+.mistakes-total { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+.mistakes-empty { text-align:center; padding: 24px; color: var(--success); font-weight: 600; }
+.mistakes-section { margin-bottom: 16px; }
+.mistakes-section-header { display:flex; align-items:center; gap:8px; padding: 8px 4px; border-bottom: 1px solid var(--border); margin-bottom: 8px; }
+.mistakes-section-title { font-size: 0.85rem; font-weight: 700; color: var(--text); flex:1; }
+.mistakes-section-en { font-weight: 400; color: var(--text-muted); }
+.mistakes-section-count { background: var(--error-bg); color: var(--error); font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+.mistakes-practice-btn { font-size: 0.8rem; padding: 4px 12px; }
+.mistakes-list { display:flex; flex-direction:column; gap:4px; }
+.mistake-item { display:flex; align-items:center; gap:8px; padding: 7px 4px; border-bottom: 1px solid var(--border-faint, #f0f0f0); font-size: 0.85rem; flex-wrap: wrap; }
+.mistake-item--sentence { flex-direction: column; align-items: flex-start; gap: 2px; }
+.mistake-answer { font-weight: 600; color: var(--text); flex: 1; min-width: 0; }
+.mistake-en { color: var(--text-muted); font-size: 0.8rem; flex: 1; min-width: 0; }
+.mistake-count { font-size: 0.75rem; font-weight: 700; color: var(--error); background: var(--error-bg); padding: 1px 7px; border-radius: 10px; white-space: nowrap; }
+.mistake-clear-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.85rem; padding: 2px 4px; border-radius: 4px; line-height: 1; }
+.mistake-clear-btn:hover { color: var(--error); background: var(--error-bg); }
 
 .home-card--group { cursor: default; flex-wrap: wrap; }
 .home-card--group:hover { transform: none; box-shadow: var(--shadow-sm); border-color: var(--border); }

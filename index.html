@@ -202,6 +202,25 @@
           </div>
         </div>
 
+        <!-- Mijn fouten card + expandable report -->
+        <div class="home-section">
+          <div class="home-section-label">Mijn voortgang</div>
+          <div class="home-cards">
+            <button class="home-card home-card--mistakes" onclick="toggleMistakesPanel()">
+              <div class="home-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              </div>
+              <div class="home-card-body">
+                <div class="home-card-title">Mijn fouten <span class="home-card-en">· My mistakes</span></div>
+                <div class="home-card-desc">Overzicht van fouten in alle oefeningen</div>
+                <div class="home-card-stats" id="home-stat-fouten"></div>
+              </div>
+              <div class="home-card-arrow" id="mistakes-toggle-arrow">›</div>
+            </button>
+          </div>
+          <div id="mistakes-report-panel" style="display:none"></div>
+        </div>
+
         <div class="home-section">
           <div class="home-section-label">Leren &amp; Referentie</div>
           <div class="home-cards">
