@@ -759,8 +759,10 @@ function setInputMode(mode) {
 
 function loadTiles(s) {
   tileBuilt = [];
-  const trailingPunct = s.nl.match(/[?!]+$/)?.[0] || null;
-  tilePool = s.nl.split(' ')
+  const nl = s.nl.trim();
+  const punctMatch = nl.match(/[?!]+$/);
+  const trailingPunct = punctMatch ? punctMatch[0] : null;
+  tilePool = nl.split(' ')
     .map(w => w.replace(/[.,!?]+$/, ''))
     .filter(Boolean);
   if (trailingPunct) tilePool.push(trailingPunct);
@@ -771,10 +773,10 @@ function loadTiles(s) {
 function renderTiles() {
   document.getElementById('tile-built').innerHTML =
     tileBuilt.length
-      ? tileBuilt.map((w, i) => `<button class="tile tile-built" onclick="removeTile(${i})">${w}</button>`).join('')
+      ? tileBuilt.map((w, i) => `<button class="tile tile-built${/^[?!]+$/.test(w) ? ' tile-punct' : ''}" onclick="removeTile(${i})">${w}</button>`).join('')
       : '<span class="tile-placeholder">Klik woorden om de zin te maken…</span>';
   document.getElementById('tile-pool').innerHTML =
-    tilePool.map((w, i) => `<button class="tile tile-pool" onclick="selectTile(${i})">${w}</button>`).join('');
+    tilePool.map((w, i) => `<button class="tile tile-pool${/^[?!]+$/.test(w) ? ' tile-punct' : ''}" onclick="selectTile(${i})">${w}</button>`).join('');
 }
 
 function selectTile(i) {

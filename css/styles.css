@@ -488,6 +488,8 @@ main {
 .tile.tile-pool:hover:not(:disabled) { background: var(--primary-faint); border-color: var(--primary); color: var(--primary); transform: translateY(-1px); box-shadow: var(--shadow); }
 .tile.tile-built { background: var(--primary); border-color: var(--primary); color: #fff; }
 .tile.tile-built:hover:not(:disabled) { background: var(--primary-light); }
+.tile.tile-punct { font-weight: 700; font-size: 1.1rem; padding: 7px 16px; color: var(--accent); border-color: var(--accent); }
+.tile.tile-built.tile-punct { background: var(--accent); border-color: var(--accent); color: #fff; }
 .tile:disabled { opacity: 0.55; cursor: default; transform: none; }
 
 /* ── VERB PRACTICE ───────────────────────────────────────────────────── */
