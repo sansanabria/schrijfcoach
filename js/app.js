@@ -759,10 +759,12 @@ function setInputMode(mode) {
 
 function loadTiles(s) {
   tileBuilt = [];
-  tilePool  = s.nl.split(' ')
+  const trailingPunct = s.nl.match(/[?!]+$/)?.[0] || null;
+  tilePool = s.nl.split(' ')
     .map(w => w.replace(/[.,!?]+$/, ''))
-    .filter(Boolean)
-    .sort(() => Math.random() - 0.5);
+    .filter(Boolean);
+  if (trailingPunct) tilePool.push(trailingPunct);
+  tilePool = tilePool.sort(() => Math.random() - 0.5);
   renderTiles();
 }
 
@@ -982,7 +984,7 @@ function checkAnswer() {
   const s = activeSentences[exIdx];
   let val, correct, correctAnswer;
   if (exInputMode === 'tiles') {
-    val = tileBuilt.join(' ');
+    val = tileBuilt.join(' ').replace(/ ([?!])$/, '$1');
     correct = normalize(val) === normalize(s.nl);
     correctAnswer = s.nl;
   } else if (exInputMode === 'fillblank') {
