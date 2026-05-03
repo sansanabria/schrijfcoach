@@ -1334,6 +1334,7 @@ details[open] .tense-ref-summary::before { transform:rotate(90deg); }
 .vquiz-opt-correct { border-color:#28a745 !important; background:#d4edda !important; color:#155724 !important; }
 .vquiz-opt-wrong { border-color:#dc3545 !important; background:#f8d7da !important; color:#721c24 !important; }
 .vquiz-opt-wrong-dim { opacity:0.45; }
+.vquiz-next-btn { margin-top:16px; }
 .vquiz-done { text-align:center; padding:32px 16px; }
 .vquiz-done-title { font-size:1.3rem; font-weight:700; margin-bottom:8px; }
 .vquiz-done-score { font-size:1rem; color:var(--text-muted); margin-bottom:20px; }
@@ -1363,6 +1364,10 @@ details[open] .tense-ref-summary::before { transform:rotate(90deg); }
 .vex-tbl-input.correct { border-color:var(--success); background:var(--success-bg); color:var(--success); }
 .vex-tbl-input.incorrect { border-color:var(--error); background:var(--error-bg); color:var(--error); }
 .vex-inline-hint { display:block; font-size:0.7rem; color:var(--error); margin-top:2px; }
+.vex-result-bar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:14px; padding:10px 14px; border-radius:8px; font-weight:500; font-size:0.9rem; }
+.vex-result-bar span { flex:1; }
+.vex-result-correct { background:var(--success-bg); color:var(--success); border:1px solid #C3E4D2; }
+.vex-result-wrong { background:var(--error-bg); color:var(--error); border:1px solid #F5C5C5; }
 
 /* Select mode — option buttons */
 .vex-opt-row { display:flex; flex-wrap:wrap; gap:6px; }

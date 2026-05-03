@@ -1627,6 +1627,97 @@ const defaultSentences = [
     en: "Both the unions and the employers' organisations have agreed to the deal.",
     level: "B2", stype: "Hoofdzin (vtt)", gtopic: "tijden",
     srule: "zowel...als... = correlerende voegwoorden voor dubbele onderwerpen; VTT: hebben + vd." },
+
+  // ── Scheidbare werkwoorden ─────────────────────────────────────────────────
+  { nl: "Ik sta elke dag om zeven uur op.",
+    en: "I get up every day at seven o'clock.",
+    level: "A2", stype: "Hoofdzin", gtopic: "scheidbare-werkwoorden",
+    srule: "opstaan → prefix 'op' naar het einde · opstaan → prefix 'op' moves to the end: S → V → ... → op" },
+
+  { nl: "Hij wast elke avond af.",
+    en: "He does the dishes every evening.",
+    level: "A2", stype: "Hoofdzin", gtopic: "scheidbare-werkwoorden",
+    srule: "afwassen → prefix 'af' naar het einde · afwassen → prefix 'af' moves to the end: S → V → ... → af" },
+
+  { nl: "De trein komt om negen uur aan.",
+    en: "The train arrives at nine o'clock.",
+    level: "A2", stype: "Hoofdzin", gtopic: "scheidbare-werkwoorden",
+    srule: "aankomen → prefix 'aan' naar het einde · aankomen → prefix 'aan' moves to the end" },
+
+  { nl: "Ze legt de grammaticaregel duidelijk uit.",
+    en: "She explains the grammar rule clearly.",
+    level: "A2", stype: "Hoofdzin", gtopic: "scheidbare-werkwoorden",
+    srule: "uitleggen → prefix 'uit' naar het einde · uitleggen → prefix 'uit' moves to the end: S → V → O → uit" },
+
+  { nl: "Neem je je jas mee?",
+    en: "Are you taking your coat along?",
+    level: "A2", stype: "Ja/nee-vraagzin", gtopic: "scheidbare-werkwoorden",
+    srule: "meenemen → inversie + prefix 'mee' naar het einde · inversion: V → S → O → mee" },
+
+  { nl: "Wij komen morgen terug.",
+    en: "We are coming back tomorrow.",
+    level: "A2", stype: "Hoofdzin", gtopic: "scheidbare-werkwoorden",
+    srule: "terugkomen → prefix 'terug' naar het einde · terugkomen → prefix 'terug' moves to the end" },
+
+  { nl: "Ze spreken dinsdag af.",
+    en: "They make an appointment for Tuesday.",
+    level: "A2", stype: "Hoofdzin", gtopic: "scheidbare-werkwoorden",
+    srule: "afspreken → prefix 'af' naar het einde · afspreken → prefix 'af' moves to the end" },
+
+  { nl: "Bel me straks op!",
+    en: "Call me later!",
+    level: "A2", stype: "Gebiedende wijs", gtopic: "scheidbare-werkwoorden",
+    srule: "opbellen (imp.) → prefix 'op' naar het einde · imperative: V → O → op" },
+
+  { nl: "Het feest gaat gewoon door.",
+    en: "The party is going ahead as planned.",
+    level: "A2", stype: "Hoofdzin", gtopic: "scheidbare-werkwoorden",
+    srule: "doorgaan → prefix 'door' naar het einde · doorgaan → prefix 'door' moves to the end" },
+
+  { nl: "Ze komt elke avond laat thuis.",
+    en: "She comes home late every evening.",
+    level: "A2", stype: "Hoofdzin", gtopic: "scheidbare-werkwoorden",
+    srule: "thuiskomen → prefix 'thuis' naar het einde · thuiskomen → prefix 'thuis' moves to the end" },
+
+  { nl: "Ik wil morgen vroeg opstaan.",
+    en: "I want to get up early tomorrow.",
+    level: "A2", stype: "Hoofdzin", gtopic: "scheidbare-werkwoorden",
+    srule: "modaal + scheidbaar: infinitief blijft samen aan het einde · modal + separable: infinitive stays together: S → V(modal) → tijdsbep. → opstaan" },
+
+  { nl: "Ze moet haar kamer opruimen.",
+    en: "She has to tidy up her room.",
+    level: "A2", stype: "Hoofdzin", gtopic: "scheidbare-werkwoorden",
+    srule: "modaal + scheidbaar: infinitief blijft samen · modal + separable: infinitive stays together: S → V(modal) → O → opruimen" },
+
+  { nl: "Ik ben gisteren vroeg opgestaan.",
+    en: "I got up early yesterday.",
+    level: "A2", stype: "Hoofdzin (vtt)", gtopic: "scheidbare-werkwoorden",
+    srule: "VTT: ge- tussen prefix en VD: op + ge + staan = opgestaan · perfect: ge- goes between prefix and stem: opgestaan" },
+
+  { nl: "Heb jij haar opgebeld?",
+    en: "Did you call her?",
+    level: "A2", stype: "Hoofdzin (vtt)", gtopic: "scheidbare-werkwoorden",
+    srule: "VTT: ge- tussen prefix en VD: op + ge + beld = opgebeld · perfect: op + ge + stem = opgebeld" },
+
+  { nl: "De leraar heeft de regel goed uitgelegd.",
+    en: "The teacher explained the rule well.",
+    level: "A2", stype: "Hoofdzin (vtt)", gtopic: "scheidbare-werkwoorden",
+    srule: "VTT: ge- tussen prefix en VD: uit + ge + legd = uitgelegd · perfect: uit + ge + stem = uitgelegd" },
+
+  { nl: "Ze weet dat hij altijd laat opstaat.",
+    en: "She knows that he always gets up late.",
+    level: "B1", stype: "Hoofdzin + bijzin", gtopic: "scheidbare-werkwoorden",
+    srule: "bijzin: scheidbaar werkwoord blijft samen aan het einde · sub. clause: separable verb stays together at the end: ...dat S → tijdsbep. → opsta-at" },
+
+  { nl: "Hij zei dat ze het raam hadden opengelaten.",
+    en: "He said that they had left the window open.",
+    level: "B1", stype: "Hoofdzin + bijzin", gtopic: "scheidbare-werkwoorden",
+    srule: "bijzin + VTT: scheidbaar VD blijft samen aan het einde · sub. clause + perfect: separable past participle stays together: ...dat S → open-ge-laten → had(den)" },
+
+  { nl: "Het is belangrijk dat je je afval goed weggooit.",
+    en: "It is important that you throw away your rubbish properly.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "scheidbare-werkwoorden",
+    srule: "bijzin: weggooien → samen aan het einde · sub. clause: weggooien stays together at the end: dat S → O → weggooit" },
 ];
 
 // ─── VERBS ────────────────────────────────────────────────────────────────────

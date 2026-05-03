@@ -418,6 +418,7 @@ const exGrammarMap = {
   tijden:     s => s.gtopic === 'tijden'   || s.stype === 'Hoofdzin (vtt)',
   omte:       s => s.gtopic === 'omte'     || (s.stype || '').includes('om…te'),
   passief:    s => s.gtopic === 'passief'  || s.stype === 'Lijdende vorm',
+  'scheidbare-werkwoorden': s => s.gtopic === 'scheidbare-werkwoorden',
 };
 
 function _buildPool() {
@@ -2173,6 +2174,34 @@ function checkVerbTable() {
     hint.textContent = inp.dataset.correct;
     inp.after(hint);
   });
+
+  const nextTenseIdx = (vexTenseIdx + 1) % verbTenses.length;
+  const fb = document.getElementById('vex-feedback');
+  if (wrong > 0) {
+    fb.innerHTML = `
+      <div class="vex-result-bar vex-result-wrong">
+        <span>✗ ${wrong} fout${wrong > 1 ? 'en' : ''} — bekijk de antwoorden hierboven</span>
+        <button class="btn btn-secondary" onclick="_vexRetry()">↺ Probeer opnieuw</button>
+        <button class="btn btn-primary" onclick="jumpToTense(${nextTenseIdx})">Volgende tijd →</button>
+      </div>`;
+  } else if (correct > 0) {
+    fb.innerHTML = `
+      <div class="vex-result-bar vex-result-correct">
+        <span>✓ Alles goed!</span>
+        <button class="btn btn-primary" onclick="jumpToTense(${nextTenseIdx})">Volgende tijd →</button>
+      </div>`;
+  }
+}
+
+function _vexRetry() {
+  document.querySelectorAll('.vex-tbl-input.incorrect').forEach(inp => {
+    inp.value = '';
+    inp.className = 'conj-input vex-tbl-input';
+    const hint = inp.nextElementSibling;
+    if (hint && hint.classList.contains('vex-inline-hint')) hint.remove();
+  });
+  document.getElementById('vex-feedback').innerHTML = '';
+  document.querySelector('.vex-tbl-input')?.focus();
 }
 
 function showVerbTableAnswers() {
@@ -2202,6 +2231,29 @@ function vexSelectOption(btn) {
   if (ok) vexCorrect++; else vexWrong++;
   document.getElementById('vex-correct').textContent = '✓ ' + vexCorrect;
   document.getElementById('vex-wrong').textContent   = '✗ ' + vexWrong;
+
+  // check if all rows are answered
+  const allContainers = document.querySelectorAll('.vex-opts');
+  const allDone = [...allContainers].every(c => c.querySelector('.opt-correct, .opt-wrong'));
+  if (!allDone) return;
+
+  const rowWrong = [...allContainers].filter(c => c.querySelector('.opt-wrong')).length;
+  const nextTenseIdx = (vexTenseIdx + 1) % verbTenses.length;
+  const fb = document.getElementById('vex-feedback');
+  if (rowWrong > 0) {
+    fb.innerHTML = `
+      <div class="vex-result-bar vex-result-wrong">
+        <span>✗ ${rowWrong} fout${rowWrong > 1 ? 'en' : ''}</span>
+        <button class="btn btn-secondary" onclick="loadVerbExercise()">↺ Probeer opnieuw</button>
+        <button class="btn btn-primary" onclick="jumpToTense(${nextTenseIdx})">Volgende tijd →</button>
+      </div>`;
+  } else {
+    fb.innerHTML = `
+      <div class="vex-result-bar vex-result-correct">
+        <span>✓ Alles goed!</span>
+        <button class="btn btn-primary" onclick="jumpToTense(${nextTenseIdx})">Volgende tijd →</button>
+      </div>`;
+  }
 }
 
 // ─── VERB SELECTOR ────────────────────────────────────────────────────────────
@@ -2545,15 +2597,18 @@ function _pickQuizOption(btn, isCorrect) {
     btn.classList.add('vquiz-opt-correct');
     vquizCorrect++;
     document.getElementById('vquiz-correct').textContent = '✓ ' + vquizCorrect;
+    setTimeout(() => { vquizIdx++; _renderQuizCard(); }, 600);
   } else {
     btn.classList.remove('vquiz-opt-wrong-dim');
     btn.classList.add('vquiz-opt-wrong');
     vquizWrong++;
     document.getElementById('vquiz-wrong').textContent = '✗ ' + vquizWrong;
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'btn btn-primary vquiz-next-btn';
+    nextBtn.textContent = 'Volgende →';
+    nextBtn.onclick = () => { vquizIdx++; _renderQuizCard(); };
+    document.querySelector('.vquiz-flashcard').appendChild(nextBtn);
   }
-
-  // Auto-advance after a short delay (correct answers only)
-  if (isCorrect) setTimeout(() => { vquizIdx++; _renderQuizCard(); }, 600);
 }
 
 // ─── NIET & GEEN EXERCISES ─────────────────────────────────────────────────────
@@ -2975,7 +3030,7 @@ function answerDeHet(choice) {
   const correctBtn = document.getElementById('dh-' + w.article);
   const reasonHtml = w.reason
     ? `<div class="dh-reason">🇳🇱 ${w.reason}${w.reasonEn ? `<br>🇬🇧 ${w.reasonEn}` : ''}</div>`
-    : '';
+    : `<div class="dh-reason dh-reason-none">Geen speciale regel — leer het uit je hoofd.<br><em>No specific rule — must be memorised.</em></div>`;
   const fb = document.getElementById('dh-feedback');
   if (correct) {
     chosenBtn.className = 'dehet-btn selected-correct';
@@ -3723,7 +3778,8 @@ function renderLessonPlan() {
 
   const grammarFilterLabels = {
     niet:'niet & geen', geen:'niet & geen', inversie:'Inversie', vraagzin:'Vraagzinnen',
-    bijzin:'Bijzinnen', gebiedende:'Gebiedende wijs', tijden:'Tijden', omte:'om…te', passief:'Passief'
+    bijzin:'Bijzinnen', gebiedende:'Gebiedende wijs', tijden:'Tijden', omte:'om…te', passief:'Passief',
+    'scheidbare-werkwoorden':'Scheidbare ww.'
   };
 
   container.innerHTML = `

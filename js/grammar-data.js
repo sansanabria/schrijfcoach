@@ -416,6 +416,87 @@ const grammarTopicsData = [
     tipEn: "Mnemonic: ZIJN = movement, exceptions, change of state. Everything else = HEBBEN — and 'everything else' is most verbs!"
   },
 
+  {
+    id: "telwoorden", level: "A1", filter: "overig",
+    title: "Telwoorden", titleEn: "Numbers",
+    intro: "Telwoorden zijn getallen. Er zijn hoofdtelwoorden (één, twee, drie…) voor hoeveelheden en rangtelwoorden (eerste, tweede, derde…) voor volgorde.",
+    introEn: "Numbers come in two kinds: cardinal numbers (één, twee, drie…) for quantities and ordinal numbers (eerste, tweede, derde…) for order.",
+    tables: [
+      {
+        heading: "Hoofdtelwoorden 1–20", headingEn: "Cardinal numbers 1–20",
+        cols: ["#", "NL", "#", "NL"],
+        rows: [
+          ["1", "één", "11", "elf"],
+          ["2", "twee", "12", "twaalf"],
+          ["3", "drie", "13", "dertien"],
+          ["4", "vier", "14", "veertien"],
+          ["5", "vijf", "15", "vijftien"],
+          ["6", "zes", "16", "zestien"],
+          ["7", "zeven", "17", "zeventien"],
+          ["8", "acht", "18", "achttien"],
+          ["9", "negen", "19", "negentien"],
+          ["10", "tien", "20", "twintig"]
+        ]
+      },
+      {
+        heading: "Tientallen & grote getallen", headingEn: "Tens & large numbers",
+        cols: ["Number", "Dutch", "Pattern"],
+        rows: [
+          ["30", "dertig", ""],
+          ["40", "veertig", ""],
+          ["50", "vijftig", ""],
+          ["60", "zestig", ""],
+          ["70", "zeventig", ""],
+          ["80", "tachtig", "afwijkend — onthouden!"],
+          ["90", "negentig", ""],
+          ["100", "honderd", ""],
+          ["1 000", "duizend", ""],
+          ["1 000 000", "een miljoen", ""]
+        ]
+      },
+      {
+        heading: "Samengestelde getallen", headingEn: "Compound numbers",
+        cols: ["Number", "Dutch", "Note"],
+        rows: [
+          ["21", "eenentwintig", "eenheid + en + tiental"],
+          ["35", "vijfendertig", ""],
+          ["48", "achtenveertig", ""],
+          ["100", "honderd", ""],
+          ["101", "honderdenéén", "honderd + en + 1"],
+          ["250", "tweehonderdvijftig", ""]
+        ]
+      },
+      {
+        heading: "Rangtelwoorden", headingEn: "Ordinal numbers",
+        cols: ["#", "Ordinal", "#", "Ordinal"],
+        rows: [
+          ["1e", "eerste", "8e", "achtste"],
+          ["2e", "tweede", "9e", "negende"],
+          ["3e", "derde", "10e", "tiende"],
+          ["4e", "vierde", "11e", "elfde"],
+          ["5e", "vijfde", "12e", "twaalfde"],
+          ["6e", "zesde", "20e", "twintigste"],
+          ["7e", "zevende", "100e", "honderdste"]
+        ]
+      }
+    ],
+    rules: [
+      { nl: "Getallen 13–19: eindigen op -tien. Uitzondering: dertien (niet drietien).", en: "Numbers 13–19 end in -tien. Exception: dertien (not drietien)." },
+      { nl: "Tientallen: eindigen op -tig. Uitzondering: tachtig (80, niet achtig).", en: "Tens end in -tig. Exception: tachtig (80, not achtig)." },
+      { nl: "Samengestelde getallen: eenheid + en + tiental (vijfendertig, niet dertigvijf).", en: "Compound numbers: unit + en + ten (vijfendertig, not dertigvijf)." },
+      { nl: "Rangtelwoorden 1e–19e: stam + -de. Uitzondering: eerste, tweede, derde.", en: "Ordinals 1st–19th: stem + -de. Exceptions: eerste, tweede, derde." },
+      { nl: "Rangtelwoorden 20e en hoger: + -ste (twintigste, honderdste).", en: "Ordinals 20th and above: + -ste (twintigste, honderdste)." }
+    ],
+    examples: [
+      { nl: "Ik woon op de derde verdieping.", en: "I live on the third floor.", note: "rangtelwoord" },
+      { nl: "Er zijn tweehonderdvijftig studenten in de school.", en: "There are two hundred and fifty students in the school." },
+      { nl: "Ze heeft drie katten en twee honden.", en: "She has three cats and two dogs." },
+      { nl: "Mijn verjaardag is op de eenentwintigste maart.", en: "My birthday is on the twenty-first of March." }
+    ],
+    tip: "Onthoud de uitzonderingen: eerste (niet éénde), tweede (niet twéde), derde (niet driedde), tachtig (niet achtig).",
+    tipEn: "Remember the exceptions: eerste, tweede, derde (not éénde/twéde/driedde), and tachtig not achtig."
+  },
+
   // ══ A2 ══════════════════════════════════════════════════════════════════════
 
   {
@@ -681,6 +762,72 @@ const grammarTopicsData = [
       { slot: 'blij zijn met',  q: 'blij met',       ex: 'Ze is blij MET haar cadeau.' },
     ],
     stype: 'Hoofdzin',
+  },
+
+  {
+    id: "scheidbare-werkwoorden", level: "A2", filter: "scheidbare-werkwoorden",
+    title: "Scheidbare werkwoorden", titleEn: "Separable verbs",
+    intro: "Scheidbare werkwoorden bestaan uit een prefix (voorvoegsel) + basiswerkwoord. In een hoofdzin schuift het prefix naar het einde. In een bijzin blijft het werkwoord samen.",
+    introEn: "Separable verbs consist of a prefix + base verb. In a main clause the prefix moves to the end. In a subordinate clause the verb stays together.",
+    tables: [
+      {
+        heading: "Veelgebruikte prefixen", headingEn: "Common prefixes",
+        cols: ["Prefix", "Werkwoord", "Betekenis / Meaning", "Voorbeeld / Example"],
+        rows: [
+          ["op-", "opstaan", "to get up", "Ik sta om 7 uur op."],
+          ["af-", "afwassen", "to do the dishes", "Hij wast elke avond af."],
+          ["aan-", "aankomen", "to arrive", "De trein komt om 9 uur aan."],
+          ["uit-", "uitleggen", "to explain", "Ze legt de regel uit."],
+          ["mee-", "meenemen", "to take along", "Neem je je jas mee?"],
+          ["terug-", "terugkomen", "to come back", "Wij komen morgen terug."],
+          ["door-", "doorgaan", "to continue / go on", "Het feest gaat door."],
+          ["op-", "opbellen", "to call (phone)", "Bel me straks op!"],
+          ["af-", "afspreken", "to make an appointment", "We spreken dinsdag af."],
+          ["thuis-", "thuiskomen", "to come home", "Ze komt laat thuis."]
+        ]
+      },
+      {
+        heading: "Woordvolgorde in 4 situaties", headingEn: "Word order in 4 situations",
+        cols: ["Situation", "Rule", "Example", "English"],
+        rows: [
+          ["Hoofdzin (OTT/OVT)", "prefix → einde zin", "Ik sta vroeg op.", "I get up early."],
+          ["Vraagzin (inversie)", "prefix → einde zin", "Sta jij altijd zo vroeg op?", "Do you always get up so early?"],
+          ["Bijzin", "prefix + stam samen aan het einde", "…dat ik vroeg opsta.", "…that I get up early."],
+          ["Perfectum (VTT)", "ge- tussen prefix en VD", "Ik ben vroeg opgestaan.", "I got up early."],
+          ["Modaal + inf.", "infinitief blijft samen", "Ik wil vroeg opstaan.", "I want to get up early."],
+          ["Imperatiefvorm", "prefix → einde", "Sta op! / Neem je jas mee!", "Get up! / Take your coat along!"]
+        ]
+      },
+      {
+        heading: "Voltooid deelwoord — ge- tussen prefix en VD", headingEn: "Past participle — ge- between prefix and stem",
+        cols: ["Infinitief", "Voltooid deelwoord", "Voorbeeld", "English"],
+        rows: [
+          ["opstaan", "opgestaan", "Ik ben vroeg opgestaan.", "I got up early."],
+          ["afwassen", "afgewassen", "Hij heeft afgewassen.", "He did the dishes."],
+          ["meenemen", "meegenomen", "Ze heeft haar boek meegenomen.", "She took her book along."],
+          ["opbellen", "opgebeld", "Heb jij haar opgebeld?", "Did you call her?"],
+          ["uitleggen", "uitgelegd", "De leraar heeft het uitgelegd.", "The teacher explained it."],
+          ["aankomen", "aangekomen", "De bus is aangekomen.", "The bus has arrived."]
+        ]
+      }
+    ],
+    rules: [
+      { nl: "Hoofdzin: prefix schuift naar het einde van de zin.", en: "Main clause: prefix moves to the end of the sentence." },
+      { nl: "Bijzin: werkwoord blijft samen aan het einde (prefix + stam): 'dat hij vroeg opstaat'.", en: "Sub. clause: verb stays together at the end (prefix + stem): 'dat hij vroeg opstaat'." },
+      { nl: "Perfectum: ge- wordt ingevoegd tussen prefix en VD: op + ge + staan → opgestaan.", en: "Perfect tense: ge- is inserted between prefix and past participle: op + ge + staan → opgestaan." },
+      { nl: "Met modale werkwoorden (willen, kunnen, moeten…): infinitief blijft samen: 'Ik moet vroeg opstaan'.", en: "With modal verbs: the infinitive stays together: 'Ik moet vroeg opstaan'." },
+      { nl: "Let op: niet alle werkwoorden met een prefix zijn scheidbaar. 'Begrijpen' en 'bezoeken' zijn NIET scheidbaar.", en: "Note: not all prefixed verbs are separable. 'Begrijpen' and 'bezoeken' are NOT separable." }
+    ],
+    examples: [
+      { nl: "Ik sta elke dag om zeven uur op.", en: "I get up every day at seven o'clock.", note: "hoofdzin — prefix einde" },
+      { nl: "Ze weet dat hij altijd laat opstaat.", en: "She knows that he always gets up late.", note: "bijzin — samen aan het einde" },
+      { nl: "Hij heeft zijn fiets meegenomen.", en: "He took his bike along.", note: "perfectum — ge- tussen prefix en VD" },
+      { nl: "Bel je me straks op?", en: "Will you call me later?", note: "vraagzin — prefix einde" },
+      { nl: "Ik wil morgen vroeg opstaan.", en: "I want to get up early tomorrow.", note: "modaal — infinitief samen" },
+      { nl: "De trein komt om tien uur aan.", en: "The train arrives at ten o'clock." }
+    ],
+    tip: "Ezelsbruggetje: in een hoofdzin 'pakt' de prefix zijn koffer en vertrekt naar het einde van de zin. In een bijzin blijft de prefix thuis (bij het werkwoord).",
+    tipEn: "Memory trick: in a main clause the prefix 'packs its bags' and moves to the end. In a sub. clause the prefix stays home (attached to the verb)."
   },
 
   // ══ B1 ══════════════════════════════════════════════════════════════════════
@@ -1157,31 +1304,33 @@ const lessonPlanData = {
         },
         {
           unit: 6, title: "Complexe zinnen", titleEn: "Complex sentences", weeks: "Week 6",
-          grammarTopics: ["onderschikkende-vgw-1", "er-systeem", "voorzetsels-a2"],
+          grammarTopics: ["scheidbare-werkwoorden", "onderschikkende-vgw-1", "er-systeem", "voorzetsels-a2"],
           verbRange: [253, 301],
           verbFocus: ["oplossen", "opbellen", "aankomen", "uitgaan", "vertrekken", "meenemen", "terugkomen", "afspreken", "opstaan", "instappen", "uitleggen", "opruimen"],
           vocabTopics: [{level:"A2",topic:"reizen"},{level:"A2",topic:"voorzetsels"},{level:"A2",topic:"communicatie"},{level:"A2",topic:"dagelijks"},{level:"A2",topic:"werkwoorden"}],
-          sentenceFilter: "bijzin",
+          sentenceFilter: "scheidbare-werkwoorden",
           readingTexts: ['r-a2-001', 'r-a2-002', 'r-a2-003', 'r-a2-004'],
           activities: [
-            { type: "grammatica", desc: "Dag 1–2: Bestudeer onderschikkende voegwoorden (omdat, als, dat, terwijl, toen) — werkwoord naar het einde!", descEn: "Day 1–2: Study subordinating conjunctions (omdat, als, dat, terwijl, toen) — verb to the end!" },
-            { type: "grammatica", desc: "Dag 3–4: Leer het er-systeem: er als onderwerp, er + voorzetsel, er van plaats, er van hoeveelheid.", descEn: "Day 3–4: Learn the er system: er as subject, er + preposition, er of place, er of quantity." },
-            { type: "grammatica", desc: "Dag 4–5: Bestudeer A2-voorzetsels: tijdsvoorzetsels (sinds, tijdens, na) en abstracte (vanwege, ondanks).", descEn: "Day 4–5: Study A2 prepositions: time prepositions (sinds, tijdens, na) and abstract (vanwege, ondanks)." },
-            { type: "werkwoorden", desc: "Dag 2–5: Oefen scheidbare werkwoorden in bijzinnen: 'Ik bel op' vs. 'omdat ik opbel'. Oefen 10 werkwoorden.", descEn: "Day 2–5: Practise separable verbs in subordinate clauses: 'Ik bel op' vs. 'omdat ik opbel'. Practise 10 verbs." },
-            { type: "zinnen", desc: "Dag 4–6: Oefen bijzinnen met omdat, als, dat en terwijl. Combineer met er-constructies.", descEn: "Day 4–6: Practise subordinate clauses with omdat, als, dat and terwijl. Combine with er constructions." },
-            { type: "woordenschat", desc: "Dag 5–7: Leer 40 reis- en communicatiewoorden. Oefen voorzetsels in context.", descEn: "Day 5–7: Learn 40 travel and communication words. Practise prepositions in context." }
+            { type: "grammatica", desc: "Dag 1–2: Bestudeer scheidbare werkwoorden: prefix schuift naar het einde in een hoofdzin; prefix + stam blijven samen in een bijzin.", descEn: "Day 1–2: Study separable verbs: prefix moves to the end in a main clause; prefix + stem stay together in a sub. clause." },
+            { type: "grammatica", desc: "Dag 2–3: Leer het voltooid deelwoord van scheidbare werkwoorden: ge- tussen prefix en VD (op+ge+staan = opgestaan). Oefen 10 werkwoorden.", descEn: "Day 2–3: Learn the past participle of separable verbs: ge- between prefix and stem (op+ge+staan = opgestaan). Practise 10 verbs." },
+            { type: "grammatica", desc: "Dag 3–4: Bestudeer onderschikkende voegwoorden (omdat, als, dat, terwijl, toen) — werkwoord naar het einde!", descEn: "Day 3–4: Study subordinating conjunctions (omdat, als, dat, terwijl, toen) — verb to the end!" },
+            { type: "grammatica", desc: "Dag 4–5: Leer het er-systeem en A2-voorzetsels (sinds, tijdens, vanwege, ondanks).", descEn: "Day 4–5: Learn the er system and A2 prepositions (sinds, tijdens, vanwege, ondanks)." },
+            { type: "werkwoorden", desc: "Dag 2–4: Oefen scheidbare werkwoorden (opstaan, opbellen, meenemen, uitleggen, afspreken) in OTT, OVT en VTT.", descEn: "Day 2–4: Practise separable verbs (opstaan, opbellen, meenemen, uitleggen, afspreken) in OTT, OVT and VTT." },
+            { type: "zinnen", desc: "Dag 3–5: Oefen scheidbare werkwoorden in Zinnen oefenen → filter 'Scheidbare ww.' — focus op prefix-naar-einde en VTT-vormen.", descEn: "Day 3–5: Practise separable verbs in Zinnen oefenen → filter 'Scheidbare ww.' — focus on prefix-to-end and perfect tense forms." },
+            { type: "zinnen", desc: "Dag 5–7: Oefen bijzinnen met omdat, als en dat. Let op: in bijzin blijft scheidbaar werkwoord samen aan het einde.", descEn: "Day 5–7: Practise sub. clauses with omdat, als and dat. Note: in a sub. clause the separable verb stays together at the end." },
+            { type: "woordenschat", desc: "Dag 6–7: Leer 40 reis- en communicatiewoorden. Oefen voorzetsels in context.", descEn: "Day 6–7: Learn 40 travel and communication words. Practise prepositions in context." }
           ],
           goals: ["Bijzinnen vormen met 5 onderschikkende voegwoorden (correcte woordvolgorde).", "4 functies van 'er' herkennen en toepassen.", "10 scheidbare werkwoorden correct gebruiken in hoofd- en bijzinnen.", "A2-voorzetsels van tijd en abstractie gebruiken."],
           goalsEn: ["Form subordinate clauses with 5 subordinating conjunctions (correct word order).", "Recognise and apply 4 functions of 'er'.", "Correctly use 10 separable verbs in main and subordinate clauses.", "Use A2 prepositions of time and abstraction."]
         },
         {
           unit: 7, title: "A2 Herhaling & consolidatie", titleEn: "A2 Review & consolidation", weeks: "Week 7",
-          grammarTopics: ["object-vnw", "formeel-u", "telwoorden", "bijvoeglijk-nw", "vergrotende-trap", "nevenschikkende-vgw", "onderschikkende-vgw-1", "er-systeem", "voorzetsels-a2"],
+          grammarTopics: ["object-vnw", "formeel-u", "telwoorden", "bijvoeglijk-nw", "vergrotende-trap", "nevenschikkende-vgw", "onderschikkende-vgw-1", "er-systeem", "voorzetsels-a2", "scheidbare-werkwoorden"],
           verbRange: [0, 349],
           verbFocus: ["werken", "studeren", "solliciteren", "presenteren", "overleggen", "samenwerken", "verdienen", "zich voorstellen", "zich aanmelden", "vergaderen", "beoordelen", "organiseren"],
           vocabTopics: [{level:"A2",topic:"werk"},{level:"A2",topic:"onderwijs"},{level:"A2",topic:"geld"},{level:"A2",topic:"hobby"},{level:"A2",topic:"gezondheid"}],
           sentenceFilter: "all",
-          readingTexts: ['r-a2-001', 'r-a2-002', 'r-a2-003', 'r-a2-004'],
+          readingTexts: ['r-001', 'r-002', 'r-003', 'r-004', 'r-a2-001', 'r-a2-002', 'r-a2-003', 'r-a2-004', 'r-a2-005', 'r-a2-006', 'r-a2-007', 'r-a2-008'],
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Leer voorwerpvoornaamwoorden (mij/me, jou/je, hem, haar, ons, hen/hun) en formeel 'u' (u, uw).", descEn: "Day 1–2: Learn object pronouns (mij/me, jou/je, hem, haar, ons, hen/hun) and formal 'u' (u, uw)." },
             { type: "grammatica", desc: "Dag 2–3: Herhaal telwoorden: rangtelwoorden (eerste, tweede), breuken, percentages, data.", descEn: "Day 2–3: Revise numbers: ordinal numbers (eerste, tweede), fractions, percentages, dates." },
@@ -1222,7 +1371,7 @@ const lessonPlanData = {
           verbRange: [376, 401],
           verbFocus: ["vertellen", "beschrijven", "herinneren", "vergeten", "beleven", "meemaken", "ontdekken", "ervaren", "overkomen", "herkennen", "zich realiseren", "opmerken"],
           vocabTopics: [{level:"B1",topic:"uitdrukkingen"},{level:"B1",topic:"verbinders"},{level:"B1",topic:"cultuur"},{level:"B1",topic:"reizen"},{level:"B1",topic:"collocaties"},{level:"B1",topic:"bijwoord"}],
-          sentenceFilter: "tijden",
+          sentenceFilter: "bijzin",
           readingTexts: ['r-b1-001', 'r-b1-002', 'r-b1-003', 'r-b1-004'],
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Leer betrekkelijke bijzinnen: die (de-woorden), dat (het-woorden), wat (hele zinnen). Oefen 10 voorbeelden.", descEn: "Day 1–2: Learn relative clauses: die (de words), dat (het words), wat (whole sentences). Practise 10 examples." },
@@ -1278,7 +1427,7 @@ const lessonPlanData = {
           verbFocus: ["zijn", "hebben", "worden", "kunnen", "moeten", "willen", "zullen", "gaan", "komen", "laten", "doen", "blijven"],
           vocabTopics: [{level:"B1",topic:"economie"},{level:"B1",topic:"karakter"},{level:"B1",topic:"gezondheid"},{level:"B1",topic:"sport"},{level:"B1",topic:"relaties"},{level:"B1",topic:"werk"}],
           sentenceFilter: "all",
-          readingTexts: ['r-b1-c-001', 'r-b1-c-002', 'r-b1-c-003', 'r-b1-c-004'],
+          readingTexts: ['r-b1-001', 'r-b1-002', 'r-b1-003', 'r-b1-004', 'r-b1-c-001', 'r-b1-c-002', 'r-b1-c-003', 'r-b1-c-004'],
           activities: [
             { type: "werkwoorden", desc: "Dag 1–2: Herhalingsronde alle tijden: oefen werkwoorden 340–466 in OTT, OVT, VTT, VVT. Test 20 werkwoorden.", descEn: "Day 1–2: Revision round all tenses: practise verbs 340–466 in OTT, OVT, VTT, VVT. Test 20 verbs." },
             { type: "grammatica", desc: "Dag 2–3: Herhaal alle B1-grammatica: passief, betrekkelijke bijzinnen, indirecte rede, conditionaal. Maak per onderwerp 3 zinnen.", descEn: "Day 2–3: Revise all B1 grammar: passive, relative clauses, reported speech, conditional. Make 3 sentences per topic." },
