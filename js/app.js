@@ -2953,7 +2953,7 @@ function loadDeHet() {
   document.getElementById('dh-het').className = 'dehet-btn';
   document.getElementById('dh-de').disabled = false;
   document.getElementById('dh-het').disabled = false;
-  document.getElementById('dh-next-btn').style.display = 'none';
+  document.getElementById('dh-retry-btn').style.display = 'none';
   _dhUpdateRemaining();
 }
 
@@ -2994,7 +2994,7 @@ function answerDeHet(choice) {
     fb.className = 'dehet-feedback wrong';
     fb.onclick = null;
     fb.style.cursor = '';
-    document.getElementById('dh-next-btn').style.display = 'inline-flex';
+    document.getElementById('dh-retry-btn').style.display = 'inline-flex';
   }
   document.getElementById('dh-correct').textContent = dhCorrect;
   document.getElementById('dh-wrong').textContent = dhWrong;
@@ -3002,11 +3002,21 @@ function answerDeHet(choice) {
 
 function nextDeHet() {
   dhIdx++;
-  // Auto-mark de/het done when the full unit set has been completed
   if (activeUnit && dhUnitTopics && dhIdx >= dhOrder.length) {
     markUnitExercise(activeUnit.unit, 'dehet');
   }
-  loadDeHet(); // shows completion screen automatically when dhIdx >= dhOrder.length
+  loadDeHet();
+}
+
+function retryDeHet() {
+  const fb = document.getElementById('dh-feedback');
+  fb.textContent = '';
+  fb.className = 'dehet-feedback';
+  document.getElementById('dh-de').className = 'dehet-btn';
+  document.getElementById('dh-het').className = 'dehet-btn';
+  document.getElementById('dh-de').disabled = false;
+  document.getElementById('dh-het').disabled = false;
+  document.getElementById('dh-retry-btn').style.display = 'none';
 }
 
 // ─── EDIT SENTENCES ───────────────────────────────────────────────────────────
