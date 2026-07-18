@@ -1900,7 +1900,7 @@ details[open] .tense-ref-summary::before { transform:rotate(90deg); }
 /* ── Phone (≤480px) ──────────────────────────────────────────────────────── */
 @media (max-width: 480px) {
   /* Header compact */
-  .header-top { padding: 8px 10px; gap: 6px; }
+  .header-top { padding: 8px 10px; gap: 6px; flex-wrap: wrap; }
   .header-actions { gap: 4px; }
   .save-btn span { display: none; }
   h1 { font-size: 0.95rem; }
