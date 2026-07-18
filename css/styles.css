@@ -158,6 +158,9 @@ main {
   grid-template-columns: 1fr;
   gap: 20px;
 }
+/* Grid items default to min-width:auto, letting wide content (e.g. long
+   <select> options) blow the track past the viewport on phones. */
+.layout-grid > * { min-width: 0; }
 
 @media (max-width: 900px) {
   .layout-grid { grid-template-columns: 1fr; }
@@ -183,6 +186,9 @@ main {
   font-weight: 600;
   color: var(--text);
 }
+/* Card/section titles are real headings (h2/h3); strip UA heading margins */
+h2.card-title, h2.home-hero-title { margin: 0; }
+h3.home-section-label { margin-top: 0; }
 .card-body { padding: 22px; }
 
 /* ── LEVEL BADGE ─────────────────────────────────────────────────────── */
@@ -1645,6 +1651,9 @@ details[open] .tense-ref-summary::before { transform:rotate(90deg); }
 .home-card--muted .home-card-icon svg { stroke: var(--text-muted); }
 
 .home-card-body { flex: 1; min-width: 0; }
+/* Card internals are <span>s (divs are invalid inside <button>), so the
+   stacked parts need explicit block display. */
+.home-card-title, .home-card-desc, .home-card-stats { display: block; }
 .home-card-title { font-size: 0.9rem; font-weight: 700; color: var(--text); }
 .home-card-desc { font-size: 0.73rem; color: var(--text-muted); margin-top: 2px; line-height: 1.35; }
 
@@ -1785,7 +1794,7 @@ details[open] .tense-ref-summary::before { transform:rotate(90deg); }
 .unit-bar-label { color: var(--text-muted); font-weight: 500; white-space: nowrap; }
 .unit-bar-select { border: 1px solid var(--border); border-radius: 6px;
   padding: 4px 8px; font-size: 0.82rem; background: var(--bg); color: var(--text);
-  cursor: pointer; max-width: 260px; }
+  cursor: pointer; max-width: 260px; min-width: 0; }
 .unit-bar-select:focus { outline: none; border-color: var(--primary); }
 .unit-bar-chip { display: inline-block; padding: 2px 10px; border-radius: 99px;
   font-size: 0.78rem; font-weight: 700; white-space: nowrap; }
@@ -1916,7 +1925,9 @@ details[open] .tense-ref-summary::before { transform:rotate(90deg); }
 
   /* Exercise */
   .exercise-progress { font-size: 0.7rem; }
-  .exercise-input { font-size: 0.9rem; }
+  /* ≥16px stops iOS Safari from auto-zooming when an input gets focus,
+     now that the viewport meta no longer blocks user zoom. */
+  .exercise-input, .vocab-search, .ex-comment-input { font-size: 1rem; }
   .btn { padding: 8px 14px; font-size: 0.78rem; }
 
   /* Tile mode */
@@ -2085,27 +2096,7 @@ details[open] .tense-ref-summary::before { transform:rotate(90deg); }
   border-radius: 2px;
 }
 .reading-word::after {
-  content: attr(data-en);
-  position: absolute;
-  bottom: calc(100% + 6px);
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--text);
-  color: #fff;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 0.73rem;
-  font-family: 'DM Sans', sans-serif;
-  font-style: normal;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.15s;
-  z-index: 20;
-}
-.reading-word:hover::after,
-.reading-word:focus::after {
-  opacity: 1;
+  content: none;
 }
 
 /* Every word in the reading is wrapped in .tts-word so the TTS engine can
@@ -2334,6 +2325,27 @@ details[open] .tense-ref-summary::before { transform:rotate(90deg); }
   color: var(--text-muted);
   margin-bottom: 14px;
 }
+.practice-context {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+  background: var(--primary-faint);
+  border-left: 3px solid var(--primary-light, var(--primary));
+  padding: 6px 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.practice-context strong {
+  color: var(--primary);
+  font-style: normal;
+  font-weight: 700;
+}
+.practice-context .practice-listen {
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  vertical-align: middle;
+}
 .practice-word {
   font-family: 'Playfair Display', serif;
   font-size: 2.2rem;
@@ -2343,6 +2355,13 @@ details[open] .tense-ref-summary::before { transform:rotate(90deg); }
   display: flex;
   align-items: center;
   gap: 10px;
+}
+.practice-word--small {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  margin-bottom: 10px;
 }
 .vocab-practice-nl {
   font-family: 'Playfair Display', serif;
@@ -2461,6 +2480,15 @@ details[open] .tense-ref-summary::before { transform:rotate(90deg); }
 .reading-grammar-example {
   color: var(--text);
   margin-bottom: 4px;
+}
+.reading-grammar-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--primary);
+  opacity: 0.7;
+  margin-right: 4px;
 }
 .reading-grammar-explain {
   color: var(--text-muted);
@@ -2804,7 +2832,6 @@ html, body {
 
 /* Contain the reading word tooltip so it never widens the page */
 .reading-word { overflow: visible; }
-.reading-word::after { max-width: 200px; white-space: normal; text-align: center; }
 
 /* Floating hover tooltip for every word in the reading text */
 #reading-hover-tip {

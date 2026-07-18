@@ -2,7 +2,8 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Schrijfcoach — persoonlijke app om Nederlands te leren (A1–B2): zinnen oefenen, grammatica, werkwoorden, woordenschat en leesteksten." />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#1B3D7A" />
@@ -14,12 +15,32 @@
 </head>
 <body>
 
+<!-- ── ICON SPRITE ─────────────────────────────────────────────────────────
+     Every icon is defined once here and referenced with <svg><use href="#…">.
+     Stroke/fill styling stays on the referencing <svg> element. -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></symbol>
+  <symbol id="i-sync" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></symbol>
+  <symbol id="i-save" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+  <symbol id="i-checklist" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></symbol>
+  <symbol id="i-notebook" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></symbol>
+  <symbol id="i-language" viewBox="0 0 24 24"><path d="M5 8l6 6"/><path d="M4 14l6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="M22 22l-5-10-5 10"/><path d="M14 18h6"/></symbol>
+  <symbol id="i-book-open" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></symbol>
+  <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></symbol>
+  <symbol id="i-book-split" viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0112 4.5v15a2.5 2.5 0 01-2.5 2.5H4a2 2 0 01-2-2V4a2 2 0 012-2h5.5z"/><path d="M14.5 2A2.5 2.5 0 0012 4.5v15a2.5 2.5 0 002.5 2.5H20a2 2 0 002-2V4a2 2 0 00-2-2h-5.5z"/></symbol>
+  <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+  <symbol id="i-star-outline" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+</svg>
+
 <header>
   <div class="header-top">
     <div class="logo">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-pencil"/></svg>
     </div>
     <div class="header-text">
       <h1>Schrijfcoach</h1>
@@ -27,54 +48,49 @@
     </div>
     <div class="header-actions">
       <span class="save-date" id="save-date"></span>
-      <button class="sync-btn" id="sync-icon" onclick="syncShowSetup()" data-status="off" title="Sync instellen">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/>
-          <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/>
-        </svg>
+      <button class="sync-btn" id="sync-icon" onclick="syncShowSetup()" data-status="off" title="Sync instellen" aria-label="Sync instellen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-sync"/></svg>
       </button>
       <button class="save-btn" id="save-btn" onclick="saveProgress()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-save"/></svg>
         Opslaan
       </button>
     </div>
   </div>
-  <nav class="tab-nav">
+  <nav class="tab-nav" aria-label="Hoofdmenu">
     <button class="tab-btn active" data-tab="home" onclick="switchTab('home')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-home"/></svg>
       Home
     </button>
     <button class="tab-btn" data-tab="leerplan" onclick="switchTab('leerplan')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-checklist"/></svg>
       Leerplan
     </button>
     <button class="tab-btn" data-tab="grammatica" onclick="switchTab('grammatica')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-notebook"/></svg>
       Grammatica
     </button>
     <button class="tab-btn" data-tab="oefening" onclick="switchTab('oefening')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-pencil"/></svg>
       Zinnen oefenen
     </button>
     <button class="tab-btn" data-tab="werkwoorden" onclick="switchTab('werkwoorden')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6"/><path d="M4 14l6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="M22 22l-5-10-5 10"/><path d="M14 18h6"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-language"/></svg>
       Werkwoorden
     </button>
     <button class="tab-btn" data-tab="lezen" onclick="switchTab('lezen')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-book-open"/></svg>
       Lezen
     </button>
     <button class="tab-btn" data-tab="mijnwoorden" onclick="switchTab('mijnwoorden')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-bookmark"/></svg>
       Mijn woorden
     </button>
     <div class="tab-dropdown">
-      <button class="tab-btn tab-btn--dropdown" data-tab="onderwerp" onclick="toggleTabDropdown(event)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0112 4.5v15a2.5 2.5 0 01-2.5 2.5H4a2 2 0 01-2-2V4a2 2 0 012-2h5.5z"/><path d="M14.5 2A2.5 2.5 0 0012 4.5v15a2.5 2.5 0 002.5 2.5H20a2 2 0 002-2V4a2 2 0 00-2-2h-5.5z"/></svg>
+      <button class="tab-btn tab-btn--dropdown" data-tab="onderwerp" onclick="toggleTabDropdown(event)" aria-haspopup="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-book-split"/></svg>
         Per onderwerp
-        <svg class="tab-dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        <svg class="tab-dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><use href="#i-chevron-down"/></svg>
       </button>
       <div class="tab-dropdown-menu" id="tab-dropdown-menu">
         <button class="tab-dropdown-item" data-tab="dehet" onclick="switchTab('dehet'); closeTabDropdown();">De / Het</button>
@@ -82,818 +98,817 @@
       </div>
     </div>
     <button class="tab-btn" data-tab="woordenschat" onclick="switchTab('woordenschat')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-star"/></svg>
       Woordenschat
     </button>
     <button class="tab-btn" data-tab="zinnen" onclick="switchTab('zinnen')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-book-open"/></svg>
       Alle zinnen
     </button>
     <button class="tab-btn" data-tab="bewerken" onclick="switchTab('bewerken')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-edit"/></svg>
       Bewerken
     </button>
   </nav>
 </header>
 
+<!-- ── CONTENT PANELS ──────────────────────────────────────────────────────
+     One .panel per tab, in the same order as the nav above:
+     home · leerplan · grammatica · oefening · werkwoorden · lezen ·
+     mijnwoorden · dehet · ontkenning · woordenschat · zinnen · bewerken -->
 <main>
   <div class="layout-grid">
 
-    <!-- ── CONTENT PANELS ────────────────────────────────────────────── -->
-    <div>
+    <!-- HOME -->
+    <div id="panel-home" class="panel active">
 
-      <!-- HOME -->
-      <div id="panel-home" class="panel active">
-
-        <div class="home-hero">
-          <div class="home-hero-left">
-            <div class="home-hero-title">Welkom bij Schrijfcoach</div>
-            <div class="home-hero-sub">Nederlands leren · A1 tot B2</div>
+      <div class="home-hero">
+        <div class="home-hero-left">
+          <h2 class="home-hero-title">Welkom bij Schrijfcoach</h2>
+          <div class="home-hero-sub">Nederlands leren · A1 tot B2</div>
+        </div>
+        <div class="home-stats">
+          <div class="home-stat">
+            <span class="home-stat-num" id="home-sentences">0</span>
+            <span class="home-stat-label">Zinnen</span>
           </div>
-          <div class="home-stats">
-            <div class="home-stat">
-              <span class="home-stat-num" id="home-sentences">0</span>
-              <span class="home-stat-label">Zinnen</span>
-            </div>
-            <div class="home-stat-divider"></div>
-            <div class="home-stat">
-              <span class="home-stat-num" id="home-due">0</span>
-              <span class="home-stat-label">Te herhalen</span>
-            </div>
+          <div class="home-stat-divider"></div>
+          <div class="home-stat">
+            <span class="home-stat-num" id="home-due">0</span>
+            <span class="home-stat-label">Te herhalen</span>
           </div>
         </div>
+      </div>
 
-        <div id="home-continue-bar"></div>
+      <div id="home-continue-bar"></div>
 
+      <div class="home-section">
+        <h3 class="home-section-label">Oefenen</h3>
+        <div class="home-cards">
 
-        <div class="home-section">
-          <div class="home-section-label">Oefenen</div>
-          <div class="home-cards">
+          <button class="home-card home-card--accent" onclick="switchTab('oefening')">
+            <span class="home-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-pencil"/></svg>
+            </span>
+            <span class="home-card-body">
+              <span class="home-card-title">Zinnen oefenen</span>
+              <span class="home-card-desc">Vertaal zinnen EN→NL en oefen woordvolgorde</span>
+              <span class="home-card-stats" id="home-stat-oefening"></span>
+            </span>
+            <span class="home-card-arrow">›</span>
+          </button>
 
-            <button class="home-card home-card--accent" onclick="switchTab('oefening')">
-              <div class="home-card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-              </div>
-              <div class="home-card-body">
-                <div class="home-card-title">Zinnen oefenen</div>
-                <div class="home-card-desc">Vertaal zinnen EN→NL en oefen woordvolgorde</div>
-                <div class="home-card-stats" id="home-stat-oefening"></div>
-              </div>
-              <div class="home-card-arrow">›</div>
+          <button class="home-card" onclick="switchTab('werkwoorden')">
+            <span class="home-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-language"/></svg>
+            </span>
+            <span class="home-card-body">
+              <span class="home-card-title">Werkwoorden</span>
+              <span class="home-card-desc">Vervoegingen oefenen en verbvormen leren</span>
+              <span class="home-card-stats" id="home-stat-werkwoorden"></span>
+            </span>
+            <span class="home-card-arrow">›</span>
+          </button>
+
+          <button class="home-card" onclick="switchTab('lezen')">
+            <span class="home-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-book-open"/></svg>
+            </span>
+            <span class="home-card-body">
+              <span class="home-card-title">Lezen <span class="home-card-pill" id="home-lezen-pill"></span></span>
+              <span class="home-card-desc" id="home-lezen-desc">Dagelijkse leestekst van ~10 minuten</span>
+              <span class="home-card-stats" id="home-stat-lezen"></span>
+            </span>
+            <span class="home-card-arrow">›</span>
+          </button>
+
+          <div class="home-card home-card--group">
+            <span class="home-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-book-split"/></svg>
+            </span>
+            <span class="home-card-body">
+              <span class="home-card-title">Oefen per onderwerp</span>
+              <span class="home-card-desc">Kies een specifiek grammaticaonderwerp om te oefenen</span>
+              <span class="home-card-subs">
+                <button class="home-card-sub" onclick="switchTab('dehet')">
+                  <span class="home-card-sub-label">De / Het</span>
+                  <span class="home-card-sub-stat" id="home-stat-dehet"></span>
+                  <span class="home-card-sub-arrow">›</span>
+                </button>
+                <button class="home-card-sub" onclick="switchTab('ontkenning')">
+                  <span class="home-card-sub-label">Niet &amp; Geen</span>
+                  <span class="home-card-sub-arrow">›</span>
+                </button>
+              </span>
+            </span>
+          </div>
+
+          <button class="home-card" onclick="switchTab('woordenschat')">
+            <span class="home-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-star"/></svg>
+            </span>
+            <span class="home-card-body">
+              <span class="home-card-title">Woordenschat</span>
+              <span class="home-card-desc">Leer en herhaal nieuwe woorden per niveau</span>
+              <span class="home-card-stats" id="home-stat-woordenschat"></span>
+            </span>
+            <span class="home-card-arrow">›</span>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- Mijn fouten card + expandable report -->
+      <div class="home-section">
+        <h3 class="home-section-label">Mijn voortgang</h3>
+        <div class="home-cards">
+          <button class="home-card home-card--mistakes" onclick="toggleMistakesPanel()">
+            <span class="home-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-alert"/></svg>
+            </span>
+            <span class="home-card-body">
+              <span class="home-card-title">Mijn fouten <span class="home-card-en">· My mistakes</span></span>
+              <span class="home-card-desc">Overzicht van fouten in alle oefeningen</span>
+              <span class="home-card-stats" id="home-stat-fouten"></span>
+            </span>
+            <span class="home-card-arrow" id="mistakes-toggle-arrow">›</span>
+          </button>
+        </div>
+        <div id="mistakes-report-panel" style="display:none"></div>
+      </div>
+
+      <div class="home-section">
+        <h3 class="home-section-label">Leren &amp; Referentie</h3>
+        <div class="home-cards">
+
+          <button class="home-card" onclick="switchTab('grammatica')">
+            <span class="home-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-notebook"/></svg>
+            </span>
+            <span class="home-card-body">
+              <span class="home-card-title">Grammatica</span>
+              <span class="home-card-desc">Grammaticaregels A1–B2 met uitleg en tabellen</span>
+              <span class="home-card-stats" id="home-stat-grammatica"></span>
+            </span>
+            <span class="home-card-arrow">›</span>
+          </button>
+
+          <button class="home-card" onclick="switchTab('leerplan')">
+            <span class="home-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-checklist"/></svg>
+            </span>
+            <span class="home-card-body">
+              <span class="home-card-title">Leerplan</span>
+              <span class="home-card-desc">Studieplanning per sessie en niveau A1–B2</span>
+              <span class="home-card-stats" id="home-stat-leerplan"></span>
+            </span>
+            <span class="home-card-arrow">›</span>
+          </button>
+
+          <button class="home-card" onclick="switchTab('zinnen')">
+            <span class="home-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-book-open"/></svg>
+            </span>
+            <span class="home-card-body">
+              <span class="home-card-title">Alle zinnen</span>
+              <span class="home-card-desc">Bekijk en zoek alle oefenzinnen per niveau</span>
+              <span class="home-card-stats" id="home-stat-zinnen"></span>
+            </span>
+            <span class="home-card-arrow">›</span>
+          </button>
+
+          <button class="home-card home-card--muted" onclick="switchTab('bewerken')">
+            <span class="home-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-edit"/></svg>
+            </span>
+            <span class="home-card-body">
+              <span class="home-card-title">Bewerken</span>
+              <span class="home-card-desc">Voeg zinnen toe of pas bestaande zinnen aan</span>
+              <span class="home-card-stats" id="home-stat-bewerken"></span>
+            </span>
+            <span class="home-card-arrow">›</span>
+          </button>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- LEERPLAN -->
+    <div id="panel-leerplan" class="panel">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Leerplan Nederlands A1–B2 · Dutch Study Plan</h2>
+        </div>
+        <div class="card-body">
+          <div id="leerplan-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRAMMATICA -->
+    <div id="panel-grammatica" class="panel">
+      <div id="unit-bar-grammatica"></div>
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Grammatica · Grammar</h2>
+          <span class="badge badge-a1">A1 – B2</span>
+        </div>
+        <div class="card-body">
+          <p class="grammar-intro">Selecteer je niveau om de juiste grammatica te zien. · Select your level to see the right grammar content.</p>
+          <div class="filter-row" id="gt-level-filter">
+            <button class="filter-btn active" data-gtlevel="all" onclick="filterGrammarLevel('all',this)">Alles</button>
+            <button class="filter-btn a1-btn"  data-gtlevel="A1" onclick="filterGrammarLevel('A1',this)">A1</button>
+            <button class="filter-btn a2-btn"  data-gtlevel="A2" onclick="filterGrammarLevel('A2',this)">A2</button>
+            <button class="filter-btn b1-btn"  data-gtlevel="B1" onclick="filterGrammarLevel('B1',this)">B1</button>
+            <button class="filter-btn b2-btn"  data-gtlevel="B2" onclick="filterGrammarLevel('B2',this)">B2</button>
+          </div>
+          <div class="filter-row" id="gt-subtopic-filter" style="display:none; margin-top:6px;"></div>
+          <div id="grammar-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OEFENING -->
+    <div id="panel-oefening" class="panel">
+      <div id="unit-bar-oefening"></div>
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Zinnen oefenen</h2>
+          <span id="ex-badge" class="badge badge-a1">A1</span>
+        </div>
+        <div class="ex-mode-row">
+          <button class="ex-mode-btn active" data-mode="all" onclick="setExMode('all')">Alle zinnen</button>
+          <button class="ex-mode-btn" data-mode="errors" onclick="setExMode('errors')">Alleen fouten</button>
+          <button class="ex-mode-btn" data-mode="spaced" onclick="setExMode('spaced')">🔁 Herhaling <span id="due-badge" class="due-badge" style="display:none">0</span></button>
+          <span class="ex-mode-count" id="ex-mode-count"></span>
+        </div>
+        <div class="ex-filter-bar">
+          <div class="filter-row" id="ex-level-filter" style="display:none">
+            <span class="ex-filter-label">Niveau</span>
+            <button class="filter-btn active" data-exlevel="all" data-level="all" onclick="filterExLevel('all',this)">Alle</button>
+            <button class="filter-btn a1-btn" data-exlevel="A1"  data-level="A1"  onclick="filterExLevel('A1',this)">A1</button>
+            <button class="filter-btn a2-btn" data-exlevel="A2"  data-level="A2"  onclick="filterExLevel('A2',this)">A2</button>
+            <button class="filter-btn b1-btn" data-exlevel="B1"  data-level="B1"  onclick="filterExLevel('B1',this)">B1</button>
+            <button class="filter-btn b2-btn" data-exlevel="B2"  data-level="B2"  onclick="filterExLevel('B2',this)">B2</button>
+          </div>
+          <div class="filter-row" id="ex-grammar-filter">
+            <span class="ex-filter-label">Grammatica</span>
+            <button class="filter-btn active" data-exgrammar="all"        data-grammar="all"        onclick="filterExGrammar('all',this)">Alle</button>
+            <button class="filter-btn"        data-exgrammar="niet"       data-grammar="niet"       onclick="filterExGrammar('niet',this)">Niet</button>
+            <button class="filter-btn"        data-exgrammar="geen"       data-grammar="geen"       onclick="filterExGrammar('geen',this)">Geen</button>
+            <button class="filter-btn"        data-exgrammar="inversie"   data-grammar="inversie"   onclick="filterExGrammar('inversie',this)">Inversie</button>
+            <button class="filter-btn"        data-exgrammar="vraagzin"   data-grammar="vraagzin"   onclick="filterExGrammar('vraagzin',this)">Vraagzin</button>
+            <button class="filter-btn"        data-exgrammar="bijzin"     data-grammar="bijzin"     onclick="filterExGrammar('bijzin',this)">Bijzin</button>
+            <button class="filter-btn"        data-exgrammar="gebiedende" data-grammar="gebiedende" onclick="filterExGrammar('gebiedende',this)">Gebiedende wijs</button>
+            <button class="filter-btn"        data-exgrammar="tijden"     data-grammar="tijden"     onclick="filterExGrammar('tijden',this)">Tijden (VTT)</button>
+            <button class="filter-btn"        data-exgrammar="omte"       data-grammar="omte"       onclick="filterExGrammar('omte',this)">Om…te</button>
+            <button class="filter-btn"        data-exgrammar="passief"    data-grammar="passief"    onclick="filterExGrammar('passief',this)">Passief</button>
+            <button class="filter-btn"        data-exgrammar="scheidbare-werkwoorden" data-grammar="scheidbare-werkwoorden" onclick="filterExGrammar('scheidbare-werkwoorden',this)">Scheidbare ww.</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="exercise-progress">
+            <span class="progress-label" id="ex-counter">1 / 8</span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar-fill" id="ex-progress" style="width:12.5%"></div>
+            </div>
+            <span class="progress-label" id="ex-score-label">0 goed</span>
+          </div>
+          <div class="ex-accountability" id="ex-accountability">
+            <span id="ex-acc-practiced">0 geoefend</span>
+            <span class="ex-acc-dot">·</span>
+            <span id="ex-acc-remaining">0 resterend</span>
+            <span class="ex-acc-dot">·</span>
+            <span id="ex-acc-errors">0 fouten</span>
+            <button class="ex-acc-restart" onclick="restartExercise()" title="Opnieuw beginnen">↺ Herstart</button>
+          </div>
+
+          <div class="exercise-card">
+            <button class="ex-star-btn" id="ex-star-btn" onclick="toggleStarSentence()" title="Markeer als vraag" aria-label="Markeer als vraag">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-star-outline"/></svg>
             </button>
+            <div class="exercise-direction" id="ex-direction">Vertaal naar het Nederlands</div>
+            <div class="exercise-prompt" id="ex-prompt">I go to school.</div>
+            <div class="ex-stype-row" id="ex-stype-row" style="display:none">
+              <span class="stype-badge" id="ex-stype-badge"></span>
+              <span class="ex-stype-en" id="ex-stype-en"></span>
+            </div>
+          </div>
 
-            <button class="home-card" onclick="switchTab('werkwoorden')">
-              <div class="home-card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6"/><path d="M4 14l6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="M22 22l-5-10-5 10"/><path d="M14 18h6"/></svg>
-              </div>
-              <div class="home-card-body">
-                <div class="home-card-title">Werkwoorden</div>
-                <div class="home-card-desc">Vervoegingen oefenen en verbvormen leren</div>
-                <div class="home-card-stats" id="home-stat-werkwoorden"></div>
-              </div>
-              <div class="home-card-arrow">›</div>
+          <!-- Comment / question area (shown when starred) -->
+          <div class="ex-comment-wrap" id="ex-comment-wrap" style="display:none">
+            <div class="ex-comment-label">📝 Mijn vraag / opmerking</div>
+            <textarea class="ex-comment-input" id="ex-comment-input" placeholder="Schrijf hier je vraag of opmerking..." rows="2"></textarea>
+            <div class="ex-comment-actions">
+              <button class="btn btn-primary ex-comment-save" onclick="saveStarComment()">Opslaan</button>
+              <button class="btn btn-secondary" onclick="deleteStarComment()">Verwijder opmerking</button>
+            </div>
+          </div>
+
+          <!-- Grammar hint (collapsed) -->
+          <div class="ex-hint-wrap">
+            <button class="ex-hint-btn" onclick="toggleExHint(this)">
+              <span>💡 Grammatica hint</span>
+              <span class="ex-hint-arrow">▾</span>
             </button>
+            <div class="ex-hint-body" id="ex-hint-body"></div>
+          </div>
 
-            <button class="home-card" onclick="switchTab('lezen')">
-              <div class="home-card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          <!-- Letter hint -->
+          <div id="letter-hint-wrap" class="letter-hint-wrap" style="display:none">
+            <button class="btn-letter-hint" onclick="showLetterHint()">Letterhint (klik voor meer)</button>
+            <div class="letter-hint-text" id="letter-hint-text"></div>
+          </div>
+
+          <!-- Input mode toggle -->
+          <div class="input-mode-row">
+            <button class="ex-mode-btn active" data-imode="type"  onclick="setInputMode('type')">✏ Typen</button>
+            <button class="ex-mode-btn"        data-imode="tiles" onclick="setInputMode('tiles')">☰ Woorden kiezen</button>
+            <button class="ex-mode-btn" data-imode="fillblank" onclick="setInputMode('fillblank')">✂ Invullen</button>
+            <button class="ex-mode-btn" data-imode="translate" onclick="setInputMode('translate')">🔄 NL → EN</button>
+          </div>
+
+          <!-- Type mode -->
+          <div id="type-section">
+            <div class="input-row">
+              <input class="exercise-input" type="text" id="ex-input" placeholder="Typ hier je antwoord..." autocomplete="off" />
+              <button class="btn btn-primary" id="ex-check-btn" onclick="checkAnswer()">Controleer</button>
+            </div>
+          </div>
+
+          <!-- Tile mode -->
+          <div id="tile-section" style="display:none">
+            <div class="tile-built" id="tile-built"></div>
+            <div class="tile-pool"  id="tile-pool"></div>
+            <div style="text-align:center;margin-top:10px">
+              <button class="btn btn-primary" id="ex-check-btn-tiles" onclick="checkAnswer()">Controleer</button>
+            </div>
+          </div>
+
+          <!-- Fill-blank mode -->
+          <div id="fillblank-section" style="display:none">
+            <div class="fillblank-sentence" id="fillblank-sentence"></div>
+            <div class="input-row">
+              <input class="exercise-input" type="text" id="fillblank-input" placeholder="Typ het ontbrekende woord..." autocomplete="off" />
+              <button class="btn btn-primary" id="ex-check-btn-fillblank" onclick="checkAnswer()">Controleer</button>
+            </div>
+          </div>
+
+          <div class="feedback-box" id="ex-feedback"></div>
+
+          <div class="congrats-panel" id="ex-congrats">
+            <div class="congrats-emoji">🎉</div>
+            <div class="congrats-title">Goed gedaan!</div>
+            <div class="congrats-sub" id="ex-congrats-sub"></div>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+              <button class="btn btn-primary" id="ex-congrats-next-btn" style="display:none">Next step →</button>
+              <button class="btn btn-secondary" onclick="restartExercise()">Opnieuw oefenen</button>
+            </div>
+          </div>
+
+          <div class="btn-row" id="ex-btn-row">
+            <button class="btn btn-secondary" onclick="skipSentence()">Overslaan</button>
+            <button class="btn btn-secondary" id="ex-retry-btn" style="display:none" onclick="retrySentence()">↩ Opnieuw proberen</button>
+            <button class="btn btn-primary" id="ex-next-btn" style="display:none" onclick="nextSentence()">Volgende →</button>
+          </div>
+          <div style="text-align:right;margin-top:8px">
+            <button class="btn-reset-stats" onclick="resetStats()" title="Wis alle oefenstatistieken">Statistieken wissen</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WERKWOORDEN -->
+    <div id="panel-werkwoorden" class="panel">
+      <div id="unit-bar-werkwoorden"></div>
+
+      <!-- 0. Quick-launch verb meaning quiz -->
+      <button class="vquiz-launch-btn" onclick="showVerbMeaningQuiz()">
+        <span class="vquiz-launch-icon">🧠</span>
+        <span class="vquiz-launch-text">
+          <span class="vquiz-launch-title">Betekenis oefenen · Practice meanings</span>
+          <span class="vquiz-launch-sub">Do you know what each verb means? Test yourself!</span>
+        </span>
+        <span class="vquiz-launch-arrow">→</span>
+      </button>
+
+      <!-- 1. Verb selector -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Select a verb</h2>
+          <span class="verb-total-badge" id="verb-total-badge"></span>
+        </div>
+        <div class="card-body">
+          <div class="verb-selector" id="verb-selector"></div>
+        </div>
+      </div>
+
+      <!-- 1b. Choice buttons after selecting a verb -->
+      <div id="verb-choice-card" style="display:none; margin-top:16px">
+        <div class="verb-choice-row">
+          <button class="verb-choice-btn" onclick="showVerbStudy()">
+            <span class="vcb-icon">📖</span>
+            <span class="vcb-label">Uitleg &amp; vervoeging</span>
+            <span class="vcb-sub">Explanation &amp; conjugation</span>
+          </button>
+          <button class="verb-choice-btn" onclick="showVerbExercise()">
+            <span class="vcb-icon">✏️</span>
+            <span class="vcb-label">Oefenen</span>
+            <span class="vcb-sub">Practice all tenses</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 2. Conjugation table + tense reference -->
+      <div class="card" id="verb-study-card" style="display:none; margin-top:16px">
+        <div class="card-header">
+          <h2 class="card-title" id="verb-study-title"></h2>
+          <span class="verb-meaning" id="verb-study-meaning"></span>
+        </div>
+        <div class="card-body">
+          <div id="conjtool-table"></div>
+          <details class="tense-ref-details">
+            <summary class="tense-ref-summary">Wanneer gebruik je elke tijd? &nbsp;·&nbsp; When to use each tense?</summary>
+            <div id="tense-quick-ref"></div>
+          </details>
+        </div>
+      </div>
+
+      <!-- 3. Exercise — all tenses -->
+      <div class="card" id="verb-ex-card" style="display:none; margin-top:16px">
+        <div class="card-header">
+          <h2 class="card-title">Oefenen — alle tijden &nbsp;·&nbsp; Practice — all tenses</h2>
+          <div class="verb-ex-score">
+            <span class="stat-correct" id="vex-correct">✓ 0</span>
+            <span class="stat-wrong"   id="vex-wrong">✗ 0</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div id="verb-ex-content"></div>
+        </div>
+      </div>
+
+      <!-- 4. Verb meaning quiz -->
+      <div class="card" id="verb-quiz-card" style="display:none; margin-top:16px">
+        <div class="card-header">
+          <h2 class="card-title">Betekenis oefenen &nbsp;·&nbsp; Practice meanings</h2>
+          <div class="verb-ex-score">
+            <span class="stat-correct" id="vquiz-correct">✓ 0</span>
+            <span class="stat-wrong"   id="vquiz-wrong">✗ 0</span>
+            <span class="vquiz-progress" id="vquiz-progress"></span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="vquiz-filter-section">
+            <div class="vquiz-filter-label">Filter</div>
+            <div class="vquiz-unit-filters" id="vquiz-unit-filters"></div>
+          </div>
+          <div class="vquiz-mode-row">
+            <div class="vquiz-filter-label">Richting · Direction</div>
+            <div class="vquiz-mode-btns">
+              <button class="filter-btn active" id="vquiz-mode-nl" onclick="setQuizMode('nl')">NL → EN</button>
+              <button class="filter-btn" id="vquiz-mode-en" onclick="setQuizMode('en')">EN → NL</button>
+              <button class="filter-btn" id="vquiz-mode-mix" onclick="setQuizMode('mix')">Mix</button>
+            </div>
+          </div>
+          <div id="vquiz-content"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- LEZEN -->
+    <div id="panel-lezen" class="panel">
+
+      <!-- LIBRARY VIEW -->
+      <div id="reading-library-view" class="card">
+        <div class="card-header">
+          <h2 class="card-title">📚 Leesbibliotheek · Reading library</h2>
+        </div>
+        <div class="card-body">
+          <div id="reading-library-content"></div>
+        </div>
+      </div>
+
+      <!-- ARTICLE VIEW -->
+      <div id="reading-article-view" class="card" style="display:none;">
+        <div class="card-header reading-header">
+          <div class="reading-header-left">
+            <button class="btn btn-secondary reading-back-btn" onclick="openReadingLibrary()">← Bibliotheek</button>
+            <span class="reading-day-label" id="reading-day-label">Vandaag · Today</span>
+            <h2 class="card-title" id="reading-title"></h2>
+            <span class="reading-title-en" id="reading-title-en"></span>
+          </div>
+          <div class="reading-header-right">
+            <span class="badge" id="reading-level-badge">A2</span>
+            <span class="reading-topic-tag" id="reading-topic-tag"></span>
+            <span class="reading-time" id="reading-time"></span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="reading-toolbar">
+            <button class="btn btn-secondary reading-audio-btn" id="reading-audio-btn" onclick="toggleReadingAudio()">🔊 Luisteren</button>
+            <button class="btn btn-secondary" id="reading-pause-btn" onclick="togglePauseAudio()" style="display:none;">⏸ Pauzeren</button>
+            <button class="btn btn-secondary" id="reading-toggle-en" onclick="toggleReadingTranslation()">🌐 Toon vertaling</button>
+            <button class="btn btn-secondary" id="reading-toggle-vocab" onclick="toggleReadingVocabHighlights()">✨ Markeer woorden</button>
+            <button class="btn btn-secondary" id="reading-toggle-mark" onclick="toggleReadingMarkMode()">🔖 Markeer onbekend</button>
+          </div>
+          <p class="reading-audio-tip" id="reading-audio-tip" style="display:none;">
+            💡 Voor de meest natuurlijke stem: open deze pagina in <strong>Microsoft Edge</strong>.
+          </p>
+
+          <article class="reading-text" id="reading-text"></article>
+
+          <div class="reading-section" id="reading-vocab"></div>
+          <div class="reading-section" id="reading-grammar"></div>
+          <div class="reading-section" id="reading-questions"></div>
+          <div class="reading-section" id="reading-session-words"></div>
+          <div class="reading-section" id="reading-unknown-words"></div>
+
+          <button class="reading-complete-btn" id="reading-complete-btn" onclick="markReadingComplete()">✓ Gelezen · Mark as read</button>
+
+          <div class="reading-nav">
+            <button class="btn btn-secondary" onclick="navigateReading(-1)">← Vorig artikel</button>
+            <span class="reading-nav-info" id="reading-nav-info"></span>
+            <button class="btn btn-secondary" onclick="navigateReading(1)">Volgend artikel →</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MIJN WOORDEN — difficult-words list & flashcard practice -->
+    <div id="panel-mijnwoorden" class="panel">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">📚 Mijn woorden · My words</h2>
+        </div>
+        <div class="card-body">
+          <p class="mijnwoorden-intro">
+            Hier staan alle woorden die je hebt gemarkeerd in de leesteksten.
+            Klik op <strong>📚 Oefenen</strong> om ze als flashcards te oefenen.
+          </p>
+          <div id="mijnwoorden-content"></div>
+          <p class="mijnwoorden-empty" id="mijnwoorden-empty" style="display:none;">
+            Nog geen woorden gemarkeerd. Ga naar <strong>Lezen</strong>,
+            klik op 🔖 Markeer onbekend en kies woorden die je niet kent.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- DE/HET -->
+    <div id="panel-dehet" class="panel">
+      <div id="unit-bar-dehet"></div>
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">De of Het?</h2>
+        </div>
+        <div class="card-body" style="padding-bottom:0">
+          <div class="vocab-filters" id="dh-level-filters" style="display:none">
+            <button class="filter-btn active" data-dhlevel="A1"  onclick="setDeHetLevel('A1',  this)">A1 <span id="dh-count-A1" class="badge-count"></span></button>
+            <button class="filter-btn"         data-dhlevel="A2"  onclick="setDeHetLevel('A2',  this)">A2 <span id="dh-count-A2" class="badge-count"></span></button>
+            <button class="filter-btn"         data-dhlevel="B1"  onclick="setDeHetLevel('B1',  this)">B1 <span id="dh-count-B1" class="badge-count"></span></button>
+            <button class="filter-btn"         data-dhlevel="B2"  onclick="setDeHetLevel('B2',  this)">B2 <span id="dh-count-B2" class="badge-count"></span></button>
+            <button class="filter-btn"         data-dhlevel="all" onclick="setDeHetLevel('all', this)">Alle <span id="dh-count-all" class="badge-count"></span></button>
+          </div>
+        </div>
+        <div class="dehet-card">
+          <div class="dehet-score">
+            <div class="score-item">
+              <div class="score-num green" id="dh-correct">0</div>
+              <div class="score-label">Goed</div>
+            </div>
+            <div class="score-item">
+              <div class="score-num red" id="dh-wrong">0</div>
+              <div class="score-label">Fout</div>
+            </div>
+            <div class="score-item">
+              <div class="score-num" id="dh-remaining">0</div>
+              <div class="score-label">Resterend</div>
+            </div>
+          </div>
+
+          <!-- Active word card -->
+          <div id="dh-word-panel">
+            <div class="dehet-noun-wrap">
+              <div class="dehet-article-hint">Welk lidwoord?</div>
+              <div class="dehet-noun" id="dh-noun">huis</div>
+              <div class="dehet-translation" id="dh-translation">house</div>
+            </div>
+            <div class="dehet-buttons">
+              <button class="dehet-btn" id="dh-de" onclick="answerDeHet('de')">de</button>
+              <button class="dehet-btn" id="dh-het" onclick="answerDeHet('het')">het</button>
+            </div>
+            <div class="dehet-feedback" id="dh-feedback"></div>
+            <button class="btn btn-secondary" id="dh-retry-btn" style="display:none" onclick="retryDeHet()">↩ Opnieuw proberen</button>
+          </div>
+
+          <!-- Completion screen -->
+          <div id="dh-done-panel" style="display:none" class="dh-done">
+            <div class="dh-done-icon">🎉</div>
+            <div class="dh-done-title">Klaar!</div>
+            <div class="dh-done-stats" id="dh-done-stats"></div>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+              <button class="btn btn-primary" id="dh-next-step-btn" style="display:none">Next step →</button>
+              <button class="btn btn-secondary" onclick="restartDeHet()">Opnieuw beginnen</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NIET & GEEN -->
+    <div id="panel-ontkenning" class="panel">
+
+      <!-- Exercise 1: Geen of Niet? -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Choose the correct negation: geen or niet?</h2>
+          <div class="verb-ex-score">
+            <span class="stat-correct" id="neg-choose-correct">✓ 0</span>
+            <span class="stat-wrong" id="neg-choose-wrong">✗ 0</span>
+            <span class="vquiz-progress" id="neg-choose-progress"></span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="neg-level-row" id="neg-choose-levels"></div>
+          <div id="neg-choose-content"></div>
+        </div>
+      </div>
+
+      <!-- Exercise 2: Waar staat niet? -->
+      <div class="card" style="margin-top:16px">
+        <div class="card-header">
+          <h2 class="card-title">Place niet in the correct position</h2>
+          <div class="verb-ex-score">
+            <span class="stat-correct" id="neg-place-correct">✓ 0</span>
+            <span class="stat-wrong" id="neg-place-wrong">✗ 0</span>
+            <span class="vquiz-progress" id="neg-place-progress"></span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="neg-level-row" id="neg-place-levels"></div>
+          <div id="neg-place-content"></div>
+        </div>
+      </div>
+
+      <!-- Quick reference -->
+      <details class="card" style="margin-top:16px">
+        <summary class="card-header" style="cursor:pointer">
+          <h2 class="card-title">Snel overzicht · Quick reference</h2>
+        </summary>
+        <div class="card-body" style="font-size:0.82rem; line-height:1.6">
+          <p><strong>GEEN</strong> = vervangt "een" of nul-lidwoord bij zelfstandige naamwoorden<br>
+          <span style="color:var(--text-muted); font-style:italic">= replaces "een" (a/an) or the zero article with nouns</span></p>
+          <p style="color:var(--text-muted)">Ik heb <u>een</u> hond → Ik heb <u>geen</u> hond · Ik heb geld → Ik heb <u>geen</u> geld<br>
+          <span style="font-style:italic">I have a dog → I don't have a dog · I have money → I don't have money</span></p>
+          <hr style="border:0;border-top:1px solid var(--border);margin:12px 0">
+          <p><strong>NIET</strong> = bij alles anders. Waar staat niet?<br>
+          <span style="color:var(--text-muted); font-style:italic">= for everything else. Where does niet go?</span></p>
+          <ol style="padding-left:18px; color:var(--text-muted)">
+            <li><strong>Tweede werkwoord?</strong> → niet ervóór <span style="font-style:italic">(second verb? → niet before it)</span><br>
+              Ik wil het boek <u>niet</u> lezen. <span style="font-style:italic">— I don't want to read the book.</span><br>
+              Ik heb mijn huiswerk <u>niet</u> gemaakt. <span style="font-style:italic">— I haven't done my homework.</span></li>
+            <li><strong>Voorzetsel (met, om, op…)?</strong> → niet ervóór <span style="font-style:italic">(preposition? → niet before it)</span><br>
+              Ik ga <u>niet</u> met Elise op vakantie. <span style="font-style:italic">— I'm not going on holiday with Elise.</span></li>
+            <li><strong>Bijvoeglijk naamwoord?</strong> → niet ervóór <span style="font-style:italic">(adjective? → niet before it)</span><br>
+              Hij is <u>niet</u> oud. <span style="font-style:italic">— He is not old.</span></li>
+            <li><strong>Niets van bovenstaande?</strong> → niet achteraan <span style="font-style:italic">(none of the above? → niet at the end)</span><br>
+              Ik eet <u>niet</u>. <span style="font-style:italic">— I don't eat.</span><br>
+              Ik ken de weg <u>niet</u>. <span style="font-style:italic">— I don't know the way.</span></li>
+            <li><strong>Tijdswoord (vandaag, gisteren)?</strong> → niet erna <span style="font-style:italic">(time word? → niet after it)</span><br>
+              Ik loop vandaag <u>niet</u>. <span style="font-style:italic">— I'm not walking today.</span></li>
+          </ol>
+          <p style="color:var(--text-muted); font-style:italic; margin-top:8px">Tip: niet goes before what you're negating. If there's nothing specific, it goes at the end.</p>
+        </div>
+      </details>
+
+    </div>
+
+    <!-- WOORDENSCHAT -->
+    <div id="panel-woordenschat" class="panel">
+      <div id="unit-bar-woordenschat"></div>
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Woordenschat</h2>
+          <span class="badge badge-a1" id="vocab-count-badge">0 woorden</span>
+          <button class="btn btn-primary" id="vocab-practice-btn" onclick="startVocabPractice()" style="display:none; padding:6px 14px; font-size:0.85rem">▶ Oefenen</button>
+        </div>
+        <div class="card-body">
+          <div id="vocab-practice-area" style="display:none"></div>
+          <div id="vocab-grid-area">
+            <div class="vocab-controls">
+              <input class="vocab-search" type="text" id="vocab-search" placeholder="Zoek een woord..." oninput="filterVocab()" autocomplete="off" />
+              <div class="vocab-filters" id="vocab-level-filters">
+                <button class="filter-btn active" data-level="all"  onclick="setVocabLevel('all',  this)">Alle</button>
+                <button class="filter-btn"         data-level="A1"   onclick="setVocabLevel('A1',   this)">A1</button>
+                <button class="filter-btn"         data-level="A2"   onclick="setVocabLevel('A2',   this)">A2</button>
+                <button class="filter-btn"         data-level="B1"   onclick="setVocabLevel('B1',   this)">B1</button>
+                <button class="filter-btn"         data-level="B2"   onclick="setVocabLevel('B2',   this)">B2</button>
+                <button class="filter-btn"         data-level="C1"   onclick="setVocabLevel('C1',   this)">C1</button>
+                <button class="filter-btn"         data-level="C2"   onclick="setVocabLevel('C2',   this)">C2</button>
               </div>
-              <div class="home-card-body">
-                <div class="home-card-title">Lezen <span class="home-card-pill" id="home-lezen-pill"></span></div>
-                <div class="home-card-desc" id="home-lezen-desc">Dagelijkse leestekst van ~10 minuten</div>
-                <div class="home-card-stats" id="home-stat-lezen"></div>
-              </div>
-              <div class="home-card-arrow">›</div>
+              <div class="vocab-filters" id="vocab-topic-filters"></div>
+              <label class="vocab-hide-toggle">
+                <input type="checkbox" id="vocab-hide-cb" onchange="filterVocab()" />
+                Verberg vertalingen (zelftest)
+              </label>
+            </div>
+            <div class="vocab-grid" id="vocab-grid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ZINNEN -->
+    <div id="panel-zinnen" class="panel">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Alle zinnen</h2>
+          <span class="badge badge-a1" style="opacity:0.6" id="sentence-count-badge">8 zinnen</span>
+        </div>
+        <div class="card-body">
+          <div class="filter-row">
+            <button class="filter-btn active" onclick="filterSentences('all', this)">Alle niveaus</button>
+            <button class="filter-btn" onclick="filterSentences('A1', this)">A1</button>
+            <button class="filter-btn" onclick="filterSentences('A2', this)">A2</button>
+            <button class="filter-btn" onclick="filterSentences('B1', this)">B1</button>
+            <button class="filter-btn filter-btn--star" onclick="filterSentences('flagged', this)" id="zinnen-flagged-btn">⭐ Vragen</button>
+          </div>
+          <table class="sentence-table">
+            <thead>
+              <tr>
+                <th style="width:28px"></th>
+                <th>Nederlands</th>
+                <th>Engels</th>
+                <th>Niveau</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody id="sentence-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- BEWERKEN -->
+    <div id="panel-bewerken" class="panel">
+
+      <!-- Vragen & opmerkingen card -->
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-header">
+          <h2 class="card-title">⭐ Vragen &amp; opmerkingen</h2>
+          <span class="badge badge-a1" id="flags-count-badge" style="opacity:0.7">0 gemarkeerd</span>
+        </div>
+        <div class="card-body" id="flags-body">
+          <p style="color:var(--text-muted);font-size:0.83rem">Geen vragen gemarkeerd. Gebruik de ⭐ knop tijdens het oefenen om een zin te markeren.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Zinnen bewerken</h2>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-secondary" onclick="exportSentences()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-download"/></svg>
+              Exporteer JSON
             </button>
-
-            <div class="home-card home-card--group">
-              <div class="home-card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0112 4.5v15a2.5 2.5 0 01-2.5 2.5H4a2 2 0 01-2-2V4a2 2 0 012-2h5.5z"/><path d="M14.5 2A2.5 2.5 0 0012 4.5v15a2.5 2.5 0 002.5 2.5H20a2 2 0 002-2V4a2 2 0 00-2-2h-5.5z"/></svg>
-              </div>
-              <div class="home-card-body">
-                <div class="home-card-title">Oefen per onderwerp</div>
-                <div class="home-card-desc">Kies een specifiek grammaticaonderwerp om te oefenen</div>
-                <div class="home-card-subs">
-                  <button class="home-card-sub" onclick="switchTab('dehet')">
-                    <span class="home-card-sub-label">De / Het</span>
-                    <span class="home-card-sub-stat" id="home-stat-dehet"></span>
-                    <span class="home-card-sub-arrow">›</span>
-                  </button>
-                  <button class="home-card-sub" onclick="switchTab('ontkenning')">
-                    <span class="home-card-sub-label">Niet &amp; Geen</span>
-                    <span class="home-card-sub-arrow">›</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <button class="home-card" onclick="switchTab('woordenschat')">
-              <div class="home-card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              </div>
-              <div class="home-card-body">
-                <div class="home-card-title">Woordenschat</div>
-                <div class="home-card-desc">Leer en herhaal nieuwe woorden per niveau</div>
-                <div class="home-card-stats" id="home-stat-woordenschat"></div>
-              </div>
-              <div class="home-card-arrow">›</div>
-            </button>
-
+            <button class="btn btn-secondary" onclick="resetSentences()">Standaard herstellen</button>
           </div>
         </div>
-
-        <!-- Mijn fouten card + expandable report -->
-        <div class="home-section">
-          <div class="home-section-label">Mijn voortgang</div>
-          <div class="home-cards">
-            <button class="home-card home-card--mistakes" onclick="toggleMistakesPanel()">
-              <div class="home-card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              </div>
-              <div class="home-card-body">
-                <div class="home-card-title">Mijn fouten <span class="home-card-en">· My mistakes</span></div>
-                <div class="home-card-desc">Overzicht van fouten in alle oefeningen</div>
-                <div class="home-card-stats" id="home-stat-fouten"></div>
-              </div>
-              <div class="home-card-arrow" id="mistakes-toggle-arrow">›</div>
+        <div class="card-body">
+          <div class="edit-info">
+            Voeg zinnen toe, bewerk of verwijder ze. Klik <strong>Opslaan</strong> om je wijzigingen te bewaren. Exporteer als JSON voor een backup of database-import.
+          </div>
+          <table class="edit-table">
+            <thead>
+              <tr>
+                <th style="width:28%">Nederlands</th>
+                <th style="width:28%">Engels</th>
+                <th style="width:8%">Niveau</th>
+                <th style="width:32%">Structuur</th>
+                <th style="width:4%"></th>
+              </tr>
+            </thead>
+            <tbody id="edit-tbody"></tbody>
+          </table>
+          <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn btn-secondary" onclick="addEditRow()">+ Zin toevoegen</button>
+            <button class="btn btn-primary" onclick="saveEditedSentences()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-save"/></svg>
+              Opslaan
             </button>
           </div>
-          <div id="mistakes-report-panel" style="display:none"></div>
-        </div>
-
-        <div class="home-section">
-          <div class="home-section-label">Leren &amp; Referentie</div>
-          <div class="home-cards">
-
-            <button class="home-card" onclick="switchTab('grammatica')">
-              <div class="home-card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
-              </div>
-              <div class="home-card-body">
-                <div class="home-card-title">Grammatica</div>
-                <div class="home-card-desc">Grammaticaregels A1–B2 met uitleg en tabellen</div>
-                <div class="home-card-stats" id="home-stat-grammatica"></div>
-              </div>
-              <div class="home-card-arrow">›</div>
-            </button>
-
-            <button class="home-card" onclick="switchTab('leerplan')">
-              <div class="home-card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-              </div>
-              <div class="home-card-body">
-                <div class="home-card-title">Leerplan</div>
-                <div class="home-card-desc">Studieplanning per sessie en niveau A1–B2</div>
-                <div class="home-card-stats" id="home-stat-leerplan"></div>
-              </div>
-              <div class="home-card-arrow">›</div>
-            </button>
-
-            <button class="home-card" onclick="switchTab('zinnen')">
-              <div class="home-card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-              </div>
-              <div class="home-card-body">
-                <div class="home-card-title">Alle zinnen</div>
-                <div class="home-card-desc">Bekijk en zoek alle oefenzinnen per niveau</div>
-                <div class="home-card-stats" id="home-stat-zinnen"></div>
-              </div>
-              <div class="home-card-arrow">›</div>
-            </button>
-
-            <button class="home-card home-card--muted" onclick="switchTab('bewerken')">
-              <div class="home-card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-              </div>
-              <div class="home-card-body">
-                <div class="home-card-title">Bewerken</div>
-                <div class="home-card-desc">Voeg zinnen toe of pas bestaande zinnen aan</div>
-                <div class="home-card-stats" id="home-stat-bewerken"></div>
-              </div>
-              <div class="home-card-arrow">›</div>
-            </button>
-
-          </div>
-        </div>
-
-      </div>
-
-      <!-- OEFENING -->
-      <div id="panel-oefening" class="panel">
-        <div id="unit-bar-oefening"></div>
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">Zinnen oefenen</span>
-            <span id="ex-badge" class="badge badge-a1">A1</span>
-          </div>
-          <div class="ex-mode-row">
-            <button class="ex-mode-btn active" data-mode="all" onclick="setExMode('all')">Alle zinnen</button>
-            <button class="ex-mode-btn" data-mode="errors" onclick="setExMode('errors')">Alleen fouten</button>
-            <button class="ex-mode-btn" data-mode="spaced" onclick="setExMode('spaced')">🔁 Herhaling <span id="due-badge" class="due-badge" style="display:none">0</span></button>
-            <span class="ex-mode-count" id="ex-mode-count"></span>
-          </div>
-          <div class="ex-filter-bar">
-            <div class="filter-row" id="ex-level-filter" style="display:none">
-              <span class="ex-filter-label">Niveau</span>
-              <button class="filter-btn active" data-exlevel="all" data-level="all" onclick="filterExLevel('all',this)">Alle</button>
-              <button class="filter-btn a1-btn" data-exlevel="A1"  data-level="A1"  onclick="filterExLevel('A1',this)">A1</button>
-              <button class="filter-btn a2-btn" data-exlevel="A2"  data-level="A2"  onclick="filterExLevel('A2',this)">A2</button>
-              <button class="filter-btn b1-btn" data-exlevel="B1"  data-level="B1"  onclick="filterExLevel('B1',this)">B1</button>
-              <button class="filter-btn b2-btn" data-exlevel="B2"  data-level="B2"  onclick="filterExLevel('B2',this)">B2</button>
-            </div>
-            <div class="filter-row" id="ex-grammar-filter">
-              <span class="ex-filter-label">Grammatica</span>
-              <button class="filter-btn active" data-exgrammar="all"        data-grammar="all"        onclick="filterExGrammar('all',this)">Alle</button>
-              <button class="filter-btn"        data-exgrammar="niet"       data-grammar="niet"       onclick="filterExGrammar('niet',this)">Niet</button>
-              <button class="filter-btn"        data-exgrammar="geen"       data-grammar="geen"       onclick="filterExGrammar('geen',this)">Geen</button>
-              <button class="filter-btn"        data-exgrammar="inversie"   data-grammar="inversie"   onclick="filterExGrammar('inversie',this)">Inversie</button>
-              <button class="filter-btn"        data-exgrammar="vraagzin"   data-grammar="vraagzin"   onclick="filterExGrammar('vraagzin',this)">Vraagzin</button>
-              <button class="filter-btn"        data-exgrammar="bijzin"     data-grammar="bijzin"     onclick="filterExGrammar('bijzin',this)">Bijzin</button>
-              <button class="filter-btn"        data-exgrammar="gebiedende" data-grammar="gebiedende" onclick="filterExGrammar('gebiedende',this)">Gebiedende wijs</button>
-              <button class="filter-btn"        data-exgrammar="tijden"     data-grammar="tijden"     onclick="filterExGrammar('tijden',this)">Tijden (VTT)</button>
-              <button class="filter-btn"        data-exgrammar="omte"       data-grammar="omte"       onclick="filterExGrammar('omte',this)">Om…te</button>
-              <button class="filter-btn"        data-exgrammar="passief"    data-grammar="passief"    onclick="filterExGrammar('passief',this)">Passief</button>
-              <button class="filter-btn"        data-exgrammar="scheidbare-werkwoorden" data-grammar="scheidbare-werkwoorden" onclick="filterExGrammar('scheidbare-werkwoorden',this)">Scheidbare ww.</button>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="exercise-progress">
-              <span class="progress-label" id="ex-counter">1 / 8</span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar-fill" id="ex-progress" style="width:12.5%"></div>
-              </div>
-              <span class="progress-label" id="ex-score-label">0 goed</span>
-            </div>
-            <div class="ex-accountability" id="ex-accountability">
-              <span id="ex-acc-practiced">0 geoefend</span>
-              <span class="ex-acc-dot">·</span>
-              <span id="ex-acc-remaining">0 resterend</span>
-              <span class="ex-acc-dot">·</span>
-              <span id="ex-acc-errors">0 fouten</span>
-              <button class="ex-acc-restart" onclick="restartExercise()" title="Opnieuw beginnen">↺ Herstart</button>
-            </div>
-
-            <div class="exercise-card">
-              <button class="ex-star-btn" id="ex-star-btn" onclick="toggleStarSentence()" title="Markeer als vraag">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              </button>
-              <div class="exercise-direction" id="ex-direction">Vertaal naar het Nederlands</div>
-              <div class="exercise-prompt" id="ex-prompt">I go to school.</div>
-              <div class="ex-stype-row" id="ex-stype-row" style="display:none">
-                <span class="stype-badge" id="ex-stype-badge"></span>
-                <span class="ex-stype-en" id="ex-stype-en"></span>
-              </div>
-            </div>
-
-            <!-- Comment / question area (shown when starred) -->
-            <div class="ex-comment-wrap" id="ex-comment-wrap" style="display:none">
-              <div class="ex-comment-label">📝 Mijn vraag / opmerking</div>
-              <textarea class="ex-comment-input" id="ex-comment-input" placeholder="Schrijf hier je vraag of opmerking..." rows="2"></textarea>
-              <div class="ex-comment-actions">
-                <button class="btn btn-primary ex-comment-save" onclick="saveStarComment()">Opslaan</button>
-                <button class="btn btn-secondary" onclick="deleteStarComment()">Verwijder opmerking</button>
-              </div>
-            </div>
-
-            <!-- Grammar hint (collapsed) -->
-            <div class="ex-hint-wrap">
-              <button class="ex-hint-btn" onclick="toggleExHint(this)">
-                <span>💡 Grammatica hint</span>
-                <span class="ex-hint-arrow">▾</span>
-              </button>
-              <div class="ex-hint-body" id="ex-hint-body"></div>
-            </div>
-
-            <!-- Letter hint -->
-            <div id="letter-hint-wrap" class="letter-hint-wrap" style="display:none">
-              <button class="btn-letter-hint" onclick="showLetterHint()">Letterhint (klik voor meer)</button>
-              <div class="letter-hint-text" id="letter-hint-text"></div>
-            </div>
-
-            <!-- Input mode toggle -->
-            <div class="input-mode-row">
-              <button class="ex-mode-btn active" data-imode="type"  onclick="setInputMode('type')">✏ Typen</button>
-              <button class="ex-mode-btn"        data-imode="tiles" onclick="setInputMode('tiles')">☰ Woorden kiezen</button>
-              <button class="ex-mode-btn" data-imode="fillblank" onclick="setInputMode('fillblank')">✂ Invullen</button>
-              <button class="ex-mode-btn" data-imode="translate" onclick="setInputMode('translate')">🔄 NL → EN</button>
-            </div>
-
-            <!-- Type mode -->
-            <div id="type-section">
-              <div class="input-row">
-                <input class="exercise-input" type="text" id="ex-input" placeholder="Typ hier je antwoord..." autocomplete="off" />
-                <button class="btn btn-primary" id="ex-check-btn" onclick="checkAnswer()">Controleer</button>
-              </div>
-            </div>
-
-            <!-- Tile mode -->
-            <div id="tile-section" style="display:none">
-              <div class="tile-built" id="tile-built"></div>
-              <div class="tile-pool"  id="tile-pool"></div>
-              <div style="text-align:center;margin-top:10px">
-                <button class="btn btn-primary" id="ex-check-btn-tiles" onclick="checkAnswer()">Controleer</button>
-              </div>
-            </div>
-
-            <!-- Fill-blank mode -->
-            <div id="fillblank-section" style="display:none">
-              <div class="fillblank-sentence" id="fillblank-sentence"></div>
-              <div class="input-row">
-                <input class="exercise-input" type="text" id="fillblank-input" placeholder="Typ het ontbrekende woord..." autocomplete="off" />
-                <button class="btn btn-primary" id="ex-check-btn-fillblank" onclick="checkAnswer()">Controleer</button>
-              </div>
-            </div>
-
-            <div class="feedback-box" id="ex-feedback"></div>
-
-            <div class="congrats-panel" id="ex-congrats">
-              <div class="congrats-emoji">🎉</div>
-              <div class="congrats-title">Goed gedaan!</div>
-              <div class="congrats-sub" id="ex-congrats-sub"></div>
-              <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-                <button class="btn btn-primary" id="ex-congrats-next-btn" style="display:none">Next step →</button>
-                <button class="btn btn-secondary" onclick="restartExercise()">Opnieuw oefenen</button>
-              </div>
-            </div>
-
-            <div class="btn-row" id="ex-btn-row">
-              <button class="btn btn-secondary" onclick="skipSentence()">Overslaan</button>
-              <button class="btn btn-secondary" id="ex-retry-btn" style="display:none" onclick="retrySentence()">↩ Opnieuw proberen</button>
-              <button class="btn btn-primary" id="ex-next-btn" style="display:none" onclick="nextSentence()">Volgende →</button>
-            </div>
-            <div style="text-align:right;margin-top:8px">
-              <button class="btn-reset-stats" onclick="resetStats()" title="Wis alle oefenstatistieken">Statistieken wissen</button>
-            </div>
+          <div style="margin-top:10px">
+            <span class="save-date" id="edit-count"></span>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- ZINNEN -->
-      <div id="panel-zinnen" class="panel">
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">Alle zinnen</span>
-            <span class="badge badge-a1" style="opacity:0.6" id="sentence-count-badge">8 zinnen</span>
-          </div>
-          <div class="card-body">
-            <div class="filter-row">
-              <button class="filter-btn active" onclick="filterSentences('all', this)">Alle niveaus</button>
-              <button class="filter-btn" onclick="filterSentences('A1', this)">A1</button>
-              <button class="filter-btn" onclick="filterSentences('A2', this)">A2</button>
-              <button class="filter-btn" onclick="filterSentences('B1', this)">B1</button>
-              <button class="filter-btn filter-btn--star" onclick="filterSentences('flagged', this)" id="zinnen-flagged-btn">⭐ Vragen</button>
-            </div>
-            <table class="sentence-table">
-              <thead>
-                <tr>
-                  <th style="width:28px"></th>
-                  <th>Nederlands</th>
-                  <th>Engels</th>
-                  <th>Niveau</th>
-                  <th>Type</th>
-                </tr>
-              </thead>
-              <tbody id="sentence-tbody"></tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <!-- WERKWOORDEN -->
-      <div id="panel-werkwoorden" class="panel">
-        <div id="unit-bar-werkwoorden"></div>
-
-        <!-- 0. Quick-launch verb meaning quiz -->
-        <button class="vquiz-launch-btn" onclick="showVerbMeaningQuiz()">
-          <span class="vquiz-launch-icon">🧠</span>
-          <div class="vquiz-launch-text">
-            <span class="vquiz-launch-title">Betekenis oefenen · Practice meanings</span>
-            <span class="vquiz-launch-sub">Do you know what each verb means? Test yourself!</span>
-          </div>
-          <span class="vquiz-launch-arrow">→</span>
-        </button>
-
-        <!-- 1. Verb selector -->
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">Select a verb</span>
-            <span class="verb-total-badge" id="verb-total-badge"></span>
-          </div>
-          <div class="card-body">
-            <div class="verb-selector" id="verb-selector"></div>
-          </div>
-        </div>
-
-        <!-- 1b. Choice buttons after selecting a verb -->
-        <div id="verb-choice-card" style="display:none; margin-top:16px">
-          <div class="verb-choice-row">
-            <button class="verb-choice-btn" onclick="showVerbStudy()">
-              <span class="vcb-icon">📖</span>
-              <span class="vcb-label">Uitleg &amp; vervoeging</span>
-              <span class="vcb-sub">Explanation &amp; conjugation</span>
-            </button>
-            <button class="verb-choice-btn" onclick="showVerbExercise()">
-              <span class="vcb-icon">✏️</span>
-              <span class="vcb-label">Oefenen</span>
-              <span class="vcb-sub">Practice all tenses</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- 2. Conjugation table + tense reference -->
-        <div class="card" id="verb-study-card" style="display:none; margin-top:16px">
-          <div class="card-header">
-            <span class="card-title" id="verb-study-title"></span>
-            <span class="verb-meaning" id="verb-study-meaning"></span>
-          </div>
-          <div class="card-body">
-            <div id="conjtool-table"></div>
-            <details class="tense-ref-details">
-              <summary class="tense-ref-summary">Wanneer gebruik je elke tijd? &nbsp;·&nbsp; When to use each tense?</summary>
-              <div id="tense-quick-ref"></div>
-            </details>
-          </div>
-        </div>
-
-        <!-- 3. Exercise — all tenses -->
-        <div class="card" id="verb-ex-card" style="display:none; margin-top:16px">
-          <div class="card-header">
-            <span class="card-title">Oefenen — alle tijden &nbsp;·&nbsp; Practice — all tenses</span>
-            <div class="verb-ex-score">
-              <span class="stat-correct" id="vex-correct">✓ 0</span>
-              <span class="stat-wrong"   id="vex-wrong">✗ 0</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div id="verb-ex-content"></div>
-          </div>
-        </div>
-
-        <!-- 4. Verb meaning quiz -->
-        <div class="card" id="verb-quiz-card" style="display:none; margin-top:16px">
-          <div class="card-header">
-            <span class="card-title">Betekenis oefenen &nbsp;·&nbsp; Practice meanings</span>
-            <div class="verb-ex-score">
-              <span class="stat-correct" id="vquiz-correct">✓ 0</span>
-              <span class="stat-wrong"   id="vquiz-wrong">✗ 0</span>
-              <span class="vquiz-progress" id="vquiz-progress"></span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="vquiz-filter-section">
-              <div class="vquiz-filter-label">Filter</div>
-              <div class="vquiz-unit-filters" id="vquiz-unit-filters"></div>
-            </div>
-            <div class="vquiz-mode-row">
-              <div class="vquiz-filter-label">Richting · Direction</div>
-              <div class="vquiz-mode-btns">
-                <button class="filter-btn active" id="vquiz-mode-nl" onclick="setQuizMode('nl')">NL → EN</button>
-                <button class="filter-btn" id="vquiz-mode-en" onclick="setQuizMode('en')">EN → NL</button>
-                <button class="filter-btn" id="vquiz-mode-mix" onclick="setQuizMode('mix')">Mix</button>
-              </div>
-            </div>
-            <div id="vquiz-content"></div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- LEZEN -->
-      <div id="panel-lezen" class="panel">
-
-        <!-- LIBRARY VIEW -->
-        <div id="reading-library-view" class="card">
-          <div class="card-header">
-            <span class="card-title">📚 Leesbibliotheek · Reading library</span>
-          </div>
-          <div class="card-body">
-            <div id="reading-library-content"></div>
-          </div>
-        </div>
-
-        <!-- ARTICLE VIEW -->
-        <div id="reading-article-view" class="card" style="display:none;">
-          <div class="card-header reading-header">
-            <div class="reading-header-left">
-              <button class="btn btn-secondary reading-back-btn" onclick="openReadingLibrary()">← Bibliotheek</button>
-              <span class="reading-day-label" id="reading-day-label">Vandaag · Today</span>
-              <span class="card-title" id="reading-title"></span>
-              <span class="reading-title-en" id="reading-title-en"></span>
-            </div>
-            <div class="reading-header-right">
-              <span class="badge" id="reading-level-badge">A2</span>
-              <span class="reading-topic-tag" id="reading-topic-tag"></span>
-              <span class="reading-time" id="reading-time"></span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="reading-toolbar">
-              <button class="btn btn-secondary reading-audio-btn" id="reading-audio-btn" onclick="toggleReadingAudio()">🔊 Luisteren</button>
-              <button class="btn btn-secondary" id="reading-pause-btn" onclick="togglePauseAudio()" style="display:none;">⏸ Pauzeren</button>
-              <button class="btn btn-secondary" id="reading-toggle-en" onclick="toggleReadingTranslation()">🌐 Toon vertaling</button>
-              <button class="btn btn-secondary" id="reading-toggle-vocab" onclick="toggleReadingVocabHighlights()">✨ Markeer woorden</button>
-              <button class="btn btn-secondary" id="reading-toggle-mark" onclick="toggleReadingMarkMode()">🔖 Markeer onbekend</button>
-            </div>
-            <p class="reading-audio-tip" id="reading-audio-tip" style="display:none;">
-              💡 Voor de meest natuurlijke stem: open deze pagina in <strong>Microsoft Edge</strong>.
-            </p>
-
-            <article class="reading-text" id="reading-text"></article>
-
-            <div class="reading-section" id="reading-vocab"></div>
-            <div class="reading-section" id="reading-grammar"></div>
-            <div class="reading-section" id="reading-questions"></div>
-            <div class="reading-section" id="reading-session-words"></div>
-            <div class="reading-section" id="reading-unknown-words"></div>
-
-            <button class="reading-complete-btn" id="reading-complete-btn" onclick="markReadingComplete()">✓ Gelezen · Mark as read</button>
-
-            <div class="reading-nav">
-              <button class="btn btn-secondary" onclick="navigateReading(-1)">← Vorig artikel</button>
-              <span class="reading-nav-info" id="reading-nav-info"></span>
-              <button class="btn btn-secondary" onclick="navigateReading(1)">Volgend artikel →</button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- MIJN WOORDEN — difficult-words list & flashcard practice -->
-      <div id="panel-mijnwoorden" class="panel">
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">📚 Mijn woorden · My words</span>
-          </div>
-          <div class="card-body">
-            <p class="mijnwoorden-intro">
-              Hier staan alle woorden die je hebt gemarkeerd in de leesteksten.
-              Klik op <strong>📚 Oefenen</strong> om ze als flashcards te oefenen.
-            </p>
-            <div id="mijnwoorden-content"></div>
-            <p class="mijnwoorden-empty" id="mijnwoorden-empty" style="display:none;">
-              Nog geen woorden gemarkeerd. Ga naar <strong>Lezen</strong>,
-              klik op 🔖 Markeer onbekend en kies woorden die je niet kent.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- NIET & GEEN -->
-      <div id="panel-ontkenning" class="panel">
-
-        <!-- Exercise 1: Geen of Niet? -->
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">Choose the correct negation: geen or niet?</span>
-            <div class="verb-ex-score">
-              <span class="stat-correct" id="neg-choose-correct">✓ 0</span>
-              <span class="stat-wrong" id="neg-choose-wrong">✗ 0</span>
-              <span class="vquiz-progress" id="neg-choose-progress"></span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="neg-level-row" id="neg-choose-levels"></div>
-            <div id="neg-choose-content"></div>
-          </div>
-        </div>
-
-        <!-- Exercise 2: Waar staat niet? -->
-        <div class="card" style="margin-top:16px">
-          <div class="card-header">
-            <span class="card-title">Place niet in the correct position</span>
-            <div class="verb-ex-score">
-              <span class="stat-correct" id="neg-place-correct">✓ 0</span>
-              <span class="stat-wrong" id="neg-place-wrong">✗ 0</span>
-              <span class="vquiz-progress" id="neg-place-progress"></span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="neg-level-row" id="neg-place-levels"></div>
-            <div id="neg-place-content"></div>
-          </div>
-        </div>
-
-        <!-- Quick reference -->
-        <details class="card" style="margin-top:16px">
-          <summary class="card-header" style="cursor:pointer">
-            <span class="card-title">Snel overzicht · Quick reference</span>
-          </summary>
-          <div class="card-body" style="font-size:0.82rem; line-height:1.6">
-            <p><strong>GEEN</strong> = vervangt "een" of nul-lidwoord bij zelfstandige naamwoorden<br>
-            <span style="color:var(--text-muted); font-style:italic">= replaces "een" (a/an) or the zero article with nouns</span></p>
-            <p style="color:var(--text-muted)">Ik heb <u>een</u> hond → Ik heb <u>geen</u> hond · Ik heb geld → Ik heb <u>geen</u> geld<br>
-            <span style="font-style:italic">I have a dog → I don't have a dog · I have money → I don't have money</span></p>
-            <hr style="border:0;border-top:1px solid var(--border);margin:12px 0">
-            <p><strong>NIET</strong> = bij alles anders. Waar staat niet?<br>
-            <span style="color:var(--text-muted); font-style:italic">= for everything else. Where does niet go?</span></p>
-            <ol style="padding-left:18px; color:var(--text-muted)">
-              <li><strong>Tweede werkwoord?</strong> → niet ervóór <span style="font-style:italic">(second verb? → niet before it)</span><br>
-                Ik wil het boek <u>niet</u> lezen. <span style="font-style:italic">— I don't want to read the book.</span><br>
-                Ik heb mijn huiswerk <u>niet</u> gemaakt. <span style="font-style:italic">— I haven't done my homework.</span></li>
-              <li><strong>Voorzetsel (met, om, op…)?</strong> → niet ervóór <span style="font-style:italic">(preposition? → niet before it)</span><br>
-                Ik ga <u>niet</u> met Elise op vakantie. <span style="font-style:italic">— I'm not going on holiday with Elise.</span></li>
-              <li><strong>Bijvoeglijk naamwoord?</strong> → niet ervóór <span style="font-style:italic">(adjective? → niet before it)</span><br>
-                Hij is <u>niet</u> oud. <span style="font-style:italic">— He is not old.</span></li>
-              <li><strong>Niets van bovenstaande?</strong> → niet achteraan <span style="font-style:italic">(none of the above? → niet at the end)</span><br>
-                Ik eet <u>niet</u>. <span style="font-style:italic">— I don't eat.</span><br>
-                Ik ken de weg <u>niet</u>. <span style="font-style:italic">— I don't know the way.</span></li>
-              <li><strong>Tijdswoord (vandaag, gisteren)?</strong> → niet erna <span style="font-style:italic">(time word? → niet after it)</span><br>
-                Ik loop vandaag <u>niet</u>. <span style="font-style:italic">— I'm not walking today.</span></li>
-            </ol>
-            <p style="color:var(--text-muted); font-style:italic; margin-top:8px">Tip: niet goes before what you're negating. If there's nothing specific, it goes at the end.</p>
-          </div>
-        </details>
-
-      </div>
-
-      <!-- DE/HET -->
-      <div id="panel-dehet" class="panel">
-        <div id="unit-bar-dehet"></div>
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">De of Het?</span>
-          </div>
-          <div class="card-body" style="padding-bottom:0">
-            <div class="vocab-filters" id="dh-level-filters" style="display:none">
-              <button class="filter-btn active" data-dhlevel="A1"  onclick="setDeHetLevel('A1',  this)">A1 <span id="dh-count-A1" class="badge-count"></span></button>
-              <button class="filter-btn"         data-dhlevel="A2"  onclick="setDeHetLevel('A2',  this)">A2 <span id="dh-count-A2" class="badge-count"></span></button>
-              <button class="filter-btn"         data-dhlevel="B1"  onclick="setDeHetLevel('B1',  this)">B1 <span id="dh-count-B1" class="badge-count"></span></button>
-              <button class="filter-btn"         data-dhlevel="B2"  onclick="setDeHetLevel('B2',  this)">B2 <span id="dh-count-B2" class="badge-count"></span></button>
-              <button class="filter-btn"         data-dhlevel="all" onclick="setDeHetLevel('all', this)">Alle <span id="dh-count-all" class="badge-count"></span></button>
-            </div>
-          </div>
-          <div class="dehet-card">
-            <div class="dehet-score">
-              <div class="score-item">
-                <div class="score-num green" id="dh-correct">0</div>
-                <div class="score-label">Goed</div>
-              </div>
-              <div class="score-item">
-                <div class="score-num red" id="dh-wrong">0</div>
-                <div class="score-label">Fout</div>
-              </div>
-              <div class="score-item">
-                <div class="score-num" id="dh-remaining">0</div>
-                <div class="score-label">Resterend</div>
-              </div>
-            </div>
-
-            <!-- Active word card -->
-            <div id="dh-word-panel">
-              <div class="dehet-noun-wrap">
-                <div class="dehet-article-hint">Welk lidwoord?</div>
-                <div class="dehet-noun" id="dh-noun">huis</div>
-                <div class="dehet-translation" id="dh-translation">house</div>
-              </div>
-              <div class="dehet-buttons">
-                <button class="dehet-btn" id="dh-de" onclick="answerDeHet('de')">de</button>
-                <button class="dehet-btn" id="dh-het" onclick="answerDeHet('het')">het</button>
-              </div>
-              <div class="dehet-feedback" id="dh-feedback"></div>
-              <button class="btn btn-secondary" id="dh-retry-btn" style="display:none" onclick="retryDeHet()">↩ Opnieuw proberen</button>
-            </div>
-
-            <!-- Completion screen -->
-            <div id="dh-done-panel" style="display:none" class="dh-done">
-              <div class="dh-done-icon">🎉</div>
-              <div class="dh-done-title">Klaar!</div>
-              <div class="dh-done-stats" id="dh-done-stats"></div>
-              <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-                <button class="btn btn-primary" id="dh-next-step-btn" style="display:none">Next step →</button>
-                <button class="btn btn-secondary" onclick="restartDeHet()">Opnieuw beginnen</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- WOORDENSCHAT -->
-      <div id="panel-woordenschat" class="panel">
-        <div id="unit-bar-woordenschat"></div>
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">Woordenschat</span>
-            <span class="badge badge-a1" id="vocab-count-badge">0 woorden</span>
-            <button class="btn btn-primary" id="vocab-practice-btn" onclick="startVocabPractice()" style="display:none; padding:6px 14px; font-size:0.85rem">▶ Oefenen</button>
-          </div>
-          <div class="card-body">
-            <div id="vocab-practice-area" style="display:none"></div>
-            <div id="vocab-grid-area">
-              <div class="vocab-controls">
-                <input class="vocab-search" type="text" id="vocab-search" placeholder="Zoek een woord..." oninput="filterVocab()" autocomplete="off" />
-                <div class="vocab-filters" id="vocab-level-filters">
-                  <button class="filter-btn active" data-level="all"  onclick="setVocabLevel('all',  this)">Alle</button>
-                  <button class="filter-btn"         data-level="A1"   onclick="setVocabLevel('A1',   this)">A1</button>
-                  <button class="filter-btn"         data-level="A2"   onclick="setVocabLevel('A2',   this)">A2</button>
-                  <button class="filter-btn"         data-level="B1"   onclick="setVocabLevel('B1',   this)">B1</button>
-                  <button class="filter-btn"         data-level="B2"   onclick="setVocabLevel('B2',   this)">B2</button>
-                  <button class="filter-btn"         data-level="C1"   onclick="setVocabLevel('C1',   this)">C1</button>
-                  <button class="filter-btn"         data-level="C2"   onclick="setVocabLevel('C2',   this)">C2</button>
-                </div>
-                <div class="vocab-filters" id="vocab-topic-filters"></div>
-                <label class="vocab-hide-toggle">
-                  <input type="checkbox" id="vocab-hide-cb" onchange="filterVocab()" />
-                  Verberg vertalingen (zelftest)
-                </label>
-              </div>
-              <div class="vocab-grid" id="vocab-grid"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- BEWERKEN -->
-      <div id="panel-bewerken" class="panel">
-
-        <!-- Vragen & opmerkingen card -->
-        <div class="card" style="margin-bottom:16px">
-          <div class="card-header">
-            <span class="card-title">⭐ Vragen &amp; opmerkingen</span>
-            <span class="badge badge-a1" id="flags-count-badge" style="opacity:0.7">0 gemarkeerd</span>
-          </div>
-          <div class="card-body" id="flags-body">
-            <p style="color:var(--text-muted);font-size:0.83rem">Geen vragen gemarkeerd. Gebruik de ⭐ knop tijdens het oefenen om een zin te markeren.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">Zinnen bewerken</span>
-            <div style="display:flex;gap:8px;flex-wrap:wrap">
-              <button class="btn btn-secondary" onclick="exportSentences()">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Exporteer JSON
-              </button>
-              <button class="btn btn-secondary" onclick="resetSentences()">Standaard herstellen</button>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="edit-info">
-              Voeg zinnen toe, bewerk of verwijder ze. Klik <strong>Opslaan</strong> om je wijzigingen te bewaren. Exporteer als JSON voor een backup of database-import.
-            </div>
-            <table class="edit-table">
-              <thead>
-                <tr>
-                  <th style="width:28%">Nederlands</th>
-                  <th style="width:28%">Engels</th>
-                  <th style="width:8%">Niveau</th>
-                  <th style="width:32%">Structuur</th>
-                  <th style="width:4%"></th>
-                </tr>
-              </thead>
-              <tbody id="edit-tbody"></tbody>
-            </table>
-            <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-              <button class="btn btn-secondary" onclick="addEditRow()">+ Zin toevoegen</button>
-              <button class="btn btn-primary" onclick="saveEditedSentences()">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-                Opslaan
-              </button>
-            </div>
-            <div style="margin-top:10px">
-              <span class="save-date" id="edit-count"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- GRAMMATICA -->
-      <div id="panel-grammatica" class="panel">
-        <div id="unit-bar-grammatica"></div>
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">Grammatica · Grammar</span>
-            <span class="badge badge-a1">A1 – B2</span>
-          </div>
-          <div class="card-body">
-            <p class="grammar-intro">Selecteer je niveau om de juiste grammatica te zien. · Select your level to see the right grammar content.</p>
-            <div class="filter-row" id="gt-level-filter">
-              <button class="filter-btn active" data-gtlevel="all" onclick="filterGrammarLevel('all',this)">Alles</button>
-              <button class="filter-btn a1-btn"  data-gtlevel="A1" onclick="filterGrammarLevel('A1',this)">A1</button>
-              <button class="filter-btn a2-btn"  data-gtlevel="A2" onclick="filterGrammarLevel('A2',this)">A2</button>
-              <button class="filter-btn b1-btn"  data-gtlevel="B1" onclick="filterGrammarLevel('B1',this)">B1</button>
-              <button class="filter-btn b2-btn"  data-gtlevel="B2" onclick="filterGrammarLevel('B2',this)">B2</button>
-            </div>
-            <div class="filter-row" id="gt-subtopic-filter" style="display:none; margin-top:6px;"></div>
-            <div id="grammar-content"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- LEERPLAN -->
-      <div id="panel-leerplan" class="panel">
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">Leerplan Nederlands A1–B2 · Dutch Study Plan</span>
-          </div>
-          <div class="card-body">
-            <div id="leerplan-content"></div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /content -->
-  </div>
+  </div><!-- /.layout-grid -->
 </main>
 
 <footer>
@@ -901,12 +916,12 @@
 </footer>
 
 <div class="toast" id="toast"></div>
+<div id="reading-hover-tip" aria-hidden="true"></div>
 
 <script src="js/sync.js"></script>
 <script src="js/data.js"></script>
 <script src="js/grammar-data.js"></script>
 <script src="js/reading-data.js"></script>
 <script src="js/app.js"></script>
-<div id="reading-hover-tip" aria-hidden="true"></div>
 </body>
 </html>

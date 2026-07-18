@@ -763,7 +763,7 @@ function loadTiles(s) {
   const punctMatch = nl.match(/[?!]+$/);
   const trailingPunct = punctMatch ? punctMatch[0] : null;
   tilePool = nl.split(' ')
-    .map(w => w.replace(/[.,!?]+$/, ''))
+    .map(w => w.replace(/[.!?]+$/, ''))
     .filter(Boolean);
   if (trailingPunct) tilePool.push(trailingPunct);
   tilePool = tilePool.sort(() => Math.random() - 0.5);
@@ -1911,9 +1911,9 @@ function _buildA1GrammarRulesHtml() {
 
       <div class="cj-block">
         <div class="cj-block-title">${cd.presentTense.title}</div>
-        <table class="cj-table"><thead>
+        <div class="cj-table-wrap"><table class="cj-table"><thead>
           <tr><th>Persoon</th><th>Regel</th><th>Let op</th><th>Voorbeeld</th></tr>
-        </thead><tbody>${presentRows}</tbody></table>
+        </thead><tbody>${presentRows}</tbody></table></div>
         <div class="cj-tip">💡 ${cd.presentTense.tip}</div>
       </div>
 
@@ -1923,9 +1923,9 @@ function _buildA1GrammarRulesHtml() {
         <div class="kof-letters">'t kofschip: ${kofLetters}</div>
         <div class="cj-rule-text">🇳🇱 ${cd.kofschip.rule}</div>
         <div class="cj-rule-text cj-rule-en">🇬🇧 ${cd.kofschip.ruleEn}</div>
-        <table class="cj-table cj-kof-table"><thead>
+        <div class="cj-table-wrap"><table class="cj-table cj-kof-table"><thead>
           <tr><th>Stam</th><th>Laatste letter</th><th>Kofschip?</th><th>Verleden tijd</th><th>Voltooid deelwoord</th></tr>
-        </thead><tbody>${kofRows}</tbody></table>
+        </thead><tbody>${kofRows}</tbody></table></div>
         <div class="cj-tip">💡 ${cd.kofschip.tipNl}<br><em>${cd.kofschip.tipEn}</em></div>
       </div>
 
@@ -4691,6 +4691,28 @@ function _escapeRegex(s) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+// Finds the first sentence in `text` that contains `word` (case-insensitive).
+function _findContextSentence(text, word) {
+  if (!word || !text) return null;
+  var key = word.toLowerCase();
+  var flat = text.replace(/\n+/g, ' ');
+  var re = /[^.!?]+[.!?]*/g;
+  var m;
+  while ((m = re.exec(flat)) !== null) {
+    var sentence = m[0].trim();
+    if (sentence.toLowerCase().indexOf(key) !== -1) return sentence;
+  }
+  return null;
+}
+
+// Returns `sentence` as escaped HTML with `word` wrapped in <strong>.
+function _highlightWordInSentence(sentence, word) {
+  var escaped = _escapeHtml(sentence);
+  if (!word) return escaped;
+  var re = new RegExp('\\b' + _escapeRegex(_escapeHtml(word)) + '\\b', 'gi');
+  return escaped.replace(re, '<strong>$&</strong>');
+}
+
 // Wraps every word in the paragraph with <span class="tts-word" data-tts-start="N">.
 // Vocab matches additionally get class "reading-word" + a data-en attribute for tooltip.
 // Words present in the unknown-words list also get class "tts-unknown" for highlighting.
@@ -5117,8 +5139,8 @@ function renderReading() {
       t.grammarNotes.map(function(g) {
         return '<div class="reading-grammar-note">' +
           '<div class="reading-grammar-pattern">' + _escapeHtml(g.pattern) + '</div>' +
-          '<div class="reading-grammar-example"><em>' + _escapeHtml(g.example) + '</em></div>' +
-          '<div class="reading-grammar-explain">' + _escapeHtml(g.explanation) + '</div>' +
+          '<div class="reading-grammar-example"><span class="reading-grammar-label">Voorbeeld · Example: </span><em>' + _escapeHtml(g.example) + '</em></div>' +
+          '<div class="reading-grammar-explain"><span class="reading-grammar-label">Explanation: </span>' + _escapeHtml(g.explanation) + '</div>' +
           '</div>';
       }).join('');
   }
@@ -5464,12 +5486,24 @@ function _renderSessionPracticeCard(list) {
   const nlEsc = _escapeHtml(nlRaw);
   const correct = w.en || _lookupTranslation(nlRaw);
 
+  // Find context sentence from the reading text
+  const t = typeof readingTexts !== 'undefined' ? readingTexts[_currentReadingIndex()] : null;
+  const ctxSentence = t ? _findContextSentence(t.text, nlRaw) : null;
+  const listenBtn = '<button class="practice-listen" data-word="' + nlEsc + '" onclick="speakWord(this.dataset.word)">🔊</button>';
+  const ctxHtml = ctxSentence
+    ? '<div class="practice-context">' + _highlightWordInSentence(ctxSentence, nlRaw) + ' ' + listenBtn + '</div>'
+    : '';
+  // When context is available, show word only as a small label; otherwise show it large
+  const wordHtml = ctxSentence
+    ? '<div class="practice-word practice-word--small">' + nlEsc + '</div>'
+    : '<div class="practice-word">' + nlEsc + ' ' + listenBtn + '</div>';
+
   if (!correct) {
     return '<div class="practice-card">' +
       '<div class="practice-header"><h3 class="reading-section-title">📚 Oefenen</h3>' +
         '<button class="practice-close" onclick="closeSessionPractice()">✕</button></div>' +
       '<div class="practice-counter">' + (_sessionPracticeIdx + 1) + ' / ' + list.length + '</div>' +
-      '<div class="practice-word">' + nlEsc + '</div>' +
+      ctxHtml + wordHtml +
       '<div class="practice-en practice-en--missing">Geen vertaling beschikbaar.</div>' +
       '<div class="practice-actions">' +
         '<button class="btn btn-secondary" onclick="prevSessionWord()">← Vorige</button>' +
@@ -5480,7 +5514,8 @@ function _renderSessionPracticeCard(list) {
   const distractors = list
     .filter(function(_, j) { return j !== _sessionPracticeIdx; })
     .map(function(item) { return item.word.en || _lookupTranslation(item.word.nl || item.key); })
-    .filter(Boolean);
+    .filter(function(en) { return en && en !== correct; })
+    .filter(function(en, i, arr) { return arr.indexOf(en) === i; }); // deduplicate
   // Supplement with Mijn Woorden translations if needed
   if (distractors.length < 3) {
     _unknownWordsSorted().forEach(function(item) {
@@ -5503,9 +5538,7 @@ function _renderSessionPracticeCard(list) {
     '<div class="practice-header"><h3 class="reading-section-title">📚 Oefenen · Practice</h3>' +
       '<button class="practice-close" onclick="closeSessionPractice()" aria-label="Sluiten">✕</button></div>' +
     '<div class="practice-counter">' + (_sessionPracticeIdx + 1) + ' / ' + list.length + '</div>' +
-    '<div class="practice-word">' + nlEsc +
-      '<button class="practice-listen" data-word="' + nlEsc + '" onclick="speakWord(this.dataset.word)">🔊</button>' +
-    '</div>' +
+    ctxHtml + wordHtml +
     '<div class="reading-q-options">' +
       options.map(function(opt) {
         let cls = 'reading-q-option';
@@ -5724,6 +5757,16 @@ function _renderPracticeCard(list) {
       _escapeHtml(src.title) + '</button></div>'
     : '';
 
+  // Context sentence from the source text
+  const ctxSentenceU = src ? _findContextSentence(src.text, nlRaw) : null;
+  const listenBtnU = '<button class="practice-listen" data-word="' + nlEsc + '" onclick="speakWord(this.dataset.word)" title="Luisteren">🔊</button>';
+  const ctxHtmlU = ctxSentenceU
+    ? '<div class="practice-context">' + _highlightWordInSentence(ctxSentenceU, nlRaw) + ' ' + listenBtnU + '</div>'
+    : '';
+  const wordHtmlU = ctxSentenceU
+    ? '<div class="practice-word practice-word--small">' + nlEsc + '</div>'
+    : '<div class="practice-word">' + nlEsc + ' ' + listenBtnU + '</div>';
+
   // Build multiple choice options
   const correct = enText || null;
   let optionsHtml = '';
@@ -5740,11 +5783,12 @@ function _renderPracticeCard(list) {
     const distractors = list
       .filter(function(item, j) { return j !== _practiceUnknownIdx; })
       .map(function(item) { return item.word.en || _lookupTranslation(item.word.nl || item.key); })
-      .filter(Boolean);
+      .filter(function(en) { return en && en !== correct; })
+      .filter(function(en, i, arr) { return arr.indexOf(en) === i; }); // deduplicate
     // Also pull from the source reading text's vocabulary if needed
     if (distractors.length < 3 && src) {
       src.vocabulary.forEach(function(v) {
-        if (v.en !== correct && distractors.indexOf(v.en) === -1) distractors.push(v.en);
+        if (v.en && v.en !== correct && distractors.indexOf(v.en) === -1) distractors.push(v.en);
       });
     }
     const options = [correct].concat(distractors.slice(0, 3));
@@ -5789,10 +5833,7 @@ function _renderPracticeCard(list) {
       '<button class="practice-close" onclick="closeUnknownPractice()" aria-label="Sluiten" title="Sluiten">✕</button>' +
     '</div>' +
     '<div class="practice-counter">' + (_practiceUnknownIdx + 1) + ' / ' + list.length + '</div>' +
-    '<div class="practice-word">' + nlEsc +
-      '<button class="practice-listen" data-word="' + nlEsc +
-        '" onclick="speakWord(this.dataset.word)" title="Luisteren">🔊</button>' +
-    '</div>' +
+    ctxHtmlU + wordHtmlU +
     srcHtml +
     optionsHtml +
     '<div class="practice-actions">' +

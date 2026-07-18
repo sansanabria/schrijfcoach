@@ -91,10 +91,10 @@ const grammarTopicsData = [
         heading: "Meervoudsregels", headingEn: "Plural rules",
         cols: ["Ending", "When", "Example"],
         rows: [
-          ["-en", "Meeste woorden", "boek → boeken, huis → huizen"],
-          ["-s", "Op -el, -em, -er, -en, -aar, -ie + leenwoorden", "tafel → tafels, auto → auto's"],
-          ["-eren", "Kind, ei, lied, blad, volk", "kind → kinderen, ei → eieren"],
-          ["Umlaut + -en", "Stad, dag, weg, glas", "stad → steden, dag → dagen"]
+          ["-en", "Meeste woorden<br><em>Most words</em>", "boek → boeken, huis → huizen"],
+          ["-s", "Op -el, -em, -er, -en, -aar, -ie + leenwoorden<br><em>Ending in -el, -em, -er, -en, -aar, -ie + loanwords</em>", "tafel → tafels, auto → auto's"],
+          ["-eren", "Kind, ei, lied, blad, volk<br><em>A small fixed group</em>", "kind → kinderen, ei → eieren"],
+          ["Umlaut + -en", "Stad, dag, weg, glas<br><em>Another small fixed group</em>", "stad → steden, dag → dagen"]
         ]
       }
     ],
@@ -166,13 +166,13 @@ const grammarTopicsData = [
         heading: "NIET — waar staat het?", headingEn: "NIET — where does it go?",
         cols: ["Vraag / Question", "Regel / Rule", "Voorbeeld / Example", "English"],
         rows: [
-          ["1. Tweede werkwoord?", "niet ervóór / niet before it", "Ik wil het boek niet lezen.", "I don't want to read the book."],
+          ["1. Tweede werkwoord?<br><em>Second verb?</em>", "niet ervóór / niet before it", "Ik wil het boek niet lezen.", "I don't want to read the book."],
           ["", "", "Ik heb mijn huiswerk niet gemaakt.", "I haven't done my homework."],
-          ["2. Voorzetsel (met, om, op…)?", "niet ervóór / niet before it", "Ik ga niet met Elise op vakantie.", "I'm not going on holiday with Elise."],
-          ["3. Bijvoeglijk naamwoord?", "niet ervóór / niet before it", "Hij is niet oud.", "He is not old."],
-          ["4. Niets van bovenstaande?", "niet achteraan / niet at the end", "Ik eet niet.", "I don't eat."],
+          ["2. Voorzetsel (met, om, op…)?<br><em>Preposition?</em>", "niet ervóór / niet before it", "Ik ga niet met Elise op vakantie.", "I'm not going on holiday with Elise."],
+          ["3. Bijvoeglijk naamwoord?<br><em>Adjective?</em>", "niet ervóór / niet before it", "Hij is niet oud.", "He is not old."],
+          ["4. Niets van bovenstaande?<br><em>None of the above?</em>", "niet achteraan / niet at the end", "Ik eet niet.", "I don't eat."],
           ["", "", "Ik ken de weg niet.", "I don't know the way."],
-          ["5. Tijdswoord (vandaag…)?", "niet erna / niet after it", "Ik loop vandaag niet.", "I'm not walking today."]
+          ["5. Tijdswoord (vandaag…)?<br><em>Time word?</em>", "niet erna / niet after it", "Ik loop vandaag niet.", "I'm not walking today."]
         ]
       },
       {
@@ -204,12 +204,12 @@ const grammarTopicsData = [
         heading: "Veelgemaakte fouten", headingEn: "Common mistakes to avoid",
         cols: ["✗ Wrong", "✓ Correct", "Rule"],
         rows: [
-          ["Ik heb niet een hond.", "Ik heb geen hond.", "geen bij 'een'"],
-          ["Ik niet eet.", "Ik eet niet.", "niet na werkwoord"],
-          ["Ik ga naar Amsterdam niet.", "Ik ga niet naar Amsterdam.", "niet vóór plaatsbepaling"],
-          ["Ik heb niet gemaakt mijn huiswerk.", "Ik heb mijn huiswerk niet gemaakt.", "niet vóór deelwoord, na object"],
-          ["Ik sta niet morgen op.", "Ik sta morgen niet op.", "niet vóór prefix, na tijdsbepaling"],
-          ["Ik loop niet vandaag.", "Ik loop vandaag niet.", "niet na eenvoudige tijdsbepaling"]
+          ["Ik heb niet een hond.", "Ik heb geen hond.", "geen bij 'een'<br><em>geen with 'een'</em>"],
+          ["Ik niet eet.", "Ik eet niet.", "niet na werkwoord<br><em>niet after verb</em>"],
+          ["Ik ga naar Amsterdam niet.", "Ik ga niet naar Amsterdam.", "niet vóór plaatsbepaling<br><em>niet before place</em>"],
+          ["Ik heb niet gemaakt mijn huiswerk.", "Ik heb mijn huiswerk niet gemaakt.", "niet vóór deelwoord, na object<br><em>niet before participle, after object</em>"],
+          ["Ik sta niet morgen op.", "Ik sta morgen niet op.", "niet vóór prefix, na tijdsbepaling<br><em>niet before prefix, after time word</em>"],
+          ["Ik loop niet vandaag.", "Ik loop vandaag niet.", "niet na eenvoudige tijdsbepaling<br><em>niet after simple time word</em>"]
         ]
       }
     ],
@@ -236,6 +236,7 @@ const grammarTopicsData = [
     extraTables: [{
       heading: "Alle ontkenningswoorden", headingEn: "All negation words",
       cols: ["Nederlands", "English", "Vervangt", "Voorbeeld"],
+      colsEn: ["Dutch", "English", "Replaces", "Example"],
       rows: [
         ["niet", "not", "—", "Ik werk niet."],
         ["geen", "no / not a / not any", "een / nul-lidwoord", "Ik heb geen auto."],
@@ -264,11 +265,11 @@ const grammarTopicsData = [
       heading: "Verkleinwoordregels", headingEn: "Diminutive rules",
       cols: ["Ending", "When", "Example"],
       rows: [
-        ["-tje", "Standaardregel (meeste woorden)", "boek → boekje, tafel → tafeltje"],
-        ["-je", "Na l, n, r, m + beklemtoonde lange klinker", "bal → balletje, baan → baantje"],
-        ["-etje", "Na korte klinker + enkele medeklinker", "blad → blaadje, glas → glaasje"],
-        ["-pje", "Na -m aan het einde", "bezem → bezempje, boom → boompje"],
-        ["-kje", "Na -ng", "ring → ringetje"]
+        ["-tje", "Standaardregel (meeste woorden)<br><em>Default rule (most words)</em>", "boek → boekje, tafel → tafeltje"],
+        ["-je", "Na l, n, r, m + beklemtoonde lange klinker<br><em>After l, n, r, m + stressed long vowel</em>", "bal → balletje, baan → baantje"],
+        ["-etje", "Na korte klinker + enkele medeklinker<br><em>After short vowel + single consonant</em>", "blad → blaadje, glas → glaasje"],
+        ["-pje", "Na -m aan het einde<br><em>After final -m</em>", "bezem → bezempje, boom → boompje"],
+        ["-kje", "Na -ng<br><em>After -ng</em>", "ring → ringetje"]
       ]
     }],
     rules: [
@@ -331,16 +332,18 @@ const grammarTopicsData = [
       {
         heading: "De gouden regel", headingEn: "The golden rule",
         cols: ["Hulpwerkwoord", "Wanneer?", "Voorbeelden"],
+        colsEn: ["Auxiliary", "When?", "Examples"],
         rows: [
-          ["ZIJN", "Beweging van A naar B (verplaatsing)", "gaan, komen, lopen, fietsen, rijden, vliegen, reizen, vertrekken, aankomen"],
-          ["ZIJN", "Verandering van toestand (iets wordt anders)", "worden, groeien, sterven, trouwen, wakker worden, veranderen"],
-          ["ZIJN", "Vaste groep uitzonderingen (uit je hoofd leren)", "zijn, blijven, lijken, gebeuren, slagen, mislukken, vallen, opstaan"],
-          ["HEBBEN", "Alle andere werkwoorden (de grote meerderheid!)", "eten, werken, lezen, kopen, zeggen, denken, maken, horen, zien"]
+          ["ZIJN", "Beweging van A naar B (verplaatsing)<br><em>Movement from A to B</em>", "gaan, komen, lopen, fietsen, rijden, vliegen, reizen, vertrekken, aankomen"],
+          ["ZIJN", "Verandering van toestand (iets wordt anders)<br><em>Change of state (something changes)</em>", "worden, groeien, sterven, trouwen, wakker worden, veranderen"],
+          ["ZIJN", "Vaste groep uitzonderingen (uit je hoofd leren)<br><em>Fixed exceptions (memorise these)</em>", "zijn, blijven, lijken, gebeuren, slagen, mislukken, vallen, opstaan"],
+          ["HEBBEN", "Alle andere werkwoorden (de grote meerderheid!)<br><em>All other verbs (the vast majority!)</em>", "eten, werken, lezen, kopen, zeggen, denken, maken, horen, zien"]
         ]
       },
       {
         heading: "Zijn — bewegingswerkwoorden", headingEn: "Zijn — movement verbs",
         cols: ["Infinitief", "VTT-vorm", "Voorbeeld"],
+        colsEn: ["Infinitive", "Perfect tense", "Example"],
         rows: [
           ["gaan",      "ben/is gegaan",      "Ik ben naar school gegaan."],
           ["komen",     "ben/is gekomen",     "Ze is gisteren gekomen."],
@@ -357,6 +360,7 @@ const grammarTopicsData = [
       {
         heading: "Zijn — verandering van toestand", headingEn: "Zijn — change of state",
         cols: ["Infinitief", "VTT-vorm", "Voorbeeld"],
+        colsEn: ["Infinitive", "Perfect tense", "Example"],
         rows: [
           ["worden",        "ben/is geworden",       "Hij is dokter geworden."],
           ["groeien",       "ben/is gegroeid",       "De kinderen zijn snel gegroeid."],
@@ -369,6 +373,7 @@ const grammarTopicsData = [
       {
         heading: "Zijn — vaste uitzonderingen (leer ze uit je hoofd!)", headingEn: "Zijn — fixed exceptions",
         cols: ["Infinitief", "VTT-vorm", "Voorbeeld"],
+        colsEn: ["Infinitive", "Perfect tense", "Example"],
         rows: [
           ["zijn",      "ben/is geweest",   "Ik ben in Amsterdam geweest."],
           ["blijven",   "ben/is gebleven",  "Ze is thuis gebleven."],
@@ -383,6 +388,7 @@ const grammarTopicsData = [
       {
         heading: "Hebben — de meerderheid van werkwoorden", headingEn: "Hebben — the majority of verbs",
         cols: ["Infinitief", "VTT-vorm", "Voorbeeld"],
+        colsEn: ["Infinitive", "Perfect tense", "Example"],
         rows: [
           ["eten",    "heb/heeft gegeten",   "We hebben pizza gegeten."],
           ["werken",  "heb/heeft gewerkt",   "Ze heeft vandaag gewerkt."],
@@ -905,11 +911,11 @@ const grammarTopicsData = [
       heading: "Vormen van indirecte rede", headingEn: "Forms of reported speech",
       cols: ["Type", "Direct", "Indirect"],
       rows: [
-        ["Mededeling", "\"Ik werk hier.\"", "Hij zegt dat hij hier werkt."],
-        ["Vraag (ja/nee)", "\"Kom jij ook?\"", "Hij vraagt of jij ook komt."],
-        ["Vraagwoordvraag", "\"Waar woon jij?\"", "Hij vraagt waar jij woont."],
-        ["Opdracht", "\"Kom hier!\"", "Hij zegt dat ik moet komen."],
-        ["Tijdsverschuiving", "\"Ik heb het gedaan.\"", "Hij zei dat hij het gedaan had."]
+        ["Mededeling<br><em>Statement</em>", "\"Ik werk hier.\"", "Hij zegt dat hij hier werkt."],
+        ["Vraag (ja/nee)<br><em>Yes/no question</em>", "\"Kom jij ook?\"", "Hij vraagt of jij ook komt."],
+        ["Vraagwoordvraag<br><em>Wh-question</em>", "\"Waar woon jij?\"", "Hij vraagt waar jij woont."],
+        ["Opdracht<br><em>Command</em>", "\"Kom hier!\"", "Hij zegt dat ik moet komen."],
+        ["Tijdsverschuiving<br><em>Tense shift</em>", "\"Ik heb het gedaan.\"", "Hij zei dat hij het gedaan had."]
       ]
     }],
     rules: [
@@ -998,11 +1004,11 @@ const grammarTopicsData = [
       heading: "Werkwoordsvolgorde in bijzinnen", headingEn: "Verb order in subordinate clauses",
       cols: ["Case", "Main clause", "Subordinate clause"],
       rows: [
-        ["Scheidbaar ww.", "Ik sta vroeg op.", "...dat ik vroeg opsta."],
-        ["Hulpww. + inf.", "Ik kan het doen.", "...dat ik het kan doen."],
-        ["Perf. met modaal", "Hij heeft kunnen komen.", "...dat hij heeft kunnen komen."],
-        ["Passief", "Het wordt gemaakt.", "...dat het gemaakt wordt."],
-        ["Te + infinitief", "Ik probeer te lezen.", "...dat ik probeer te lezen."]
+        ["Scheidbaar ww.<br><em>Separable verb</em>", "Ik sta vroeg op.", "...dat ik vroeg opsta."],
+        ["Hulpww. + inf.<br><em>Modal + infinitive</em>", "Ik kan het doen.", "...dat ik het kan doen."],
+        ["Perf. met modaal<br><em>Perfect with modal</em>", "Hij heeft kunnen komen.", "...dat hij heeft kunnen komen."],
+        ["Passief<br><em>Passive</em>", "Het wordt gemaakt.", "...dat het gemaakt wordt."],
+        ["Te + infinitief<br><em>Te + infinitive</em>", "Ik probeer te lezen.", "...dat ik probeer te lezen."]
       ]
     }],
     rules: [
@@ -1030,10 +1036,10 @@ const grammarTopicsData = [
       heading: "Formule en gebruik", headingEn: "Formula and use",
       cols: ["Situation", "If-clause (past perfect)", "Then-clause"],
       rows: [
-        ["Irreeel verleden", "Als hij eerder was gekomen,", "had ik hem gezien."],
-        ["Alternatief zou-vorm", "Als hij eerder was gekomen,", "zou ik hem gezien hebben."],
-        ["Spijt uitdrukken", "Als ik harder had gewerkt,", "was ik geslaagd."],
-        ["Formeel zonder als", "Had hij gebeld,", "dan had ik geantwoord."]
+        ["Irreeel verleden<br><em>Unreal past</em>", "Als hij eerder was gekomen,", "had ik hem gezien."],
+        ["Alternatief zou-vorm<br><em>Alternative zou form</em>", "Als hij eerder was gekomen,", "zou ik hem gezien hebben."],
+        ["Spijt uitdrukken<br><em>Expressing regret</em>", "Als ik harder had gewerkt,", "was ik geslaagd."],
+        ["Formeel zonder als<br><em>Formal, without 'als'</em>", "Had hij gebeld,", "dan had ik geantwoord."]
       ]
     }],
     rules: [

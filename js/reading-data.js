@@ -1519,6 +1519,1227 @@ At half past nine she starts to feel sleepy. She turns off the television, brush
     ]
   },
 
+  // ── A2 EXTRA TOPICS ─────────────────────────────────────────────────────────
+
+  {
+    id: 'r-a2-009',
+    title: 'Sport en fitness',
+    titleEn: 'Sport and fitness',
+    level: 'A2',
+    topic: 'sport',
+    topicEn: 'sport',
+    topicEmoji: '🏃',
+    wordCount: 213,
+    readMinutes: 3,
+    text:
+`Marco woont in Utrecht en houdt van sporten. Twee keer per week gaat hij naar de sportschool. Hij traint graag vroeg in de ochtend, voor zijn werk begint. Dan zijn er weinig mensen en is het lekker rustig.
+
+In de sportschool doet Marco gewichtheffen en loopt hij op de loopband. Daarna stretcht hij tien minuten. Hij vindt het belangrijk om goed te bewegen voor zijn gezondheid. Vorig jaar had hij vaak rugpijn. Na een paar maanden trainen is dat veel beter geworden.
+
+Op zaterdag fietst Marco met een groep vrienden door het bos buiten de stad. Ze fietsen gemiddeld vijftig kilometer. Na de tocht gaan ze meestal ergens koffie drinken. "Sporten is leuker als je het samen doet," zegt Marco.
+
+Zijn vriendin Lena sport anders. Zij doet yoga en zwemt één keer per week in het zwembad. Ze wil niet naar de sportschool. "Ik hou meer van rustige sporten," zegt ze. "Ik wil niet zweten in een grote zaal vol mensen." Marco begrijpt haar goed. Iedereen beweegt op zijn eigen manier.
+
+Zowel Marco als Lena vinden bewegen heel belangrijk. Na het avondeten lopen ze vaak samen een rondje in het park. Dat is goed voor de gezondheid én voor hun relatie.`,
+    textEn:
+`Marco lives in Utrecht and loves sport. He goes to the gym twice a week. He likes to train early in the morning, before his work starts. Then there are few people and it is nice and quiet.
+
+At the gym, Marco does weightlifting and runs on the treadmill. After that he stretches for ten minutes. He thinks it is important to exercise well for his health. Last year he often had back pain. After a few months of training, that has improved a lot.
+
+On Saturdays, Marco cycles with a group of friends through the woods outside the city. They cycle an average of fifty kilometres. After the ride, they usually go for a coffee somewhere. "Sport is more fun when you do it together," says Marco.
+
+His girlfriend Lena exercises differently. She does yoga and swims once a week at the swimming pool. She does not want to go to the gym. "I prefer calm sports," she says. "I don't want to sweat in a large hall full of people." Marco understands her well. Everyone exercises in their own way.
+
+Both Marco and Lena find exercise very important. After dinner they often go for a walk together in the park. That is good for their health and for their relationship.`,
+    vocabulary: [
+      { nl: 'de sportschool', en: 'gym / fitness centre', matches: ['sportschool'] },
+      { nl: 'gewichtheffen', en: 'weightlifting', matches: ['gewichtheffen'] },
+      { nl: 'de loopband', en: 'treadmill', matches: ['loopband'] },
+      { nl: 'stretchen', en: 'to stretch', matches: ['stretcht'] },
+      { nl: 'de rugpijn', en: 'back pain', matches: ['rugpijn'] },
+      { nl: 'het zwembad', en: 'swimming pool', matches: ['zwembad'] },
+      { nl: 'zweten', en: 'to sweat', matches: ['zweten'] },
+      { nl: 'bewegen', en: 'to exercise / to move', matches: ['bewegen', 'beweegt'] },
+      { nl: 'gemiddeld', en: 'on average', matches: ['gemiddeld'] },
+      { nl: 'een rondje lopen', en: 'to go for a short walk', matches: ['rondje'] }
+    ],
+    grammarNotes: [
+      {
+        pattern: '"Graag" voor voorkeuren (expressing preferences)',
+        example: 'Hij traint graag vroeg in de ochtend.',
+        explanation: '"Graag" (gladly) placed after a verb means "to like doing" something: "hij traint graag" = "he likes to train". It is not a full verb. Compare: "Ik eet graag pasta" (I like eating pasta), "Ze zwemt graag" (She likes swimming).'
+      },
+      {
+        pattern: 'Na + tijdsuitdrukking → inversie',
+        example: 'Na een paar maanden trainen is dat veel beter geworden.',
+        explanation: 'When a sentence starts with "na" (after) + a time expression, inversion follows in the main clause: the verb comes before the subject. "Is dat" not "dat is". "Geworden" is the past participle of "worden", used to form the perfect tense with "zijn".'
+      },
+      {
+        pattern: 'Zowel ... als ... (both ... and ...)',
+        example: 'Zowel Marco als Lena vinden bewegen heel belangrijk.',
+        explanation: '"Zowel ... als ..." connects two subjects and means "both ... and ...". When two subjects are connected this way, the verb is plural. Compare: "zowel thuis als op het werk" (both at home and at work).'
+      }
+    ],
+    questions: [
+      {
+        q: 'Waarom gaat Marco graag vroeg naar de sportschool?',
+        qEn: 'Why does Marco like to go to the gym early?',
+        a: 'Omdat er dan weinig mensen zijn en het lekker rustig is.',
+        aEn: 'Because then there are few people and it is nice and quiet.'
+      },
+      {
+        q: 'Waarom wil Lena niet naar de sportschool?',
+        qEn: 'Why does Lena not want to go to the gym?',
+        a: 'Omdat ze liever rustige sporten doet en niet wil zweten in een grote zaal vol mensen.',
+        aEn: 'Because she prefers calm sports and does not want to sweat in a large hall full of people.'
+      },
+      {
+        q: 'Wat doen Marco en Lena na het avondeten?',
+        qEn: 'What do Marco and Lena do after dinner?',
+        a: 'Ze lopen samen een rondje in het park.',
+        aEn: 'They go for a walk together in the park.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-a2-010',
+    title: 'Een huurhuis zoeken',
+    titleEn: 'Looking for a rental home',
+    level: 'A2',
+    topic: 'wonen',
+    topicEn: 'housing',
+    topicEmoji: '🏠',
+    wordCount: 210,
+    readMinutes: 3,
+    text:
+`Sara is 26 jaar en werkt in Amsterdam. Ze woont nu samen met twee huisgenoten, maar ze wil graag zelfstandig wonen. Ze is al twee maanden op zoek naar een eigen huurhuis.
+
+Huren in Amsterdam is niet makkelijk. Er zijn veel mensen die een huurhuis zoeken en de prijzen zijn hoog. Sara zoekt op websites zoals Funda en Pararius. Elke dag kijkt ze naar nieuwe advertenties. Soms reageert ze snel, maar dan is de woning al verhuurd.
+
+Vorige week had ze eindelijk een bezichtiging. Het appartement was op de derde verdieping, zonder lift. Er waren twee kamers, een kleine keuken en een badkamer. De huur was 1.200 euro per maand — inclusief servicekosten, maar exclusief gas en licht. Sara vond het appartement te klein voor de prijs.
+
+Ze vraagt haar vrienden om advies. "Schrijf een goede brief," zegt haar vriendin Mina. "Vertel wie je bent, wat je doet en waarom je een goede huurder bent." Sara schrijft een korte brief over zichzelf. Ze werkt vast, verdient een goed salaris en heeft geen huisdieren. Ze hoopt snel iets te vinden.
+
+"Het is moeilijk," zegt ze, "maar ik geef niet op."`,
+    textEn:
+`Sara is 26 years old and works in Amsterdam. She currently lives together with two housemates, but she would like to live independently. She has already been looking for her own rental home for two months.
+
+Renting in Amsterdam is not easy. There are many people looking for a rental home and the prices are high. Sara searches on websites such as Funda and Pararius. Every day she looks at new listings. Sometimes she responds quickly, but then the property is already rented.
+
+Last week she finally had a viewing. The apartment was on the third floor, without a lift. There were two rooms, a small kitchen, and a bathroom. The rent was 1,200 euros per month — including service charges, but excluding gas and electricity. Sara found the apartment too small for the price.
+
+She asks her friends for advice. "Write a good letter," says her friend Mina. "Tell them who you are, what you do, and why you would be a good tenant." Sara writes a short letter about herself. She has a permanent job, earns a good salary, and has no pets. She hopes to find something soon.
+
+"It is difficult," she says, "but I am not giving up."`,
+    vocabulary: [
+      { nl: 'de huisgenoot', en: 'housemate / flatmate', matches: ['huisgenoten'] },
+      { nl: 'zelfstandig', en: 'independently / on your own', matches: ['zelfstandig'] },
+      { nl: 'huren', en: 'to rent', matches: ['huren', 'huurhuis'] },
+      { nl: 'de advertentie', en: 'listing / advertisement', matches: ['advertenties'] },
+      { nl: 'de bezichtiging', en: 'viewing (of a property)', matches: ['bezichtiging'] },
+      { nl: 'de verdieping', en: 'floor / storey', matches: ['verdieping'] },
+      { nl: 'verhuurd', en: 'rented out (already taken)', matches: ['verhuurd'] },
+      { nl: 'de servicekosten', en: 'service charges', matches: ['servicekosten'] },
+      { nl: 'de huurder', en: 'tenant', matches: ['huurder'] },
+      { nl: 'opgeven', en: 'to give up', matches: ['geef niet op'] }
+    ],
+    grammarNotes: [
+      {
+        pattern: '"Op zoek naar" (looking for)',
+        example: 'Ze is al twee maanden op zoek naar een eigen huurhuis.',
+        explanation: '"Op zoek naar" (looking for, in search of) is a fixed expression. It always takes "naar" + noun phrase. Similar fixed expressions: "op weg naar" (on the way to), "op bezoek bij" (visiting someone).'
+      },
+      {
+        pattern: 'Inclusief / exclusief + substantief zonder artikel',
+        example: 'inclusief servicekosten, maar exclusief gas en licht',
+        explanation: '"Inclusief" and "exclusief" are used in pricing and rental contexts. They come directly before the noun without an article: not "inclusief de servicekosten" but simply "inclusief servicekosten". This is standard in formal and commercial Dutch.'
+      },
+      {
+        pattern: 'Indirecte vraag (embedded question)',
+        example: 'Vertel wie je bent, wat je doet en waarom je een goede huurder bent.',
+        explanation: 'In indirect (embedded) questions, the question word (wie, wat, waarom, waar) is followed by normal word order with the verb at the end: "wie je bent" not "wie ben je". This applies after verbs like "vertel", "vraag", "weet", "zeg".'
+      }
+    ],
+    questions: [
+      {
+        q: 'Waarom zoekt Sara een eigen huurhuis?',
+        qEn: 'Why is Sara looking for her own rental home?',
+        a: 'Omdat ze zelfstandig wil wonen en niet meer met huisgenoten.',
+        aEn: 'Because she wants to live independently and no longer with housemates.'
+      },
+      {
+        q: 'Wat vond Sara van het appartement dat ze bekeek?',
+        qEn: 'What did Sara think of the apartment she viewed?',
+        a: 'Ze vond het te klein voor de prijs.',
+        aEn: 'She found it too small for the price.'
+      },
+      {
+        q: 'Wat raadt Mina Sara aan te doen?',
+        qEn: 'What does Mina advise Sara to do?',
+        a: 'Een goede brief schrijven over wie ze is en waarom ze een goede huurder is.',
+        aEn: 'To write a good letter about who she is and why she would be a good tenant.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-a2-011',
+    title: 'In de bibliotheek',
+    titleEn: 'At the library',
+    level: 'A2',
+    topic: 'cultuur',
+    topicEn: 'culture',
+    topicEmoji: '📚',
+    wordCount: 211,
+    readMinutes: 3,
+    text:
+`De bibliotheek is voor iedereen. Voor een kleine bijdrage per jaar kun je een pas aanvragen en boeken lenen. In veel steden is de bibliotheek ook een plek om rustig te werken, internet te gebruiken of een cursus te volgen.
+
+Thomas is 34 jaar en gaat elke twee weken naar de bibliotheek in zijn wijk. Hij leent altijd twee of drie boeken tegelijk — meestal romans, maar soms ook een naslagwerk. "Ik koop niet veel boeken meer," zegt hij. "De bibliotheek is veel goedkoper en ik heb thuis al te veel."
+
+Naast boeken heeft de bibliotheek ook tijdschriften, dvd's en luisterboeken. Kinderen kunnen naar verteluren komen, waarbij een medewerker verhalen voorleest. Er zijn ook computerlessen voor ouderen die willen leren hoe ze internet veilig kunnen gebruiken.
+
+Thomas werkt soms aan een tafel achter in de bibliotheek. Het is er rustig en er is gratis wifi. Als hij een vraag heeft, kan hij terecht bij de informatiedesk. "De medewerkers zijn heel behulpzaam," zegt hij. "Ze helpen je altijd verder."
+
+De bibliotheek is voor Thomas meer dan een plek voor boeken. Het is een plek in de buurt waar iedereen welkom is.`,
+    textEn:
+`The library is for everyone. For a small annual fee you can apply for a card and borrow books. In many cities the library is also a place to work quietly, use the internet, or follow a course.
+
+Thomas is 34 years old and goes to the library in his neighbourhood every two weeks. He always borrows two or three books at a time — usually novels, but sometimes also a reference book. "I don't buy many books any more," he says. "The library is much cheaper and I already have too many at home."
+
+Besides books, the library also has magazines, DVDs, and audiobooks. Children can come to story times, where a staff member reads stories aloud. There are also computer lessons for elderly people who want to learn how to use the internet safely.
+
+Thomas sometimes works at a table at the back of the library. It is quiet there and there is free wifi. If he has a question, he can go to the information desk. "The staff are very helpful," he says. "They always help you further."
+
+For Thomas, the library is more than a place for books. It is a place in the neighbourhood where everyone is welcome.`,
+    vocabulary: [
+      { nl: 'de bibliotheek', en: 'library', matches: ['bibliotheek'] },
+      { nl: 'de pas', en: 'card (library card)', matches: ['pas'] },
+      { nl: 'lenen', en: 'to borrow', matches: ['lenen', 'leent'] },
+      { nl: 'het naslagwerk', en: 'reference book', matches: ['naslagwerk'] },
+      { nl: 'het tijdschrift', en: 'magazine', matches: ['tijdschriften'] },
+      { nl: 'het luisterboek', en: 'audiobook', matches: ['luisterboeken'] },
+      { nl: 'het verteluur', en: 'story time', matches: ['verteluren'] },
+      { nl: 'voorlezen', en: 'to read aloud', matches: ['voorleest'] },
+      { nl: 'terecht kunnen bij', en: 'to be able to go to (for help)', matches: ['terecht'] },
+      { nl: 'behulpzaam', en: 'helpful', matches: ['behulpzaam'] }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Inversie na voorzetselbepaling (inversion after prepositional phrase)',
+        example: 'Voor een kleine bijdrage per jaar kun je een pas aanvragen.',
+        explanation: 'When a sentence opens with a prepositional phrase ("voor een kleine bijdrage"), the subject and verb invert: "kun je" not "je kunt". This rule applies whenever anything other than the subject comes first in a Dutch sentence.'
+      },
+      {
+        pattern: '"Waarbij" (at/during which)',
+        example: 'Kinderen kunnen naar verteluren komen, waarbij een medewerker verhalen voorleest.',
+        explanation: '"Waarbij" is a relative pronoun that includes a preposition ("bij"). It refers back to the noun just mentioned and avoids repeating it: "verteluren waarbij..." = "story times during which...". The verb in the relative clause goes to the end.'
+      },
+      {
+        pattern: '"Terecht kunnen bij" (to be able to turn to / go to for help)',
+        example: 'Als hij een vraag heeft, kan hij terecht bij de informatiedesk.',
+        explanation: '"Terecht kunnen bij" means you can go to a place or person for help or information. Very common: "Je kunt terecht bij de receptie" (you can go to reception), "Je kunt er terecht voor meer informatie" (you can go there for more information).'
+      }
+    ],
+    questions: [
+      {
+        q: 'Wat doet Thomas altijd als hij naar de bibliotheek gaat?',
+        qEn: 'What does Thomas always do when he goes to the library?',
+        a: 'Hij leent twee of drie boeken tegelijk.',
+        aEn: 'He borrows two or three books at a time.'
+      },
+      {
+        q: 'Welke activiteiten zijn er voor kinderen in de bibliotheek?',
+        qEn: 'What activities are there for children at the library?',
+        a: 'Ze kunnen naar verteluren komen, waarbij een medewerker verhalen voorleest.',
+        aEn: 'They can come to story times, where a staff member reads stories aloud.'
+      },
+      {
+        q: 'Waarom werkt Thomas soms in de bibliotheek?',
+        qEn: 'Why does Thomas sometimes work in the library?',
+        a: 'Omdat het er rustig is en er gratis wifi is.',
+        aEn: 'Because it is quiet there and there is free wifi.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-a2-012',
+    title: 'Een nieuwe baan zoeken',
+    titleEn: 'Looking for a new job',
+    level: 'A2',
+    topic: 'werk',
+    topicEn: 'work',
+    topicEmoji: '💼',
+    wordCount: 210,
+    readMinutes: 3,
+    text:
+`Julia heeft haar baan als verkoopster opgezegd. Ze werkte vijf jaar in een kledingwinkel, maar ze wilde iets anders. Ze heeft een opleiding gevolgd en is nu op zoek naar werk als administratief medewerker.
+
+Ze heeft haar cv bijgewerkt en schrijft sollicitatiebrieven. Dat is niet makkelijk. Elke brief moet specifiek zijn voor de vacature. Ze leest de functieomschrijving goed en schrijft dan waarom ze geschikt is voor de functie.
+
+Vorige week had ze haar eerste sollicitatiegesprek bij een klein kantoor. Ze was zenuwachtig, maar ze was goed voorbereid. Ze had vragen geoefend met haar moeder. "Vertel eens iets over jezelf," zei de interviewer. Julia vertelde over haar werkervaring en haar nieuwe opleiding. "Wat zijn uw sterke punten?" vroeg hij daarna. "Ik ben nauwkeurig en ik werk graag in een team," antwoordde Julia.
+
+Na het gesprek stuurde het kantoor een e-mail: ze wilden Julia uitnodigen voor een tweede gesprek. Julia was heel blij. Ze weet dat ze de baan nog niet heeft, maar het gaat goed.
+
+"Zoeken naar werk is hard werken," zegt ze. "Maar ik geloof erin dat het goed gaat komen."`,
+    textEn:
+`Julia has resigned from her job as a saleswoman. She worked for five years in a clothing shop, but she wanted something different. She has completed a course and is now looking for work as an administrative assistant.
+
+She has updated her CV and is writing application letters. That is not easy. Each letter must be specific to the vacancy. She reads the job description carefully and then writes why she is suitable for the position.
+
+Last week she had her first job interview at a small office. She was nervous, but she was well prepared. She had practised questions with her mother. "Tell us something about yourself," said the interviewer. Julia talked about her work experience and her new course. "What are your strengths?" he asked afterwards. "I am thorough and I like working in a team," answered Julia.
+
+After the interview, the office sent an email: they wanted to invite Julia for a second interview. Julia was very happy. She knows she does not have the job yet, but things are going well.
+
+"Looking for work is hard work," she says. "But I believe it will work out well."`,
+    vocabulary: [
+      { nl: 'opzeggen', en: 'to resign / to quit', matches: ['opgezegd'] },
+      { nl: 'de opleiding', en: 'course / training / degree', matches: ['opleiding'] },
+      { nl: 'administratief', en: 'administrative', matches: ['administratief'] },
+      { nl: 'het cv', en: 'CV / résumé', matches: ['cv'] },
+      { nl: 'bijwerken', en: 'to update', matches: ['bijgewerkt'] },
+      { nl: 'de vacature', en: 'job vacancy', matches: ['vacature'] },
+      { nl: 'de functieomschrijving', en: 'job description', matches: ['functieomschrijving'] },
+      { nl: 'zenuwachtig', en: 'nervous', matches: ['zenuwachtig'] },
+      { nl: 'nauwkeurig', en: 'thorough / accurate / precise', matches: ['nauwkeurig'] },
+      { nl: 'geloven in', en: 'to believe in', matches: ['geloof erin'] }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Scheidbaar werkwoord in perfectum (separable verb in perfect tense)',
+        example: 'Ze heeft haar baan als verkoopster opgezegd.',
+        explanation: '"Opzeggen" (to resign/cancel) is a separable verb. In the perfect tense, "ge-" is inserted between the prefix and stem: "op" + "ge" + "zegd" = "opgezegd". The same applies to "bijwerken" → "bijgewerkt". The prefix always attaches to the past participle.'
+      },
+      {
+        pattern: 'Directe rede met inversie (direct speech with inversion)',
+        example: '"Vertel eens iets over jezelf," zei de interviewer.',
+        explanation: 'When the reporting clause ("zei de interviewer") follows the quoted speech, the verb comes before the subject: "zei de interviewer" not "de interviewer zei". This inversion is standard in Dutch direct speech.'
+      },
+      {
+        pattern: '"Geloven erin dat …" (to believe that …)',
+        example: 'Ik geloof erin dat het goed gaat komen.',
+        explanation: 'When "geloven in" is followed by a "dat"-clause, the pronoun "er" is inserted: "ik geloof erin dat…". This "er + preposition" pattern is very common: "rekenen erop dat" (to count on the fact that), "hopen erop dat" (to hope that).'
+      }
+    ],
+    questions: [
+      {
+        q: 'Waarom heeft Julia haar baan opgezegd?',
+        qEn: 'Why did Julia resign from her job?',
+        a: 'Omdat ze iets anders wilde doen.',
+        aEn: 'Because she wanted to do something different.'
+      },
+      {
+        q: 'Hoe heeft Julia zich voorbereid op het sollicitatiegesprek?',
+        qEn: 'How did Julia prepare for the job interview?',
+        a: 'Ze heeft vragen geoefend met haar moeder.',
+        aEn: 'She practised questions with her mother.'
+      },
+      {
+        q: 'Wat voor nieuws kreeg Julia na het gesprek?',
+        qEn: 'What news did Julia receive after the interview?',
+        a: 'Ze werd uitgenodigd voor een tweede gesprek.',
+        aEn: 'She was invited for a second interview.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-a2-013',
+    title: 'Op de basisschool',
+    titleEn: 'At primary school',
+    level: 'A2',
+    topic: 'school',
+    topicEn: 'school',
+    topicEmoji: '🎒',
+    wordCount: 214,
+    readMinutes: 3,
+    text:
+`In Nederland beginnen kinderen op hun vierde met school. Ze gaan naar de basisschool, die acht jaar duurt. Na de basisschool gaan ze naar het voortgezet onderwijs.
+
+Lisa is lerares op een basisschool in Den Haag. Ze geeft les aan groep vijf — kinderen van acht en negen jaar oud. Elke ochtend beginnen ze met een kringgesprek. De kinderen zitten in een kring en mogen iets vertellen over wat er thuis of in de buurt is gebeurd.
+
+Daarna werken ze aan taal en rekenen. In de middag zijn er vaak creatieve vakken, zoals tekenen, muziek of gym. "Ik vind het belangrijk dat kinderen ook bewegen en creatief zijn," zegt Lisa. "Niet alleen rekenen en lezen."
+
+Op vrijdagochtend is er een spreekbeurt. Een kind staat voor de klas en vertelt over een onderwerp dat het zelf heeft gekozen. Vorige week vertelde een meisje over pinguïns. "Ze had thuis goed geoefend," zegt Lisa. "Ze was een beetje zenuwachtig, maar ze deed het heel goed."
+
+Aan het einde van de dag halen ouders hun kinderen op bij de schooldeur. Lisa staat dan altijd buiten om even met de ouders te praten. Ze vindt dat een fijn moment van de dag.`,
+    textEn:
+`In the Netherlands, children start school at the age of four. They go to primary school, which lasts eight years. After primary school, they move on to secondary education.
+
+Lisa is a teacher at a primary school in The Hague. She teaches group five — children aged eight and nine. Every morning they start with a circle time. The children sit in a circle and are allowed to tell something about what has happened at home or in the neighbourhood.
+
+After that, they work on language and maths. In the afternoon there are often creative subjects, such as drawing, music, or PE. "I think it is important that children also exercise and are creative," says Lisa. "Not only maths and reading."
+
+On Friday morning there is a show-and-tell. A child stands in front of the class and talks about a topic they have chosen themselves. Last week a girl talked about penguins. "She had practised well at home," says Lisa. "She was a little nervous, but she did very well."
+
+At the end of the day, parents pick up their children at the school door. Lisa always stands outside then to have a quick chat with the parents. She finds that a pleasant moment of the day.`,
+    vocabulary: [
+      { nl: 'de basisschool', en: 'primary school / elementary school', matches: ['basisschool'] },
+      { nl: 'het voortgezet onderwijs', en: 'secondary education', matches: ['voortgezet onderwijs'] },
+      { nl: 'de lerares', en: 'female teacher', matches: ['lerares'] },
+      { nl: 'het kringgesprek', en: 'circle time / morning meeting', matches: ['kringgesprek'] },
+      { nl: 'de kring', en: 'circle', matches: ['kring'] },
+      { nl: 'rekenen', en: 'maths / arithmetic', matches: ['rekenen'] },
+      { nl: 'de spreekbeurt', en: 'oral presentation / show-and-tell', matches: ['spreekbeurt'] },
+      { nl: 'voor de klas staan', en: 'to stand in front of the class', matches: ['voor de klas'] },
+      { nl: 'het onderwerp', en: 'subject / topic', matches: ['onderwerp'] },
+      { nl: 'ophalen', en: 'to pick up', matches: ['halen', 'ophalen'] }
+    ],
+    grammarNotes: [
+      {
+        pattern: '"Mogen + infinitief" (to be allowed to)',
+        example: 'De kinderen mogen iets vertellen over wat er is gebeurd.',
+        explanation: '"Mogen" (may / to be allowed to) is a modal verb followed by an infinitive. In Dutch school and family contexts it is very common: "je mag nu naar buiten" (you may go outside), "je mag kiezen" (you are allowed to choose). Modal verbs always send the infinitive to the end of the clause.'
+      },
+      {
+        pattern: 'Relatieve bijzin met "dat" (relative clause with "dat")',
+        example: 'Een kind vertelt over een onderwerp dat het zelf heeft gekozen.',
+        explanation: '"Dat" is used as a relative pronoun for "het"-words (neuter nouns). "Een onderwerp" is a "het"-word → "dat". For "de"-words, use "die": "een lerares die..." The verb in the relative clause goes to the end: "heeft gekozen" not "gekozen heeft".'
+      },
+      {
+        pattern: '"Aan het einde van" + inversie (at the end of)',
+        example: 'Aan het einde van de dag halen ouders hun kinderen op.',
+        explanation: '"Aan het einde van" (at the end of) is a fixed expression. When it opens the sentence, inversion follows: "halen ouders" not "ouders halen". The separable verb "ophalen" is split: "halen … op". Compare: "aan het begin van" (at the start of).'
+      }
+    ],
+    questions: [
+      {
+        q: 'Hoe beginnen de kinderen elke ochtend in Lisa\'s klas?',
+        qEn: 'How do the children start every morning in Lisa\'s class?',
+        a: 'Met een kringgesprek, waarbij ze in een kring zitten en iets mogen vertellen.',
+        aEn: 'With a circle time, where they sit in a circle and are allowed to tell something.'
+      },
+      {
+        q: 'Wat is een spreekbeurt?',
+        qEn: 'What is a "spreekbeurt"?',
+        a: 'Een kind staat voor de klas en vertelt over een onderwerp dat het zelf heeft gekozen.',
+        aEn: 'A child stands in front of the class and talks about a topic they have chosen themselves.'
+      },
+      {
+        q: 'Wat doet Lisa aan het einde van de dag?',
+        qEn: 'What does Lisa do at the end of the day?',
+        a: 'Ze staat buiten bij de schooldeur om met de ouders te praten.',
+        aEn: 'She stands outside at the school door to talk with the parents.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-a2-014',
+    title: 'Het weer in Nederland',
+    titleEn: 'The weather in the Netherlands',
+    level: 'A2',
+    topic: 'natuur',
+    topicEn: 'nature',
+    topicEmoji: '🌧️',
+    wordCount: 210,
+    readMinutes: 3,
+    text:
+`Nederlanders praten graag over het weer. Dat is niet zo gek — het weer in Nederland verandert heel snel. Het ene moment schijnt de zon, het andere moment regent het. Soms zijn er in één dag alle vier de seizoenen.
+
+In de winter zijn de dagen kort en donker. Het regent veel en het waait hard. Sneeuw is zeldzaam in Nederland, maar als het sneeuwt, staat het land er even stil van. Kinderen gaan sleeën en schaatsen. Volwassenen klagen over de treinen die uitvallen.
+
+In de zomer kan het heerlijk warm zijn, maar een echte hittegolf is ook niet fijn. Op die dagen gaan veel mensen naar het strand of het park. Anderen blijven liever thuis met de ramen open en een ventilator aan.
+
+De lente en de herfst zijn wisselvallig. Je kunt niet zonder jas het huis uitgaan, maar je hoeft niet altijd je dikke winterjas aan. Een regenjas en een sjaal zijn het hele jaar door handig in Nederland.
+
+Nederlanders zijn gewend aan het slechte weer. Ze gaan toch fietsen als het regent. "Er bestaat geen slecht weer, alleen slechte kleding," is een gezegde dat veel mensen hier kennen.`,
+    textEn:
+`Dutch people like to talk about the weather. That is not so strange — the weather in the Netherlands changes very quickly. One moment the sun is shining, the next moment it is raining. Sometimes all four seasons occur in a single day.
+
+In winter the days are short and dark. It rains a lot and the wind blows hard. Snow is rare in the Netherlands, but when it does snow, the country comes to a brief standstill. Children go sledging and skating. Adults complain about trains being cancelled.
+
+In summer it can be wonderfully warm, but a real heatwave is also not pleasant. On those days many people go to the beach or the park. Others prefer to stay at home with the windows open and a fan on.
+
+Spring and autumn are changeable. You cannot leave the house without a jacket, but you do not always need your thick winter coat. A raincoat and a scarf are useful in the Netherlands all year round.
+
+Dutch people are used to bad weather. They still cycle when it rains. "There is no such thing as bad weather, only bad clothing," is a saying that many people here know.`,
+    vocabulary: [
+      { nl: 'het seizoen', en: 'season', matches: ['seizoenen'] },
+      { nl: 'zeldzaam', en: 'rare', matches: ['zeldzaam'] },
+      { nl: 'klagen', en: 'to complain', matches: ['klagen'] },
+      { nl: 'uitvallen', en: 'to be cancelled (trains)', matches: ['uitvallen'] },
+      { nl: 'de hittegolf', en: 'heatwave', matches: ['hittegolf'] },
+      { nl: 'de ventilator', en: 'fan (electric)', matches: ['ventilator'] },
+      { nl: 'wisselvallig', en: 'changeable / unsettled (weather)', matches: ['wisselvallig'] },
+      { nl: 'de regenjas', en: 'raincoat', matches: ['regenjas'] },
+      { nl: 'de sjaal', en: 'scarf', matches: ['sjaal'] },
+      { nl: 'het gezegde', en: 'saying / proverb', matches: ['gezegde'] }
+    ],
+    grammarNotes: [
+      {
+        pattern: '"Het ene … het andere …" (the one … the other …)',
+        example: 'Het ene moment schijnt de zon, het andere moment regent het.',
+        explanation: '"Het ene … het andere …" contrasts two alternating situations. Literally "the one … the other …". Used to describe rapid or unpredictable change. Both clauses use inversion because the sentence opens with a non-subject.'
+      },
+      {
+        pattern: '"Als" voor herhaling / voorwaarde (when / if)',
+        example: 'Maar als het sneeuwt, staat het land er even stil van.',
+        explanation: '"Als" (when/if) introduces a conditional or repeated situation. When "als" opens the sentence, inversion follows in the main clause: "staat het land" not "het land staat". Use "als" for general/repeated situations; "wanneer" is more formal.'
+      },
+      {
+        pattern: '"Je kunt niet zonder … " (you cannot do without …)',
+        example: 'Je kunt niet zonder jas het huis uitgaan.',
+        explanation: '"Zonder" (without) + noun placed inside a verb phrase. "Het huis uitgaan" (to go out / leave the house) is a separable-style expression. The full structure: modal verb + "niet" + "zonder" + noun + infinitive at the end.'
+      }
+    ],
+    questions: [
+      {
+        q: 'Waarom praten Nederlanders veel over het weer?',
+        qEn: 'Why do Dutch people often talk about the weather?',
+        a: 'Omdat het weer in Nederland heel snel verandert.',
+        aEn: 'Because the weather in the Netherlands changes very quickly.'
+      },
+      {
+        q: 'Wat doen kinderen als het sneeuwt?',
+        qEn: 'What do children do when it snows?',
+        a: 'Ze gaan sleeën en schaatsen.',
+        aEn: 'They go sledging and skating.'
+      },
+      {
+        q: 'Welke kledingstukken zijn handig in Nederland het hele jaar door?',
+        qEn: 'Which items of clothing are useful in the Netherlands all year round?',
+        a: 'Een regenjas en een sjaal.',
+        aEn: 'A raincoat and a scarf.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-a2-015',
+    title: 'Bij de tandarts',
+    titleEn: 'At the dentist',
+    level: 'A2',
+    topic: 'gezondheid',
+    topicEn: 'health',
+    topicEmoji: '🦷',
+    wordCount: 211,
+    readMinutes: 3,
+    text:
+`Twee keer per jaar gaat Pieter naar de tandarts voor een controle. Hij vindt het niet leuk, maar hij weet dat het belangrijk is voor zijn gebit. De praktijk van zijn tandarts is in de buurt — hij kan er op de fiets naartoe.
+
+Bij aankomst meldt hij zich aan bij de receptie. "Goedemorgen, ik heb een afspraak om tien uur. Mijn naam is Pieter Smit." De assistente vraagt hem even te wachten. Na vijf minuten wordt hij geroepen.
+
+De tandarts onderzoekt zijn tanden en kiezen. Ze gebruikt een klein spiegeltje en een haakje. "U heeft hier een klein gaatje," zegt ze. "Dat moeten we vullen. Schikt volgende week donderdag?" Pieter kijkt in zijn agenda. "Ja, dat is goed."
+
+Daarna poetst de mondhygiënist zijn tanden professioneel. Dat voelt een beetje ongemakkelijk, maar niet echt pijnlijk. "Twee keer per dag poetsen en elke dag flossen," zegt ze. Pieter knikt, maar hij weet dat hij te weinig flost.
+
+Bij de receptie betaalt hij de rekening. Een deel wordt vergoed door zijn zorgverzekering, maar niet alles. Buiten pakt hij zijn fiets. Zijn tanden voelen schoon aan. Eigenlijk valt het altijd mee.`,
+    textEn:
+`Twice a year Pieter goes to the dentist for a check-up. He does not enjoy it, but he knows it is important for his teeth. His dentist's practice is nearby — he can get there by bike.
+
+On arrival he checks in at the reception. "Good morning, I have an appointment at ten o'clock. My name is Pieter Smit." The assistant asks him to wait a moment. After five minutes he is called in.
+
+The dentist examines his teeth and molars. She uses a small mirror and a hook. "You have a small cavity here," she says. "We need to fill that. Does next Thursday suit you?" Pieter checks his diary. "Yes, that works."
+
+After that the dental hygienist cleans his teeth professionally. It feels a little uncomfortable, but not really painful. "Brush twice a day and floss every day," she says. Pieter nods, but he knows he does not floss enough.
+
+At the reception he pays the bill. Part of it is reimbursed by his health insurance, but not everything. Outside he gets his bike. His teeth feel clean. Actually it is never as bad as he expects.`,
+    vocabulary: [
+      { nl: 'de controle', en: 'check-up', matches: ['controle'] },
+      { nl: 'het gebit', en: 'teeth / dental set', matches: ['gebit'] },
+      { nl: 'de afspraak', en: 'appointment', matches: ['afspraak'] },
+      { nl: 'worden geroepen', en: 'to be called in', matches: ['wordt hij geroepen'] },
+      { nl: 'de kies', en: 'molar', matches: ['kiezen'] },
+      { nl: 'het gaatje', en: 'cavity', matches: ['gaatje'] },
+      { nl: 'vullen', en: 'to fill (a cavity)', matches: ['vullen'] },
+      { nl: 'de mondhygiënist', en: 'dental hygienist', matches: ['mondhygiënist'] },
+      { nl: 'de zorgverzekering', en: 'health insurance', matches: ['zorgverzekering'] },
+      { nl: 'meevallen', en: 'to be not as bad as expected', matches: ['valt', 'mee'] }
+    ],
+    grammarNotes: [
+      {
+        pattern: '"Worden + voltooid deelwoord" — passief (passive)',
+        example: 'Na vijf minuten wordt hij geroepen.',
+        explanation: '"Worden + past participle" forms the present passive: "hij wordt geroepen" (he is called/being called). This is the most common passive in spoken Dutch. Compare: "een deel wordt vergoed" (part is reimbursed). For past passive, use "werd": "hij werd geroepen".'
+      },
+      {
+        pattern: '"Schikken" voor afspraken (to suit / to be convenient)',
+        example: 'Schikt volgende week donderdag?',
+        explanation: '"Schikken" (to suit/be convenient) is used when checking if a time works. Inverted question form: verb first. Informal alternative: "Komt het uit?" or "Kan het dan?" In formal contexts, "schikken" and "uitkomen" are both common.'
+      },
+      {
+        pattern: '"Meevallen" (to be less bad than expected)',
+        example: 'Eigenlijk valt het altijd mee.',
+        explanation: '"Meevallen" (separable: "valt … mee") means something turns out better or easier than feared. Its opposite is "tegenvallen" (to be worse than expected). Both are very common in everyday Dutch: "het viel me mee" (it was better than I expected).'
+      }
+    ],
+    questions: [
+      {
+        q: 'Hoe vaak gaat Pieter naar de tandarts?',
+        qEn: 'How often does Pieter go to the dentist?',
+        a: 'Twee keer per jaar voor een controle.',
+        aEn: 'Twice a year for a check-up.'
+      },
+      {
+        q: 'Wat heeft de tandarts gevonden?',
+        qEn: 'What did the dentist find?',
+        a: 'Een klein gaatje dat gevuld moet worden.',
+        aEn: 'A small cavity that needs to be filled.'
+      },
+      {
+        q: 'Wat zegt de mondhygiënist dat Pieter moet doen?',
+        qEn: 'What does the dental hygienist say Pieter should do?',
+        a: 'Twee keer per dag poetsen en elke dag flossen.',
+        aEn: 'Brush twice a day and floss every day.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-a2-016',
+    title: 'Een weekendje weg',
+    titleEn: 'A weekend away',
+    level: 'A2',
+    topic: 'reizen',
+    topicEn: 'travel',
+    topicEmoji: '🏖️',
+    wordCount: 210,
+    readMinutes: 3,
+    text:
+`Elke zomer maakt het gezin Van den Berg een weekendje weg. Dit jaar gaan ze naar Zeeland — een provincie in het zuidwesten van Nederland, bekend om de stranden en de dijken.
+
+Ze vertrekken zaterdagochtend vroeg. Ze laden de auto in met koffers en een koelbox met eten. De kinderen zijn opgewonden. "Wanneer zijn we er?" vraagt de jongste al na tien minuten. "Over twee uur," antwoordt vader.
+
+In Zeeland checken ze in bij een vakantiehuis vlak bij het strand. Het huis heeft drie slaapkamers, een tuin en een terras. Ze laten de koffers vallen en lopen meteen naar het strand.
+
+Het water is koud, maar de kinderen gaan toch zwemmen. De ouders liggen op een strandlaken en lezen. Later huren ze fietsen en rijden ze door de polders. De weg is vlak en het uitzicht is prachtig — weilanden, molens en af en toe een schaap.
+
+'s Avonds eten ze vis in een restaurantje in het dorp. De kinderen kiezen friet en de ouders nemen kabeljauw. "Volgend jaar ook Zeeland?" vraagt moeder. "Absoluut," zegt vader. "Elke zomer."`,
+    textEn:
+`Every summer the Van den Berg family goes on a weekend away. This year they are going to Zeeland — a province in the south-west of the Netherlands, known for its beaches and dykes.
+
+They set off early on Saturday morning. They load the car with suitcases and a cool box with food. The children are excited. "When will we be there?" asks the youngest after only ten minutes. "In two hours," answers Dad.
+
+In Zeeland they check in at a holiday home right next to the beach. The house has three bedrooms, a garden, and a terrace. They drop the suitcases and walk straight to the beach.
+
+The water is cold, but the children swim anyway. The parents lie on a beach towel and read. Later they hire bikes and ride through the polders. The road is flat and the view is beautiful — meadows, windmills, and the occasional sheep.
+
+In the evening they eat fish at a small restaurant in the village. The children choose chips and the parents have cod. "Zeeland again next year?" asks Mum. "Absolutely," says Dad. "Every summer."`,
+    vocabulary: [
+      { nl: 'de provincie', en: 'province', matches: ['provincie'] },
+      { nl: 'de dijk', en: 'dyke / dike', matches: ['dijken'] },
+      { nl: 'vertrekken', en: 'to depart / set off', matches: ['vertrekken'] },
+      { nl: 'opgewonden', en: 'excited', matches: ['opgewonden'] },
+      { nl: 'het vakantiehuis', en: 'holiday home', matches: ['vakantiehuis'] },
+      { nl: 'het strandlaken', en: 'beach towel', matches: ['strandlaken'] },
+      { nl: 'de polder', en: 'polder (low-lying reclaimed land)', matches: ['polders'] },
+      { nl: 'het weiland', en: 'meadow / pasture', matches: ['weilanden'] },
+      { nl: 'af en toe', en: 'now and then / occasionally', matches: ['af en toe'] },
+      { nl: 'de kabeljauw', en: 'cod (fish)', matches: ['kabeljauw'] }
+    ],
+    grammarNotes: [
+      {
+        pattern: '"Laden … in" — scheidbaar werkwoord (separable verb)',
+        example: 'Ze laden de auto in met koffers en een koelbox.',
+        explanation: '"Inladen" (to load up) is separable: "in" splits off and goes to the end. Many verbs of motion are separable: "uitpakken" (to unpack), "inpakken" (to pack), "instappen" (to get in). In a perfect tense: "ze hebben de auto ingeladen".'
+      },
+      {
+        pattern: '"Vlak bij" (right next to / very close to)',
+        example: 'Ze checken in bij een vakantiehuis vlak bij het strand.',
+        explanation: '"Vlak bij" (right next to) intensifies "bij" (near). "Vlak" here is an intensifier, not meaning "flat". Similar: "vlak voor" (just in front of / just before), "vlak na" (just after), "vlak achter" (right behind).'
+      },
+      {
+        pattern: '"Af en toe" (now and then)',
+        example: 'Weilanden, molens en af en toe een schaap.',
+        explanation: '"Af en toe" (now and then / from time to time) is a fixed expression used to describe something occasional or irregular. Similar to "soms" (sometimes) but stresses rarity. Common: "af en toe regent het" (it rains now and then).'
+      }
+    ],
+    questions: [
+      {
+        q: 'Waar gaat het gezin Van den Berg naartoe?',
+        qEn: 'Where does the Van den Berg family go?',
+        a: 'Naar Zeeland, een provincie in het zuidwesten van Nederland.',
+        aEn: 'To Zeeland, a province in the south-west of the Netherlands.'
+      },
+      {
+        q: 'Wat doen de ouders op het strand terwijl de kinderen zwemmen?',
+        qEn: 'What do the parents do on the beach while the children swim?',
+        a: 'Ze liggen op een strandlaken en lezen.',
+        aEn: 'They lie on a beach towel and read.'
+      },
+      {
+        q: 'Wat eten de ouders in het restaurant?',
+        qEn: 'What do the parents eat at the restaurant?',
+        a: 'Kabeljauw.',
+        aEn: 'Cod.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-a2-017',
+    title: 'Koken voor vrienden',
+    titleEn: 'Cooking for friends',
+    level: 'A2',
+    topic: 'eten',
+    topicEn: 'food',
+    topicEmoji: '🍳',
+    wordCount: 210,
+    readMinutes: 3,
+    text:
+`Nadia kookt graag. Op zaterdag nodigt ze drie vrienden uit voor het avondeten. Ze wil iets speciaals maken: een Marokkaans gerecht dat haar moeder haar heeft geleerd.
+
+Vrijdagavond schrijft ze een boodschappenlijstje. Ze heeft kip, kikkererwten, courgette, tomaten, ui, knoflook en verschillende kruiden nodig. Zaterdag gaat ze vroeg naar de markt. De groenten zijn er vers en niet te duur.
+
+Thuis begint ze om vier uur met koken. Ze snijdt de groenten en kruid het vlees. Het gerecht moet lang sudderen op een laag vuur. Haar hele appartement ruikt naar kruiden en specerijen. Ze geniet ervan.
+
+Om zeven uur komen de vrienden aan. Ze nemen een fles wijn en bloemen mee. "Wat ruikt het heerlijk!" zegt Joep. Ze eten aan de grote tafel in de woonkamer. Nadia zet het gerecht in het midden. Iedereen schept zelf op. Er is ook couscous en brood.
+
+Na het eten drinken ze thee en praten ze nog een uur na. "Je moet me dit recept geven," zegt Lisa. Nadia lacht. "Het staat niet op papier. Maar ik leer het je de volgende keer."`,
+    textEn:
+`Nadia loves cooking. On Saturday she invites three friends for dinner. She wants to make something special: a Moroccan dish that her mother taught her.
+
+On Friday evening she writes a shopping list. She needs chicken, chickpeas, courgette, tomatoes, onion, garlic, and various herbs. On Saturday she goes to the market early. The vegetables there are fresh and not too expensive.
+
+At home she starts cooking at four o'clock. She cuts the vegetables and seasons the meat. The dish needs to simmer for a long time on a low heat. Her whole apartment smells of herbs and spices. She enjoys it.
+
+At seven o'clock the friends arrive. They bring a bottle of wine and flowers. "How wonderful it smells!" says Joep. They eat at the large table in the living room. Nadia puts the dish in the middle. Everyone helps themselves. There is also couscous and bread.
+
+After eating they drink tea and chat for another hour. "You have to give me this recipe," says Lisa. Nadia laughs. "It is not written down. But I will teach it to you next time."`,
+    vocabulary: [
+      { nl: 'uitnodigen', en: 'to invite', matches: ['nodigt', 'uit'] },
+      { nl: 'het gerecht', en: 'dish (food)', matches: ['gerecht'] },
+      { nl: 'het boodschappenlijstje', en: 'shopping list', matches: ['boodschappenlijstje'] },
+      { nl: 'de kikkererwt', en: 'chickpea', matches: ['kikkererwten'] },
+      { nl: 'de knoflook', en: 'garlic', matches: ['knoflook'] },
+      { nl: 'sudderen', en: 'to simmer', matches: ['sudderen'] },
+      { nl: 'de specerij', en: 'spice', matches: ['specerijen'] },
+      { nl: 'genieten van', en: 'to enjoy', matches: ['geniet'] },
+      { nl: 'opscheppen', en: 'to serve yourself / help yourself to food', matches: ['schept'] },
+      { nl: 'napraten', en: 'to chat after a meal', matches: ['napraten', 'na'] }
+    ],
+    grammarNotes: [
+      {
+        pattern: '"Een gerecht dat haar moeder haar heeft geleerd" — dubbel object (double object)',
+        example: 'Een Marokkaans gerecht dat haar moeder haar heeft geleerd.',
+        explanation: '"Leren" (to teach) takes two objects: the person taught ("haar" = her) and the thing taught (the relative clause). Word order with pronouns: indirect object first, then direct. "Haar moeder heeft haar het recept geleerd" (her mother taught her the recipe).'
+      },
+      {
+        pattern: '"Ervan genieten" — "er + van" als pronominaal bijwoord',
+        example: 'Ze geniet ervan.',
+        explanation: 'When "genieten van" (to enjoy) has a non-human object, use "er + van" = "ervan" instead of "van het/de…". Other examples: "ik hou ervan" (I love it), "ik ben er blij mee" (I am happy with it). "Er" replaces a prepositional object that was just mentioned.'
+      },
+      {
+        pattern: '"Ik leer het je" — volgorde van twee pronominale objecten',
+        example: 'Ik leer het je de volgende keer.',
+        explanation: 'With verbs like "leren", "geven", "tonen", two pronoun objects follow the verb. Order: direct object first ("het"), then indirect ("je"): "ik leer het jou". With noun phrases, the indirect object comes first: "ik leer jou het recept".'
+      }
+    ],
+    questions: [
+      {
+        q: 'Wat maakt Nadia voor haar vrienden?',
+        qEn: 'What does Nadia make for her friends?',
+        a: 'Een Marokkaans gerecht dat haar moeder haar heeft geleerd.',
+        aEn: 'A Moroccan dish that her mother taught her.'
+      },
+      {
+        q: 'Waar koopt Nadia de groenten?',
+        qEn: 'Where does Nadia buy the vegetables?',
+        a: 'Op de markt.',
+        aEn: 'At the market.'
+      },
+      {
+        q: 'Wat vraagt Lisa aan Nadia?',
+        qEn: 'What does Lisa ask Nadia?',
+        a: 'Het recept van het gerecht.',
+        aEn: 'The recipe for the dish.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-a2-018',
+    title: 'Met de trein',
+    titleEn: 'By train',
+    level: 'A2',
+    topic: 'vervoer',
+    topicEn: 'transport',
+    topicEmoji: '🚆',
+    wordCount: 211,
+    readMinutes: 3,
+    text:
+`In Nederland reizen veel mensen met de trein. Het spoornetwerk is goed — bijna elke stad heeft een station. De meeste treinen rijden elke tien of vijftien minuten.
+
+Fatima werkt in Rotterdam maar woont in Leiden. Elke ochtend loopt ze naar het station en neemt ze de intercity naar Rotterdam Centraal. De reis duurt 45 minuten. Ze heeft een maandabonnement, dus ze hoeft niet elke keer een kaartje te kopen.
+
+Ze checkt in en uit met haar ov-chipkaart. In de trein zoekt ze altijd een raamstoel. Ze leest een boek of luistert naar een podcast. De trein is voor haar een rustig moment van de dag, voor het werk begint.
+
+Soms loopt de trein vertraging op. Dan staat er een melding op het scherm: "Deze trein heeft circa tien minuten vertraging." Fatima zucht. Ze stuurt een appje naar haar collega: "Kom iets later, trein vertraagd." "Geen probleem," antwoordt hij.
+
+Op het station zijn ook kiosken waar je een kop koffie of een broodje kunt kopen. Fatima neemt soms een koffie mee in de trein. "De trein is niet altijd perfect," zegt ze, "maar zonder de trein zou ik hier niet kunnen werken."`,
+    textEn:
+`In the Netherlands many people travel by train. The rail network is good — almost every city has a station. Most trains run every ten or fifteen minutes.
+
+Fatima works in Rotterdam but lives in Leiden. Every morning she walks to the station and takes the intercity to Rotterdam Central. The journey takes 45 minutes. She has a monthly season ticket, so she does not need to buy a ticket every time.
+
+She checks in and out with her public transport chip card. On the train she always looks for a window seat. She reads a book or listens to a podcast. The train is a quiet moment in her day, before work starts.
+
+Sometimes the train is delayed. Then a notification appears on the screen: "This train is approximately ten minutes late." Fatima sighs. She sends a message to her colleague: "I'll be a little late, train delayed." "No problem," he replies.
+
+At the station there are also kiosks where you can buy a cup of coffee or a bread roll. Fatima sometimes takes a coffee on the train. "The train is not always perfect," she says, "but without the train I wouldn't be able to work here."`,
+    vocabulary: [
+      { nl: 'het spoornetwerk', en: 'rail network', matches: ['spoornetwerk'] },
+      { nl: 'de intercity', en: 'intercity train', matches: ['intercity'] },
+      { nl: 'het maandabonnement', en: 'monthly season ticket', matches: ['maandabonnement'] },
+      { nl: 'de ov-chipkaart', en: 'public transport chip card', matches: ['ov-chipkaart'] },
+      { nl: 'inchecken', en: 'to check in (with OV chip card)', matches: ['checkt in'] },
+      { nl: 'vertraging oplopen', en: 'to be delayed', matches: ['vertraging'] },
+      { nl: 'de melding', en: 'notification / announcement', matches: ['melding'] },
+      { nl: 'circa', en: 'approximately / about', matches: ['circa'] },
+      { nl: 'de kiosk', en: 'kiosk (station shop)', matches: ['kiosken'] },
+      { nl: 'het broodje', en: 'bread roll / sandwich', matches: ['broodje'] }
+    ],
+    grammarNotes: [
+      {
+        pattern: '"Dus" — coördinerende voegwoord (coordinating conjunction)',
+        example: 'Ze heeft een maandabonnement, dus ze hoeft niet elke keer een kaartje te kopen.',
+        explanation: '"Dus" (so / therefore) connects cause and result with normal word order — no inversion. Compare with "omdat" (because) and "want" (because/for): "omdat" causes inversion and comes in a subordinate clause; "want" and "dus" do not change word order.'
+      },
+      {
+        pattern: '"Hoeven niet te + infinitief" (don\'t need to)',
+        example: 'Ze hoeft niet elke keer een kaartje te kopen.',
+        explanation: '"Hoeven" + "niet" + "te" + infinitief = don\'t need to / don\'t have to. The "te" before the infinitive is essential. This is the standard negative of "moeten" in spoken Dutch: "je hoeft het niet te doen" (you don\'t have to do it).'
+      },
+      {
+        pattern: '"Zou … kunnen" — conditioneel (conditional)',
+        example: 'Zonder de trein zou ik hier niet kunnen werken.',
+        explanation: '"Zou + infinitief" is the Dutch conditional (would). "Zou kunnen" = would be able to. "Zonder de trein zou ik niet kunnen werken" = "Without the train, I wouldn\'t be able to work." The condition is implied by "zonder" (without).'
+      }
+    ],
+    questions: [
+      {
+        q: 'Hoe lang duurt de treinreis van Leiden naar Rotterdam?',
+        qEn: 'How long does the train journey from Leiden to Rotterdam take?',
+        a: '45 minuten.',
+        aEn: '45 minutes.'
+      },
+      {
+        q: 'Waarom hoeft Fatima geen kaartje te kopen?',
+        qEn: 'Why does Fatima not need to buy a ticket?',
+        a: 'Omdat ze een maandabonnement heeft.',
+        aEn: 'Because she has a monthly season ticket.'
+      },
+      {
+        q: 'Wat doet Fatima als de trein vertraging heeft?',
+        qEn: 'What does Fatima do when the train is delayed?',
+        a: 'Ze stuurt een appje naar haar collega.',
+        aEn: 'She sends a message to her colleague.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-a2-019',
+    title: 'Online winkelen',
+    titleEn: 'Online shopping',
+    level: 'A2',
+    topic: 'technologie',
+    topicEn: 'technology',
+    topicEmoji: '💻',
+    wordCount: 213,
+    readMinutes: 3,
+    text:
+`Online winkelen is in Nederland heel gewoon geworden. Veel mensen bestellen kleding, elektronica en boodschappen via internet. Grote winkelsites zijn bol.com, Zalando en Coolblue. Ook bestellen veel mensen eten via Thuisbezorgd.
+
+Kees is 45 jaar en winkeliert eigenlijk liever in een echte winkel. Maar vorig jaar heeft hij voor het eerst iets online besteld — een nieuw paar hardloopschoenen. Het was eenvoudig: hij zocht het model op, koos zijn maat en klikte op "toevoegen aan winkelmandje". Daarna koos hij voor bezorging thuis en betaalde met iDEAL.
+
+De schoenen kwamen de volgende dag al aan. Er zat een pakbon bij en een retourformulier voor het geval ze niet pasten. Ze pasten perfect.
+
+Sindsdien bestelt Kees vaker online. Hij vindt het handig, maar soms mist hij het echte winkelen. "Je kunt een schoen niet online voelen," zegt hij. "En er is geen verkoper die advies geeft." Zijn dochter lacht. "Papa, daarvoor zijn er beoordelingen. Mensen schrijven wat ze ervan vinden."
+
+Kees leest de beoordelingen nu ook. Sommige zijn heel nuttig. Maar hij gaat nog steeds af en toe naar een echte winkel, gewoon voor het plezier.`,
+    textEn:
+`Online shopping has become very normal in the Netherlands. Many people order clothing, electronics, and groceries via the internet. Major shopping sites are bol.com, Zalando, and Coolblue. Many people also order food via Thuisbezorgd.
+
+Kees is 45 and actually prefers shopping in a real shop. But last year he ordered something online for the first time — a new pair of running shoes. It was simple: he looked up the model, chose his size, and clicked "add to shopping basket". Then he chose home delivery and paid with iDEAL.
+
+The shoes arrived the very next day. There was a packing slip and a return form in case they did not fit. They fitted perfectly.
+
+Since then Kees orders online more often. He finds it convenient, but sometimes he misses real shopping. "You can't feel a shoe online," he says. "And there's no salesperson to give advice." His daughter laughs. "Dad, that's what reviews are for. People write what they think of them."
+
+Kees now reads the reviews too. Some are very useful. But he still goes to a real shop now and then, just for the pleasure of it.`,
+    vocabulary: [
+      { nl: 'bestellen', en: 'to order', matches: ['bestellen', 'bestelt'] },
+      { nl: 'de maat', en: 'size (clothing/shoes)', matches: ['maat'] },
+      { nl: 'het winkelmandje', en: 'shopping basket / cart', matches: ['winkelmandje'] },
+      { nl: 'de bezorging', en: 'delivery', matches: ['bezorging'] },
+      { nl: 'iDEAL', en: 'Dutch online bank payment system', matches: ['iDEAL'] },
+      { nl: 'de pakbon', en: 'packing slip', matches: ['pakbon'] },
+      { nl: 'het retourformulier', en: 'return form', matches: ['retourformulier'] },
+      { nl: 'sindsdien', en: 'since then', matches: ['sindsdien'] },
+      { nl: 'de beoordeling', en: 'review / rating', matches: ['beoordelingen'] },
+      { nl: 'nuttig', en: 'useful', matches: ['nuttig'] }
+    ],
+    grammarNotes: [
+      {
+        pattern: '"Voor het eerst" (for the first time)',
+        example: 'Vorig jaar heeft hij voor het eerst iets online besteld.',
+        explanation: '"Voor het eerst" (for the first time) is a fixed adverbial expression that can appear at different positions in the sentence. Compare: "voor de laatste keer" (for the last time), "voor de tweede keer" (for the second time).'
+      },
+      {
+        pattern: '"Voor het geval" (in case)',
+        example: 'Een retourformulier voor het geval ze niet pasten.',
+        explanation: '"Voor het geval" (in case) introduces a precautionary clause and is followed by normal word order: "voor het geval ze niet pasten" (in case they didn\'t fit). Compare English "just in case". Also common: "voor het geval dat" (in the event that).'
+      },
+      {
+        pattern: '"Daarvoor zijn er …" — "daarvoor" als verwijswoord (referential "daarvoor")',
+        example: '"Papa, daarvoor zijn er beoordelingen."',
+        explanation: '"Daarvoor" (for that / for that purpose) refers back to a previously mentioned need. "Daarvoor zijn er beoordelingen" = "for that purpose there are reviews". Other examples: "daarvoor heb je een abonnement nodig" (for that you need a subscription).'
+      }
+    ],
+    questions: [
+      {
+        q: 'Wat bestelt Kees voor het eerst online?',
+        qEn: 'What does Kees order online for the first time?',
+        a: 'Een nieuw paar hardloopschoenen.',
+        aEn: 'A new pair of running shoes.'
+      },
+      {
+        q: 'Waarvoor is het retourformulier?',
+        qEn: 'What is the return form for?',
+        a: 'Voor het geval de schoenen niet passen.',
+        aEn: 'In case the shoes do not fit.'
+      },
+      {
+        q: 'Wat vindt Kees een nadeel van online winkelen?',
+        qEn: 'What does Kees see as a disadvantage of online shopping?',
+        a: 'Je kunt een schoen niet voelen en er is geen verkoper die advies geeft.',
+        aEn: 'You cannot feel a shoe and there is no salesperson to give advice.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-a2-020',
+    title: 'Een hond in huis',
+    titleEn: 'A dog at home',
+    level: 'A2',
+    topic: 'dagelijks',
+    topicEn: 'daily life',
+    topicEmoji: '🐕',
+    wordCount: 210,
+    readMinutes: 3,
+    text:
+`Vorig jaar hebben Roos en haar man Tim een hond genomen. Ze hebben lang getwijfeld. "Een hond is veel werk," zei Tim. "We moeten hem elke dag uitlaten, ook als het regent." Maar Roos wilde al jaren een hond. Na lang praten zeiden ze ja.
+
+Ze zijn naar een asiel gegaan en hebben een bruine labrador gekozen. Ze hebben hem Bram genoemd. Bram was twee jaar oud en al getraind.
+
+De eerste weken waren druk. Bram moest wennen aan zijn nieuwe huis en nieuwe baasjes. Hij blafte 's nachts en at de slippers van Tim op. Tim was niet blij. "Ik zei het toch," zei hij. Roos lachte. "Hij went wel."
+
+En inderdaad — na een maand was Bram rustig en gehoorzaam. Elke ochtend loopt Roos een uur met hem door het park. Dat vindt ze heerlijk. Ze is fitter geworden en ze ontmoet andere hondenbezitters. Ze praten over hun honden terwijl de honden spelen.
+
+"Bram is het beste wat ons is overkomen," zegt Roos nu. Tim knikt langzaam. "Oké, ik geef toe — hij is leuk." Bram kwispelt en legt zijn kop op Tims schoot.`,
+    textEn:
+`Last year Roos and her husband Tim got a dog. They hesitated for a long time. "A dog is a lot of work," said Tim. "We have to walk him every day, even when it rains." But Roos had wanted a dog for years. After long discussions they said yes.
+
+They went to a shelter and chose a brown Labrador. They named him Bram. Bram was two years old and already trained.
+
+The first weeks were busy. Bram had to get used to his new home and new owners. He barked at night and ate Tim's slippers. Tim was not pleased. "I told you so," he said. Roos laughed. "He will settle in."
+
+And indeed — after a month Bram was calm and obedient. Every morning Roos walks with him through the park for an hour. She loves it. She has become fitter and she meets other dog owners. They talk about their dogs while the dogs play.
+
+"Bram is the best thing that has happened to us," Roos says now. Tim nods slowly. "Okay, I admit it — he is great." Bram wags his tail and rests his head on Tim's lap.`,
+    vocabulary: [
+      { nl: 'twijfelen', en: 'to hesitate / to doubt', matches: ['getwijfeld'] },
+      { nl: 'uitlaten', en: 'to walk (a dog)', matches: ['uitlaten'] },
+      { nl: 'het asiel', en: 'animal shelter', matches: ['asiel'] },
+      { nl: 'wennen aan', en: 'to get used to', matches: ['wennen', 'went'] },
+      { nl: 'de baasjes', en: 'pet owners (informal)', matches: ['baasjes'] },
+      { nl: 'blaffen', en: 'to bark', matches: ['blafte'] },
+      { nl: 'gehoorzaam', en: 'obedient', matches: ['gehoorzaam'] },
+      { nl: 'de hondenbezitter', en: 'dog owner', matches: ['hondenbezitters'] },
+      { nl: 'toegeven', en: 'to admit', matches: ['geef toe'] },
+      { nl: 'kwispelen', en: 'to wag (tail)', matches: ['kwispelt'] }
+    ],
+    grammarNotes: [
+      {
+        pattern: '"Ze hebben hem Bram genoemd" — werkwoord met twee objecten',
+        example: 'Ze hebben hem Bram genoemd.',
+        explanation: '"Noemen" (to name/call) takes two objects: the thing named ("hem") and the name ("Bram"). Word order: object pronoun first, then the name. Same structure with "vinden": "ik vind hem leuk" (I find him nice/I like him).'
+      },
+      {
+        pattern: '"Wennen aan" (to get used to)',
+        example: 'Bram moest wennen aan zijn nieuwe huis en nieuwe baasjes.',
+        explanation: '"Wennen aan" (to get used to) always takes "aan" + noun phrase. Past participle: "gewend". "Ik ben er gewend aan" (I\'m used to it). Don\'t confuse with "gewoon zijn te + infinitief" (to be in the habit of doing something).'
+      },
+      {
+        pattern: '"Het beste wat … is overkomen" — superlatief met relatieve bijzin',
+        example: 'Bram is het beste wat ons is overkomen.',
+        explanation: '"Het beste wat … overkomen" (the best thing that has happened to someone) uses "overkomen" (to happen to). "Overkomen" always takes "zijn" in the perfect tense: "het is me overkomen". Opposite: "het ergste wat … is gebeurd" (the worst thing that happened).'
+      }
+    ],
+    questions: [
+      {
+        q: 'Waarom twijfelde Tim over het nemen van een hond?',
+        qEn: 'Why did Tim hesitate about getting a dog?',
+        a: 'Omdat een hond veel werk is en je hem elke dag moet uitlaten.',
+        aEn: 'Because a dog is a lot of work and you have to walk him every day.'
+      },
+      {
+        q: 'Waar hebben Roos en Tim Bram gevonden?',
+        qEn: 'Where did Roos and Tim find Bram?',
+        a: 'In een asiel.',
+        aEn: 'In an animal shelter.'
+      },
+      {
+        q: 'Wat vindt Roos leuk aan het uitlaten van Bram?',
+        qEn: 'What does Roos enjoy about walking Bram?',
+        a: 'Ze is fitter geworden en ze ontmoet andere hondenbezitters.',
+        aEn: 'She has become fitter and she meets other dog owners.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-a2-021',
+    title: 'Naar het museum',
+    titleEn: 'To the museum',
+    level: 'A2',
+    topic: 'cultuur',
+    topicEn: 'culture',
+    topicEmoji: '🎨',
+    wordCount: 210,
+    readMinutes: 3,
+    text:
+`Het Rijksmuseum in Amsterdam is een van de bekendste musea van de wereld. Het heeft een grote collectie Nederlandse schilderijen uit de zeventiende eeuw. Dat was de Gouden Eeuw — een tijd van handel, kunst en welvaart in Nederland.
+
+Sophie bezoekt het museum voor het eerst. Ze heeft online een kaartje gekocht, dus ze hoeft niet in de rij te staan. Bij de ingang scant ze haar kaartje op haar telefoon en loopt ze naar binnen.
+
+Het eerste dat ze ziet is de grote hal met het hoge plafond. Het is indrukwekkend. Ze pakt een plattegrond en kiest een route. Ze wil de bekende schilderijen zien: "De Nachtwacht" van Rembrandt en "Het melkmeisje" van Vermeer.
+
+Voor "De Nachtwacht" staat een groepje mensen. Sophie kijkt lang. Het schilderij is groot — bijna vier bij vijf meter. De kleuren zijn donker maar levendig. Ze leest de uitleg op het bordje naast het schilderij.
+
+Na twee uur is ze moe maar blij. In het museumcafé drinkt ze een koffie en schrijft ze een berichtje aan haar zus: "Net bij de Nachtwacht geweest. Echt indrukwekkend. Jij moet ook een keer gaan."`,
+    textEn:
+`The Rijksmuseum in Amsterdam is one of the most famous museums in the world. It has a large collection of Dutch paintings from the seventeenth century. That was the Golden Age — a time of trade, art, and prosperity in the Netherlands.
+
+Sophie is visiting the museum for the first time. She has bought a ticket online, so she does not need to queue. At the entrance she scans her ticket on her phone and walks in.
+
+The first thing she sees is the large entrance hall with the high ceiling. It is impressive. She picks up a floor plan and chooses a route. She wants to see the famous paintings: "The Night Watch" by Rembrandt and "The Milkmaid" by Vermeer.
+
+In front of "The Night Watch" stands a small group of people. Sophie looks for a long time. The painting is large — almost four by five metres. The colours are dark but vivid. She reads the explanation on the sign next to the painting.
+
+After two hours she is tired but happy. In the museum café she drinks a coffee and writes a message to her sister: "Just been to the Night Watch. Really impressive. You must go too sometime."`,
+    vocabulary: [
+      { nl: 'het schilderij', en: 'painting', matches: ['schilderijen', 'schilderij'] },
+      { nl: 'de Gouden Eeuw', en: 'Golden Age', matches: ['Gouden Eeuw'] },
+      { nl: 'de handel', en: 'trade / commerce', matches: ['handel'] },
+      { nl: 'de welvaart', en: 'prosperity / wealth', matches: ['welvaart'] },
+      { nl: 'in de rij staan', en: 'to queue / stand in line', matches: ['rij'] },
+      { nl: 'de plattegrond', en: 'floor plan / map', matches: ['plattegrond'] },
+      { nl: 'indrukwekkend', en: 'impressive', matches: ['indrukwekkend'] },
+      { nl: 'levendig', en: 'vivid / lively', matches: ['levendig'] },
+      { nl: 'het bordje', en: 'small sign / notice', matches: ['bordje'] },
+      { nl: 'de ingang', en: 'entrance', matches: ['ingang'] }
+    ],
+    grammarNotes: [
+      {
+        pattern: '"Het eerste dat ze ziet" — superlatief met relatieve bijzin',
+        example: 'Het eerste dat ze ziet is de grote hal.',
+        explanation: '"Het eerste dat …" (the first thing that …) uses "dat" because "het eerste" is a "het"-word. The verb goes to the end of the relative clause. Other examples: "het laatste dat ik wil" (the last thing I want), "het mooiste dat ik heb gezien" (the most beautiful thing I\'ve seen).'
+      },
+      {
+        pattern: '"Hoeven niet te + infinitief" — geen noodzaak (no need to)',
+        example: 'Ze hoeft niet in de rij te staan.',
+        explanation: '"Hoeven" + "niet" + "te" + infinitief = don\'t need to. The "te" before the infinitive is essential. This is the standard negation of necessity: "je hoeft het niet te doen" (you don\'t have to do it). Much more common in spoken Dutch than "je moet het niet doen".'
+      },
+      {
+        pattern: '"Net + voltooid deelwoord" (just done something)',
+        example: 'Net bij de Nachtwacht geweest.',
+        explanation: '"Net" (just) before a past participle indicates something happened very recently: "ik ben net aangekomen" (I\'ve just arrived). In informal messages, the auxiliary verb ("zijn"/"hebben") is often dropped: "net gegeten" = "just eaten".'
+      }
+    ],
+    questions: [
+      {
+        q: 'Waarom hoeft Sophie niet in de rij te staan?',
+        qEn: 'Why does Sophie not need to queue?',
+        a: 'Omdat ze online een kaartje heeft gekocht.',
+        aEn: 'Because she bought a ticket online.'
+      },
+      {
+        q: 'Welke twee schilderijen wil Sophie het liefst zien?',
+        qEn: 'Which two paintings does Sophie most want to see?',
+        a: '"De Nachtwacht" van Rembrandt en "Het melkmeisje" van Vermeer.',
+        aEn: '"The Night Watch" by Rembrandt and "The Milkmaid" by Vermeer.'
+      },
+      {
+        q: 'Aan wie stuurt Sophie een berichtje na het museum?',
+        qEn: 'Who does Sophie send a message to after the museum?',
+        a: 'Aan haar zus.',
+        aEn: 'To her sister.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-a2-022',
+    title: 'De buurt',
+    titleEn: 'The neighbourhood',
+    level: 'A2',
+    topic: 'wonen',
+    topicEn: 'housing',
+    topicEmoji: '🏘️',
+    wordCount: 207,
+    readMinutes: 3,
+    text:
+`Ahmed woont al vijf jaar in dezelfde straat in Haarlem. Hij kent de meeste buren en weet wie er in welk huis woont. Dat is niet vanzelfsprekend in Nederland — veel mensen kennen hun buren nauwelijks.
+
+Zijn directe buur is mevrouw De Wit, een gepensioneerde vrouw van zeventig. Ze hebben een goed contact. Ahmed helpt haar soms met zware boodschappen en zij past soms op zijn kat als hij op vakantie is. "Goede buren zijn goud waard," zegt mevrouw De Wit.
+
+In de buurt is ook een buurtcentrum. Daar zijn activiteiten voor kinderen en ouderen, en soms een buurtfeest. Vorig jaar was er een zomerfeest op het plein voor de school. Bewoners brachten zelf eten en drinken mee. Er was muziek en de kinderen speelden tot laat buiten.
+
+Ahmed vindt zijn buurt fijn, maar er zijn ook problemen. Op sommige avonden is er overlast van jongeren die op straat hangen en hard muziek draaien. Hij heeft er al over gesproken met de wijkagent.
+
+"Een buurt werkt alleen als iedereen er ook iets voor doet," zegt Ahmed. "Klagen helpt niet. Je moet meedoen."`,
+    textEn:
+`Ahmed has been living in the same street in Haarlem for five years. He knows most of his neighbours and knows who lives in which house. That is not obvious in the Netherlands — many people barely know their neighbours.
+
+His next-door neighbour is Mrs De Wit, a retired woman of seventy. They have a good relationship. Ahmed sometimes helps her with heavy shopping and she sometimes looks after his cat when he is on holiday. "Good neighbours are worth their weight in gold," says Mrs De Wit.
+
+In the neighbourhood there is also a community centre. There are activities for children and elderly people, and sometimes a neighbourhood party. Last year there was a summer festival on the square in front of the school. Residents brought their own food and drinks. There was music and the children played outside until late.
+
+Ahmed likes his neighbourhood, but there are also problems. On some evenings there is nuisance from young people hanging around on the street and playing loud music. He has already spoken to the neighbourhood police officer about it.
+
+"A neighbourhood only works if everyone also does something for it," says Ahmed. "Complaining doesn't help. You have to get involved."`,
+    vocabulary: [
+      { nl: 'de buur', en: 'neighbour', matches: ['buren', 'buur'] },
+      { nl: 'vanzelfsprekend', en: 'obvious / taken for granted', matches: ['vanzelfsprekend'] },
+      { nl: 'gepensioneerd', en: 'retired', matches: ['gepensioneerde'] },
+      { nl: 'oppassen op', en: 'to look after', matches: ['past', 'op'] },
+      { nl: 'het buurtcentrum', en: 'community centre', matches: ['buurtcentrum'] },
+      { nl: 'het buurtfeest', en: 'neighbourhood party / street party', matches: ['buurtfeest'] },
+      { nl: 'de bewoner', en: 'resident', matches: ['bewoners'] },
+      { nl: 'de overlast', en: 'nuisance / disturbance', matches: ['overlast'] },
+      { nl: 'de wijkagent', en: 'neighbourhood police officer', matches: ['wijkagent'] },
+      { nl: 'meedoen', en: 'to participate / get involved', matches: ['meedoen'] }
+    ],
+    grammarNotes: [
+      {
+        pattern: '"Wie er in welk huis woont" — ingebedde vraag met "er"',
+        example: 'Hij weet wie er in welk huis woont.',
+        explanation: 'This is an embedded question: "wie" (who) + "er" (there, referring to the street) + "in welk huis" + verb at end. Embedded questions always end with the verb: "wie er woont" not "wie woont er". "Er" here is a place reference for the location already mentioned.'
+      },
+      {
+        pattern: '"Goud waard zijn" (to be worth gold / invaluable)',
+        example: 'Goede buren zijn goud waard.',
+        explanation: '"Goud waard zijn" is a fixed expression meaning something is extremely valuable. "Waard" (worth) always follows the noun or pronoun: "het is de moeite waard" (it\'s worth the effort), "het is het waard om te zien" (it\'s worth seeing).'
+      },
+      {
+        pattern: '"Er … over gesproken" — "er" als pronominaal bijwoord',
+        example: 'Hij heeft er al over gesproken met de wijkagent.',
+        explanation: '"Er + preposition" replaces a previously mentioned noun as the object of a prepositional verb. "Spreken over iets" → "er over spreken" (to talk about it). The "er" and preposition split around the verb: "heeft er … over gesproken". Very common with: "erover", "ermee", "eraan", "erop".'
+      }
+    ],
+    questions: [
+      {
+        q: 'Hoe helpen Ahmed en mevrouw De Wit elkaar?',
+        qEn: 'How do Ahmed and Mrs De Wit help each other?',
+        a: 'Ahmed helpt haar met zware boodschappen en zij past op zijn kat als hij op vakantie is.',
+        aEn: 'Ahmed helps her with heavy shopping and she looks after his cat when he is on holiday.'
+      },
+      {
+        q: 'Wat was er vorig jaar op het plein?',
+        qEn: 'What took place on the square last year?',
+        a: 'Een zomerfeest met eten, drinken en muziek.',
+        aEn: 'A summer festival with food, drinks, and music.'
+      },
+      {
+        q: 'Wat is het probleem in de buurt op sommige avonden?',
+        qEn: 'What is the problem in the neighbourhood on some evenings?',
+        a: 'Overlast van jongeren die op straat hangen en hard muziek draaien.',
+        aEn: 'Nuisance from young people hanging around on the street and playing loud music.'
+      }
+    ]
+  },
+
+  {
+    id: 'r-a2-023',
+    title: 'Sinterklaas',
+    titleEn: 'Sinterklaas',
+    level: 'A2',
+    topic: 'cultuur',
+    topicEn: 'culture',
+    topicEmoji: '🎁',
+    wordCount: 208,
+    readMinutes: 3,
+    text:
+`Sinterklaas is een van de belangrijkste feesten in Nederland. Het wordt gevierd op 5 december — Sinterklaasavond, ook wel Pakjesavond genoemd. Kinderen ontvangen cadeaus en snoep.
+
+De legende zegt dat Sinterklaas een oude man is met een witte baard en een rode mantel. Hij woont in Spanje en reist in november per stoomboot naar Nederland. Zijn helpers zijn de Pieten, die de pakjes dragen en uitdelen.
+
+In de weken voor 5 december zetten kinderen elke avond hun schoen. Ze leggen er een tekening of een wortel voor het paard van Sinterklaas in. De volgende ochtend vinden ze soms een cadeau of wat snoep in hun schoen.
+
+Op Pakjesavond zitten families samen. Er zijn pakjes voor iedereen, niet alleen voor kinderen. Bij elk pakje hoort een gedicht — een grappig of lief versje over de ontvanger. Het schrijven van zo'n gedicht kost soms meer tijd dan het kopen van het cadeau zelf.
+
+Sinterklaas is ook een tijd van speciaal eten: pepernoten, chocoladeletters en speculaas. Supermarkten verkopen deze producten al vanaf september.
+
+Veel volwassenen vinden Sinterklaas leuker dan Kerstmis. "Het is een echt Nederlands feest," zeggen ze.`,
+    textEn:
+`Sinterklaas is one of the most important celebrations in the Netherlands. It is celebrated on 5 December — Sinterklaas evening, also known as Pakjesavond (Gift Evening). Children receive presents and sweets.
+
+The legend says that Sinterklaas is an old man with a white beard and a red cloak. He lives in Spain and travels to the Netherlands by steamboat in November. His helpers are the Pieten, who carry and hand out the packages.
+
+In the weeks before 5 December, children put out their shoe every evening. They put a drawing or a carrot for Sinterklaas's horse inside it. The next morning they sometimes find a present or some sweets in their shoe.
+
+On Pakjesavond families sit together. There are packages for everyone, not just children. Each package comes with a poem — a funny or sweet little verse about the recipient. Writing such a poem sometimes takes more time than buying the gift itself.
+
+Sinterklaas is also a time of special food: pepernoten (spiced cookies), chocolate letters, and speculaas (spiced biscuits). Supermarkets sell these products from September onwards.
+
+Many adults find Sinterklaas more fun than Christmas. "It is a truly Dutch celebration," they say.`,
+    vocabulary: [
+      { nl: 'vieren', en: 'to celebrate', matches: ['gevierd', 'vieren'] },
+      { nl: 'het cadeau', en: 'gift / present', matches: ['cadeaus', 'cadeau'] },
+      { nl: 'de legende', en: 'legend', matches: ['legende'] },
+      { nl: 'de stoomboot', en: 'steamboat', matches: ['stoomboot'] },
+      { nl: 'uitdelen', en: 'to hand out / distribute', matches: ['uitdelen'] },
+      { nl: 'de wortel', en: 'carrot', matches: ['wortel'] },
+      { nl: 'het gedicht', en: 'poem', matches: ['gedicht'] },
+      { nl: 'de ontvanger', en: 'recipient', matches: ['ontvanger'] },
+      { nl: 'de pepernoot', en: 'small spiced Sinterklaas cookie', matches: ['pepernoten'] },
+      { nl: 'de speculaas', en: 'spiced biscuit (Dutch)', matches: ['speculaas'] }
+    ],
+    grammarNotes: [
+      {
+        pattern: '"Worden + voltooid deelwoord" — passief (passive)',
+        example: 'Het wordt gevierd op 5 december.',
+        explanation: '"Worden + past participle" forms the present passive: "het wordt gevierd" (it is celebrated). This is the most common passive in Dutch. For past passive, use "werd": "het werd gevierd door iedereen" (it was celebrated by everyone). Active form: "ze vieren het op 5 december".'
+      },
+      {
+        pattern: '"Ook wel … genoemd" (also known as)',
+        example: 'Sinterklaasavond, ook wel Pakjesavond genoemd.',
+        explanation: '"Ook wel … genoemd" (also known as / also called) is a fixed phrase for an alternative name, often inserted between commas. Other examples: "Amsterdam, ook wel de Amstelstad genoemd", "iDEAL, ook wel directbankieren genoemd".'
+      },
+      {
+        pattern: '"Bij … hoort …" (something belongs with / goes with)',
+        example: 'Bij elk pakje hoort een gedicht.',
+        explanation: '"Bij iets horen" means something is part of or goes together with something else. When "bij + noun" opens the sentence, inversion follows: "hoort een gedicht" not "een gedicht hoort". Common: "bij dit gerecht hoort wijn" (wine goes with this dish), "bij de prijs hoort een diner" (a dinner is included in the price).'
+      }
+    ],
+    questions: [
+      {
+        q: 'Wat doen kinderen elke avond in de weken voor 5 december?',
+        qEn: 'What do children do every evening in the weeks before 5 December?',
+        a: 'Ze zetten hun schoen en leggen er een tekening of een wortel in.',
+        aEn: 'They put out their shoe and put a drawing or a carrot inside it.'
+      },
+      {
+        q: 'Wat hoort er bij elk pakje op Pakjesavond?',
+        qEn: 'What comes with each package on Pakjesavond?',
+        a: 'Een gedicht over de ontvanger.',
+        aEn: 'A poem about the recipient.'
+      },
+      {
+        q: 'Welke speciale eten horen bij Sinterklaas?',
+        qEn: 'What special foods belong to Sinterklaas?',
+        a: 'Pepernoten, chocoladeletters en speculaas.',
+        aEn: 'Pepernoten, chocolate letters, and speculaas.'
+      }
+    ]
+  },
+
   // ── B1 DAILY CONVERSATIONS ──────────────────────────────────────────────────
 
   {
