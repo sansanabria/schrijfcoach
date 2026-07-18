@@ -760,11 +760,13 @@ function setInputMode(mode) {
 function loadTiles(s) {
   tileBuilt = [];
   const nl = s.nl.trim();
-  const punctMatch = nl.match(/[?!]+$/);
+  const punctMatch = nl.match(/[.!?]+$/);
   const trailingPunct = punctMatch ? punctMatch[0] : null;
   tilePool = nl.split(' ')
-    .map(w => w.replace(/[.!?]+$/, ''))
+    .map(w => w.replace(/[.,!?]+$/, ''))
     .filter(Boolean);
+  const commaCount = (nl.match(/,/g) || []).length;
+  for (let i = 0; i < commaCount; i++) tilePool.push(',');
   if (trailingPunct) tilePool.push(trailingPunct);
   tilePool = tilePool.sort(() => Math.random() - 0.5);
   renderTiles();
@@ -773,10 +775,10 @@ function loadTiles(s) {
 function renderTiles() {
   document.getElementById('tile-built').innerHTML =
     tileBuilt.length
-      ? tileBuilt.map((w, i) => `<button class="tile tile-built${/^[?!]+$/.test(w) ? ' tile-punct' : ''}" onclick="removeTile(${i})">${w}</button>`).join('')
+      ? tileBuilt.map((w, i) => `<button class="tile tile-built${/^[.,?!]+$/.test(w) ? ' tile-punct' : ''}" onclick="removeTile(${i})">${w}</button>`).join('')
       : '<span class="tile-placeholder">Klik woorden om de zin te maken…</span>';
   document.getElementById('tile-pool').innerHTML =
-    tilePool.map((w, i) => `<button class="tile tile-pool${/^[?!]+$/.test(w) ? ' tile-punct' : ''}" onclick="selectTile(${i})">${w}</button>`).join('');
+    tilePool.map((w, i) => `<button class="tile tile-pool${/^[.,?!]+$/.test(w) ? ' tile-punct' : ''}" onclick="selectTile(${i})">${w}</button>`).join('');
 }
 
 function selectTile(i) {
@@ -986,8 +988,8 @@ function checkAnswer() {
   const s = activeSentences[exIdx];
   let val, correct, correctAnswer;
   if (exInputMode === 'tiles') {
-    val = tileBuilt.join(' ').replace(/ ([?!])$/, '$1');
-    correct = normalize(val) === normalize(s.nl);
+    val = tileBuilt.join(' ').replace(/ ,/g, ',').replace(/ ([.?!]+)$/, '$1');
+    correct = val.trim().toLowerCase() === s.nl.trim().toLowerCase();
     correctAnswer = s.nl;
   } else if (exInputMode === 'fillblank') {
     val = document.getElementById('fillblank-input')?.value || '';
