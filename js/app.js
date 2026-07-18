@@ -542,6 +542,26 @@ function _loadUnitProgress() {
     const s = _lsGet(UNIT_PROGRESS_KEY);
     if (s) unitProgress = JSON.parse(s);
   } catch(e) { unitProgress = {}; }
+  _migrateUnitProgress();
+}
+
+// The 2026-07 curriculum resync renumbered/retheme'd units 1-18 into 1-20,
+// so old unit-progress keys no longer line up with the new unit contents
+// (unit numbers overlap, so a range check can't detect this — a schema
+// version marker can). Reset once and tell the user why — everything else
+// (stats, SRS, Mijn woorden, reading history) is keyed by content id, not
+// unit number, and is unaffected.
+const UNIT_PROGRESS_SCHEMA_KEY = 'schrijfcoach_unit_progress_schema';
+const UNIT_PROGRESS_SCHEMA_VERSION = '2026-07-20-units';
+function _migrateUnitProgress() {
+  if (_lsGet(UNIT_PROGRESS_SCHEMA_KEY) === UNIT_PROGRESS_SCHEMA_VERSION) return;
+  const hadProgress = Object.keys(unitProgress).length > 0;
+  unitProgress = {};
+  _lsSet(UNIT_PROGRESS_SCHEMA_KEY, UNIT_PROGRESS_SCHEMA_VERSION);
+  _saveUnitProgress();
+  if (hadProgress && typeof showToast === 'function') {
+    showToast('Leerplan is bijgewerkt — je unit-voortgang is opnieuw ingesteld.');
+  }
 }
 
 function _saveUnitProgress() {

@@ -1203,247 +1203,291 @@ const grammarTopicsData = [
 const lessonPlanData = {
   title: "Leerplan Nederlands A1–B2",
   titleEn: "Dutch Study Plan A1–B2",
-  intro: "Een intensief leerplan: 12 weken naar B1 (1 unit per week), daarna 12 weken naar B2 (2 weken per unit). Elke unit bevat werkwoorden, grammatica en woordenschat met een dagelijkse structuur.",
-  introEn: "An intensive study plan: 12 weeks to B1 (1 unit per week), then 12 weeks to B2 (2 weeks per unit). Each unit includes verbs, grammar and vocabulary with a daily structure.",
+  intro: "Een intensief leerplan: 15 weken naar B1 (1 unit per week), daarna 11 weken naar B2 (2 weken per unit). Elke unit is opgebouwd rond één thema, met werkwoorden, grammatica, woordenschat en leesteksten die dat thema samen ondersteunen.",
+  introEn: "An intensive study plan: 15 weeks to B1 (1 unit per week), then 11 weeks to B2 (2 weeks per unit). Each unit is built around one theme, with verbs, grammar, vocabulary and reading texts that all reinforce it together.",
   levels: [
     {
-      level: "A1", title: "Beginner", duration: "3 weken", durationEn: "3 weeks", color: "#276047",
+      level: "A1", title: "Beginner", duration: "4 weken", durationEn: "4 weeks", color: "#276047",
       units: [
         {
-          unit: 1, title: "De basis: jezelf voorstellen", titleEn: "The basics: introducing yourself", weeks: "Week 1",
-          grammarTopics: ["persoonlijke-vnw", "vraagwoorden", "lidwoorden-meervoud", "telwoorden"],
-          verbRange: [0, 48],
-          verbFocus: ["zijn", "hebben", "worden", "kunnen", "willen", "moeten", "gaan", "komen", "doen", "zien", "zeggen", "maken"],
-          vocabTopics: [{level:"A1",topic:"begroeting"},{level:"A1",topic:"familie"},{level:"A1",topic:"vraagwoorden"},{level:"A1",topic:"tijd"},{level:"A1",topic:"werkwoorden"}],
+          unit: 1, title: "Hallo! Jezelf voorstellen", titleEn: "Hello! Introducing yourself", weeks: "Week 1",
+          grammarTopics: ["persoonlijke-vnw", "vraagwoorden", "telwoorden"],
+          verbRange: [0, 40],
+          verbFocus: ["zijn","kunnen","mogen","komen","vliegen","stijgen","klimmen","rennen","vinden","spreken","liegen","begrijpen"],
+          vocabTopics: [{level:"A1",topic:"begroeting"},{level:"A1",topic:"familie"},{level:"A1",topic:"vraagwoorden"}],
           sentenceFilter: "vraagzin",
-          readingTexts: [],
+          readingTexts: ['r-a1-001', 'r-a1-002'],
           activities: [
-            { type: "grammatica", desc: "Dag 1–2: Bestudeer persoonlijke voornaamwoorden (ik, jij, hij, zij, wij, jullie, zij) en vraagwoorden (wie, wat, waar, wanneer, hoe) in de Grammatica-sectie.", descEn: "Day 1–2: Study personal pronouns (ik, jij, hij, zij, wij, jullie, zij) and question words (wie, wat, waar, wanneer, hoe) in the Grammar section." },
-            { type: "grammatica", desc: "Dag 3–4: Bestudeer lidwoorden (de/het) en meervoudsvormen (-en, -s, -eren). Oefen telwoorden 1–100.", descEn: "Day 3–4: Study articles (de/het) and plural forms (-en, -s, -eren). Practise numbers 1–100." },
-            { type: "werkwoorden", desc: "Dag 1–4: Oefen zijn & hebben in OTT via de conjugatietool. Voeg elke dag 2 nieuwe werkwoorden toe.", descEn: "Day 1–4: Practise zijn & hebben in OTT via the conjugation tool. Add 2 new verbs each day." },
+            { type: "grammatica", desc: "Dag 1–2: Bestudeer persoonlijke voornaamwoorden (ik, jij, hij, zij, wij, jullie, zij) en vraagwoorden (wie, wat, waar, wanneer, hoe).", descEn: "Day 1–2: Study personal pronouns (ik, jij, hij, zij, wij, jullie, zij) and question words (wie, wat, waar, wanneer, hoe)." },
+            { type: "grammatica", desc: "Dag 2–3: Oefen telwoorden 1–100.", descEn: "Day 2–3: Practise numbers 1–100." },
+            { type: "werkwoorden", desc: "Dag 1–4: Oefen zijn & kunnen in OTT via de conjugatietool. Voeg elke dag 2 nieuwe werkwoorden toe.", descEn: "Day 1–4: Practise zijn & kunnen in OTT via the conjugation tool. Add 2 new verbs each day." },
             { type: "zinnen", desc: "Dag 3–5: Oefen A1-vraagzinnen: stel jezelf voor, vraag naar naam, leeftijd en woonplaats.", descEn: "Day 3–5: Practise A1 question sentences: introduce yourself, ask about name, age and place of residence." },
-            { type: "woordenschat", desc: "Dag 5–7: Leer 40 begroetings- en familiewoorden. Gebruik de woordenschatlijst en test jezelf.", descEn: "Day 5–7: Learn 40 greetings and family words. Use the vocabulary list and test yourself." },
-            { type: "dehet", desc: "Dag 6–7: Train de/het met de De/Het oefentool — doel: 30 woorden correct.", descEn: "Day 6–7: Train de/het with the De/Het exercise tool — goal: 30 words correct." }
+            { type: "woordenschat", desc: "Dag 5–7: Leer begroetings- en familiewoorden. Gebruik de woordenschatlijst en test jezelf.", descEn: "Day 5–7: Learn greetings and family words. Use the vocabulary list and test yourself." },
+            { type: "dehet", desc: "Dag 6–7: Train de/het met de De/Het oefentool — doel: 20 woorden correct.", descEn: "Day 6–7: Train de/het with the De/Het exercise tool — goal: 20 words correct." }
           ],
-          goals: ["Jezelf voorstellen: naam, leeftijd, land en taal.", "10 vraagwoorden kennen en gebruiken in zinnen.", "Zijn en hebben correct vervoegen in OTT (alle personen).", "Tellen tot 100 en getallen herkennen.", "40 basiswoorden kennen (begroeting, familie, tijd)."],
-          goalsEn: ["Introduce yourself: name, age, country and language.", "Know 10 question words and use them in sentences.", "Correctly conjugate zijn and hebben in OTT (all persons).", "Count to 100 and recognise numbers.", "Know 40 basic words (greetings, family, time)."]
+          goals: ["Jezelf voorstellen: naam, leeftijd, land en taal.", "10 vraagwoorden kennen en gebruiken in zinnen.", "Tellen tot 100 en getallen herkennen.", "De teksten 'Hallo, ik ben Anna' en 'Mijn familie' begrijpen."],
+          goalsEn: ["Introduce yourself: name, age, country and language.", "Know 10 question words and use them in sentences.", "Count to 100 and recognise numbers.", "Understand the texts 'Hallo, ik ben Anna' and 'Mijn familie'."]
         },
         {
-          unit: 2, title: "Dagelijks leven", titleEn: "Daily life", weeks: "Week 2",
-          grammarTopics: ["bezittelijke-vnw", "ontkenning", "verkleinwoorden", "voorzetsels-a1"],
-          verbRange: [49, 97],
-          verbFocus: ["geven", "nemen", "helpen", "eten", "drinken", "slapen", "zitten", "staan", "kopen", "dragen", "wonen", "werken"],
-          vocabTopics: [{level:"A1",topic:"eten"},{level:"A1",topic:"huis"},{level:"A1",topic:"kleding"},{level:"A1",topic:"lichaam"},{level:"A1",topic:"voorzetsels"},{level:"A1",topic:"kleuren"}],
+          unit: 2, title: "Thuis & eten", titleEn: "Home & food", weeks: "Week 2",
+          grammarTopics: ["lidwoorden-meervoud", "verkleinwoorden"],
+          verbRange: [41, 81],
+          verbFocus: ["nemen","laten","staan","slaan","zoeken","kiezen","eten","zingen","bijten","steken","vouwen","gieten"],
+          vocabTopics: [{level:"A1",topic:"eten"},{level:"A1",topic:"huis"},{level:"A1",topic:"kleuren"}],
+          sentenceFilter: "all",
+          readingTexts: ['r-a1-003', 'r-a1-004'],
+          activities: [
+            { type: "grammatica", desc: "Dag 1–2: Bestudeer lidwoorden (de/het) en meervoudsvormen (-en, -s, -eren).", descEn: "Day 1–2: Study articles (de/het) and plural forms (-en, -s, -eren)." },
+            { type: "grammatica", desc: "Dag 3–4: Leer verkleinwoorden (-je, -tje, -pje, -etje).", descEn: "Day 3–4: Learn diminutives (-je, -tje, -pje, -etje)." },
+            { type: "werkwoorden", desc: "Dag 1–5: Oefen 10 huishoudelijke werkwoorden in OTT: typ zelf de vervoegingen.", descEn: "Day 1–5: Practise 10 household verbs in OTT: type the conjugations yourself." },
+            { type: "dehet", desc: "Dag 3–5: Train de/het voor huis- en eetwoorden (30 nieuwe woorden).", descEn: "Day 3–5: Train de/het for house and food words (30 new words)." },
+            { type: "zinnen", desc: "Dag 4–6: Oefen zinnen over eten en het huis.", descEn: "Day 4–6: Practise sentences about food and the house." },
+            { type: "woordenschat", desc: "Dag 5–7: Leer 40 woorden over eten, huis en kleuren.", descEn: "Day 5–7: Learn 40 words about food, house and colours." }
+          ],
+          goals: ["Meervoudsvormen correct maken voor 15 woorden.", "10 verkleinwoorden correct vormen.", "40 nieuwe woorden leren (eten, huis, kleuren).", "De teksten 'Mijn huis' en 'Boodschappen doen' begrijpen."],
+          goalsEn: ["Correctly form plurals for 15 words.", "Correctly form 10 diminutives.", "Learn 40 new words (food, house, colours).", "Understand the texts 'Mijn huis' and 'Boodschappen doen'."]
+        },
+        {
+          unit: 3, title: "Mijn dag", titleEn: "My day", weeks: "Week 3",
+          grammarTopics: ["bezittelijke-vnw", "ontkenning", "voorzetsels-a1"],
+          verbRange: [82, 122],
+          verbFocus: ["schijnen","wegen","wassen","meten","beschrijven","verschijnen","vertrekken","sturen","praten","hopen","betalen","wonen"],
+          vocabTopics: [{level:"A1",topic:"tijd"},{level:"A1",topic:"kleding"},{level:"A1",topic:"lichaam"},{level:"A1",topic:"werkwoorden"},{level:"A1",topic:"voorzetsels"}],
           sentenceFilter: "niet",
-          readingTexts: [],
+          readingTexts: ['r-a1-005', 'r-a1-006'],
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Bestudeer bezittelijke voornaamwoorden (mijn, jouw, zijn, haar, ons, hun) en ontkenning (niet/geen).", descEn: "Day 1–2: Study possessive pronouns (mijn, jouw, zijn, haar, ons, hun) and negation (niet/geen)." },
-            { type: "grammatica", desc: "Dag 3–4: Leer verkleinwoorden (-je, -tje, -pje, -etje) en voorzetsels van plaats (in, op, aan, bij, naar).", descEn: "Day 3–4: Learn diminutives (-je, -tje, -pje, -etje) and prepositions of place (in, op, aan, bij, naar)." },
-            { type: "werkwoorden", desc: "Dag 1–5: Oefen 10 dagelijkse werkwoorden in OTT: typ zelf de vervoegingen. Doel: foutloos 8 van 10.", descEn: "Day 1–5: Practise 10 daily verbs in OTT: type the conjugations yourself. Goal: 8 of 10 error-free." },
-            { type: "dehet", desc: "Dag 3–5: Train de/het voor huis- en kledingwoorden (30 nieuwe woorden).", descEn: "Day 3–5: Train de/het for house and clothing words (30 new words)." },
-            { type: "zinnen", desc: "Dag 4–6: Oefen ontkenningszinnen: 'Ik heb geen...', 'Hij woont niet in...'.", descEn: "Day 4–6: Practise negation sentences: 'Ik heb geen...', 'Hij woont niet in...'." },
-            { type: "woordenschat", desc: "Dag 5–7: Leer 50 woorden over eten, huis en kleding. Herhaal ook week 1 woorden.", descEn: "Day 5–7: Learn 50 words about food, house and clothing. Also revise week 1 words." }
+            { type: "grammatica", desc: "Dag 3–4: Leer voorzetsels van plaats en tijd (in, op, aan, bij, naar, om).", descEn: "Day 3–4: Learn prepositions of place and time (in, op, aan, bij, naar, om)." },
+            { type: "werkwoorden", desc: "Dag 1–5: Oefen dagelijkse routinewerkwoorden in OTT. Doel: foutloos 8 van 10.", descEn: "Day 1–5: Practise daily-routine verbs in OTT. Goal: 8 of 10 error-free." },
+            { type: "zinnen", desc: "Dag 4–6: Oefen ontkenningszinnen en zinnen over de dagelijkse routine.", descEn: "Day 4–6: Practise negation sentences and sentences about the daily routine." },
+            { type: "woordenschat", desc: "Dag 5–7: Leer woorden over tijd, kleding en lichaam.", descEn: "Day 5–7: Learn words about time, clothing and body." },
+            { type: "dehet", desc: "Dag 6–7: Train de/het voor kleding- en lichaamswoorden.", descEn: "Day 6–7: Train de/het for clothing and body words." }
           ],
-          goals: ["Bezittelijke voornaamwoorden correct gebruiken in 10 zinnen.", "Zinnen ontkennen met niet en geen zonder fouten.", "15 verkleinwoorden correct vormen.", "8 voorzetsels van plaats gebruiken in context.", "50 nieuwe woorden leren (eten, huis, kleding)."],
-          goalsEn: ["Use possessive pronouns correctly in 10 sentences.", "Negate sentences with niet and geen without errors.", "Correctly form 15 diminutives.", "Use 8 prepositions of place in context.", "Learn 50 new words (food, house, clothing)."]
+          goals: ["Bezittelijke voornaamwoorden correct gebruiken in 10 zinnen.", "Zinnen ontkennen met niet en geen zonder fouten.", "8 voorzetsels van tijd en plaats gebruiken in context.", "De teksten 'Een dag in mijn leven' en 'Wat draag ik vandaag?' begrijpen."],
+          goalsEn: ["Use possessive pronouns correctly in 10 sentences.", "Negate sentences with niet and geen without errors.", "Use 8 prepositions of time and place in context.", "Understand the texts 'Een dag in mijn leven' and 'Wat draag ik vandaag?'."]
         },
         {
-          unit: 3, title: "A1 Herhaling & consolidatie", titleEn: "A1 Review & consolidation", weeks: "Week 3",
-          grammarTopics: ["hebben-of-zijn", "persoonlijke-vnw", "bezittelijke-vnw", "lidwoorden-meervoud", "vraagwoorden", "ontkenning", "verkleinwoorden", "voorzetsels-a1", "telwoorden"],
-          verbRange: [0, 146],
-          verbFocus: ["zijn", "hebben", "gaan", "komen", "fietsen", "lopen", "maken", "leren", "praten", "spelen", "kijken", "lezen"],
-          vocabTopics: [{level:"A1",topic:"dieren"},{level:"A1",topic:"weer"},{level:"A1",topic:"vervoer"},{level:"A1",topic:"bijvoeglijk"},{level:"A1",topic:"werkwoorden"}],
+          unit: 4, title: "Onderweg & herhaling", titleEn: "On the go & review", weeks: "Week 4",
+          grammarTopics: ["hebben-of-zijn"],
+          verbRange: [123, 163],
+          verbFocus: ["tekenen","vertellen","schilderen","dromen","verdienen","melden","combineren","presenteren","feliciteren","verzamelen","berekenen","ontdekken"],
+          vocabTopics: [{level:"A1",topic:"vervoer"},{level:"A1",topic:"weer"},{level:"A1",topic:"dieren"},{level:"A1",topic:"bijvoeglijk"},{level:"A1",topic:"cultuur"},{level:"A1",topic:"reizen"},{level:"A1",topic:"sport"}],
           sentenceFilter: "all",
-          readingTexts: [],
+          readingTexts: ['r-a1-007', 'r-a1-008'],
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Bestudeer 'Hebben of zijn?' — leer de BAGS-regel (Beweging, Aard, Grootte, Staat) voor de VTT.", descEn: "Day 1–2: Study 'Hebben or zijn?' — learn the BAGS rule (Movement, Nature, Size, State) for the perfect tense." },
-            { type: "werkwoorden", desc: "Dag 1–3: Oefen VTT met zijn-werkwoorden (gaan, komen, fietsen, lopen) en hebben-werkwoorden (maken, kijken, lezen).", descEn: "Day 1–3: Practise VTT with zijn verbs (gaan, komen, fietsen, lopen) and hebben verbs (maken, kijken, lezen)." },
-            { type: "werkwoorden", desc: "Dag 3–5: Herhaal alle werkwoorden 0–146 in OTT. Test: conjugeer 20 willekeurige werkwoorden foutloos.", descEn: "Day 3–5: Revise all verbs 0–146 in OTT. Test: conjugate 20 random verbs without errors." },
+            { type: "werkwoorden", desc: "Dag 1–3: Oefen VTT met zijn-werkwoorden (gaan, komen, fietsen) en hebben-werkwoorden (maken, kijken, lezen).", descEn: "Day 1–3: Practise VTT with zijn verbs (gaan, komen, fietsen) and hebben verbs (maken, kijken, lezen)." },
+            { type: "werkwoorden", desc: "Dag 3–5: Herhaal alle werkwoorden 0–163 in OTT. Test: conjugeer 20 willekeurige werkwoorden foutloos.", descEn: "Day 3–5: Revise all verbs 0–163 in OTT. Test: conjugate 20 random verbs without errors." },
             { type: "zinnen", desc: "Dag 4–5: Oefen alle A1-zinstypen: mededelingen, vragen en ontkenningen. Mix alle grammatica.", descEn: "Day 4–5: Practise all A1 sentence types: statements, questions and negations. Mix all grammar." },
-            { type: "woordenschat", desc: "Dag 5–6: Herhaal alle A1-woordenschat (dieren, weer, vervoer). Doel: 120 woorden herkennen.", descEn: "Day 5–6: Revise all A1 vocabulary (animals, weather, transport). Goal: recognise 120 words." },
+            { type: "woordenschat", desc: "Dag 5–6: Leer woorden over vervoer, weer en dieren. Herhaal ook week 1–3 woorden.", descEn: "Day 5–6: Learn words about transport, weather and animals. Also revise week 1–3 words." },
             { type: "dehet", desc: "Dag 6–7: Eindtoets de/het: test 50 woorden. Doel: minstens 80% correct.", descEn: "Day 6–7: Final de/het test: test 50 words. Goal: at least 80% correct." }
           ],
-          goals: ["De BAGS-regel toepassen: hebben of zijn in de VTT.", "20 werkwoorden foutloos vervoegen in OTT.", "Alle A1-grammatica combineren in vrije zinnen.", "120 A1-woorden herkennen en gebruiken.", "A1 afgerond: basisgesprekken zelfstandig voeren."],
-          goalsEn: ["Apply the BAGS rule: hebben or zijn in the perfect tense.", "Conjugate 20 verbs in OTT without errors.", "Combine all A1 grammar in free sentences.", "Recognise and use 120 A1 words.", "A1 complete: hold basic conversations independently."]
+          goals: ["De BAGS-regel toepassen: hebben of zijn in de VTT.", "20 werkwoorden foutloos vervoegen in OTT.", "Alle A1-grammatica combineren in vrije zinnen.", "A1 afgerond: basisgesprekken zelfstandig voeren."],
+          goalsEn: ["Apply the BAGS rule: hebben or zijn in the perfect tense.", "Conjugate 20 verbs in OTT without errors.", "Combine all A1 grammar in free sentences.", "A1 complete: hold basic conversations independently."]
         }
       ]
     },
     {
-      level: "A2", title: "Elementair", duration: "4 weken", durationEn: "4 weeks", color: "#1B3D7A",
+      level: "A2", title: "Elementair", duration: "5 weken", durationEn: "5 weeks", color: "#1B3D7A",
       units: [
         {
-          unit: 4, title: "De verleden tijd", titleEn: "The past tense", weeks: "Week 4",
-          grammarTopics: ["bijvoeglijk-nw"],
-          verbRange: [147, 195],
-          verbFocus: ["werken", "maken", "proberen", "vertellen", "wachten", "veranderen", "zoeken", "betalen", "vergeten", "beginnen", "kiezen", "brengen"],
-          vocabTopics: [{level:"A2",topic:"werkwoorden"},{level:"A2",topic:"dagelijks"},{level:"A2",topic:"gezondheid"},{level:"A2",topic:"hobby"},{level:"A2",topic:"kleding"}],
-          sentenceFilter: "tijden",
-          readingTexts: ['r-001', 'r-002', 'r-a2-005', 'r-a2-006'],
+          unit: 5, title: "Eten, winkelen & geld", titleEn: "Food, shopping & money", weeks: "Week 5",
+          grammarTopics: ["bijvoeglijk-nw", "object-vnw"],
+          verbRange: [164, 204],
+          verbFocus: ["beloven","verbeteren","oefenen","pakken","leggen","mopperen","zwaaien","herhalen","rekenen","boren","surfen","scannen"],
+          vocabTopics: [{level:"A2",topic:"eten"},{level:"A2",topic:"winkelen"},{level:"A2",topic:"geld"},{level:"A2",topic:"dagelijks"},{level:"A2",topic:"financiën"}],
+          sentenceFilter: "all",
+          readingTexts: ['r-001', 'r-a2-001', 'r-a2-006', 'r-a2-017', 'r-a2-019'],
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Bestudeer bijvoeglijke naamwoorden — buigingsregel: wel/geen -e (een groot huis, de grote kamer).", descEn: "Day 1–2: Study adjective inflection rule: with/without -e (een groot huis, de grote kamer)." },
+            { type: "grammatica", desc: "Dag 3–4: Leer voorwerpvoornaamwoorden (mij/me, jou/je, hem, haar, ons, hen/hun).", descEn: "Day 3–4: Learn object pronouns (mij/me, jou/je, hem, haar, ons, hen/hun)." },
             { type: "werkwoorden", desc: "Dag 1–3: Leer OVT (onvoltooid verleden tijd) — regelmatige werkwoorden: stam + -te(n)/-de(n). Oefen 15 werkwoorden.", descEn: "Day 1–3: Learn OVT (simple past) — regular verbs: stem + -te(n)/-de(n). Practise 15 verbs." },
-            { type: "werkwoorden", desc: "Dag 3–5: Leer OVT onregelmatige werkwoorden (ging, kwam, was, had). Oefen via Typ zelf modus.", descEn: "Day 3–5: Learn OVT irregular verbs (ging, kwam, was, had). Practise via Type yourself mode." },
-            { type: "zinnen", desc: "Dag 4–6: Oefen A2-zinnen in OVT: vertel wat je gisteren deed. Gebruik bijvoeglijke naamwoorden.", descEn: "Day 4–6: Practise A2 sentences in OVT: tell what you did yesterday. Use adjectives." },
-            { type: "woordenschat", desc: "Dag 5–7: Leer 40 dagelijkse en gezondheidswoorden. Oefen bijvoeglijke naamwoorden bij de/het-woorden.", descEn: "Day 5–7: Learn 40 daily and health words. Practise adjectives with de/het words." },
-            { type: "dehet", desc: "Dag 6–7: Train de/het met bijvoeglijk naamwoord erbij — 'de grote tafel' of 'het grote huis'?", descEn: "Day 6–7: Train de/het with adjective added — 'de grote tafel' or 'het grote huis'?" }
+            { type: "zinnen", desc: "Dag 4–6: Oefen zinnen over winkelen en geld met bijvoeglijke naamwoorden en voorwerpvoornaamwoorden.", descEn: "Day 4–6: Practise sentences about shopping and money with adjectives and object pronouns." },
+            { type: "woordenschat", desc: "Dag 5–7: Leer 40 woorden over eten, winkelen en geld.", descEn: "Day 5–7: Learn 40 words about food, shopping and money." },
+            { type: "dehet", desc: "Dag 6–7: Train de/het met bijvoeglijk naamwoord erbij — 'de grote markt' of 'het grote huis'?", descEn: "Day 6–7: Train de/het with adjective added — 'de grote markt' or 'het grote huis'?" }
           ],
-          goals: ["OVT vormen van minstens 20 werkwoorden (regelmatig + onregelmatig).", "Bijvoeglijke naamwoorden correct verbuigen bij de- en het-woorden.", "Een kort verhaal in de verleden tijd vertellen (8+ zinnen).", "40 nieuwe A2-woorden kennen."],
-          goalsEn: ["Form OVT of at least 20 verbs (regular + irregular).", "Correctly inflect adjectives with de and het words.", "Tell a short story in the past tense (8+ sentences).", "Know 40 new A2 words."]
+          goals: ["Bijvoeglijke naamwoorden correct verbuigen bij de- en het-woorden.", "Voorwerpvoornaamwoorden correct plaatsen in zinnen.", "40 nieuwe A2-woorden kennen over eten en winkelen.", "De teksten over de markt, supermarkt en online winkelen begrijpen."],
+          goalsEn: ["Correctly inflect adjectives with de and het words.", "Correctly place object pronouns in sentences.", "Know 40 new A2 words about food and shopping.", "Understand the texts about the market, supermarket and online shopping."]
         },
         {
-          unit: 5, title: "Meningen & vergelijkingen", titleEn: "Opinions & comparisons", weeks: "Week 5",
-          grammarTopics: ["vergrotende-trap", "nevenschikkende-vgw"],
-          verbRange: [196, 252],
-          verbFocus: ["vinden", "denken", "geloven", "lijken", "houden", "voelen", "weten", "menen", "vergelijken", "betekenen", "hopen", "verwachten"],
-          vocabTopics: [{level:"A2",topic:"bijvoeglijk"},{level:"A2",topic:"sport"},{level:"A2",topic:"natuur"},{level:"A2",topic:"winkelen"},{level:"A2",topic:"verbindingswoorden"}],
+          unit: 6, title: "Gezondheid & sport", titleEn: "Health & sport", weeks: "Week 6",
+          grammarTopics: ["vergrotende-trap"],
+          verbRange: [205, 245],
+          verbFocus: ["starten","raden","brouwen","roken","kussen","schreeuwen","coachen","analyseren","beleven","beslissen","opbellen","thuiskomen"],
+          vocabTopics: [{level:"A2",topic:"gezondheid"},{level:"A2",topic:"sport"},{level:"A2",topic:"hobby"},{level:"A2",topic:"karakter"},{level:"A2",topic:"werkwoorden"}],
           sentenceFilter: "all",
-          readingTexts: ['r-003', 'r-004', 'r-a2-007', 'r-a2-008'],
+          readingTexts: ['r-a2-002', 'r-a2-009', 'r-a2-015', 'r-a2-007'],
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Leer de vergrotende trap (-er) en overtreffende trap (-st). Onregelmatig: goed-beter-best, veel-meer-meest.", descEn: "Day 1–2: Learn comparative (-er) and superlative (-st). Irregular: goed-beter-best, veel-meer-meest." },
-            { type: "grammatica", desc: "Dag 3–4: Bestudeer nevenschikkende voegwoorden: en, maar, want, dus, of, toch. Oefen de woordvolgorde (geen inversie).", descEn: "Day 3–4: Study coordinating conjunctions: en, maar, want, dus, of, toch. Practise word order (no inversion)." },
-            { type: "werkwoorden", desc: "Dag 2–5: Oefen vinden, denken, geloven in OTT en OVT. Combineer met meningen: 'Ik vind dat...'.", descEn: "Day 2–5: Practise vinden, denken, geloven in OTT and OVT. Combine with opinions: 'Ik vind dat...'." },
-            { type: "zinnen", desc: "Dag 4–6: Oefen zinnen met maar, want, dus en toch. Maak vergelijkingen: 'Amsterdam is groter dan Utrecht.'", descEn: "Day 4–6: Practise sentences with maar, want, dus and toch. Make comparisons: 'Amsterdam is groter dan Utrecht.'" },
-            { type: "woordenschat", desc: "Dag 5–7: Leer 30 bijvoeglijke naamwoorden en 20 sport/natuurwoorden. Oefen vergelijkingen.", descEn: "Day 5–7: Learn 30 adjectives and 20 sport/nature words. Practise comparisons." }
+            { type: "werkwoorden", desc: "Dag 2–5: Oefen gezondheids- en sportwerkwoorden in OTT en OVT.", descEn: "Day 2–5: Practise health and sport verbs in OTT and OVT." },
+            { type: "zinnen", desc: "Dag 4–6: Maak vergelijkingen: 'Voetbal is populairder dan tennis.' Oefen zinnen over de huisarts en tandarts.", descEn: "Day 4–6: Make comparisons: 'Voetbal is populairder dan tennis.' Practise sentences about the doctor and dentist." },
+            { type: "woordenschat", desc: "Dag 5–7: Leer 30 gezondheids- en sportwoorden. Oefen vergelijkingen.", descEn: "Day 5–7: Learn 30 health and sport words. Practise comparisons." },
+            { type: "dehet", desc: "Dag 6–7: Train de/het voor gezondheids- en sportwoorden.", descEn: "Day 6–7: Train de/het for health and sport words." }
           ],
-          goals: ["Vergrotende en overtreffende trap correct gebruiken (incl. 5 onregelmatige).", "6 nevenschikkende voegwoorden kennen en toepassen.", "Meningen geven met 'Ik vind dat...', 'Ik denk dat...'.", "50 nieuwe woorden kennen (bijvoeglijk, sport, natuur)."],
-          goalsEn: ["Use comparative and superlative correctly (incl. 5 irregular ones).", "Know and apply 6 coordinating conjunctions.", "Give opinions with 'Ik vind dat...', 'Ik denk dat...'.", "Know 50 new words (adjectives, sport, nature)."]
+          goals: ["Vergrotende en overtreffende trap correct gebruiken (incl. 5 onregelmatige).", "30 nieuwe woorden kennen (gezondheid, sport, karakter).", "De teksten over de huisarts, sport en de tandarts begrijpen."],
+          goalsEn: ["Use comparative and superlative correctly (incl. 5 irregular ones).", "Know 30 new words (health, sport, character).", "Understand the texts about the doctor, sport and the dentist."]
         },
         {
-          unit: 6, title: "Complexe zinnen", titleEn: "Complex sentences", weeks: "Week 6",
-          grammarTopics: ["scheidbare-werkwoorden", "onderschikkende-vgw-1", "er-systeem", "voorzetsels-a2"],
-          verbRange: [253, 301],
-          verbFocus: ["oplossen", "opbellen", "aankomen", "uitgaan", "vertrekken", "meenemen", "terugkomen", "afspreken", "opstaan", "instappen", "uitleggen", "opruimen"],
-          vocabTopics: [{level:"A2",topic:"reizen"},{level:"A2",topic:"voorzetsels"},{level:"A2",topic:"communicatie"},{level:"A2",topic:"dagelijks"},{level:"A2",topic:"werkwoorden"}],
+          unit: 7, title: "Vrije tijd & feest", titleEn: "Free time & celebrations", weeks: "Week 7",
+          grammarTopics: ["nevenschikkende-vgw"],
+          verbRange: [246, 286],
+          verbFocus: ["weggaan","aandoen","afmaken","meenemen","neerzetten","inloggen","opruimen","weggooien","opgroeien","aanlopen","afleveren","invullen"],
+          vocabTopics: [{level:"A2",topic:"cultuur"},{level:"A2",topic:"natuur"},{level:"A2",topic:"bijvoeglijk"},{level:"A2",topic:"media"},{level:"A2",topic:"kleding"},{level:"A2",topic:"bijwoord"}],
+          sentenceFilter: "all",
+          readingTexts: ['r-002', 'r-a2-003', 'r-a2-004', 'r-a2-021', 'r-a2-023'],
+          activities: [
+            { type: "grammatica", desc: "Dag 1–2: Bestudeer nevenschikkende voegwoorden: en, maar, want, dus, of, toch. Oefen de woordvolgorde (geen inversie).", descEn: "Day 1–2: Study coordinating conjunctions: en, maar, want, dus, of, toch. Practise word order (no inversion)." },
+            { type: "werkwoorden", desc: "Dag 2–5: Oefen feest- en vrijetijdswerkwoorden in OTT en OVT.", descEn: "Day 2–5: Practise celebration and leisure verbs in OTT and OVT." },
+            { type: "zinnen", desc: "Dag 4–6: Oefen zinnen met maar, want, dus en toch over verjaardagen, het café en Koningsdag.", descEn: "Day 4–6: Practise sentences with maar, want, dus and toch about birthdays, the café and King's Day." },
+            { type: "woordenschat", desc: "Dag 5–7: Leer 30 cultuur- en natuurwoorden.", descEn: "Day 5–7: Learn 30 culture and nature words." }
+          ],
+          goals: ["6 nevenschikkende voegwoorden kennen en toepassen.", "30 nieuwe woorden kennen (cultuur, natuur, media).", "De teksten over Koningsdag, de Waddenzee en het museum begrijpen."],
+          goalsEn: ["Know and apply 6 coordinating conjunctions.", "Know 30 new words (culture, nature, media).", "Understand the texts about King's Day, the Wadden Sea and the museum."]
+        },
+        {
+          unit: 8, title: "Wonen & onderweg", titleEn: "Living & getting around", weeks: "Week 8",
+          grammarTopics: ["er-systeem", "voorzetsels-a2"],
+          verbRange: [287, 327],
+          verbFocus: ["doorsturen","opschrijven","opleggen","uitvoeren","meebrengen","afzetten","openstellen","aanstellen","afspreken","meedelen","toenemen","verheugen"],
+          vocabTopics: [{level:"A2",topic:"reizen"},{level:"A2",topic:"toerisme"},{level:"A2",topic:"huis"},{level:"A2",topic:"architectuur"},{level:"A2",topic:"milieu"},{level:"A2",topic:"landbouw"},{level:"A2",topic:"voorzetsels"}],
+          sentenceFilter: "all",
+          readingTexts: ['r-003', 'r-004', 'r-a2-005', 'r-a2-010', 'r-a2-014', 'r-a2-016', 'r-a2-018', 'r-a2-020', 'r-a2-022'],
+          activities: [
+            { type: "grammatica", desc: "Dag 1–2: Leer het er-systeem en A2-voorzetsels (sinds, tijdens, vanwege, ondanks).", descEn: "Day 1–2: Learn the er system and A2 prepositions (sinds, tijdens, vanwege, ondanks)." },
+            { type: "werkwoorden", desc: "Dag 2–4: Oefen reis- en woonwerkwoorden in OTT, OVT en VTT.", descEn: "Day 2–4: Practise travel and housing verbs in OTT, OVT and VTT." },
+            { type: "zinnen", desc: "Dag 3–5: Oefen zinnen met 'er' en A2-voorzetsels over huren, reizen en de trein.", descEn: "Day 3–5: Practise sentences with 'er' and A2 prepositions about renting, travel and the train." },
+            { type: "woordenschat", desc: "Dag 6–7: Leer 40 reis- en woonwoorden. Oefen voorzetsels in context.", descEn: "Day 6–7: Learn 40 travel and housing words. Practise prepositions in context." }
+          ],
+          goals: ["4 functies van 'er' herkennen en toepassen.", "A2-voorzetsels van tijd en abstractie gebruiken.", "40 reis- en woonwoorden kennen.", "De teksten over een huurhuis, het station en de buurt begrijpen."],
+          goalsEn: ["Recognise and apply 4 functions of 'er'.", "Use A2 prepositions of time and abstraction.", "Know 40 travel and housing words.", "Understand the texts about renting a home, the station and the neighbourhood."]
+        },
+        {
+          unit: 9, title: "Werk, school & routine", titleEn: "Work, school & routine", weeks: "Week 9",
+          grammarTopics: ["scheidbare-werkwoorden", "onderschikkende-vgw-1", "formeel-u"],
+          verbRange: [328, 368],
+          verbFocus: ["zich voelen","concentreren","omdraaien","verzetten","vastgrijpen","inschrijven","beraden","adviseren","behandelen","beschermen","beweren","controleren"],
+          vocabTopics: [{level:"A2",topic:"werk"},{level:"A2",topic:"onderwijs"},{level:"A2",topic:"technologie"},{level:"A2",topic:"communicatie"},{level:"A2",topic:"samenleving"},{level:"A2",topic:"relaties"},{level:"A2",topic:"verbinders"},{level:"A2",topic:"verbindingswoorden"}],
           sentenceFilter: "scheidbare-werkwoorden",
-          readingTexts: ['r-a2-001', 'r-a2-002', 'r-a2-003', 'r-a2-004'],
+          readingTexts: ['r-a2-008', 'r-a2-011', 'r-a2-012', 'r-a2-013'],
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Bestudeer scheidbare werkwoorden: prefix schuift naar het einde in een hoofdzin; prefix + stam blijven samen in een bijzin.", descEn: "Day 1–2: Study separable verbs: prefix moves to the end in a main clause; prefix + stem stay together in a sub. clause." },
-            { type: "grammatica", desc: "Dag 2–3: Leer het voltooid deelwoord van scheidbare werkwoorden: ge- tussen prefix en VD (op+ge+staan = opgestaan). Oefen 10 werkwoorden.", descEn: "Day 2–3: Learn the past participle of separable verbs: ge- between prefix and stem (op+ge+staan = opgestaan). Practise 10 verbs." },
+            { type: "grammatica", desc: "Dag 2–3: Leer het voltooid deelwoord van scheidbare werkwoorden (op+ge+staan = opgestaan). Leer ook formeel 'u' (u, uw).", descEn: "Day 2–3: Learn the past participle of separable verbs (op+ge+staan = opgestaan). Also learn formal 'u' (u, uw)." },
             { type: "grammatica", desc: "Dag 3–4: Bestudeer onderschikkende voegwoorden (omdat, als, dat, terwijl, toen) — werkwoord naar het einde!", descEn: "Day 3–4: Study subordinating conjunctions (omdat, als, dat, terwijl, toen) — verb to the end!" },
-            { type: "grammatica", desc: "Dag 4–5: Leer het er-systeem en A2-voorzetsels (sinds, tijdens, vanwege, ondanks).", descEn: "Day 4–5: Learn the er system and A2 prepositions (sinds, tijdens, vanwege, ondanks)." },
-            { type: "werkwoorden", desc: "Dag 2–4: Oefen scheidbare werkwoorden (opstaan, opbellen, meenemen, uitleggen, afspreken) in OTT, OVT en VTT.", descEn: "Day 2–4: Practise separable verbs (opstaan, opbellen, meenemen, uitleggen, afspreken) in OTT, OVT and VTT." },
+            { type: "werkwoorden", desc: "Dag 2–4: Oefen scheidbare werkwoorden (opstaan, opbellen, meenemen, inschrijven) in OTT, OVT en VTT.", descEn: "Day 2–4: Practise separable verbs (opstaan, opbellen, meenemen, inschrijven) in OTT, OVT and VTT." },
             { type: "zinnen", desc: "Dag 3–5: Oefen scheidbare werkwoorden in Zinnen oefenen → filter 'Scheidbare ww.' — focus op prefix-naar-einde en VTT-vormen.", descEn: "Day 3–5: Practise separable verbs in Zinnen oefenen → filter 'Scheidbare ww.' — focus on prefix-to-end and perfect tense forms." },
-            { type: "zinnen", desc: "Dag 5–7: Oefen bijzinnen met omdat, als en dat. Let op: in bijzin blijft scheidbaar werkwoord samen aan het einde.", descEn: "Day 5–7: Practise sub. clauses with omdat, als and dat. Note: in a sub. clause the separable verb stays together at the end." },
-            { type: "woordenschat", desc: "Dag 6–7: Leer 40 reis- en communicatiewoorden. Oefen voorzetsels in context.", descEn: "Day 6–7: Learn 40 travel and communication words. Practise prepositions in context." }
+            { type: "zinnen", desc: "Dag 5–7: Oefen bijzinnen met omdat, als en dat over werk en school.", descEn: "Day 5–7: Practise sub. clauses with omdat, als and dat about work and school." },
+            { type: "woordenschat", desc: "Dag 6–7: Leer 40 werk- en onderwijswoorden.", descEn: "Day 6–7: Learn 40 work and education words." }
           ],
-          goals: ["Bijzinnen vormen met 5 onderschikkende voegwoorden (correcte woordvolgorde).", "4 functies van 'er' herkennen en toepassen.", "10 scheidbare werkwoorden correct gebruiken in hoofd- en bijzinnen.", "A2-voorzetsels van tijd en abstractie gebruiken."],
-          goalsEn: ["Form subordinate clauses with 5 subordinating conjunctions (correct word order).", "Recognise and apply 4 functions of 'er'.", "Correctly use 10 separable verbs in main and subordinate clauses.", "Use A2 prepositions of time and abstraction."]
-        },
-        {
-          unit: 7, title: "A2 Herhaling & consolidatie", titleEn: "A2 Review & consolidation", weeks: "Week 7",
-          grammarTopics: ["object-vnw", "formeel-u", "telwoorden", "bijvoeglijk-nw", "vergrotende-trap", "nevenschikkende-vgw", "onderschikkende-vgw-1", "er-systeem", "voorzetsels-a2", "scheidbare-werkwoorden"],
-          verbRange: [0, 349],
-          verbFocus: ["werken", "studeren", "solliciteren", "presenteren", "overleggen", "samenwerken", "verdienen", "zich voorstellen", "zich aanmelden", "vergaderen", "beoordelen", "organiseren"],
-          vocabTopics: [{level:"A2",topic:"werk"},{level:"A2",topic:"onderwijs"},{level:"A2",topic:"geld"},{level:"A2",topic:"hobby"},{level:"A2",topic:"gezondheid"}],
-          sentenceFilter: "all",
-          readingTexts: ['r-001', 'r-002', 'r-003', 'r-004', 'r-a2-001', 'r-a2-002', 'r-a2-003', 'r-a2-004', 'r-a2-005', 'r-a2-006', 'r-a2-007', 'r-a2-008'],
-          activities: [
-            { type: "grammatica", desc: "Dag 1–2: Leer voorwerpvoornaamwoorden (mij/me, jou/je, hem, haar, ons, hen/hun) en formeel 'u' (u, uw).", descEn: "Day 1–2: Learn object pronouns (mij/me, jou/je, hem, haar, ons, hen/hun) and formal 'u' (u, uw)." },
-            { type: "grammatica", desc: "Dag 2–3: Herhaal telwoorden: rangtelwoorden (eerste, tweede), breuken, percentages, data.", descEn: "Day 2–3: Revise numbers: ordinal numbers (eerste, tweede), fractions, percentages, dates." },
-            { type: "werkwoorden", desc: "Dag 3–5: Grote herhalingsronde: oefen werkwoorden 0–339 in OTT, OVT en VTT. Test 30 willekeurige werkwoorden.", descEn: "Day 3–5: Major revision round: practise verbs 0–339 in OTT, OVT and VTT. Test 30 random verbs." },
-            { type: "zinnen", desc: "Dag 4–6: Oefen formele zinnen: 'Kunt u mij helpen?', 'Zou u dat willen herhalen?'. Mix alle A2-grammatica.", descEn: "Day 4–6: Practise formal sentences: 'Kunt u mij helpen?', 'Zou u dat willen herhalen?'. Mix all A2 grammar." },
-            { type: "woordenschat", desc: "Dag 5–6: Herhaal alle A2-woordenschat. Doel: 200 woorden herkennen (A1+A2 samen).", descEn: "Day 5–6: Revise all A2 vocabulary. Goal: recognise 200 words (A1+A2 together)." },
-            { type: "dehet", desc: "Dag 6–7: De/het eindtoets A2: test 80 woorden. Doel: minstens 85% correct.", descEn: "Day 6–7: De/het final test A2: test 80 words. Goal: at least 85% correct." }
-          ],
-          goals: ["Voorwerpvoornaamwoorden correct plaatsen in zinnen.", "Formeel taalgebruik toepassen (u, uw) in 10 zinnen.", "Telwoorden gebruiken: rang, breuken en data.", "30 werkwoorden vervoegen in OTT, OVT en VTT zonder fouten.", "A2 afgerond: dagelijkse communicatie zelfstandig voeren."],
-          goalsEn: ["Correctly place object pronouns in sentences.", "Apply formal register (u, uw) in 10 sentences.", "Use numbers: ordinals, fractions and dates.", "Conjugate 30 verbs in OTT, OVT and VTT without errors.", "A2 complete: hold daily communication independently."]
+          goals: ["Bijzinnen vormen met 5 onderschikkende voegwoorden (correcte woordvolgorde).", "10 scheidbare werkwoorden correct gebruiken in hoofd- en bijzinnen.", "40 werk- en onderwijswoorden kennen.", "A2 afgerond: dagelijkse communicatie zelfstandig voeren."],
+          goalsEn: ["Form subordinate clauses with 5 subordinating conjunctions (correct word order).", "Correctly use 10 separable verbs in main and subordinate clauses.", "Know 40 work and education words.", "A2 complete: hold daily communication independently."]
         }
       ]
     },
     {
-      level: "B1", title: "Gemiddeld", duration: "5 weken", durationEn: "5 weeks", color: "#7A3B1B",
+      level: "B1", title: "Gemiddeld", duration: "6 weken", durationEn: "6 weeks", color: "#7A3B1B",
       units: [
         {
-          unit: 8, title: "Passief & nieuws", titleEn: "Passive & news", weeks: "Week 8",
+          unit: 10, title: "Werk & carrière", titleEn: "Work & career", weeks: "Week 10",
+          grammarTopics: ["betrekkelijke-bijzin"],
+          verbRange: [369, 409],
+          verbFocus: ["discussiëren","geloven","informeren","merken","ontmoeten","plannen","regelen","respecteren","twijfelen","verdienen","vertrouwen","verzorgen"],
+          vocabTopics: [{level:"B1",topic:"werk"},{level:"B1",topic:"financiën"},{level:"B1",topic:"uitdrukkingen"},{level:"B1",topic:"economie"},{level:"B1",topic:"recht"},{level:"B1",topic:"collocaties"},{level:"B1",topic:"woordfamilie"}],
+          sentenceFilter: "bijzin",
+          readingTexts: ['r-b1-c-001', 'r-b1-c-004'],
+          activities: [
+            { type: "grammatica", desc: "Dag 1–2: Leer betrekkelijke bijzinnen: die (de-woorden), dat (het-woorden), wat (hele zinnen). Oefen 10 voorbeelden.", descEn: "Day 1–2: Learn relative clauses: die (de words), dat (het words), wat (whole sentences). Practise 10 examples." },
+            { type: "werkwoorden", desc: "Dag 2–5: Oefen werkgerelateerde werkwoorden in OTT, OVT en VTT.", descEn: "Day 2–5: Practise work-related verbs in OTT, OVT and VTT." },
+            { type: "zinnen", desc: "Dag 4–6: Maak complexe zinnen met betrekkelijke bijzinnen over werk en carrière.", descEn: "Day 4–6: Create complex sentences with relative clauses about work and career." },
+            { type: "woordenschat", desc: "Dag 5–7: Leer 30 werk-, financiën- en juridische woorden en woordfamilies.", descEn: "Day 5–7: Learn 30 work, finance and legal words and word families." }
+          ],
+          goals: ["Die, dat en wat correct gebruiken in betrekkelijke bijzinnen.", "30 werk- en financiënwoorden kennen.", "De teksten over werk, een klacht indienen en een kamer zoeken begrijpen."],
+          goalsEn: ["Use die, dat and wat correctly in relative clauses.", "Know 30 work and finance words.", "Understand the texts about work, filing a complaint and finding a room."]
+        },
+        {
+          unit: 11, title: "Wonen & samenleving", titleEn: "Living & society", weeks: "Week 11",
           grammarTopics: ["lijdende-vorm"],
-          verbRange: [350, 375],
-          verbFocus: ["worden", "schrijven", "publiceren", "bespreken", "organiseren", "protesteren", "besluiten", "bouwen", "sluiten", "openen", "vernieuwen", "verbieden"],
-          vocabTopics: [{level:"B1",topic:"media"},{level:"B1",topic:"samenleving"},{level:"B1",topic:"politiek"},{level:"B1",topic:"milieu"},{level:"B1",topic:"natuur"},{level:"B1",topic:"technologie"}],
+          verbRange: [410, 450],
+          verbFocus: ["wennen","bevatten","interviewen","interesseren","bestaan","verlaten","overwegen","betrekken","voorkomen","aanzien","aanpassen","afspreken"],
+          vocabTopics: [{level:"B1",topic:"wonen"},{level:"B1",topic:"samenleving"},{level:"B1",topic:"architectuur"},{level:"B1",topic:"huis"},{level:"B1",topic:"voorzetsels"},{level:"B1",topic:"landbouw"},{level:"B1",topic:"karakter"}],
           sentenceFilter: "passief",
-          readingTexts: ['r-b1-001', 'r-b1-002', 'r-b1-003', 'r-b1-004'],
+          readingTexts: ['r-b1-001', 'r-b1-c-002'],
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Bestudeer de lijdende vorm in OTT (wordt + vd.) en OVT (werd + vd.). Leer het verschil met actief.", descEn: "Day 1–2: Study passive voice in OTT (wordt + pp) and OVT (werd + pp). Learn the difference with active." },
             { type: "grammatica", desc: "Dag 3–4: Leer worden-passief vs. zijn-passief. Oefen: 'Het huis wordt gebouwd' vs. 'Het huis is gebouwd'.", descEn: "Day 3–4: Learn worden passive vs. zijn passive. Practise: 'Het huis wordt gebouwd' vs. 'Het huis is gebouwd'." },
-            { type: "werkwoorden", desc: "Dag 2–4: Oefen 12 werkwoorden in passieve constructies. Gebruik de conjugatietool om voltooid deelwoorden te checken.", descEn: "Day 2–4: Practise 12 verbs in passive constructions. Use the conjugation tool to check past participles." },
-            { type: "zinnen", desc: "Dag 4–6: Herschrijf 15 actieve zinnen als passieve zinnen. Oefen nieuwskoppen begrijpen.", descEn: "Day 4–6: Rewrite 15 active sentences as passive sentences. Practise understanding news headlines." },
-            { type: "woordenschat", desc: "Dag 5–7: Leer 40 media- en maatschappijwoorden. Lees een kort nieuwsbericht en markeer passieve zinnen.", descEn: "Day 5–7: Learn 40 media and society words. Read a short news article and mark passive sentences." }
+            { type: "werkwoorden", desc: "Dag 2–4: Oefen 12 werkwoorden in passieve constructies over wonen en de woningmarkt.", descEn: "Day 2–4: Practise 12 verbs in passive constructions about housing and the property market." },
+            { type: "zinnen", desc: "Dag 4–6: Herschrijf 15 actieve zinnen als passieve zinnen.", descEn: "Day 4–6: Rewrite 15 active sentences as passive sentences." },
+            { type: "woordenschat", desc: "Dag 5–7: Leer 40 woon- en maatschappijwoorden.", descEn: "Day 5–7: Learn 40 housing and society words." }
           ],
-          goals: ["Passieve zinnen vormen in OTT en OVT (foutloos bij 10 zinnen).", "Het verschil uitleggen tussen worden- en zijn-passief.", "Nieuwskoppen op B1-niveau begrijpen.", "40 media- en maatschappijwoorden kennen."],
-          goalsEn: ["Form passive sentences in OTT and OVT (error-free for 10 sentences).", "Explain the difference between worden and zijn passive.", "Understand news headlines at B1 level.", "Know 40 media and society words."]
+          goals: ["Passieve zinnen vormen in OTT en OVT (foutloos bij 10 zinnen).", "Het verschil uitleggen tussen worden- en zijn-passief.", "40 woon- en maatschappijwoorden kennen.", "De teksten over de woningmarkt en een kamer zoeken begrijpen."],
+          goalsEn: ["Form passive sentences in OTT and OVT (error-free for 10 sentences).", "Explain the difference between worden and zijn passive.", "Know 40 housing and society words.", "Understand the texts about the housing market and finding a room."]
         },
         {
-          unit: 9, title: "Verhalen & woordvolgorde", titleEn: "Storytelling & word order", weeks: "Week 9",
-          grammarTopics: ["betrekkelijke-bijzin", "woordvolgorde-gevorderd"],
-          verbRange: [376, 401],
-          verbFocus: ["vertellen", "beschrijven", "herinneren", "vergeten", "beleven", "meemaken", "ontdekken", "ervaren", "overkomen", "herkennen", "zich realiseren", "opmerken"],
-          vocabTopics: [{level:"B1",topic:"uitdrukkingen"},{level:"B1",topic:"verbinders"},{level:"B1",topic:"cultuur"},{level:"B1",topic:"reizen"},{level:"B1",topic:"collocaties"},{level:"B1",topic:"bijwoord"}],
-          sentenceFilter: "bijzin",
-          readingTexts: ['r-b1-001', 'r-b1-002', 'r-b1-003', 'r-b1-004'],
+          unit: 12, title: "Milieu & wetenschap", titleEn: "Environment & science", weeks: "Week 12",
+          grammarTopics: ["voorwaardelijke-wijs"],
+          verbRange: [451, 490],
+          verbFocus: ["aanstellen","deelnemen","inschrijven","opnemen","toenemen","uitkomen","voorstellen","uitleggen","omzetten","overkomen","berekenen","confronteren"],
+          vocabTopics: [{level:"B1",topic:"milieu"},{level:"B1",topic:"natuur"},{level:"B1",topic:"wetenschap"},{level:"B1",topic:"abstract"},{level:"B1",topic:"tijd"},{level:"B1",topic:"sport"}],
+          sentenceFilter: "all",
+          readingTexts: ['r-b1-002'],
           activities: [
-            { type: "grammatica", desc: "Dag 1–2: Leer betrekkelijke bijzinnen: die (de-woorden), dat (het-woorden), wat (hele zinnen). Oefen 10 voorbeelden.", descEn: "Day 1–2: Learn relative clauses: die (de words), dat (het words), wat (whole sentences). Practise 10 examples." },
-            { type: "grammatica", desc: "Dag 3–4: Bestudeer gevorderde woordvolgorde: inversie na bijwoord, tijd-wijze-plaats, tangconstructie.", descEn: "Day 3–4: Study advanced word order: inversion after adverb, time-manner-place, brace construction." },
-            { type: "werkwoorden", desc: "Dag 2–5: Oefen VVT (voltooid verleden tijd: had + vd.) voor verhalen. Combineer OVT en VVT in een tekst.", descEn: "Day 2–5: Practise VVT (pluperfect: had + pp) for stories. Combine OVT and VVT in a text." },
-            { type: "zinnen", desc: "Dag 4–6: Maak complexe zinnen met betrekkelijke bijzinnen. Gebruik 'waar + voorzetsel' voor dingen.", descEn: "Day 4–6: Create complex sentences with relative clauses. Use 'waar + preposition' for things." },
-            { type: "woordenschat", desc: "Dag 5–6: Leer 30 narratieve verbindingswoorden en uitdrukkingen (vervolgens, daarnaast, kortom).", descEn: "Day 5–6: Learn 30 narrative linking words and expressions (vervolgens, daarnaast, kortom)." },
-            { type: "zinnen", desc: "Dag 6–7: Schrijf een kort verhaal (100 woorden) met betrekkelijke bijzinnen, VVT en gevorderde woordvolgorde.", descEn: "Day 6–7: Write a short story (100 words) with relative clauses, VVT and advanced word order." }
+            { type: "grammatica", desc: "Dag 1–2: Bestudeer de voorwaardelijke wijs: zou/zouden + infinitief. Verschil reeel (als het regent...) en irreeel (als we minder zouden vliegen...).", descEn: "Day 1–2: Study the conditional: zou/zouden + infinitive. Difference real (als het regent...) and unreal (als we minder zouden vliegen...)." },
+            { type: "werkwoorden", desc: "Dag 2–4: Oefen wetenschappelijke en natuurwerkwoorden in OVT.", descEn: "Day 2–4: Practise scientific and nature verbs in OVT." },
+            { type: "zinnen", desc: "Dag 3–5: Oefen als...dan-constructies over klimaatverandering: 10 reele en 10 irreele zinnen.", descEn: "Day 3–5: Practise if...then constructions about climate change: 10 real and 10 unreal sentences." },
+            { type: "woordenschat", desc: "Dag 5–7: Leer 30 woorden over milieu, natuur en wetenschap.", descEn: "Day 5–7: Learn 30 words about environment, nature and science." }
           ],
-          goals: ["Die, dat en wat correct gebruiken in betrekkelijke bijzinnen.", "Gevorderde woordvolgorde toepassen (inversie, tangconstructie).", "VVT gebruiken voor achtergrondinformatie in verhalen.", "30 verbindingswoorden kennen en gebruiken.", "Een kort verhaal van 100 woorden schrijven."],
-          goalsEn: ["Use die, dat and wat correctly in relative clauses.", "Apply advanced word order (inversion, brace construction).", "Use VVT for background information in stories.", "Know and use 30 linking words.", "Write a short story of 100 words."]
+          goals: ["Zou/zouden correct gebruiken voor hypothese.", "10 reele en 10 irreele conditionaalzinnen maken.", "30 woorden over milieu en wetenschap kennen.", "De tekst over klimaatverandering en ons gedrag begrijpen."],
+          goalsEn: ["Use zou/zouden correctly for hypothesis.", "Create 10 real and 10 unreal conditional sentences.", "Know 30 words about environment and science.", "Understand the text about climate change and our behaviour."]
         },
         {
-          unit: 10, title: "Discussie & argumentatie", titleEn: "Discussion & argumentation", weeks: "Week 10",
-          grammarTopics: ["indirecte-rede", "onderschikkende-vgw-2"],
-          verbRange: [402, 430],
-          verbFocus: ["zeggen", "beweren", "vragen", "antwoorden", "uitleggen", "overtuigen", "tegenspreken", "beargumenteren", "concluderen", "samenvatten", "toevoegen", "benadrukken"],
-          vocabTopics: [{level:"B1",topic:"communicatie"},{level:"B1",topic:"onderwijs"},{level:"B1",topic:"bijvoeglijk"},{level:"B1",topic:"woordfamilie"},{level:"B1",topic:"verbindingswoorden"},{level:"B1",topic:"voorzetsels"}],
+          unit: 13, title: "Media & communicatie", titleEn: "Media & communication", weeks: "Week 13",
+          grammarTopics: ["indirecte-rede"],
+          verbRange: [491, 530],
+          verbFocus: ["functioneren","illustreren","investeren","realiseren","structureren","verwijzen","reguleren","verifiëren","samenvatten","voltooien","beschuldigen","verminderen"],
+          vocabTopics: [{level:"B1",topic:"media"},{level:"B1",topic:"communicatie"},{level:"B1",topic:"technologie"},{level:"B1",topic:"bijwoord"},{level:"B1",topic:"verbindingswoorden"},{level:"B1",topic:"cultuur"}],
           sentenceFilter: "bijzin",
-          readingTexts: ['r-b1-c-001', 'r-b1-c-002', 'r-b1-c-003', 'r-b1-c-004'],
+          readingTexts: ['r-b1-004'],
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Leer indirecte rede: 'Hij zegt dat...', 'Ze vroeg of...'. Let op tijdsverschuiving en woordvolgorde.", descEn: "Day 1–2: Learn reported speech: 'Hij zegt dat...', 'Ze vroeg of...'. Pay attention to tense shift and word order." },
-            { type: "grammatica", desc: "Dag 3–4: Bestudeer gevorderde onderschikkende voegwoorden: hoewel, tenzij, mits, zodat, doordat, naarmate.", descEn: "Day 3–4: Study advanced subordinating conjunctions: hoewel, tenzij, mits, zodat, doordat, naarmate." },
-            { type: "werkwoorden", desc: "Dag 2–4: Oefen zeggen, beweren, vragen in alle tijden (OTT, OVT, VTT, VVT). Focus op tijdsverschuiving.", descEn: "Day 2–4: Practise zeggen, beweren, vragen in all tenses (OTT, OVT, VTT, VVT). Focus on tense shift." },
-            { type: "zinnen", desc: "Dag 4–6: Oefen discussiezinnen met hoewel, tenzij en mits. Bouw argumenten op: stelling, argument, conclusie.", descEn: "Day 4–6: Practise discussion sentences with hoewel, tenzij and mits. Build arguments: thesis, argument, conclusion." },
-            { type: "woordenschat", desc: "Dag 5–7: Leer 30 argumentatieve woorden en woordfamilies (besluiten/besluit/beslissing, verklaren/verklaring).", descEn: "Day 5–7: Learn 30 argumentative words and word families (besluiten/besluit/beslissing, verklaren/verklaring)." }
+            { type: "werkwoorden", desc: "Dag 2–4: Oefen zeggen, beweren, vragen in alle tijden. Focus op tijdsverschuiving.", descEn: "Day 2–4: Practise zeggen, beweren, vragen in all tenses. Focus on tense shift." },
+            { type: "zinnen", desc: "Dag 4–6: Zet 15 directe citaten uit een nieuwsbericht om naar indirecte rede.", descEn: "Day 4–6: Convert 15 direct quotes from a news article into reported speech." },
+            { type: "woordenschat", desc: "Dag 5–7: Leer 30 media- en communicatiewoorden.", descEn: "Day 5–7: Learn 30 media and communication words." }
           ],
-          goals: ["Indirecte rede correct toepassen met tijdsverschuiving.", "6 gevorderde onderschikkende voegwoorden gebruiken.", "Een argument opbouwen: stelling, 2 argumenten, conclusie.", "30 argumentatieve woorden en 10 woordfamilies kennen."],
-          goalsEn: ["Apply reported speech correctly with tense shift.", "Use 6 advanced subordinating conjunctions.", "Build an argument: thesis, 2 arguments, conclusion.", "Know 30 argumentative words and 10 word families."]
+          goals: ["Indirecte rede correct toepassen met tijdsverschuiving.", "30 media- en communicatiewoorden kennen.", "De tekst over de invloed van sociale media begrijpen."],
+          goalsEn: ["Apply reported speech correctly with tense shift.", "Know 30 media and communication words.", "Understand the text about the influence of social media."]
         },
         {
-          unit: 11, title: "Plannen & wensen", titleEn: "Plans & wishes", weeks: "Week 11",
-          grammarTopics: ["voorwaardelijke-wijs"],
-          verbRange: [431, 456],
-          verbFocus: ["zullen", "willen", "hopen", "verwachten", "plannen", "dromen", "wensen", "voorspellen", "twijfelen", "beslissen", "beloven", "voorstellen"],
-          vocabTopics: [{level:"B1",topic:"gevoelens"},{level:"B1",topic:"abstract"},{level:"B1",topic:"werkwoorden"},{level:"B1",topic:"persoonlijkheid"},{level:"B1",topic:"psychologie"},{level:"B1",topic:"wonen"}],
-          sentenceFilter: "all",
-          readingTexts: ['r-b1-001', 'r-b1-002', 'r-b1-003', 'r-b1-004'],
+          unit: 14, title: "Gevoelens & gezondheid", titleEn: "Feelings & health", weeks: "Week 14",
+          grammarTopics: ["onderschikkende-vgw-2"],
+          verbRange: [531, 570],
+          verbFocus: ["overschatten","hervatten","erkennen","bijdragen","afhandelen","doorvoeren","tegenwerken","verwijzen naar","bijstellen","aanvaarden","bedienen","berusten"],
+          vocabTopics: [{level:"B1",topic:"gevoelens"},{level:"B1",topic:"psychologie"},{level:"B1",topic:"gezondheid"},{level:"B1",topic:"relaties"},{level:"B1",topic:"persoonlijkheid"},{level:"B1",topic:"eten"},{level:"B1",topic:"kleding"}],
+          sentenceFilter: "bijzin",
+          readingTexts: ['r-b1-005', 'r-b1-006'],
           activities: [
-            { type: "grammatica", desc: "Dag 1–2: Bestudeer de voorwaardelijke wijs: zou/zouden + infinitief. Verschil reeel (als het regent...) en irreeel (als ik rijk was...).", descEn: "Day 1–2: Study the conditional: zou/zouden + infinitive. Difference real (als het regent...) and unreal (als ik rijk was...)." },
-            { type: "werkwoorden", desc: "Dag 2–4: Oefen modale werkwoorden in OVT voor beleefde vragen: zou, kon, mocht, wilde. Typ zelf modus.", descEn: "Day 2–4: Practise modal verbs in OVT for polite requests: zou, kon, mocht, wilde. Type yourself mode." },
-            { type: "zinnen", desc: "Dag 3–5: Oefen als...dan-constructies: 10 reele en 10 irreele zinnen. Let op woordvolgorde in de bijzin.", descEn: "Day 3–5: Practise if...then constructions: 10 real and 10 unreal sentences. Pay attention to word order in the subordinate clause." },
-            { type: "zinnen", desc: "Dag 5–6: Oefen wensen en plannen: 'Ik zou graag...', 'Als ik kon kiezen...', 'Ik hoop dat...'.", descEn: "Day 5–6: Practise wishes and plans: 'Ik zou graag...', 'Als ik kon kiezen...', 'Ik hoop dat...'." },
-            { type: "woordenschat", desc: "Dag 5–7: Leer 30 woorden over gevoelens, persoonlijkheid en abstracte concepten.", descEn: "Day 5–7: Learn 30 words about feelings, personality and abstract concepts." }
+            { type: "grammatica", desc: "Dag 1–2: Bestudeer gevorderde onderschikkende voegwoorden: hoewel, tenzij, mits, zodat, doordat, terwijl.", descEn: "Day 1–2: Study advanced subordinating conjunctions: hoewel, tenzij, mits, zodat, doordat, terwijl." },
+            { type: "werkwoorden", desc: "Dag 2–4: Oefen gevoels- en gezondheidswerkwoorden in alle tijden.", descEn: "Day 2–4: Practise feeling and health verbs in all tenses." },
+            { type: "zinnen", desc: "Dag 3–5: Oefen zinnen met hoewel, terwijl en mits over stress en vriendschap.", descEn: "Day 3–5: Practise sentences with hoewel, terwijl and mits about stress and friendship." },
+            { type: "woordenschat", desc: "Dag 5–7: Leer 30 woorden over gevoelens, psychologie en relaties.", descEn: "Day 5–7: Learn 30 words about feelings, psychology and relationships." }
           ],
-          goals: ["Zou/zouden correct gebruiken voor beleefdheid en hypothese.", "10 reele en 10 irreele conditionaalzinnen maken.", "Modale werkwoorden in OVT gebruiken voor beleefde vragen.", "30 woorden over gevoelens en persoonlijkheid kennen."],
-          goalsEn: ["Use zou/zouden correctly for politeness and hypothesis.", "Create 10 real and 10 unreal conditional sentences.", "Use modal verbs in OVT for polite requests.", "Know 30 words about feelings and personality."]
+          goals: ["6 gevorderde onderschikkende voegwoorden gebruiken.", "30 woorden over gevoelens en relaties kennen.", "De teksten over stress en vriendschap op afstand begrijpen."],
+          goalsEn: ["Use 6 advanced subordinating conjunctions.", "Know 30 words about feelings and relationships.", "Understand the texts about stress and long-distance friendship."]
         },
         {
-          unit: 12, title: "B1 Herhaling & consolidatie", titleEn: "B1 Review & consolidation", weeks: "Week 12",
-          grammarTopics: ["lijdende-vorm", "betrekkelijke-bijzin", "indirecte-rede", "onderschikkende-vgw-2", "voorwaardelijke-wijs", "woordvolgorde-gevorderd"],
-          verbRange: [350, 481],
-          verbFocus: ["zijn", "hebben", "worden", "kunnen", "moeten", "willen", "zullen", "gaan", "komen", "laten", "doen", "blijven"],
-          vocabTopics: [{level:"B1",topic:"economie"},{level:"B1",topic:"karakter"},{level:"B1",topic:"gezondheid"},{level:"B1",topic:"sport"},{level:"B1",topic:"relaties"},{level:"B1",topic:"werk"}],
+          unit: 15, title: "Maatschappij", titleEn: "Society", weeks: "Week 15",
+          grammarTopics: ["woordvolgorde-gevorderd"],
+          verbRange: [571, 610],
+          verbFocus: ["bewaken","besturen","branden","definiëren","dienen","dreigen","exporteren","filteren","handelen","inspireren","introduceren","koesteren"],
+          vocabTopics: [{level:"B1",topic:"samenleving"},{level:"B1",topic:"politiek"},{level:"B1",topic:"verbinders"},{level:"B1",topic:"onderwijs"},{level:"B1",topic:"toerisme"},{level:"B1",topic:"werkwoorden"},{level:"B1",topic:"bijvoeglijk"},{level:"B1",topic:"reizen"}],
           sentenceFilter: "all",
-          readingTexts: ['r-b1-001', 'r-b1-002', 'r-b1-003', 'r-b1-004', 'r-b1-c-001', 'r-b1-c-002', 'r-b1-c-003', 'r-b1-c-004'],
+          readingTexts: ['r-b1-003', 'r-b1-c-003'],
           activities: [
-            { type: "werkwoorden", desc: "Dag 1–2: Herhalingsronde alle tijden: oefen werkwoorden 340–466 in OTT, OVT, VTT, VVT. Test 20 werkwoorden.", descEn: "Day 1–2: Revision round all tenses: practise verbs 340–466 in OTT, OVT, VTT, VVT. Test 20 verbs." },
-            { type: "grammatica", desc: "Dag 2–3: Herhaal alle B1-grammatica: passief, betrekkelijke bijzinnen, indirecte rede, conditionaal. Maak per onderwerp 3 zinnen.", descEn: "Day 2–3: Revise all B1 grammar: passive, relative clauses, reported speech, conditional. Make 3 sentences per topic." },
-            { type: "zinnen", desc: "Dag 3–5: Mix-oefening: oefen alle zinstypen op B1-niveau. Combineer passief, bijzinnen en conditionaal in teksten.", descEn: "Day 3–5: Mix exercise: practise all sentence types at B1 level. Combine passive, clauses and conditional in texts." },
-            { type: "woordenschat", desc: "Dag 4–5: Herhaal alle B1-woordenschat. Doel: 300 woorden herkennen (A1+A2+B1 samen).", descEn: "Day 4–5: Revise all B1 vocabulary. Goal: recognise 300 words (A1+A2+B1 together)." },
-            { type: "zinnen", desc: "Dag 5–6: Schrijf een tekst van 150 woorden over een actueel onderwerp. Gebruik minstens 3 B1-grammaticastructuren.", descEn: "Day 5–6: Write a text of 150 words about a current topic. Use at least 3 B1 grammar structures." },
-            { type: "werkwoorden", desc: "Dag 6–7: Eindtoets: conjugeer 30 willekeurige werkwoorden (0–466) in gevraagde tijd. Doel: 90% correct.", descEn: "Day 6–7: Final test: conjugate 30 random verbs (0–466) in requested tense. Goal: 90% correct." }
+            { type: "grammatica", desc: "Dag 1–2: Bestudeer gevorderde woordvolgorde: inversie na bijwoord, tijd-wijze-plaats, tangconstructie.", descEn: "Day 1–2: Study advanced word order: inversion after adverb, time-manner-place, brace construction." },
+            { type: "werkwoorden", desc: "Dag 2–5: Oefen VVT (voltooid verleden tijd: had + vd.) voor verhalen over vrijwilligerswerk.", descEn: "Day 2–5: Practise VVT (pluperfect: had + pp) for stories about volunteering." },
+            { type: "zinnen", desc: "Dag 4–6: Schrijf een kort verhaal (100 woorden) met gevorderde woordvolgorde over openbaar vervoer of vrijwilligerswerk.", descEn: "Day 4–6: Write a short story (100 words) with advanced word order about public transport or volunteering." },
+            { type: "woordenschat", desc: "Dag 5–7: Leer 30 woorden over samenleving, politiek en onderwijs.", descEn: "Day 5–7: Learn 30 words about society, politics and education." }
           ],
-          goals: ["Alle B1-grammaticastructuren correct combineren in vrije tekst.", "30 werkwoorden in 4 tijden vervoegen met 90% score.", "300 woorden herkennen en actief gebruiken (A1–B1).", "Een samenhangende tekst van 150 woorden schrijven.", "B1 afgerond: zelfstandig communiceren over alle alledaagse themas."],
-          goalsEn: ["Correctly combine all B1 grammar structures in free text.", "Conjugate 30 verbs in 4 tenses with 90% score.", "Recognise and actively use 300 words (A1–B1).", "Write a coherent text of 150 words.", "B1 complete: communicate independently on all everyday topics."]
+          goals: ["Gevorderde woordvolgorde toepassen (inversie, tangconstructie).", "30 woorden over samenleving en politiek kennen.", "De teksten over vrijwilligerswerk en openbaar vervoer begrijpen.", "B1 afgerond: zelfstandig communiceren over alle alledaagse thema's."],
+          goalsEn: ["Apply advanced word order (inversion, brace construction).", "Know 30 words about society and politics.", "Understand the texts about volunteering and public transport.", "B1 complete: communicate independently on all everyday topics."]
         }
       ]
     },
@@ -1451,112 +1495,90 @@ const lessonPlanData = {
       level: "B2", title: "Gevorderd", duration: "12 weken", durationEn: "12 weeks", color: "#8B1C1C",
       units: [
         {
-          unit: 13, title: "Formele communicatie", titleEn: "Formal communication", weeks: "Week 13–14",
-          grammarTopics: ["formeel-zakelijk"],
-          verbRange: [482, 551],
-          verbFocus: ["verzoeken", "meedelen", "bevestigen", "informeren", "adviseren", "benadrukken", "toelichten", "rapporteren", "goedkeuren", "afwijzen"],
-          vocabTopics: [{level:"B2",topic:"werk"},{level:"B2",topic:"communicatie"},{level:"B2",topic:"academisch"},{level:"B2",topic:"verbindingswoorden"},{level:"B2",topic:"woordfamilie"},{level:"B2",topic:"bijvoeglijk"}],
-          sentenceFilter: "all",
-          readingTexts: ['r-b2-001', 'r-b2-002', 'r-b2-003', 'r-b2-004'],
-          activities: [
-            { type: "grammatica", desc: "Dag 1–4: Bestudeer formeel zakelijk taalgebruik: nominalisatie, onpersoonlijke constructies, formele registers.", descEn: "Day 1–4: Study formal professional language: nominalisation, impersonal constructions, formal registers." },
-            { type: "werkwoorden", desc: "Dag 3–7: Oefen formele werkwoorden in VTT en lijdende vorm. Schrijf 5 formele e-mails.", descEn: "Day 3–7: Practise formal verbs in perfect tense and passive. Write 5 formal emails." },
-            { type: "zinnen", desc: "Dag 5–10: Analyseer en oefen formele zinsstructuren uit zakelijke teksten.", descEn: "Day 5–10: Analyse and practise formal sentence structures from business texts." },
-            { type: "woordenschat", desc: "Dag 7–12: Leer 50 B2 zakelijke en formele woorden. Oefen woordfamilies.", descEn: "Day 7–12: Learn 50 B2 business and formal words. Practise word families." },
-            { type: "zinnen", desc: "Dag 10–14: Schrijf een formele brief en een zakelijke e-mail. Gebruik nominalisaties en formeel register.", descEn: "Day 10–14: Write a formal letter and a business email. Use nominalisations and formal register." }
-          ],
-          goals: ["Formele brieven en e-mails schrijven op B2-niveau.", "Nominalisaties gebruiken in geschreven taal (10 voorbeelden).", "Zakelijk taalgebruik consistent toepassen.", "50 zakelijke B2-woorden kennen."],
-          goalsEn: ["Write formal letters and emails at B2 level.", "Use nominalisations in written language (10 examples).", "Consistently apply professional language.", "Know 50 business B2 words."]
-        },
-        {
-          unit: 14, title: "Hypothetische situaties", titleEn: "Hypothetical situations", weeks: "Week 15–16",
-          grammarTopics: ["voltooide-voorwaardelijke"],
-          verbRange: [552, 616],
-          verbFocus: ["hebben", "zijn", "kunnen", "moeten", "willen", "zullen", "blijken", "schijnen", "behoren", "plegen"],
-          vocabTopics: [{level:"B2",topic:"abstract"},{level:"B2",topic:"verbinders"},{level:"B2",topic:"uitdrukkingen"},{level:"B2",topic:"psychologie"},{level:"B2",topic:"gezondheid"},{level:"B2",topic:"collocaties"},{level:"B2",topic:"bijwoord"}],
-          sentenceFilter: "all",
-          readingTexts: ['r-b2-001', 'r-b2-002', 'r-b2-003', 'r-b2-004'],
-          activities: [
-            { type: "grammatica", desc: "Dag 1–4: Leer de voltooide voorwaardelijke wijs: zou hebben/zijn + voltooid deelwoord. Verschil met B1-conditionaal.", descEn: "Day 1–4: Learn the perfect conditional: zou hebben/zijn + past participle. Difference with B1 conditional." },
-            { type: "werkwoorden", desc: "Dag 3–7: Oefen VVT gecombineerd met voorwaardelijke wijs. Gebruik alle modale werkwoorden.", descEn: "Day 3–7: Practise pluperfect combined with conditional mood. Use all modal verbs." },
-            { type: "zinnen", desc: "Dag 5–10: Oefen 'als X was gebeurd, dan zou Y...'-constructies. Druk spijt en gemiste kansen uit.", descEn: "Day 5–10: Practise 'if X had happened, then Y would...'-constructions. Express regret and missed opportunities." },
-            { type: "woordenschat", desc: "Dag 7–12: Leer 40 hypothetische en speculatieve uitdrukkingen en collocaties.", descEn: "Day 7–12: Learn 40 hypothetical and speculative expressions and collocations." },
-            { type: "zinnen", desc: "Dag 10–14: Schrijf een reflectieve tekst (200 woorden) over 'wat als...'-scenario's.", descEn: "Day 10–14: Write a reflective text (200 words) about 'what if...' scenarios." }
-          ],
-          goals: ["Voltooide voorwaardelijke zinnen correct vormen.", "Spijt en gemiste kansen uitdrukken in 10 zinnen.", "Formele als-dan constructies zonder 'als' gebruiken.", "40 hypothetische uitdrukkingen kennen."],
-          goalsEn: ["Correctly form perfect conditional sentences.", "Express regret and missed opportunities in 10 sentences.", "Use formal if-then constructions without 'als'.", "Know 40 hypothetical expressions."]
-        },
-        {
-          unit: 15, title: "Media & cultuur", titleEn: "Media & culture", weeks: "Week 17–18",
-          grammarTopics: ["idioom", "partitief"],
-          verbRange: [617, 680],
-          verbFocus: ["beschrijven", "beoordelen", "interpreteren", "analyseren", "beweren", "recenseren", "uitzenden", "publiceren", "kritiseren", "waarderen"],
-          vocabTopics: [{level:"B2",topic:"media"},{level:"B2",topic:"uitdrukkingen"},{level:"B2",topic:"samenleving"},{level:"B2",topic:"technologie"},{level:"B2",topic:"onderwijs"},{level:"B2",topic:"wetenschap"},{level:"B2",topic:"natuur"}],
-          sentenceFilter: "all",
-          readingTexts: ['r-b2-001', 'r-b2-002', 'r-b2-003', 'r-b2-004'],
-          activities: [
-            { type: "grammatica", desc: "Dag 1–4: Leer idiomatische uitdrukkingen (10+): 'de knoop doorhakken', 'iets onder de knie krijgen', etc.", descEn: "Day 1–4: Learn idiomatic expressions (10+): 'de knoop doorhakken', 'iets onder de knie krijgen', etc." },
-            { type: "grammatica", desc: "Dag 4–7: Bestudeer partitief gebruik: 'een van de', 'sommige van', 'de meeste van'. Oefen in zinnen.", descEn: "Day 4–7: Study partitive constructions: 'een van de', 'sommige van', 'de meeste van'. Practise in sentences." },
-            { type: "werkwoorden", desc: "Dag 3–8: Oefen analytische werkwoorden (beschrijven, analyseren, interpreteren) in alle tijden.", descEn: "Day 3–8: Practise analytical verbs (beschrijven, analyseren, interpreteren) in all tenses." },
-            { type: "zinnen", desc: "Dag 6–11: Analyseer mediaboodschappen. Schrijf een recensie (150 woorden) met idioom en partitief.", descEn: "Day 6–11: Analyse media messages. Write a review (150 words) with idioms and partitive." },
-            { type: "woordenschat", desc: "Dag 8–14: Leer 50 media-, cultuur- en wetenschapswoorden.", descEn: "Day 8–14: Learn 50 media, culture and science words." }
-          ],
-          goals: ["10+ idiomatische uitdrukkingen correct gebruiken.", "Partitieve constructies toepassen in 10 zinnen.", "Een recensie schrijven van 150 woorden.", "50 media- en cultuurwoorden kennen."],
-          goalsEn: ["Correctly use 10+ idiomatic expressions.", "Apply partitive constructions in 10 sentences.", "Write a review of 150 words.", "Know 50 media and culture words."]
-        },
-        {
-          unit: 16, title: "Zakelijk Nederlands", titleEn: "Business Dutch", weeks: "Week 19–20",
+          unit: 16, title: "Economie & werk", titleEn: "Economy & work", weeks: "Week 16–17",
           grammarTopics: ["gevorderd-passief"],
-          verbRange: [681, 744],
-          verbFocus: ["ondernemen", "uitvoeren", "vaststellen", "voorstellen", "aannemen", "investeren", "reguleren", "handhaven", "onderhandelen", "implementeren"],
-          vocabTopics: [{level:"B2",topic:"economie"},{level:"B2",topic:"politiek"},{level:"B2",topic:"recht"},{level:"B2",topic:"milieu"},{level:"B2",topic:"abstract"},{level:"B2",topic:"verbinders"},{level:"B2",topic:"collocaties"}],
+          verbRange: [611, 650],
+          verbFocus: ["lukken","missen","monitoren","onderhandelen","overtuigen","prioriteren","registreren","richten","simuleren","spoelen","tolereren","verduidelijken"],
+          vocabTopics: [{level:"B2",topic:"economie"},{level:"B2",topic:"werk"},{level:"B2",topic:"financiën"},{level:"B2",topic:"bijvoeglijk"},{level:"B2",topic:"verbinders"},{level:"B2",topic:"verbindingswoorden"}],
           sentenceFilter: "passief",
-          readingTexts: ['r-b2-001', 'r-b2-002', 'r-b2-003', 'r-b2-004'],
+          readingTexts: ['r-b2-001'],
           activities: [
             { type: "grammatica", desc: "Dag 1–4: Bestudeer gevorderd passief: modaal passief ('kan worden gedaan'), dubbel passief, passief met er.", descEn: "Day 1–4: Study advanced passive: modal passive ('kan worden gedaan'), double passive, passive with er." },
-            { type: "werkwoorden", desc: "Dag 3–7: Oefen zakelijke werkwoorden in passieve en actieve constructies. Vergelijk formeel vs. informeel.", descEn: "Day 3–7: Practise business verbs in passive and active constructions. Compare formal vs. informal." },
-            { type: "zinnen", desc: "Dag 5–10: Oefen zakelijke en formele zinsstructuren. Schrijf een vergaderverslag (200 woorden).", descEn: "Day 5–10: Practise business and formal sentence structures. Write meeting minutes (200 words)." },
-            { type: "woordenschat", desc: "Dag 7–12: Leer 50 B2 zakelijke termen, juridische woorden en bedrijfsprocessen.", descEn: "Day 7–12: Learn 50 B2 business terms, legal words and company processes." },
-            { type: "zinnen", desc: "Dag 10–14: Schrijf een zakelijk voorstel (200 woorden) met gevorderd passief en formeel register.", descEn: "Day 10–14: Write a business proposal (200 words) with advanced passive and formal register." }
+            { type: "werkwoorden", desc: "Dag 3–7: Oefen economische werkwoorden in passieve en actieve constructies.", descEn: "Day 3–7: Practise economic verbs in passive and active constructions." },
+            { type: "zinnen", desc: "Dag 5–10: Oefen zinnen over de gig-economie en flexwerk met gevorderd passief.", descEn: "Day 5–10: Practise sentences about the gig economy and flexible work with advanced passive." },
+            { type: "woordenschat", desc: "Dag 7–12: Leer 50 economie- en werkwoorden.", descEn: "Day 7–12: Learn 50 economy and work words." }
           ],
-          goals: ["Modaal passief correct vormen en gebruiken.", "Een vergaderverslag en zakelijk voorstel schrijven.", "50 zakelijke en juridische termen kennen.", "Scheidbare werkwoorden in formele context toepassen."],
-          goalsEn: ["Correctly form and use modal passive.", "Write meeting minutes and a business proposal.", "Know 50 business and legal terms.", "Apply separable verbs in formal contexts."]
+          goals: ["Modaal passief correct vormen en gebruiken.", "50 economie- en werkwoorden kennen.", "De tekst over de gig-economie begrijpen."],
+          goalsEn: ["Correctly form and use modal passive.", "Know 50 economy and work words.", "Understand the text about the gig economy."]
         },
         {
-          unit: 17, title: "Academisch & wetenschap", titleEn: "Academic & science", weeks: "Week 21–22",
-          grammarTopics: ["formeel-zakelijk", "gevorderd-passief"],
-          verbRange: [745, 810],
-          verbFocus: ["onderzoeken", "concluderen", "veronderstellen", "analyseren", "evalueren", "formuleren", "definiëren", "specificeren", "classificeren", "verifiëren"],
-          vocabTopics: [{level:"B2",topic:"wetenschap"},{level:"B2",topic:"academisch"},{level:"B2",topic:"onderwijs"},{level:"B2",topic:"technologie"},{level:"B2",topic:"natuur"},{level:"B2",topic:"woordfamilie"}],
+          unit: 17, title: "Politiek & recht", titleEn: "Politics & law", weeks: "Week 18–19",
+          grammarTopics: ["formeel-zakelijk"],
+          verbRange: [651, 690],
+          verbFocus: ["veronderstellen","verwarren","visualiseren","waarderen","bederven","genezen","ondervinden","strijden","verbergen","aanleren","aanspreken","afbetalen"],
+          vocabTopics: [{level:"B2",topic:"politiek"},{level:"B2",topic:"recht"},{level:"B2",topic:"samenleving"},{level:"B2",topic:"media"},{level:"B2",topic:"communicatie"},{level:"B2",topic:"karakter"}],
           sentenceFilter: "all",
-          readingTexts: ['r-b2-001', 'r-b2-002', 'r-b2-003', 'r-b2-004'],
+          readingTexts: ['r-b2-005'],
           activities: [
-            { type: "grammatica", desc: "Dag 1–5: Herhaal formeel-zakelijk en gevorderd passief in academische context. Leer academische zinsconstructies.", descEn: "Day 1–5: Revise formal-professional and advanced passive in academic context. Learn academic sentence constructions." },
-            { type: "werkwoorden", desc: "Dag 3–8: Oefen academische werkwoorden in alle tijden en passieve vormen.", descEn: "Day 3–8: Practise academic verbs in all tenses and passive forms." },
-            { type: "zinnen", desc: "Dag 5–10: Analyseer wetenschappelijke teksten. Oefen academische structuren: hypothese, methode, conclusie.", descEn: "Day 5–10: Analyse scientific texts. Practise academic structures: hypothesis, method, conclusion." },
-            { type: "woordenschat", desc: "Dag 7–12: Leer 50 academische en wetenschappelijke termen. Oefen woordfamilies.", descEn: "Day 7–12: Learn 50 academic and scientific terms. Practise word families." },
-            { type: "zinnen", desc: "Dag 10–14: Schrijf een kort wetenschappelijk verslag (250 woorden) met correcte structuur.", descEn: "Day 10–14: Write a short scientific report (250 words) with correct structure." }
+            { type: "grammatica", desc: "Dag 1–4: Bestudeer formeel zakelijk taalgebruik: nominalisatie, onpersoonlijke constructies, formele voegwoorden (mits).", descEn: "Day 1–4: Study formal professional language: nominalisation, impersonal constructions, formal conjunctions (mits)." },
+            { type: "werkwoorden", desc: "Dag 3–7: Oefen politieke en juridische werkwoorden in VTT en lijdende vorm.", descEn: "Day 3–7: Practise political and legal verbs in perfect tense and passive." },
+            { type: "zinnen", desc: "Dag 5–10: Analyseer en oefen formele zinsstructuren uit politieke teksten over het referendum.", descEn: "Day 5–10: Analyse and practise formal sentence structures from political texts about the referendum." },
+            { type: "woordenschat", desc: "Dag 7–12: Leer 50 politiek- en rechtswoorden.", descEn: "Day 7–12: Learn 50 politics and law words." }
           ],
-          goals: ["Academische zinnen correct formuleren.", "50 academische en wetenschappelijke termen kennen.", "Een wetenschappelijk verslag van 250 woorden schrijven.", "Woordfamilies herkennen en productief gebruiken."],
-          goalsEn: ["Correctly formulate academic sentences.", "Know 50 academic and scientific terms.", "Write a scientific report of 250 words.", "Recognise and productively use word families."]
+          goals: ["Nominalisaties gebruiken in geschreven taal (10 voorbeelden).", "Formeel taalgebruik consistent toepassen.", "50 politiek- en rechtswoorden kennen.", "De tekst over het referendum begrijpen."],
+          goalsEn: ["Use nominalisations in written language (10 examples).", "Consistently apply formal language.", "Know 50 politics and law words.", "Understand the text about the referendum."]
         },
         {
-          unit: 18, title: "Integratie & eindtoets", titleEn: "Integration & final test", weeks: "Week 23–24",
-          grammarTopics: ["voltooide-voorwaardelijke", "gevorderd-passief", "idioom", "partitief", "formeel-zakelijk"],
-          verbRange: [0, 810],
-          verbFocus: ["zijn", "hebben", "worden", "kunnen", "moeten", "willen", "zullen", "blijken", "schijnen", "laten", "doen", "gaan"],
-          vocabTopics: [{level:"B2",topic:"bijvoeglijk"},{level:"B2",topic:"bijwoord"},{level:"B2",topic:"collocaties"},{level:"B2",topic:"verbinders"},{level:"B2",topic:"uitdrukkingen"},{level:"B2",topic:"woordfamilie"},{level:"B2",topic:"academisch"},{level:"B2",topic:"communicatie"}],
+          unit: 18, title: "Onderwijs & wetenschap", titleEn: "Education & science", weeks: "Week 20–21",
+          grammarTopics: ["partitief"],
+          verbRange: [691, 730],
+          verbFocus: ["afkomen","afrekenen","afvallen","bijwonen","doordringen","inbrengen","instappen","invallen","meerijden","nastreven","neerslaan","omvormen"],
+          vocabTopics: [{level:"B2",topic:"onderwijs"},{level:"B2",topic:"academisch"},{level:"B2",topic:"wetenschap"},{level:"B2",topic:"psychologie"},{level:"B2",topic:"natuur"},{level:"B2",topic:"architectuur"}],
           sentenceFilter: "all",
-          readingTexts: ['r-b2-001', 'r-b2-002', 'r-b2-003', 'r-b2-004'],
+          readingTexts: ['r-b2-002'],
           activities: [
-            { type: "werkwoorden", desc: "Dag 1–4: Grote eindherhalingsronde: oefen werkwoorden 0–788 in alle tijden. Test 50 willekeurige werkwoorden.", descEn: "Day 1–4: Major final revision round: practise verbs 0–788 in all tenses. Test 50 random verbs." },
-            { type: "grammatica", desc: "Dag 3–7: Controleer zwakke punten via alle grammaticasecties A1–B2. Maak per onderwerp 5 oefenzinnen.", descEn: "Day 3–7: Check weak points via all grammar sections A1–B2. Make 5 practice sentences per topic." },
+            { type: "grammatica", desc: "Dag 1–4: Bestudeer partitief gebruik: 'een van de', 'sommige van', 'de meeste van'. Oefen in zinnen.", descEn: "Day 1–4: Study partitive constructions: 'een van de', 'sommige van', 'de meeste van'. Practise in sentences." },
+            { type: "werkwoorden", desc: "Dag 3–8: Oefen academische werkwoorden (onderzoeken, evalueren, formuleren) in alle tijden.", descEn: "Day 3–8: Practise academic verbs (onderzoeken, evalueren, formuleren) in all tenses." },
+            { type: "zinnen", desc: "Dag 6–11: Analyseer de tekst over ongelijkheid in het onderwijs. Schrijf een korte reactie (150 woorden) met partitief.", descEn: "Day 6–11: Analyse the text about inequality in education. Write a short response (150 words) with partitive." },
+            { type: "woordenschat", desc: "Dag 8–14: Leer 50 onderwijs- en wetenschapswoorden.", descEn: "Day 8–14: Learn 50 education and science words." }
+          ],
+          goals: ["Partitieve constructies toepassen in 10 zinnen.", "50 onderwijs- en wetenschapswoorden kennen.", "De tekst over ongelijkheid in het Nederlandse onderwijs begrijpen."],
+          goalsEn: ["Apply partitive constructions in 10 sentences.", "Know 50 education and science words.", "Understand the text about inequality in Dutch education."]
+        },
+        {
+          unit: 19, title: "Milieu & technologie", titleEn: "Environment & technology", weeks: "Week 22–23",
+          grammarTopics: ["voltooide-voorwaardelijke"],
+          verbRange: [731, 770],
+          verbFocus: ["opschalen","opvolgen","overplaatsen","rondkijken","rondsturen","samenvoegen","terugleggen","thuisblijven","toelichten","uitdelen","uitlenen","uitvinden"],
+          vocabTopics: [{level:"B2",topic:"milieu"},{level:"B2",topic:"technologie"},{level:"B2",topic:"abstract"},{level:"B2",topic:"landbouw"},{level:"B2",topic:"tijd"},{level:"B2",topic:"gezondheid"}],
+          sentenceFilter: "all",
+          readingTexts: ['r-b2-003', 'r-b2-004'],
+          activities: [
+            { type: "grammatica", desc: "Dag 1–4: Leer de voltooide voorwaardelijke wijs: zou hebben/zijn + voltooid deelwoord. Voorbeeld: 'als we eerder hadden gehandeld...'.", descEn: "Day 1–4: Learn the perfect conditional: zou hebben/zijn + past participle. Example: 'als we eerder hadden gehandeld...'." },
+            { type: "werkwoorden", desc: "Dag 3–7: Oefen VVT gecombineerd met voorwaardelijke wijs. Gebruik technologie- en klimaatwerkwoorden.", descEn: "Day 3–7: Practise pluperfect combined with conditional mood. Use technology and climate verbs." },
+            { type: "zinnen", desc: "Dag 5–10: Oefen 'als X was gebeurd, dan zou Y...'-constructies over klimaatbeleid en AI.", descEn: "Day 5–10: Practise 'if X had happened, then Y would...'-constructions about climate policy and AI." },
+            { type: "woordenschat", desc: "Dag 7–12: Leer 40 milieu- en technologiewoorden.", descEn: "Day 7–12: Learn 40 environment and technology words." }
+          ],
+          goals: ["Voltooide voorwaardelijke zinnen correct vormen.", "40 milieu- en technologiewoorden kennen.", "De teksten over klimaatbeleid en kunstmatige intelligentie begrijpen."],
+          goalsEn: ["Correctly form perfect conditional sentences.", "Know 40 environment and technology words.", "Understand the texts about climate policy and artificial intelligence."]
+        },
+        {
+          unit: 20, title: "Idioom & afronding", titleEn: "Idiom & wrap-up", weeks: "Week 24–26",
+          grammarTopics: ["idioom"],
+          verbRange: [771, 810],
+          verbFocus: ["voltrekken","voorspellen","wegleggen","wegvallen","zich afvragen","zich ergeren","zich ontspannen","zich realiseren","zich vergissen","zich voorstellen"],
+          vocabTopics: [{level:"B2",topic:"uitdrukkingen"},{level:"B2",topic:"collocaties"},{level:"B2",topic:"woordfamilie"},{level:"B2",topic:"cultuur"},{level:"B2",topic:"toerisme"},{level:"B2",topic:"bijwoord"}],
+          sentenceFilter: "all",
+          readingTexts: ['r-b2-006'],
+          activities: [
+            { type: "grammatica", desc: "Dag 1–4: Leer idiomatische uitdrukkingen (10+): 'de kat uit de boom kijken', 'iets voor lief nemen', 'het hart op de tong hebben'.", descEn: "Day 1–4: Learn idiomatic expressions (10+): 'de kat uit de boom kijken', 'iets voor lief nemen', 'het hart op de tong hebben'." },
+            { type: "werkwoorden", desc: "Dag 1–4: Grote eindherhalingsronde: oefen werkwoorden 0–810 in alle tijden. Test 50 willekeurige werkwoorden.", descEn: "Day 1–4: Major final revision round: practise verbs 0–810 in all tenses. Test 50 random verbs." },
             { type: "zinnen", desc: "Dag 5–10: Oefen alle zinstypen op B2-niveau: passief, conditionaal, indirecte rede, bijzinnen, idioom.", descEn: "Day 5–10: Practise all sentence types at B2 level: passive, conditional, reported speech, clauses, idioms." },
             { type: "woordenschat", desc: "Dag 7–11: Herhaal alle woordenschatcategorieën A1–B2. Doel: 500 woorden actief beheersen.", descEn: "Day 7–11: Revise all vocabulary categories A1–B2. Goal: actively master 500 words." },
-            { type: "zinnen", desc: "Dag 10–14: Schrijf een essay van 300 woorden over een maatschappelijk thema. Gebruik alle B2-structuren.", descEn: "Day 10–14: Write an essay of 300 words about a societal topic. Use all B2 structures." }
+            { type: "zinnen", desc: "Dag 10–14: Schrijf een essay van 300 woorden over een maatschappelijk thema. Gebruik alle B2-structuren en minstens 3 idiomen.", descEn: "Day 10–14: Write an essay of 300 words about a societal topic. Use all B2 structures and at least 3 idioms." }
           ],
-          goals: ["Alle grammaticaonderwerpen A1–B2 beheersen.", "50 werkwoorden in alle tijden foutloos vervoegen.", "500 woorden actief beheersen.", "Een essay van 300 woorden schrijven op B2-niveau.", "B2 afgerond: effectieve taalvaardigheid in alle situaties."],
-          goalsEn: ["Master all grammar topics A1–B2.", "Conjugate 50 verbs in all tenses without errors.", "Actively master 500 words.", "Write an essay of 300 words at B2 level.", "B2 complete: effective language proficiency in all situations."]
+          goals: ["10+ idiomatische uitdrukkingen correct gebruiken.", "50 werkwoorden in alle tijden foutloos vervoegen.", "500 woorden actief beheersen.", "Een essay van 300 woorden schrijven op B2-niveau.", "B2 afgerond: effectieve taalvaardigheid in alle situaties."],
+          goalsEn: ["Correctly use 10+ idiomatic expressions.", "Conjugate 50 verbs in all tenses without errors.", "Actively master 500 words.", "Write an essay of 300 words at B2 level.", "B2 complete: effective language proficiency in all situations."]
         }
       ]
     }

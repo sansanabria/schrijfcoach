@@ -10,6 +10,7 @@ const _SYNC_LS_KEYS = [
   'schrijfcoach_flags',
   'schrijfcoach_grammar_read',
   'schrijfcoach_unit_progress',
+  'schrijfcoach_unit_progress_schema',
   'schrijfcoach_last_position',
   'schrijfcoach_reading_history',
   'schrijfcoach_unknown_words',

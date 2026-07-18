@@ -3052,5 +3052,705 @@ Kevin takes the photos and emails them. Three days later he receives a confirmat
         aEn: 'That a polite but clear conversation resolves a lot.'
       }
     ]
+  },
+
+  {
+    id: 'r-a1-001',
+    title: 'Hallo, ik ben Anna',
+    titleEn: 'Hello, I am Anna',
+    level: 'A1',
+    topic: 'begroeting',
+    topicEn: 'greetings',
+    topicEmoji: '👋',
+    wordCount: 145,
+    readMinutes: 2,
+    text:
+`Hallo! Ik ben Anna. Ik ben tweeëntwintig jaar oud. Ik kom uit Nederland en ik woon in Utrecht.
+
+Wie ben jij? Hoe heet je? Waar kom je vandaan? Dit zijn belangrijke vragen als je iemand nieuw ontmoet.
+
+Mijn vriend heet Tom. Hij is vijfentwintig jaar oud. Hij komt uit België. Wij spreken Nederlands met elkaar, maar soms ook Engels.
+
+Op school zeggen we 'Goedemorgen' of 'Hallo'. Aan het einde van de dag zeggen we 'Tot ziens' of 'Dag'. Als je iemand voor het eerst ontmoet, zeg je vaak: 'Leuk je te ontmoeten!'
+
+Hoe oud ben jij? Hoe heet jij? Ik ben benieuwd!`,
+    textEn:
+`Hello! I am Anna. I am twenty-two years old. I come from the Netherlands and I live in Utrecht.
+
+Who are you? What is your name? Where do you come from? These are important questions when you meet someone new.
+
+My friend is called Tom. He is twenty-five years old. He comes from Belgium. We speak Dutch with each other, but sometimes English too.
+
+At school we say 'Good morning' or 'Hello'. At the end of the day we say 'Goodbye' or 'Bye'. When you meet someone for the first time, you often say: 'Nice to meet you!'
+
+How old are you? What is your name? I'm curious!`,
+    vocabulary: [
+      { nl: 'ontmoeten', en: 'to meet' },
+      { nl: 'jaar oud', en: 'years old', matches: ['jaar oud'] },
+      { nl: 'komen uit', en: 'to come from', matches: ['kom uit', 'komt uit'] },
+      { nl: 'vriend', en: 'friend' },
+      { nl: 'spreken', en: 'to speak' },
+      { nl: 'benieuwd', en: 'curious' },
+      { nl: 'belangrijk', en: 'important' },
+      { nl: 'elkaar', en: 'each other' }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Persoonlijke voornaamwoorden (ik, jij, hij)',
+        example: 'Ik ben Anna · Hij komt uit België',
+        explanation: 'Personal pronouns (ik, jij/je, hij, zij/ze, wij/we, jullie, zij/ze) show who is doing the action and always come before the verb in a statement.'
+      },
+      {
+        pattern: 'Vraagwoorden (wie, hoe, waar)',
+        example: 'Wie ben jij? · Hoe heet je? · Waar kom je vandaan?',
+        explanation: 'Question words start the sentence and are followed directly by the verb: [vraagwoord] + [werkwoord] + [onderwerp].'
+      }
+    ],
+    questions: [
+      { q: 'Hoe oud is Anna?', qEn: 'How old is Anna?', a: 'Tweeëntwintig jaar.', aEn: 'Twenty-two years old.' },
+      { q: 'Waar komt Tom vandaan?', qEn: 'Where does Tom come from?', a: 'Uit België.', aEn: 'From Belgium.' },
+      { q: 'Wat zeg je als je iemand voor het eerst ontmoet?', qEn: 'What do you say when you meet someone for the first time?', a: 'Leuk je te ontmoeten!', aEn: 'Nice to meet you!' }
+    ]
+  },
+
+  {
+    id: 'r-a1-002',
+    title: 'Mijn familie',
+    titleEn: 'My family',
+    level: 'A1',
+    topic: 'familie',
+    topicEn: 'family',
+    topicEmoji: '👪',
+    wordCount: 150,
+    readMinutes: 2,
+    text:
+`Ik heb een grote familie. Mijn vader heet Peter en mijn moeder heet Els. Ik heb twee broers en één zus.
+
+Mijn oudste broer heet Jan. Hij is dertig jaar oud en werkt als leraar. Mijn andere broer, Kees, is achttien en gaat nog naar school. Mijn zus heet Lisa. Zij is vijfentwintig en woont in Rotterdam.
+
+Op zondag komt de hele familie samen bij mijn ouders. We eten dan samen en praten over de week. Mijn oma en opa komen ook vaak langs. Zij wonen dichtbij, in dezelfde straat.
+
+Hoeveel broers of zussen heb je? Wie zijn de belangrijkste mensen in jouw familie? Familie is voor mij heel belangrijk.`,
+    textEn:
+`I have a big family. My father is called Peter and my mother is called Els. I have two brothers and one sister.
+
+My oldest brother is called Jan. He is thirty years old and works as a teacher. My other brother, Kees, is eighteen and still goes to school. My sister is called Lisa. She is twenty-five and lives in Rotterdam.
+
+On Sunday the whole family comes together at my parents' house. We eat together then and talk about the week. My grandma and grandpa also often come by. They live nearby, on the same street.
+
+How many brothers or sisters do you have? Who are the most important people in your family? Family is very important to me.`,
+    vocabulary: [
+      { nl: 'ouders', en: 'parents' },
+      { nl: 'broer', en: 'brother' },
+      { nl: 'zus', en: 'sister' },
+      { nl: 'oma', en: 'grandma' },
+      { nl: 'opa', en: 'grandpa' },
+      { nl: 'dichtbij', en: 'nearby' },
+      { nl: 'samenkomen', en: 'to come together', matches: ['komen samen', 'samen'] },
+      { nl: 'leraar', en: 'teacher' }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Telwoorden (getallen)',
+        example: 'twee broers · dertig jaar · vijfentwintig',
+        explanation: "Cardinal numbers (een, twee, drie... dertig, vijfentwintig) come directly before the noun they count and don't change form."
+      },
+      {
+        pattern: 'Bezittelijke voornaamwoorden (mijn, jouw)',
+        example: 'mijn vader · mijn zus · jouw familie',
+        explanation: 'Possessive pronouns (mijn, jouw/je, zijn, haar, ons/onze, jullie, hun) come before the noun and don\'t take an -e, except "onze" before de-words.'
+      }
+    ],
+    questions: [
+      { q: 'Hoeveel broers heeft de verteller?', qEn: 'How many brothers does the narrator have?', a: 'Twee broers.', aEn: 'Two brothers.' },
+      { q: 'Wat is het beroep van Jan?', qEn: "What is Jan's profession?", a: 'Hij is leraar.', aEn: 'He is a teacher.' },
+      { q: 'Wanneer komt de hele familie samen?', qEn: 'When does the whole family come together?', a: 'Op zondag.', aEn: 'On Sunday.' }
+    ]
+  },
+
+  {
+    id: 'r-a1-003',
+    title: 'Mijn huis',
+    titleEn: 'My house',
+    level: 'A1',
+    topic: 'huis',
+    topicEn: 'house',
+    topicEmoji: '🏠',
+    wordCount: 165,
+    readMinutes: 2,
+    text:
+`Ik woon in een klein huis met twee slaapkamers. De voordeur is blauw en de muren zijn wit. In de woonkamer staan een bank en een tafel. De bank is grijs en de kussens zijn geel.
+
+In de keuken staan de borden, de glazen en de potten. We hebben ook een koelkast en een fornuis. Boven zijn de slaapkamers en de badkamer.
+
+Mijn slaapkamer is klein maar gezellig. Het bed staat bij het raam. Aan de muur hangen foto's van mijn vrienden. De gordijnen zijn groen.
+
+Achter het huis is een kleine tuin. Daar staan bloemen in verschillende kleuren: rood, geel en paars. In de zomer zitten we graag buiten in de tuin.
+
+Hoe ziet jouw huis eruit? Heb jij ook een tuin?`,
+    textEn:
+`I live in a small house with two bedrooms. The front door is blue and the walls are white. In the living room there are a sofa and a table. The sofa is grey and the cushions are yellow.
+
+In the kitchen are the plates, the glasses and the pots. We also have a fridge and a stove. Upstairs are the bedrooms and the bathroom.
+
+My bedroom is small but cosy. The bed is by the window. On the wall hang photos of my friends. The curtains are green.
+
+Behind the house is a small garden. There are flowers in different colours: red, yellow and purple. In summer we like to sit outside in the garden.
+
+What does your house look like? Do you also have a garden?`,
+    vocabulary: [
+      { nl: 'slaapkamer', en: 'bedroom', matches: ['slaapkamer', 'slaapkamers'] },
+      { nl: 'woonkamer', en: 'living room' },
+      { nl: 'keuken', en: 'kitchen' },
+      { nl: 'koelkast', en: 'fridge' },
+      { nl: 'tuin', en: 'garden' },
+      { nl: 'gezellig', en: 'cosy' },
+      { nl: 'gordijnen', en: 'curtains' },
+      { nl: 'kleur', en: 'colour', matches: ['kleur', 'kleuren'] }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Meervoud met -en en -s',
+        example: 'de borden · de glazen · de kamers',
+        explanation: 'Most Dutch nouns form the plural with -en (bord→borden). Words ending in a vowel + consonant often double the vowel (glas→glazen). Words ending in -el, -er, -en, -je typically add -s (kamer→kamers).'
+      },
+      {
+        pattern: 'Lidwoorden: de/het',
+        example: 'de tuin · het huis · de keuken',
+        explanation: '"De" is used for most nouns; "het" for diminutives and many one-syllable words. In the plural, all nouns take "de" (het huis → de huizen).'
+      }
+    ],
+    questions: [
+      { q: 'Wat voor kleur is de voordeur?', qEn: 'What colour is the front door?', a: 'Blauw.', aEn: 'Blue.' },
+      { q: 'Waar staat het bed?', qEn: 'Where is the bed?', a: 'Bij het raam.', aEn: 'By the window.' },
+      { q: 'Wat staat er achter het huis?', qEn: 'What is behind the house?', a: 'Een kleine tuin.', aEn: 'A small garden.' }
+    ]
+  },
+
+  {
+    id: 'r-a1-004',
+    title: 'Boodschappen doen',
+    titleEn: 'Doing groceries',
+    level: 'A1',
+    topic: 'eten',
+    topicEn: 'food',
+    topicEmoji: '🛒',
+    wordCount: 160,
+    readMinutes: 2,
+    text:
+`Elke week ga ik naar de supermarkt om boodschappen te doen. Ik maak eerst een lijstje: brood, kaas, melk en fruit.
+
+In de supermarkt zoek ik eerst het brood. Er is een broodje voor onderweg en een groot brood voor thuis. Daarna ga ik naar de groenteafdeling. Ik koop appeltjes, een komkommertje en wat tomaatjes.
+
+Bij de kassa zet ik alles op de band. De medewerker scant elk product. Ik betaal met mijn pinpas.
+
+Thuis maak ik een lekker broodje met kaas en een klein glaasje sap erbij. Voor het toetje eet ik graag een appeltje of een stukje chocolade.
+
+Wat koop jij altijd in de supermarkt? Maak jij ook een lijstje voordat je gaat?`,
+    textEn:
+`Every week I go to the supermarket to do groceries. First I make a little list: bread, cheese, milk and fruit.
+
+In the supermarket I first look for the bread. There's a small roll for on the go and a big loaf for home. Then I go to the vegetable section. I buy some little apples, a small cucumber and a few little tomatoes.
+
+At the checkout I put everything on the belt. The employee scans each product. I pay with my debit card.
+
+At home I make a nice little sandwich with cheese and a small glass of juice with it. For dessert I like to eat a little apple or a small piece of chocolate.
+
+What do you always buy at the supermarket? Do you also make a list before you go?`,
+    vocabulary: [
+      { nl: 'boodschappen doen', en: 'to do groceries', matches: ['boodschappen'] },
+      { nl: 'lijstje', en: 'little list' },
+      { nl: 'groenteafdeling', en: 'vegetable section' },
+      { nl: 'kassa', en: 'checkout' },
+      { nl: 'pinpas', en: 'debit card' },
+      { nl: 'toetje', en: 'dessert' },
+      { nl: 'medewerker', en: 'employee' },
+      { nl: 'appeltje', en: 'little apple', matches: ['appeltje', 'appeltjes'] }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Verkleinwoorden (-je, -tje, -pje, -etje)',
+        example: 'lijstje · appeltje · komkommertje · glaasje',
+        explanation: 'Diminutives make something small or affectionate. Add -je after most consonants, -tje after a vowel or -l/-n/-r, -pje after -m, and -etje after a short vowel + one consonant (kom→kommetje).'
+      },
+      {
+        pattern: 'Om...te + infinitief (doel)',
+        example: 'om boodschappen te doen',
+        explanation: '"Om...te" + infinitive expresses purpose: "in order to". The full verb goes at the end after "te".'
+      }
+    ],
+    questions: [
+      { q: 'Wat staat er op het lijstje?', qEn: "What's on the list?", a: 'Brood, kaas, melk en fruit.', aEn: 'Bread, cheese, milk and fruit.' },
+      { q: 'Hoe betaalt de verteller?', qEn: 'How does the narrator pay?', a: 'Met de pinpas.', aEn: 'With the debit card.' },
+      { q: 'Wat eet de verteller als toetje?', qEn: 'What does the narrator eat for dessert?', a: 'Een appeltje of een stukje chocolade.', aEn: 'A little apple or a small piece of chocolate.' }
+    ]
+  },
+
+  {
+    id: 'r-a1-005',
+    title: 'Een dag in mijn leven',
+    titleEn: 'A day in my life',
+    level: 'A1',
+    topic: 'tijd',
+    topicEn: 'time',
+    topicEmoji: '⏰',
+    wordCount: 155,
+    readMinutes: 2,
+    text:
+`Elke ochtend word ik om zeven uur wakker. Ik sta op en ga douchen. Om half acht eet ik mijn ontbijt: brood met kaas en een kopje thee.
+
+Om acht uur ga ik naar mijn werk. Mijn werk begint om negen uur en duurt tot vijf uur. In de pauze, om twaalf uur, eet ik met mijn collega's.
+
+Na mijn werk ga ik naar huis. Ik kook mijn avondeten rond zes uur. Daarna kijk ik televisie of lees ik een boek. Om tien uur ga ik naar bed.
+
+Mijn dag is elke dag ongeveer hetzelfde, maar ik vind het niet saai. Ik hou van mijn routine.
+
+Hoe laat sta jij op? Wat doe jij elke dag?`,
+    textEn:
+`Every morning I wake up at seven o'clock. I get up and go shower. At half past seven I eat my breakfast: bread with cheese and a cup of tea.
+
+At eight o'clock I go to my work. My work starts at nine o'clock and lasts until five o'clock. During the break, at twelve o'clock, I eat with my colleagues.
+
+After my work I go home. I cook my dinner around six o'clock. After that I watch television or read a book. At ten o'clock I go to bed.
+
+My day is roughly the same every day, but I don't find it boring. I like my routine.
+
+What time do you get up? What do you do every day?`,
+    vocabulary: [
+      { nl: 'wakker worden', en: 'to wake up', matches: ['word wakker', 'wakker'] },
+      { nl: 'opstaan', en: 'to get up', matches: ['sta op', 'opstaan'] },
+      { nl: 'ontbijt', en: 'breakfast' },
+      { nl: 'collega', en: 'colleague', matches: ['collega', "collega's"] },
+      { nl: 'avondeten', en: 'dinner' },
+      { nl: 'ongeveer', en: 'roughly/approximately' },
+      { nl: 'routine', en: 'routine' },
+      { nl: 'pauze', en: 'break' }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Tijd aangeven: om + uur',
+        example: 'om zeven uur · om half acht · om twaalf uur',
+        explanation: '"Om" + time tells when something happens. "Half acht" means half past seven (halfway TO eight), not half past eight — a common mistake for English speakers.'
+      },
+      {
+        pattern: 'Scheidbare werkwoorden: opstaan',
+        example: 'Ik sta op · ik ga douchen',
+        explanation: '"Opstaan" (to get up) is separable: in a main clause the prefix "op" moves to the end, leaving "sta" as the conjugated verb: Ik sta om zeven uur op.'
+      }
+    ],
+    questions: [
+      { q: 'Hoe laat wordt de verteller wakker?', qEn: 'What time does the narrator wake up?', a: 'Om zeven uur.', aEn: 'At seven o\'clock.' },
+      { q: 'Met wie eet de verteller in de pauze?', qEn: 'Who does the narrator eat with during the break?', a: 'Met collega\'s.', aEn: 'With colleagues.' },
+      { q: 'Wat doet de verteller na het avondeten?', qEn: 'What does the narrator do after dinner?', a: 'Televisie kijken of een boek lezen.', aEn: 'Watch television or read a book.' }
+    ]
+  },
+
+  {
+    id: 'r-a1-006',
+    title: 'Wat draag ik vandaag?',
+    titleEn: 'What am I wearing today?',
+    level: 'A1',
+    topic: 'kleding',
+    topicEn: 'clothing',
+    topicEmoji: '👕',
+    wordCount: 155,
+    readMinutes: 2,
+    text:
+`Vandaag is het koud buiten, dus ik draag een warme trui en een lange broek. Ik draag geen korte broek, want het is geen zomer.
+
+Mijn schoenen zijn zwart en mijn jas is donkerblauw. Om mijn hals draag ik een sjaal, en op mijn handen draag ik handschoenen. Ik heb geen hoed vandaag, want ik vind hoeden niet mooi.
+
+Als het regent, draag ik ook laarzen. Ik draag geen sandalen in de winter — dat is niet slim!
+
+Mijn vriendin draagt vandaag een rode jurk met een grijze trui erover. Zij houdt niet van kleren met veel kleuren, ze draagt liever simpele kleding.
+
+Wat draag jij vandaag? Draag je liever warme of mooie kleding?`,
+    textEn:
+`Today it's cold outside, so I'm wearing a warm sweater and long trousers. I'm not wearing short trousers, because it's not summer.
+
+My shoes are black and my coat is dark blue. Around my neck I wear a scarf, and on my hands I wear gloves. I don't have a hat today, because I don't think hats look nice.
+
+If it rains, I also wear boots. I don't wear sandals in winter — that's not smart!
+
+My girlfriend is wearing a red dress today with a grey sweater over it. She doesn't like clothes with many colours, she prefers simple clothing.
+
+What are you wearing today? Do you prefer warm or nice-looking clothing?`,
+    vocabulary: [
+      { nl: 'trui', en: 'sweater' },
+      { nl: 'broek', en: 'trousers' },
+      { nl: 'schoenen', en: 'shoes' },
+      { nl: 'sjaal', en: 'scarf' },
+      { nl: 'handschoenen', en: 'gloves' },
+      { nl: 'laarzen', en: 'boots' },
+      { nl: 'jurk', en: 'dress' },
+      { nl: 'liever', en: 'prefer/rather' }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Ontkenning met niet en geen',
+        example: 'Ik draag geen korte broek · Ik heb geen hoed · dat is niet slim',
+        explanation: '"Geen" negates a noun (no scarf, no hat); "niet" negates everything else (a verb, adjective, or specific known thing): geen sjaal vs. niet mooi.'
+      },
+      {
+        pattern: 'Lichaamsdelen met voorzetsels',
+        example: 'om mijn hals · op mijn handen',
+        explanation: 'Body-part locations use specific prepositions: om (around, e.g. neck), op (on, e.g. hands/head), aan (on, e.g. feet/fingers) — these must be memorised per body part.'
+      }
+    ],
+    questions: [
+      { q: 'Waarom draagt de verteller geen korte broek?', qEn: "Why isn't the narrator wearing short trousers?", a: 'Omdat het geen zomer is / het koud is.', aEn: "Because it's not summer / it's cold." },
+      { q: 'Wat draagt de vriendin?', qEn: "What is the girlfriend wearing?", a: 'Een rode jurk met een grijze trui.', aEn: 'A red dress with a grey sweater.' },
+      { q: 'Wat draagt de verteller als het regent?', qEn: 'What does the narrator wear when it rains?', a: 'Laarzen.', aEn: 'Boots.' }
+    ]
+  },
+
+  {
+    id: 'r-a1-007',
+    title: 'Naar school met de fiets',
+    titleEn: 'To school by bike',
+    level: 'A1',
+    topic: 'vervoer',
+    topicEn: 'transport',
+    topicEmoji: '🚲',
+    wordCount: 160,
+    readMinutes: 2,
+    text:
+`In Nederland gaan veel mensen met de fiets naar school of werk. Ik ben ook elke dag op de fiets. Het is snel, gezond en goedkoop.
+
+Vandaag regent het, dus ik draag een regenjas. Gisteren was het zonnig en warm, en toen fietste ik zonder jas. Het weer in Nederland verandert vaak — de ene dag is het zonnig, de andere dag regent het.
+
+Soms neem ik de bus als het te hard regent of als het sneeuwt. De bus is ook makkelijk, maar minder leuk dan fietsen. Mijn broer gaat altijd met de trein naar zijn werk, omdat hij verder weg woont.
+
+Ben jij ooit met de fiets naar school gegaan? Welk vervoer gebruik jij het liefst?`,
+    textEn:
+`In the Netherlands, many people go to school or work by bicycle. I am also on my bike every day. It's fast, healthy and cheap.
+
+Today it's raining, so I'm wearing a raincoat. Yesterday it was sunny and warm, and then I cycled without a coat. The weather in the Netherlands often changes — one day it's sunny, the next day it rains.
+
+Sometimes I take the bus when it's raining too hard or when it's snowing. The bus is also easy, but less fun than cycling. My brother always takes the train to his work, because he lives further away.
+
+Have you ever gone to school by bike? Which transport do you like best?`,
+    vocabulary: [
+      { nl: 'fiets', en: 'bicycle' },
+      { nl: 'regenjas', en: 'raincoat' },
+      { nl: 'zonnig', en: 'sunny' },
+      { nl: 'veranderen', en: 'to change' },
+      { nl: 'sneeuwen', en: 'to snow' },
+      { nl: 'trein', en: 'train' },
+      { nl: 'goedkoop', en: 'cheap' },
+      { nl: 'verder weg', en: 'further away' }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'VTT met zijn: bewegingswerkwoorden',
+        example: 'Ben jij ooit ... gegaan?',
+        explanation: 'Verbs of movement/change (gaan, fietsen naar een plek, komen) use "zijn" as the helper verb in the perfect tense, following the BAGS rule (Beweging/Movement).'
+      },
+      {
+        pattern: 'OVT: was/waren, fietste',
+        example: 'Gisteren was het zonnig · toen fietste ik',
+        explanation: "Simple past of \"zijn\" is was/waren. Regular verbs like \"fietsen\" form the simple past with -te(n) after a voiceless stem consonant ('t kofschip)."
+      }
+    ],
+    questions: [
+      { q: 'Hoe gaat de verteller vandaag naar school?', qEn: 'How does the narrator get to school today?', a: 'Met de fiets, met een regenjas.', aEn: 'By bike, with a raincoat.' },
+      { q: 'Wanneer neemt de verteller de bus?', qEn: 'When does the narrator take the bus?', a: 'Als het te hard regent of sneeuwt.', aEn: "When it rains too hard or snows." },
+      { q: 'Waarom gaat de broer met de trein?', qEn: 'Why does the brother take the train?', a: 'Omdat hij verder weg woont.', aEn: 'Because he lives further away.' }
+    ]
+  },
+
+  {
+    id: 'r-a1-008',
+    title: 'Dieren in het park',
+    titleEn: 'Animals in the park',
+    level: 'A1',
+    topic: 'dieren',
+    topicEn: 'animals',
+    topicEmoji: '🐿️',
+    wordCount: 160,
+    readMinutes: 2,
+    text:
+`In het park bij mijn huis zie ik veel dieren. Er zijn kleine eekhoorns die snel tussen de bomen springen. Er zijn ook grote, witte zwanen die rustig op het water zwemmen.
+
+Honden lopen graag door het park. De honden zijn meestal vrolijk en actief. Sommige honden zijn groot en sterk, andere zijn klein en zacht.
+
+'s Ochtends vroeg zie ik soms konijnen in het gras. Ze zijn erg schuw en rennen snel weg als je te dichtbij komt. Vogels zingen mooi in de bomen — het is een rustig en fijn geluid.
+
+Ik hou van het park omdat het groen, rustig en gezellig is. Ik ga er vaak wandelen met vrienden.
+
+Welke dieren zie jij in jouw buurt? Ga je vaak naar een park?`,
+    textEn:
+`In the park near my house I see many animals. There are small squirrels that jump quickly between the trees. There are also big, white swans that swim calmly on the water.
+
+Dogs like to walk through the park. The dogs are usually happy and active. Some dogs are big and strong, others are small and soft.
+
+Early in the morning I sometimes see rabbits in the grass. They are very shy and run away quickly if you get too close. Birds sing beautifully in the trees — it's a calm and pleasant sound.
+
+I love the park because it's green, calm and pleasant. I often go for walks there with friends.
+
+What animals do you see in your neighbourhood? Do you often go to a park?`,
+    vocabulary: [
+      { nl: 'eekhoorn', en: 'squirrel', matches: ['eekhoorn', 'eekhoorns'] },
+      { nl: 'zwaan', en: 'swan', matches: ['zwaan', 'zwanen'] },
+      { nl: 'konijn', en: 'rabbit', matches: ['konijn', 'konijnen'] },
+      { nl: 'schuw', en: 'shy' },
+      { nl: 'vrolijk', en: 'happy/cheerful' },
+      { nl: 'rustig', en: 'calm' },
+      { nl: 'wandelen', en: 'to walk/stroll' },
+      { nl: 'geluid', en: 'sound' }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Bijvoeglijk naamwoord + de-woord: altijd -e',
+        example: 'de grote zwanen · de kleine eekhoorns',
+        explanation: 'Before a de-word (or any plural), the adjective always takes -e: groot→grote, klein→kleine.'
+      },
+      {
+        pattern: 'Zijn + bijvoeglijk naamwoord (toestand)',
+        example: 'De honden zijn vrolijk · Ze zijn erg schuw',
+        explanation: 'After "zijn", the adjective describes a state and stays in its base form without -e, even though the subject may be plural: de honden zijn vrolijk (not vrolijke).'
+      }
+    ],
+    questions: [
+      { q: 'Welke dieren zwemmen op het water?', qEn: 'Which animals swim on the water?', a: 'Zwanen.', aEn: 'Swans.' },
+      { q: 'Wanneer ziet de verteller konijnen?', qEn: 'When does the narrator see rabbits?', a: "'s Ochtends vroeg.", aEn: 'Early in the morning.' },
+      { q: 'Waarom houdt de verteller van het park?', qEn: 'Why does the narrator love the park?', a: 'Omdat het groen, rustig en gezellig is.', aEn: "Because it's green, calm and pleasant." }
+    ]
+  },
+
+  {
+    id: 'r-b1-005',
+    title: 'Omgaan met stress',
+    titleEn: 'Dealing with stress',
+    level: 'B1',
+    topic: 'gezondheid',
+    topicEn: 'health',
+    topicEmoji: '😌',
+    wordCount: 245,
+    readMinutes: 3,
+    text:
+`Bijna iedereen ervaart weleens stress, vooral op het werk of tijdens de examenperiode. Stress is niet altijd slecht — een beetje spanning kan je juist helpen om beter te presteren. Het wordt pas een probleem als je voortdurend gespannen bent en niet meer kunt ontspannen.
+
+Psychologen zeggen dat het belangrijk is om te herkennen wanneer je gestrest bent, omdat je lichaam signalen geeft die je niet mag negeren. Hoofdpijn, slecht slapen en prikkelbaarheid zijn veelvoorkomende symptomen. Veel mensen merken pas dat ze gestrest zijn nadat ze al weken slecht slapen.
+
+Er zijn verschillende manieren om met stress om te gaan. Sommige mensen sporten graag, omdat beweging helpt om spanning los te laten. Anderen praten liever met vrienden of familie over hoe ze zich voelen. Weer anderen mediteren of ademen bewust, terwijl ze proberen hun gedachten tot rust te brengen.
+
+Het is ook belangrijk om te weten wanneer je hulp moet zoeken. Als je merkt dat je gevoelens van angst of somberheid je dagelijkse leven beïnvloeden, is het verstandig om met een huisarts of psycholoog te praten. Niemand hoeft dit alleen te doen.
+
+Hoe ga jij om met stress in jouw leven?`,
+    textEn:
+`Almost everyone experiences stress at some point, especially at work or during exam periods. Stress isn't always bad — a bit of tension can actually help you perform better. It only becomes a problem when you're constantly tense and can no longer relax.
+
+Psychologists say it's important to recognise when you're stressed, because your body gives signals you shouldn't ignore. Headaches, poor sleep and irritability are common symptoms. Many people only notice they're stressed after already sleeping badly for weeks.
+
+There are different ways to deal with stress. Some people like to exercise, because movement helps release tension. Others prefer to talk with friends or family about how they feel. Still others meditate or breathe consciously, while trying to bring their thoughts to rest.
+
+It's also important to know when you should seek help. If you notice that feelings of anxiety or sadness are affecting your daily life, it's wise to talk to a doctor or psychologist. No one has to do this alone.
+
+How do you deal with stress in your life?`,
+    vocabulary: [
+      { nl: 'ervaren', en: 'to experience' },
+      { nl: 'spanning', en: 'tension' },
+      { nl: 'ontspannen', en: 'to relax' },
+      { nl: 'prikkelbaarheid', en: 'irritability' },
+      { nl: 'loslaten', en: 'to let go/release' },
+      { nl: 'somberheid', en: 'gloominess/sadness' },
+      { nl: 'beïnvloeden', en: 'to influence/affect' },
+      { nl: 'verstandig', en: 'wise/sensible' }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Onderschikkend voegwoord: omdat (reden)',
+        example: 'omdat beweging helpt om spanning los te laten',
+        explanation: '"Omdat" (because) introduces a subordinate clause of reason; the conjugated verb moves to the end of that clause: ...omdat beweging helpt.'
+      },
+      {
+        pattern: 'Onderschikkend voegwoord: terwijl (gelijktijdigheid)',
+        example: 'terwijl ze proberen hun gedachten tot rust te brengen',
+        explanation: '"Terwijl" (while) links two actions happening at the same time; like other subordinating conjunctions, it sends the verb to the end of its clause.'
+      }
+    ],
+    questions: [
+      { q: 'Wat zijn veelvoorkomende symptomen van stress?', qEn: 'What are common symptoms of stress?', a: 'Hoofdpijn, slecht slapen en prikkelbaarheid.', aEn: 'Headaches, poor sleep and irritability.' },
+      { q: 'Waarom sporten sommige mensen als ze gestrest zijn?', qEn: 'Why do some people exercise when stressed?', a: 'Omdat beweging helpt om spanning los te laten.', aEn: 'Because movement helps release tension.' },
+      { q: 'Wanneer is het verstandig om hulp te zoeken?', qEn: 'When is it wise to seek help?', a: 'Als angst of somberheid het dagelijkse leven beïnvloedt.', aEn: 'When anxiety or sadness affects daily life.' }
+    ]
+  },
+
+  {
+    id: 'r-b1-006',
+    title: 'Vriendschap op afstand',
+    titleEn: 'Long-distance friendship',
+    level: 'B1',
+    topic: 'relaties',
+    topicEn: 'relationships',
+    topicEmoji: '💌',
+    wordCount: 250,
+    readMinutes: 3,
+    text:
+`Tegenwoordig wonen veel vrienden ver van elkaar, omdat mensen vaker verhuizen voor werk of studie. Toch blijft vriendschap op afstand vaak sterk, al kost het meer moeite dan een vriendschap waarbij je elkaar elke week ziet.
+
+Videobellen heeft het makkelijker gemaakt om contact te houden, hoewel het niet hetzelfde is als iemand in het echt ontmoeten. Veel mensen bellen wekelijks met hun beste vriend of vriendin, terwijl ze ondertussen ook foto's en berichten sturen om elkaar op de hoogte te houden.
+
+Onderzoek toont aan dat vriendschappen die je als kind of tiener sluit, vaak het langst duren, ook al zie je die vrienden nu minder vaak. Dat komt doordat je samen veel hebt meegemaakt, wat een sterke band creëert.
+
+Het is belangrijk om moeite te blijven doen, zelfs als het leven druk is. Een kort berichtje sturen of eens bellen, kan al voldoende zijn om de band levend te houden. Vriendschap groeit niet vanzelf — je moet er samen aan blijven werken.
+
+Heb jij vrienden die ver weg wonen? Hoe houd jij het contact met hen levend?`,
+    textEn:
+`Nowadays many friends live far from each other, because people move more often for work or study. Still, long-distance friendship often remains strong, although it takes more effort than a friendship where you see each other every week.
+
+Video calling has made it easier to stay in touch, although it's not the same as meeting someone in person. Many people call weekly with their best friend, while also sending photos and messages in the meantime to keep each other updated.
+
+Research shows that friendships you form as a child or teenager often last the longest, even though you now see those friends less often. That's because you've experienced a lot together, which creates a strong bond.
+
+It's important to keep making an effort, even when life is busy. Sending a short message or calling once can already be enough to keep the bond alive. Friendship doesn't grow by itself — you have to keep working on it together.
+
+Do you have friends who live far away? How do you keep in touch with them?`,
+    vocabulary: [
+      { nl: 'verhuizen', en: 'to move (house)' },
+      { nl: 'moeite', en: 'effort' },
+      { nl: 'op de hoogte houden', en: 'to keep updated', matches: ['op de hoogte'] },
+      { nl: 'band', en: 'bond/connection' },
+      { nl: 'meemaken', en: 'to experience/go through' },
+      { nl: 'creëren', en: 'to create' },
+      { nl: 'vanzelf', en: 'automatically/by itself' },
+      { nl: 'tiener', en: 'teenager' }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Onderschikkend voegwoord: hoewel/al (tegenstelling)',
+        example: 'hoewel het niet hetzelfde is · al kost het meer moeite',
+        explanation: '"Hoewel" and "al" (although) introduce a subordinate clause of contrast; the verb goes to the end: ...hoewel het niet hetzelfde is.'
+      },
+      {
+        pattern: 'Onderschikkend voegwoord: terwijl (twee gelijktijdige acties)',
+        example: "terwijl ze ondertussen ook foto's sturen",
+        explanation: '"Terwijl" links two things happening simultaneously; the subordinate clause verb ("sturen") moves to the end.'
+      }
+    ],
+    questions: [
+      { q: 'Wat heeft videobellen makkelijker gemaakt?', qEn: 'What has video calling made easier?', a: 'Contact houden met vrienden op afstand.', aEn: 'Staying in touch with friends at a distance.' },
+      { q: 'Welke vriendschappen duren volgens onderzoek vaak het langst?', qEn: 'Which friendships often last longest according to research?', a: 'Vriendschappen gesloten als kind of tiener.', aEn: 'Friendships formed as a child or teenager.' },
+      { q: 'Wat kan al voldoende zijn om de band levend te houden?', qEn: 'What can already be enough to keep the bond alive?', a: 'Een kort berichtje sturen of eens bellen.', aEn: 'Sending a short message or calling once.' }
+    ]
+  },
+
+  {
+    id: 'r-b2-005',
+    title: 'Het referendum: instrument van democratie of populisme?',
+    titleEn: 'The referendum: instrument of democracy or populism?',
+    level: 'B2',
+    topic: 'politiek',
+    topicEn: 'politics',
+    topicEmoji: '🗳️',
+    wordCount: 260,
+    readMinutes: 3,
+    text:
+`Een referendum stelt burgers in staat om rechtstreeks te stemmen over een specifiek beleidsvoorstel, in plaats van deze beslissing volledig aan volksvertegenwoordigers over te laten. Voorstanders beschouwen het referendum als een waardevolle aanvulling op de representatieve democratie, omdat het de burger direct betrekt bij belangrijke besluiten.
+
+Critici wijzen er echter op dat complexe wetgeving zich vaak niet laat samenvatten in een simpele ja-of-nee-vraag. Een referendum kan bovendien gevoelig zijn voor manipulatie: wie de campagne het best financiert of het meest overtuigend communiceert, heeft een onevenredig grote invloed op de uitslag, ongeacht de feitelijke merites van het voorstel.
+
+In Nederland werd in 2018 de Wet raadgevend referendum afgeschaft, nadat de opkomst en de uitkomsten van eerdere referenda tot politieke onrust hadden geleid. Voorstanders van directe democratie betreurden dit besluit, terwijl tegenstanders het zagen als een noodzakelijke correctie op een instrument dat onvoldoende doordacht was ingevoerd.
+
+Andere landen, zoals Zwitserland, hanteren juist een lange traditie van referenda en beschouwen deze als een kernonderdeel van hun democratische stelsel. Daar wordt gesteld dat burgers, mits goed geïnformeerd, zeer wel in staat zijn om over complexe kwesties te oordelen.
+
+De discussie over de rol van het referendum in een moderne democratie is dan ook verre van afgerond.`,
+    textEn:
+`A referendum allows citizens to vote directly on a specific policy proposal, instead of leaving this decision entirely to elected representatives. Proponents regard the referendum as a valuable addition to representative democracy, because it directly involves the citizen in important decisions.
+
+Critics, however, point out that complex legislation often cannot be summarised in a simple yes-or-no question. A referendum can also be sensitive to manipulation: whoever finances the campaign best or communicates most persuasively has a disproportionately large influence on the outcome, regardless of the actual merits of the proposal.
+
+In the Netherlands, the Advisory Referendum Act was abolished in 2018, after the turnout and outcomes of earlier referendums had led to political unrest. Proponents of direct democracy regretted this decision, while opponents saw it as a necessary correction to an instrument that had been introduced without sufficient thought.
+
+Other countries, such as Switzerland, maintain a long tradition of referendums and regard them as a core part of their democratic system. There it is argued that citizens, provided they are well informed, are quite capable of judging complex issues.
+
+The discussion about the role of the referendum in a modern democracy is thus far from concluded.`,
+    vocabulary: [
+      { nl: 'burger', en: 'citizen' },
+      { nl: 'beleidsvoorstel', en: 'policy proposal' },
+      { nl: 'volksvertegenwoordiger', en: 'elected representative' },
+      { nl: 'onevenredig', en: 'disproportionate' },
+      { nl: 'afschaffen', en: 'to abolish' },
+      { nl: 'opkomst', en: 'turnout' },
+      { nl: 'stelsel', en: 'system' },
+      { nl: 'afgerond', en: 'concluded/finished' }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Formeel/zakelijk register: passieve constructies',
+        example: 'werd de wet afgeschaft · wordt gesteld dat',
+        explanation: 'Formal Dutch prose leans heavily on the passive voice (worden/werd + past participle) to keep focus on the action or policy rather than the actor — typical of journalistic and academic writing.'
+      },
+      {
+        pattern: 'Formeel voegwoord: mits (voorwaarde)',
+        example: 'mits goed geïnformeerd',
+        explanation: '"Mits" (provided that) is a formal conditional conjunction used mainly in written/academic Dutch, more restrictive than "als": the condition must be strictly met.'
+      }
+    ],
+    questions: [
+      { q: 'Waarom werd de Wet raadgevend referendum in 2018 afgeschaft?', qEn: 'Why was the Advisory Referendum Act abolished in 2018?', a: 'Omdat de opkomst en uitkomsten van eerdere referenda tot politieke onrust hadden geleid.', aEn: 'Because the turnout and outcomes of earlier referendums had led to political unrest.' },
+      { q: 'Welk land heeft een lange traditie van referenda?', qEn: 'Which country has a long tradition of referendums?', a: 'Zwitserland.', aEn: 'Switzerland.' },
+      { q: 'Wat is een kritiekpunt op referenda volgens critici?', qEn: 'What is a criticism of referendums according to critics?', a: 'Complexe wetgeving laat zich niet samenvatten in een simpele ja-of-nee-vraag.', aEn: 'Complex legislation cannot be summarised in a simple yes-or-no question.' }
+    ]
+  },
+
+  {
+    id: 'r-b2-006',
+    title: 'Nederlandse uitdrukkingen ontrafeld',
+    titleEn: 'Dutch expressions unravelled',
+    level: 'B2',
+    topic: 'idiomen',
+    topicEn: 'idioms',
+    topicEmoji: '💬',
+    wordCount: 255,
+    readMinutes: 3,
+    text:
+`Het Nederlands zit vol met idiomatische uitdrukkingen waarvan de betekenis allesbehalve voor de hand ligt als je ze letterlijk vertaalt. Wie voor het eerst hoort dat iemand 'de kat uit de boom kijkt', zal zich waarschijnlijk afvragen wat een kat en een boom in vredesnaam met de situatie te maken hebben.
+
+Toch verwijst deze uitdrukking simpelweg naar iemand die afwacht en voorzichtig is voordat hij een beslissing neemt — net zoals een kat eerst de situatie inschat voordat hij uit een boom springt. Dergelijke beeldspraak vormt de kern van veel Nederlandse idiomen en maakt de taal tegelijk kleurrijk en lastig voor gevorderde taalleerders.
+
+Een ander veelgebruikt voorbeeld is 'iets voor lief nemen', wat betekent dat je iets accepteert zonder er verder bij stil te staan — vaak iets dat je eigenlijk niet zou moeten accepteren. Wie daarentegen 'het hart op de tong heeft', zegt precies wat hij denkt, zonder omwegen.
+
+Idiomen worden zelden letterlijk vertaald, en dat maakt ze bij uitstek geschikt om het niveau van iemands taalbeheersing te peilen. Wie deze uitdrukkingen moeiteloos herkent en correct toepast, beheerst de taal op een niveau dat verder reikt dan grammatica en woordenschat alleen — het vereist ook cultureel inzicht.
+
+Ken jij nog andere Nederlandse uitdrukkingen die je bijzonder vindt?`,
+    textEn:
+`Dutch is full of idiomatic expressions whose meaning is anything but obvious when translated literally. Anyone hearing for the first time that someone 'is watching the cat from the tree' will probably wonder what a cat and a tree have to do with the situation at all.
+
+Yet this expression simply refers to someone who waits and is cautious before making a decision — just as a cat first assesses the situation before jumping down from a tree. Such imagery forms the core of many Dutch idioms and makes the language both colourful and difficult for advanced language learners.
+
+Another commonly used example is 'to take something for granted', which means you accept something without giving it further thought — often something you actually shouldn't accept. Whoever, on the other hand, 'has their heart on their tongue', says exactly what they think, without detours.
+
+Idioms are rarely translated literally, which makes them ideally suited for gauging someone's level of language proficiency. Whoever recognises and correctly applies these expressions effortlessly has mastered the language at a level that extends beyond grammar and vocabulary alone — it also requires cultural insight.
+
+Do you know any other Dutch expressions that you find remarkable?`,
+    vocabulary: [
+      { nl: 'uitdrukking', en: 'expression' },
+      { nl: 'letterlijk', en: 'literally' },
+      { nl: 'afwachten', en: 'to wait and see' },
+      { nl: 'beeldspraak', en: 'imagery/figurative language' },
+      { nl: 'voor lief nemen', en: 'to take for granted' },
+      { nl: 'omwegen', en: 'detours' },
+      { nl: 'peilen', en: 'to gauge/assess' },
+      { nl: 'moeiteloos', en: 'effortlessly' }
+    ],
+    grammarNotes: [
+      {
+        pattern: 'Betrekkelijke bijzin met wat (verwijst naar hele zin)',
+        example: 'wat betekent dat je iets accepteert',
+        explanation: '"Wat" as a relative pronoun can refer back to an entire preceding clause or idea (not just one noun) — common in more formal/written Dutch.'
+      },
+      {
+        pattern: 'Idiomatische uitdrukkingen: niet-letterlijke betekenis',
+        example: 'de kat uit de boom kijken · het hart op de tong hebben',
+        explanation: 'Idioms carry a fixed figurative meaning independent of their literal words; they cannot be translated word-for-word and must be learned as whole units.'
+      }
+    ],
+    questions: [
+      { q: "Wat betekent 'de kat uit de boom kijken'?", qEn: "What does 'watching the cat from the tree' mean?", a: 'Afwachten en voorzichtig zijn voordat je een beslissing neemt.', aEn: 'Waiting and being cautious before making a decision.' },
+      { q: "Wat betekent 'iets voor lief nemen'?", qEn: "What does 'taking something for granted' mean?", a: 'Iets accepteren zonder erbij stil te staan.', aEn: 'Accepting something without giving it further thought.' },
+      { q: 'Waarom zijn idiomen geschikt om taalniveau te peilen?', qEn: "Why are idioms suited to gauging language level?", a: 'Omdat ze niet letterlijk vertaald kunnen worden en cultureel inzicht vereisen.', aEn: 'Because they cannot be translated literally and require cultural insight.' }
+    ]
   }
 ];
