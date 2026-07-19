@@ -839,6 +839,293 @@ const grammarTopicsData = [
   // ══ B1 ══════════════════════════════════════════════════════════════════════
 
   {
+    id: "reflexieve-werkwoorden", level: "A2", filter: "reflexieve-werkwoorden",
+    title: "Reflexieve werkwoorden", titleEn: "Reflexive verbs",
+    intro: "Reflexieve werkwoorden hebben een wederkerend voornaamwoord (me/mij, je/jou, zich, ons, je/jullie, zich) dat terugverwijst naar het onderwerp.",
+    introEn: "Reflexive verbs take a reflexive pronoun (me/mij, je/jou, zich, ons, je/jullie, zich) that refers back to the subject.",
+    tables: [{
+      heading: "Reflexief voornaamwoord per persoon", headingEn: "Reflexive pronoun per person",
+      cols: ["Persoon", "Vnw", "Voorbeeld"],
+      rows: [
+        ["ik", "me / mij", "Ik was me."],
+        ["jij", "je / jou", "Was jij je handen?"],
+        ["hij/zij", "zich", "Hij scheert zich elke dag."],
+        ["wij", "ons", "Wij vergissen ons weleens."],
+        ["jullie", "je / jullie", "Vergissen jullie je vaak?"],
+        ["zij", "zich", "Zij voelen zich goed."]
+      ]
+    }],
+    rules: [
+      { nl: "Het reflexief vnw staat direct na het vervoegde werkwoord.", en: "The reflexive pronoun comes right after the conjugated verb." },
+      { nl: "Veelgebruikte reflexieve werkwoorden: zich voelen, zich vergissen, zich herinneren, zich haasten, zich concentreren, zich verontschuldigen, zich afvragen.", en: "Common reflexive verbs: zich voelen (to feel), zich vergissen (to be mistaken), zich herinneren (to remember), zich haasten (to hurry), zich concentreren (to concentrate), zich verontschuldigen (to apologise), zich afvragen (to wonder)." },
+      { nl: "Bij scheidbare + reflexieve werkwoorden komt het vnw vóór het scheidbare deel: 'Ik kleed me om.'", en: "With separable + reflexive verbs, the pronoun comes before the separable part: 'Ik kleed me om.'" },
+      { nl: "Niet elk Engels reflexief werkwoord is reflexief in het Nederlands (en andersom): 'to relax' → 'ontspannen' (vaak zonder zich).", en: "Not every English reflexive verb is reflexive in Dutch (and vice versa): 'to relax' → 'ontspannen' (often without zich)." }
+    ],
+    examples: [
+      { nl: "Ik voel me vandaag niet zo lekker.", en: "I don't feel so well today." },
+      { nl: "Herinner jij je die dag nog goed?", en: "Do you still remember that day well?" },
+      { nl: "Wij moeten ons haasten, de trein vertrekt zo.", en: "We need to hurry, the train leaves soon." }
+    ],
+    tip: "Twijfel je of een werkwoord reflexief is? Kijk of 'zich/zichzelf' natuurlijk past: 'hij wast zich' klinkt goed, 'hij eet zich' niet.",
+    tipEn: "Not sure if a verb is reflexive? Check whether 'zich/zichzelf' fits naturally: 'hij wast zich' sounds right, 'hij eet zich' doesn't."
+  },
+  {
+    id: "toekomende-tijd", level: "A2", filter: "toekomende-tijd",
+    title: "Toekomende tijd", titleEn: "Future tense",
+    intro: "Nederlands heeft drie manieren om de toekomst uit te drukken: het presens (met tijdsaanduiding), gaan + infinitief, en zullen + infinitief.",
+    introEn: "Dutch has three ways to express the future: the present tense (with a time marker), gaan + infinitive, and zullen + infinitive.",
+    tables: [{
+      heading: "Drie manieren om de toekomst uit te drukken", headingEn: "Three ways to express the future",
+      cols: ["Vorm", "Gebruik", "Voorbeeld"],
+      rows: [
+        ["Presens + tijd", "geplande, zekere dingen", "Morgen ga ik naar Parijs."],
+        ["gaan + infinitief", "intentie / plan", "Ik ga volgend jaar studeren."],
+        ["zullen + infinitief", "belofte, voorspelling, aanname", "Het zal wel lukken."],
+        ["zullen + infinitief", "beleefd aanbod / verzoek", "Zal ik de deur dichtdoen?"]
+      ]
+    }],
+    rules: [
+      { nl: "Voor geplande gebeurtenissen met een tijdsaanduiding gebruik je vaak gewoon het presens.", en: "For planned events with a time marker, the simple present is often used." },
+      { nl: "'Gaan + infinitief' benadrukt een intentie of voornemen.", en: "'Gaan + infinitive' emphasises an intention or plan." },
+      { nl: "'Zullen + infinitief' gebruik je voor voorspellingen, beloftes en beleefde vragen/aanbiedingen.", en: "'Zullen + infinitive' is used for predictions, promises and polite questions/offers." },
+      { nl: "'Zullen' wordt in spreektaal vaak vervangen door 'gaan' — 'zullen' klinkt formeler.", en: "'Zullen' is often replaced by 'gaan' in spoken language — 'zullen' sounds more formal." }
+    ],
+    examples: [
+      { nl: "Volgend weekend gaan we naar het strand.", en: "Next weekend we're going to the beach." },
+      { nl: "Ik ga een nieuwe taal leren dit jaar.", en: "I am going to learn a new language this year." },
+      { nl: "Zal ik je helpen met de tas?", en: "Shall I help you with the bag?" }
+    ],
+    tip: "Gebruik 'gaan' voor plannen die je al besloten hebt, en 'zullen' voor dingen die je nu pas besluit of belooft.",
+    tipEn: "Use 'gaan' for plans you've already decided on, and 'zullen' for things you're deciding or promising right now."
+  },
+  {
+    id: "progressieve-tijd", level: "A2", filter: "progressieve-tijd",
+    title: "Bezig zijn: aan het + infinitief", titleEn: "In progress: aan het + infinitive",
+    intro: "Om te zeggen dat iets op dit moment gebeurt, gebruik je 'zijn + aan het + infinitief', of 'zitten/staan/liggen + te + infinitief'.",
+    introEn: "To say something is happening right now, use 'zijn + aan het + infinitive', or 'zitten/staan/liggen + te + infinitive'.",
+    tables: [{
+      heading: "Vormen van de progressieve tijd", headingEn: "Forms of the progressive",
+      cols: ["Vorm", "Voorbeeld", "English"],
+      rows: [
+        ["zijn + aan het + inf.", "Ik ben aan het koken.", "I am cooking."],
+        ["zitten + te + inf.", "Zij zit te lezen.", "She is (sitting) reading."],
+        ["staan + te + inf.", "Hij staat te wachten.", "He is (standing) waiting."],
+        ["liggen + te + inf.", "De baby ligt te slapen.", "The baby is (lying) sleeping."]
+      ]
+    }],
+    rules: [
+      { nl: "'Aan het + infinitief' kan met elk werkwoord en benadrukt dat iets op dit moment bezig is.", en: "'Aan het + infinitive' works with any verb and emphasises that something is currently in progress." },
+      { nl: "'Zitten/staan/liggen + te + infinitief' beschrijft de houding erbij, en wordt alleen gebruikt als die houding logisch is.", en: "'Zitten/staan/liggen + te + infinitive' describes the posture involved, and is only used when that posture makes sense." },
+      { nl: "Beide vormen zijn optioneel — het gewone presens kan ook een lopende actie beschrijven.", en: "Both forms are optional — the plain present tense can also describe an ongoing action." }
+    ],
+    examples: [
+      { nl: "Wat ben je aan het doen?", en: "What are you doing (right now)?" },
+      { nl: "Hij zit tv te kijken op de bank.", en: "He is sitting on the couch watching TV." },
+      { nl: "We zijn het huis aan het schoonmaken.", en: "We are cleaning the house." }
+    ],
+    tip: "'Aan het' is de veiligste keuze als je niet zeker weet of zitten/staan/liggen logisch is bij dat werkwoord.",
+    tipEn: "'Aan het' is the safest choice if you're unsure whether zitten/staan/liggen makes sense with that verb."
+  },
+  {
+    id: "hoeven-te", level: "A2", filter: "hoeven-te",
+    title: "Hoeven (niet) te", titleEn: "Hoeven (not) to (need to)",
+    intro: "'Hoeven' is het negatieve tegenovergestelde van 'moeten': het beschrijft dat iets NIET verplicht is. Het wordt bijna altijd met 'niet' of 'geen' gebruikt.",
+    introEn: "'Hoeven' is the negative counterpart of 'moeten': it describes that something is NOT required. It is almost always used with 'niet' or 'geen'.",
+    tables: [{
+      heading: "Moeten vs. hoeven niet", headingEn: "Moeten vs. hoeven niet",
+      cols: ["Zin", "Betekenis"],
+      rows: [
+        ["Je moet dit doen.", "This is required."],
+        ["Je hoeft dit niet te doen.", "This is not required (but you may)."],
+        ["Je mag dit niet doen.", "This is forbidden."]
+      ]
+    }],
+    rules: [
+      { nl: "'Hoeven' vraagt altijd 'te + infinitief', net als andere hulpwerkwoorden met 'te'.", en: "'Hoeven' always takes 'te + infinitive', like other 'te'-auxiliary verbs." },
+      { nl: "'Hoeven' wordt bijna nooit bevestigend gebruikt — het verschijnt vrijwel altijd met 'niet' of 'geen'.", en: "'Hoeven' is almost never used affirmatively — it appears almost exclusively with 'niet' or 'geen'." },
+      { nl: "Vervoeging: ik hoef, jij hoeft, hij/zij hoeft, wij/jullie/zij hoeven.", en: "Conjugation: ik hoef, jij hoeft, hij/zij hoeft, wij/jullie/zij hoeven." }
+    ],
+    examples: [
+      { nl: "Je hoeft niet te wachten, ga maar vast.", en: "You don't have to wait, go ahead." },
+      { nl: "Wij hoeven dit weekend niet te werken.", en: "We don't have to work this weekend." },
+      { nl: "Je hoeft geen cadeau mee te nemen.", en: "You don't need to bring a gift." }
+    ],
+    tip: "Verwar 'hoeven niet' (niet verplicht) niet met 'mogen niet' (verboden) — dat is een veelgemaakte fout.",
+    tipEn: "Don't confuse 'hoeven niet' (not required) with 'mogen niet' (forbidden) — this is a common mistake."
+  },
+  {
+    id: "gebiedende-wijs", level: "A2", filter: "gebiedende",
+    title: "Gebiedende wijs (imperatief)", titleEn: "Imperative mood",
+    intro: "De gebiedende wijs (imperatief) gebruik je voor instructies, verzoeken en bevelen. De vorm is meestal gelijk aan de ik-vorm van het werkwoord, zonder onderwerp.",
+    introEn: "The imperative is used for instructions, requests and commands. The form is usually the same as the ik-form of the verb, with no subject.",
+    tables: [{
+      heading: "Gebiedende wijs vormen", headingEn: "Imperative forms",
+      cols: ["Infinitief", "Gebiedende wijs", "Voorbeeld"],
+      rows: [
+        ["komen", "kom", "Kom binnen!"],
+        ["gaan", "ga", "Ga zitten."],
+        ["opstaan (scheidbaar)", "sta … op", "Sta alsjeblieft op."],
+        ["zijn", "wees", "Wees voorzichtig!"],
+        ["luisteren", "luister", "Luister goed naar mij."]
+      ]
+    }],
+    rules: [
+      { nl: "De gebiedende wijs = stam van het werkwoord (de ik-vorm), zonder onderwerp.", en: "The imperative = the verb stem (the ik-form), with no subject." },
+      { nl: "Bij scheidbare werkwoorden schuift het prefix naar het einde, net als in een hoofdzin.", en: "With separable verbs, the prefix moves to the end, just like in a main clause." },
+      { nl: "'Zijn' heeft een onregelmatige imperatief: 'wees'.", en: "'Zijn' has an irregular imperative: 'wees'." },
+      { nl: "Voor een beleefdere toon voeg je 'alsjeblieft/alstublieft' of 'even' toe.", en: "For a more polite tone, add 'alsjeblieft/alstublieft' or 'even'." }
+    ],
+    examples: [
+      { nl: "Neem een paraplu mee, want het kan regenen.", en: "Take an umbrella, because it might rain." },
+      { nl: "Doe de deur dicht, alsjeblieft.", en: "Close the door, please." },
+      { nl: "Wees niet zo laat volgende keer.", en: "Don't be so late next time." }
+    ],
+    tip: "In beleefde context wordt vaak 'kunt u...' of 'wilt u...' gebruikt in plaats van de directe imperatief.",
+    tipEn: "In polite contexts, 'kunt u...' or 'wilt u...' is often used instead of the direct imperative."
+  },
+  {
+    id: "omte-infinitief", level: "A2", filter: "omte",
+    title: "Om ... te + infinitief", titleEn: "Om ... te + infinitive (purpose)",
+    intro: "'Om ... te + infinitief' drukt een doel uit: 'in order to'. Ook veel werkwoorden (proberen, vergeten, hopen) worden gevolgd door 'te + infinitief' zonder 'om'.",
+    introEn: "'Om ... te + infinitive' expresses purpose: 'in order to'. Many verbs (proberen, vergeten, hopen) are also followed by 'te + infinitive' without 'om'.",
+    tables: [{
+      heading: "Om...te vs. gewoon te + infinitief", headingEn: "Om...te vs. plain te + infinitive",
+      cols: ["Patroon", "Voorbeeld", "English"],
+      rows: [
+        ["om ... te (doel)", "Ik leer Nederlands om hier te werken.", "I'm learning Dutch (in order) to work here."],
+        ["proberen te", "Ik probeer op tijd te komen.", "I try to arrive on time."],
+        ["vergeten te", "Vergeet niet de deur te sluiten.", "Don't forget to close the door."],
+        ["hopen te", "Ik hoop je snel te zien.", "I hope to see you soon."]
+      ]
+    }],
+    rules: [
+      { nl: "'Om' is verplicht als er echt een doel wordt uitgedrukt ('in order to'); bij andere werkwoorden (proberen, hopen, vergeten) laat je 'om' weg.", en: "'Om' is required when purpose is truly expressed ('in order to'); with other verbs (proberen, hopen, vergeten), 'om' is omitted." },
+      { nl: "Bij scheidbare werkwoorden komt 'te' tussen prefix en stam: 'om ... op te staan'.", en: "With separable verbs, 'te' goes between the prefix and stem: 'om ... op te staan'." },
+      { nl: "De infinitief staat altijd helemaal aan het einde van de zin.", en: "The infinitive always goes at the very end of the sentence." }
+    ],
+    examples: [
+      { nl: "Zij spaart geld om een huis te kopen.", en: "She is saving money to buy a house." },
+      { nl: "Hij belooft om morgen op te bellen.", en: "He promises to call tomorrow." },
+      { nl: "Wij zijn hier om te helpen.", en: "We are here to help." }
+    ],
+    tip: "Test of 'om' nodig is door 'in order to' in te vullen in het Engels — past dat, dan hoort 'om' erbij.",
+    tipEn: "Test whether 'om' is needed by inserting 'in order to' in English — if it fits, 'om' belongs there."
+  },
+  {
+    id: "voornaamwoordelijke-bijwoorden", level: "B1", filter: "voornaamwoordelijke-bijwoorden",
+    title: "Voornaamwoordelijke bijwoorden", titleEn: "Pronominal adverbs",
+    intro: "Voor dingen (niet personen) gebruik je geen voorzetsel + het/dat, maar een samengesteld woord: er/daar/waar + voorzetsel (erover, daarmee, waarvoor).",
+    introEn: "For things (not people), you don't use a preposition + het/dat — instead you use a compound word: er/daar/waar + preposition (erover, daarmee, waarvoor).",
+    tables: [{
+      heading: "Er-, daar- en waar-woorden", headingEn: "Er-, daar- and waar- compounds",
+      cols: ["Basis", "+ over", "+ mee", "+ voor"],
+      rows: [
+        ["er (onbepaald)", "erover", "ermee", "ervoor"],
+        ["daar (bepaald/verwijzend)", "daarover", "daarmee", "daarvoor"],
+        ["waar (vraag/bijzin)", "waarover", "waarmee", "waarvoor"]
+      ]
+    }],
+    rules: [
+      { nl: "Voor personen gebruik je gewoon voorzetsel + persoon: 'met hem', 'over haar'.", en: "For people, you just use preposition + person: 'met hem', 'over haar'." },
+      { nl: "Voor dingen gebruik je nooit voorzetsel + het/dat: NIET 'met het', WEL 'ermee' of 'daarmee'.", en: "For things, you never use preposition + het/dat: NOT 'met het', but 'ermee' or 'daarmee'." },
+      { nl: "'Er-' is onbepaald/nieuw, 'daar-' verwijst terug naar iets specifieks al genoemd.", en: "'Er-' is indefinite/new, 'daar-' refers back to something specific already mentioned." },
+      { nl: "In een bijzin of vraag gebruik je 'waar-': 'Waar denk je aan?', 'het boek waarover we spraken'.", en: "In a question or subordinate clause you use 'waar-': 'Waar denk je aan?', 'het boek waarover we spraken'." }
+    ],
+    examples: [
+      { nl: "Ik heb het gehoord, maar ik geloof er niets van.", en: "I heard it, but I don't believe any of it." },
+      { nl: "Dat is een lastig probleem — daar moeten we over praten.", en: "That's a tricky problem — we need to talk about that." },
+      { nl: "Waar ben je naar op zoek?", en: "What are you looking for?" }
+    ],
+    tip: "Denk aan het splitsen bij vraagzinnen: 'waarover' wordt vaak 'waar ... over': 'Waar praten jullie over?'",
+    tipEn: "Remember that in questions the compound often splits: 'waarover' becomes 'waar ... over': 'Waar praten jullie over?'"
+  },
+  {
+    id: "betrekkelijke-bijzin-voorzetsel", level: "B1", filter: "betrekkelijke-bijzin-voorzetsel",
+    title: "Betrekkelijke bijzin met voorzetsel", titleEn: "Relative clause with a preposition",
+    intro: "Als het betrekkelijk voornaamwoord bij een voorzetsel hoort ('met wie', 'waarover'), verandert de constructie: voor personen 'voorzetsel + wie', voor dingen 'waar + voorzetsel'.",
+    introEn: "When the relative pronoun belongs with a preposition ('met wie', 'waarover'), the construction changes: for people 'preposition + wie', for things 'waar + preposition'.",
+    tables: [{
+      heading: "Personen vs. dingen met voorzetsel", headingEn: "People vs. things with a preposition",
+      cols: ["Type", "Patroon", "Voorbeeld"],
+      rows: [
+        ["Persoon", "voorzetsel + wie", "de collega met wie ik werk"],
+        ["Ding (samen)", "waar + voorzetsel", "het project waaraan ik werk"],
+        ["Ding (gesplitst)", "waar ... voorzetsel", "het project waar ik aan werk"]
+      ]
+    }],
+    rules: [
+      { nl: "Voor personen: [voorzetsel] + 'wie' — nooit 'die' na een voorzetsel.", en: "For people: [preposition] + 'wie' — never 'die' after a preposition." },
+      { nl: "Voor dingen: 'waar' + voorzetsel vast aan elkaar (waarmee, waarover, waaraan), of gesplitst met het voorzetsel aan het einde.", en: "For things: 'waar' + preposition attached (waarmee, waarover, waaraan), or split with the preposition at the end." },
+      { nl: "De gesplitste vorm ('waar ... mee') klinkt informeler en is heel gebruikelijk in spreektaal.", en: "The split form ('waar ... mee') sounds more informal and is very common in spoken Dutch." }
+    ],
+    examples: [
+      { nl: "Dit is de vriend over wie ik je vertelde.", en: "This is the friend I told you about." },
+      { nl: "Het huis waarin wij wonen is honderd jaar oud.", en: "The house we live in is a hundred years old." },
+      { nl: "Dat is het probleem waar ik me zorgen over maak.", en: "That's the problem I'm worried about." }
+    ],
+    tip: "Twijfel je tussen 'die' en 'wie'? Gebruik 'wie' zodra er een voorzetsel vlak vóór het betrekkelijk voornaamwoord staat.",
+    tipEn: "Not sure between 'die' and 'wie'? Use 'wie' whenever a preposition comes right before the relative pronoun."
+  },
+  {
+    id: "laten-plus-infinitief", level: "B1", filter: "laten-plus-infinitief",
+    title: "Laten + infinitief", titleEn: "Laten + infinitive (causative)",
+    intro: "'Laten + infinitief' betekent dat je iets door iemand anders laat doen, of iets toestaat. Ook 'zien/horen/voelen + infinitief' werken zo bij waarnemingen.",
+    introEn: "'Laten + infinitive' means having something done by someone else, or allowing something. 'Zien/horen/voelen + infinitive' work the same way for perceptions.",
+    tables: [{
+      heading: "Laten + infinitief patronen", headingEn: "Laten + infinitive patterns",
+      cols: ["Patroon", "Voorbeeld", "English"],
+      rows: [
+        ["laten + inf. (iets laten doen)", "Ik laat mijn auto repareren.", "I'm having my car repaired."],
+        ["laten + inf. (toestemming)", "Laat me even denken.", "Let me think for a moment."],
+        ["zien + inf.", "Ik zag hem weglopen.", "I saw him walk away."],
+        ["horen + inf.", "Wij hoorden de deur dichtslaan.", "We heard the door slam shut."]
+      ]
+    }],
+    rules: [
+      { nl: "'Laten' + infinitief (zonder 'te') geeft aan dat iemand anders de handeling uitvoert.", en: "'Laten' + infinitive (without 'te') indicates that someone else performs the action." },
+      { nl: "Waarnemingswerkwoorden (zien, horen, voelen) volgen hetzelfde patroon: + infinitief zonder 'te'.", en: "Perception verbs (zien, horen, voelen) follow the same pattern: + infinitive without 'te'." },
+      { nl: "In de VTT: 'laten' blijft infinitief als het samen met een ander werkwoord staat: 'Ik heb mijn auto laten repareren.'", en: "In the perfect tense: 'laten' stays infinitive when combined with another verb: 'Ik heb mijn auto laten repareren.'" }
+    ],
+    examples: [
+      { nl: "Zij laat haar haar knippen bij de kapper.", en: "She's getting her hair cut at the hairdresser." },
+      { nl: "Laat hem even uitpraten, alsjeblieft.", en: "Let him finish speaking, please." },
+      { nl: "Ik heb de kinderen buiten laten spelen.", en: "I let the children play outside." }
+    ],
+    tip: "'Laten' + infinitief lijkt op het Engelse 'have something done' of 'let someone do something' — geen 'te' ertussen.",
+    tipEn: "'Laten' + infinitive resembles English 'have something done' or 'let someone do something' — no 'te' in between."
+  },
+  {
+    id: "woordvorming", level: "B1", filter: "woordvorming",
+    title: "Woordvorming: voor- en achtervoegsels", titleEn: "Word formation: prefixes & suffixes",
+    intro: "Met een klein aantal voor- en achtervoegsels kun je uit één stam veel nieuwe woorden maken — een krachtige manier om je woordenschat snel te laten groeien.",
+    introEn: "With a small set of prefixes and suffixes you can build many new words from a single stem — a powerful way to grow your vocabulary fast.",
+    tables: [{
+      heading: "Veelgebruikte voor- en achtervoegsels", headingEn: "Common prefixes and suffixes",
+      cols: ["Voor-/achtervoegsel", "Betekenis", "Voorbeeld"],
+      rows: [
+        ["on-", "tegenovergestelde", "gelukkig → ongelukkig"],
+        ["her-", "opnieuw", "beginnen → herbeginnen, gebruiken → hergebruiken"],
+        ["ver-", "verandering / actie", "groot → vergroten, beter → verbeteren"],
+        ["-heid", "zelfstandig nw. van bijv. nw.", "veilig → veiligheid, mogelijk → mogelijkheid"],
+        ["-ing", "zelfstandig nw. van werkwoord", "verwarmen → verwarming, oplossen → oplossing"],
+        ["-baar", "bijv. nw.: '(niet) mogelijk om te'", "eten → eetbaar, betalen → betaalbaar"]
+      ]
+    }],
+    rules: [
+      { nl: "'On-' maakt een bijvoeglijk naamwoord negatief: onhandig, onmogelijk, onbekend.", en: "'On-' negates an adjective: onhandig (clumsy), onmogelijk (impossible), onbekend (unknown)." },
+      { nl: "'-heid' en '-ing' maken van een bijvoeglijk naamwoord of werkwoord een zelfstandig naamwoord (altijd 'de').", en: "'-heid' and '-ing' turn an adjective or verb into a noun (always 'de')." },
+      { nl: "'-baar' betekent 'kan (niet) ... worden': 'zichtbaar' = kan gezien worden.", en: "'-baar' means 'can(not) be ...': 'zichtbaar' = can be seen." },
+      { nl: "Als je een van deze patronen herkent, kun je vaak de betekenis van een onbekend woord raden.", en: "Once you recognise one of these patterns, you can often guess the meaning of an unfamiliar word." }
+    ],
+    examples: [
+      { nl: "Dit probleem is helaas onoplosbaar.", en: "Unfortunately, this problem is unsolvable." },
+      { nl: "De veiligheid van de kinderen staat voorop.", en: "The children's safety comes first." },
+      { nl: "Zijn uitleg zorgde voor veel verwarring.", en: "His explanation caused a lot of confusion." }
+    ],
+    tip: "Maak een lijst van woorden die je al kent en zoek de familie erbij: mogelijk → mogelijkheid → onmogelijk → onmogelijkheid.",
+    tipEn: "Make a list of words you already know and find their word family: mogelijk → mogelijkheid → onmogelijk → onmogelijkheid."
+  },
+  {
     id: "lijdende-vorm", level: "B1", filter: "passief",
     title: "Lijdende vorm (passief)", titleEn: "Passive voice",
     intro: "De lijdende vorm verschuift de focus van de uitvoerder naar de actie of het ondergaan van de actie.",
@@ -1027,6 +1314,86 @@ const grammarTopicsData = [
 
   // ══ B2 ══════════════════════════════════════════════════════════════════════
 
+  {
+    id: "hoe-hoe-vergelijking", level: "B2", filter: "hoe-hoe-vergelijking",
+    title: "Hoe ... hoe ... (evenredige vergelijking)", titleEn: "Hoe ... hoe ... (proportional comparison)",
+    intro: "'Hoe ... hoe ...' + comparatief drukt uit dat twee dingen samen veranderen: 'the more ... the more ...'. Beide delen hebben inversie (werkwoord vóór onderwerp).",
+    introEn: "'Hoe ... hoe ...' + comparative expresses that two things change together: 'the more ... the more ...'. Both parts have inversion (verb before subject).",
+    tables: [{
+      heading: "Hoe...hoe...-constructie", headingEn: "Hoe...hoe... construction",
+      cols: ["Patroon", "Voorbeeld", "English"],
+      rows: [
+        ["Hoe + comp., hoe + comp.", "Hoe meer je oefent, hoe beter je wordt.", "The more you practise, the better you get."],
+        ["Hoe + comp., des te + comp.", "Hoe later het is, des te stiller de stad.", "The later it is, the quieter the city."]
+      ]
+    }],
+    rules: [
+      { nl: "Beide delen van de zin hebben inversie: comparatief → werkwoord → onderwerp.", en: "Both parts of the sentence have inversion: comparative → verb → subject." },
+      { nl: "'Des te' is een formeler alternatief voor het tweede 'hoe'.", en: "'Des te' is a more formal alternative for the second 'hoe'." },
+      { nl: "Deze constructie werkt alleen met vergelijkbare (gradeerbare) bijvoeglijke naamwoorden of bijwoorden.", en: "This construction only works with comparable (gradable) adjectives or adverbs." }
+    ],
+    examples: [
+      { nl: "Hoe langer ik hier woon, hoe meer ik ervan hou.", en: "The longer I live here, the more I love it." },
+      { nl: "Hoe drukker het is, des te zenuwachtiger ik word.", en: "The busier it is, the more nervous I get." },
+      { nl: "Hoe eerder je begint, hoe minder stress je hebt.", en: "The earlier you start, the less stress you have." }
+    ],
+    tip: "Let op de woordvolgorde: na 'hoe' komt eerst de vergelijkende vorm, dan pas het werkwoord — nooit andersom.",
+    tipEn: "Watch the word order: after 'hoe' the comparative form comes first, then the verb — never the other way around."
+  },
+  {
+    id: "deelwoord-als-bijvoeglijk", level: "B2", filter: "deelwoord-als-bijvoeglijk",
+    title: "Deelwoord als bijvoeglijk naamwoord", titleEn: "Participle used as an adjective",
+    intro: "Voltooide deelwoorden (gebakken, gebroken) en tegenwoordige deelwoorden (kokend, groeiend) kunnen als bijvoeglijk naamwoord voor een zelfstandig naamwoord staan.",
+    introEn: "Past participles (gebakken, gebroken) and present participles (kokend, groeiend) can be used as adjectives before a noun.",
+    tables: [{
+      heading: "Deelwoord + zelfstandig naamwoord", headingEn: "Participle + noun",
+      cols: ["Type", "Deelwoord", "Voorbeeld"],
+      rows: [
+        ["Voltooid deelwoord (passief/afgerond)", "gebakken, gebroken, geschreven", "de gebakken vis, een gebroken been"],
+        ["Tegenwoordig deelwoord (+ -end, actief/lopend)", "kokend, groeiend, blaffend", "kokend water, een blaffende hond"]
+      ]
+    }],
+    rules: [
+      { nl: "Het voltooid deelwoord als bijvoeglijk naamwoord beschrijft iets dat de handeling heeft ondergaan (passief perspectief).", en: "The past participle as an adjective describes something that underwent the action (passive perspective)." },
+      { nl: "Het tegenwoordig deelwoord (infinitief + -d/-de) beschrijft iets dat actief bezig is (actief perspectief).", en: "The present participle (infinitive + -d/-de) describes something actively doing the action (active perspective)." },
+      { nl: "Zoals elk bijvoeglijk naamwoord krijgt het deelwoord -e voor de-woorden en meervoud, geen -e voor onbepaald het-woord.", en: "Like any adjective, the participle takes -e before de-words and plurals, no -e before an indefinite het-word." }
+    ],
+    examples: [
+      { nl: "Pas op, het water is nog kokend heet.", en: "Careful, the water is still boiling hot." },
+      { nl: "De gebroken vaas lag op de grond.", en: "The broken vase lay on the floor." },
+      { nl: "Een groeiend aantal mensen werkt vanuit huis.", en: "A growing number of people work from home." }
+    ],
+    tip: "Twijfel tussen voltooid en tegenwoordig deelwoord? Vraag: 'ondergaat het de actie (voltooid) of doet het de actie (tegenwoordig)?'",
+    tipEn: "Unsure between past and present participle? Ask: 'does it undergo the action (past) or perform the action (present)?'"
+  },
+  {
+    id: "iets-niets-plus-s", level: "B2", filter: "iets-niets-plus-s",
+    title: "Iets/niets/wat + bijvoeglijk naamwoord + -s", titleEn: "Iets/niets/wat + adjective + -s",
+    intro: "Na onbepaalde voornaamwoorden zoals iets, niets, wat, veel en genoeg krijgt een volgend bijvoeglijk naamwoord een extra -s.",
+    introEn: "After indefinite pronouns like iets, niets, wat, veel and genoeg, a following adjective gets an extra -s.",
+    tables: [{
+      heading: "Patroon: onbepaald vnw + bijv. nw. + -s", headingEn: "Pattern: indefinite pronoun + adjective + -s",
+      cols: ["Onbepaald vnw", "+ bijvoeglijk naamwoord", "Voorbeeld"],
+      rows: [
+        ["iets", "+ -s", "iets leuks, iets lekkers"],
+        ["niets", "+ -s", "niets bijzonders"],
+        ["wat", "+ -s", "wat moois"],
+        ["veel / genoeg", "+ -s", "veel interessants, genoeg lekkers"]
+      ]
+    }],
+    rules: [
+      { nl: "Deze -s verschijnt alleen na de onbepaalde voornaamwoorden iets, niets, wat, veel, genoeg, weinig — niet elders.", en: "This -s only appears after the indefinite pronouns iets, niets, wat, veel, genoeg, weinig — nowhere else." },
+      { nl: "Het bijvoeglijk naamwoord blijft verder ongewijzigd behalve deze -s: leuk → leuks, mooi → moois.", en: "The adjective otherwise stays unchanged apart from this -s: leuk → leuks, mooi → moois." },
+      { nl: "Dit patroon heeft niets te maken met de normale -e regel bij bijvoeglijke naamwoorden.", en: "This pattern has nothing to do with the normal -e rule for adjectives." }
+    ],
+    examples: [
+      { nl: "Heb je iets leuks gedaan dit weekend?", en: "Did you do anything fun this weekend?" },
+      { nl: "Er stond niets interessants in de krant.", en: "There was nothing interesting in the newspaper." },
+      { nl: "Ik heb wat lekkers meegenomen voor bij de koffie.", en: "I brought something tasty for with the coffee." }
+    ],
+    tip: "Deze -s is een van de kleinste maar meest voorkomende foutjes bij gevorderde leerders — let er extra op na iets/niets/wat.",
+    tipEn: "This -s is one of the smallest but most common mistakes for advanced learners — pay extra attention after iets/niets/wat."
+  },
   {
     id: "voltooide-voorwaardelijke", level: "B2", filter: "overig",
     title: "Voltooide voorwaardelijke wijs", titleEn: "Perfect conditional",
@@ -1249,7 +1616,7 @@ const lessonPlanData = {
         },
         {
           unit: 3, title: "Mijn dag", titleEn: "My day", weeks: "Week 3",
-          grammarTopics: ["bezittelijke-vnw", "ontkenning", "voorzetsels-a1"],
+          grammarTopics: ["bezittelijke-vnw", "ontkenning", "voorzetsels-a1", "gebiedende-wijs"],
           verbRange: [82, 122],
           verbFocus: ["schijnen","wegen","wassen","meten","beschrijven","verschijnen","vertrekken","sturen","praten","hopen","betalen","wonen"],
           vocabTopics: [{level:"A1",topic:"tijd"},{level:"A1",topic:"kleding"},{level:"A1",topic:"lichaam"},{level:"A1",topic:"werkwoorden"},{level:"A1",topic:"voorzetsels"}],
@@ -1258,17 +1625,18 @@ const lessonPlanData = {
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Bestudeer bezittelijke voornaamwoorden (mijn, jouw, zijn, haar, ons, hun) en ontkenning (niet/geen).", descEn: "Day 1–2: Study possessive pronouns (mijn, jouw, zijn, haar, ons, hun) and negation (niet/geen)." },
             { type: "grammatica", desc: "Dag 3–4: Leer voorzetsels van plaats en tijd (in, op, aan, bij, naar, om).", descEn: "Day 3–4: Learn prepositions of place and time (in, op, aan, bij, naar, om)." },
+            { type: "grammatica", desc: "Dag 4–5: Leer de gebiedende wijs (imperatief) voor instructies en verzoeken.", descEn: "Day 4–5: Learn the imperative for instructions and requests." },
             { type: "werkwoorden", desc: "Dag 1–5: Oefen dagelijkse routinewerkwoorden in OTT. Doel: foutloos 8 van 10.", descEn: "Day 1–5: Practise daily-routine verbs in OTT. Goal: 8 of 10 error-free." },
-            { type: "zinnen", desc: "Dag 4–6: Oefen ontkenningszinnen en zinnen over de dagelijkse routine.", descEn: "Day 4–6: Practise negation sentences and sentences about the daily routine." },
+            { type: "zinnen", desc: "Dag 4–6: Oefen ontkenningszinnen, imperatiefzinnen en zinnen over de dagelijkse routine.", descEn: "Day 4–6: Practise negation sentences, imperative sentences and sentences about the daily routine." },
             { type: "woordenschat", desc: "Dag 5–7: Leer woorden over tijd, kleding en lichaam.", descEn: "Day 5–7: Learn words about time, clothing and body." },
             { type: "dehet", desc: "Dag 6–7: Train de/het voor kleding- en lichaamswoorden.", descEn: "Day 6–7: Train de/het for clothing and body words." }
           ],
-          goals: ["Bezittelijke voornaamwoorden correct gebruiken in 10 zinnen.", "Zinnen ontkennen met niet en geen zonder fouten.", "8 voorzetsels van tijd en plaats gebruiken in context.", "De teksten 'Een dag in mijn leven' en 'Wat draag ik vandaag?' begrijpen."],
-          goalsEn: ["Use possessive pronouns correctly in 10 sentences.", "Negate sentences with niet and geen without errors.", "Use 8 prepositions of time and place in context.", "Understand the texts 'Een dag in mijn leven' and 'Wat draag ik vandaag?'."]
+          goals: ["Bezittelijke voornaamwoorden correct gebruiken in 10 zinnen.", "Zinnen ontkennen met niet en geen zonder fouten.", "8 voorzetsels van tijd en plaats gebruiken in context.", "De gebiedende wijs correct vormen voor instructies.", "De teksten 'Een dag in mijn leven' en 'Wat draag ik vandaag?' begrijpen."],
+          goalsEn: ["Use possessive pronouns correctly in 10 sentences.", "Negate sentences with niet and geen without errors.", "Use 8 prepositions of time and place in context.", "Correctly form the imperative for instructions.", "Understand the texts 'Een dag in mijn leven' and 'Wat draag ik vandaag?'."]
         },
         {
           unit: 4, title: "Onderweg & herhaling", titleEn: "On the go & review", weeks: "Week 4",
-          grammarTopics: ["hebben-of-zijn"],
+          grammarTopics: ["hebben-of-zijn", "omte-infinitief"],
           verbRange: [123, 163],
           verbFocus: ["tekenen","vertellen","schilderen","dromen","verdienen","melden","combineren","presenteren","feliciteren","verzamelen","berekenen","ontdekken"],
           vocabTopics: [{level:"A1",topic:"vervoer"},{level:"A1",topic:"weer"},{level:"A1",topic:"dieren"},{level:"A1",topic:"bijvoeglijk"},{level:"A1",topic:"cultuur"},{level:"A1",topic:"reizen"},{level:"A1",topic:"sport"}],
@@ -1276,14 +1644,15 @@ const lessonPlanData = {
           readingTexts: ['r-a1-007', 'r-a1-008'],
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Bestudeer 'Hebben of zijn?' — leer de BAGS-regel (Beweging, Aard, Grootte, Staat) voor de VTT.", descEn: "Day 1–2: Study 'Hebben or zijn?' — learn the BAGS rule (Movement, Nature, Size, State) for the perfect tense." },
+            { type: "grammatica", desc: "Dag 2–3: Leer 'om ... te + infinitief' voor doel: 'Ik leer Nederlands om hier te werken.'", descEn: "Day 2–3: Learn 'om ... te + infinitive' for purpose: 'Ik leer Nederlands om hier te werken.'" },
             { type: "werkwoorden", desc: "Dag 1–3: Oefen VTT met zijn-werkwoorden (gaan, komen, fietsen) en hebben-werkwoorden (maken, kijken, lezen).", descEn: "Day 1–3: Practise VTT with zijn verbs (gaan, komen, fietsen) and hebben verbs (maken, kijken, lezen)." },
             { type: "werkwoorden", desc: "Dag 3–5: Herhaal alle werkwoorden 0–163 in OTT. Test: conjugeer 20 willekeurige werkwoorden foutloos.", descEn: "Day 3–5: Revise all verbs 0–163 in OTT. Test: conjugate 20 random verbs without errors." },
-            { type: "zinnen", desc: "Dag 4–5: Oefen alle A1-zinstypen: mededelingen, vragen en ontkenningen. Mix alle grammatica.", descEn: "Day 4–5: Practise all A1 sentence types: statements, questions and negations. Mix all grammar." },
+            { type: "zinnen", desc: "Dag 4–5: Oefen alle A1-zinstypen: mededelingen, vragen, ontkenningen en om...te-zinnen. Mix alle grammatica.", descEn: "Day 4–5: Practise all A1 sentence types: statements, questions, negations and om...te sentences. Mix all grammar." },
             { type: "woordenschat", desc: "Dag 5–6: Leer woorden over vervoer, weer en dieren. Herhaal ook week 1–3 woorden.", descEn: "Day 5–6: Learn words about transport, weather and animals. Also revise week 1–3 words." },
             { type: "dehet", desc: "Dag 6–7: Eindtoets de/het: test 50 woorden. Doel: minstens 80% correct.", descEn: "Day 6–7: Final de/het test: test 50 words. Goal: at least 80% correct." }
           ],
-          goals: ["De BAGS-regel toepassen: hebben of zijn in de VTT.", "20 werkwoorden foutloos vervoegen in OTT.", "Alle A1-grammatica combineren in vrije zinnen.", "A1 afgerond: basisgesprekken zelfstandig voeren."],
-          goalsEn: ["Apply the BAGS rule: hebben or zijn in the perfect tense.", "Conjugate 20 verbs in OTT without errors.", "Combine all A1 grammar in free sentences.", "A1 complete: hold basic conversations independently."]
+          goals: ["De BAGS-regel toepassen: hebben of zijn in de VTT.", "20 werkwoorden foutloos vervoegen in OTT.", "'Om ... te + infinitief' correct gebruiken voor doel.", "Alle A1-grammatica combineren in vrije zinnen.", "A1 afgerond: basisgesprekken zelfstandig voeren."],
+          goalsEn: ["Apply the BAGS rule: hebben or zijn in the perfect tense.", "Conjugate 20 verbs in OTT without errors.", "Correctly use 'om ... te + infinitive' for purpose.", "Combine all A1 grammar in free sentences.", "A1 complete: hold basic conversations independently."]
         }
       ]
     },
@@ -1311,7 +1680,7 @@ const lessonPlanData = {
         },
         {
           unit: 6, title: "Gezondheid & sport", titleEn: "Health & sport", weeks: "Week 6",
-          grammarTopics: ["vergrotende-trap"],
+          grammarTopics: ["vergrotende-trap", "hoeven-te"],
           verbRange: [205, 245],
           verbFocus: ["starten","raden","brouwen","roken","kussen","schreeuwen","coachen","analyseren","beleven","beslissen","opbellen","thuiskomen"],
           vocabTopics: [{level:"A2",topic:"gezondheid"},{level:"A2",topic:"sport"},{level:"A2",topic:"hobby"},{level:"A2",topic:"karakter"},{level:"A2",topic:"werkwoorden"}],
@@ -1319,13 +1688,14 @@ const lessonPlanData = {
           readingTexts: ['r-a2-002', 'r-a2-009', 'r-a2-015', 'r-a2-007'],
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Leer de vergrotende trap (-er) en overtreffende trap (-st). Onregelmatig: goed-beter-best, veel-meer-meest.", descEn: "Day 1–2: Learn comparative (-er) and superlative (-st). Irregular: goed-beter-best, veel-meer-meest." },
+            { type: "grammatica", desc: "Dag 3–4: Leer 'hoeven (niet) te' voor wat niet verplicht is: 'Je hoeft niet elke dag te sporten.'", descEn: "Day 3–4: Learn 'hoeven (niet) te' for what isn't required: 'Je hoeft niet elke dag te sporten.'" },
             { type: "werkwoorden", desc: "Dag 2–5: Oefen gezondheids- en sportwerkwoorden in OTT en OVT.", descEn: "Day 2–5: Practise health and sport verbs in OTT and OVT." },
-            { type: "zinnen", desc: "Dag 4–6: Maak vergelijkingen: 'Voetbal is populairder dan tennis.' Oefen zinnen over de huisarts en tandarts.", descEn: "Day 4–6: Make comparisons: 'Voetbal is populairder dan tennis.' Practise sentences about the doctor and dentist." },
+            { type: "zinnen", desc: "Dag 4–6: Maak vergelijkingen: 'Voetbal is populairder dan tennis.' Oefen zinnen over de huisarts en tandarts, en met 'hoeven niet te'.", descEn: "Day 4–6: Make comparisons: 'Voetbal is populairder dan tennis.' Practise sentences about the doctor and dentist, and with 'hoeven niet te'." },
             { type: "woordenschat", desc: "Dag 5–7: Leer 30 gezondheids- en sportwoorden. Oefen vergelijkingen.", descEn: "Day 5–7: Learn 30 health and sport words. Practise comparisons." },
             { type: "dehet", desc: "Dag 6–7: Train de/het voor gezondheids- en sportwoorden.", descEn: "Day 6–7: Train de/het for health and sport words." }
           ],
-          goals: ["Vergrotende en overtreffende trap correct gebruiken (incl. 5 onregelmatige).", "30 nieuwe woorden kennen (gezondheid, sport, karakter).", "De teksten over de huisarts, sport en de tandarts begrijpen."],
-          goalsEn: ["Use comparative and superlative correctly (incl. 5 irregular ones).", "Know 30 new words (health, sport, character).", "Understand the texts about the doctor, sport and the dentist."]
+          goals: ["Vergrotende en overtreffende trap correct gebruiken (incl. 5 onregelmatige).", "'Hoeven niet te' correct onderscheiden van 'moeten' en 'mogen niet'.", "30 nieuwe woorden kennen (gezondheid, sport, karakter).", "De teksten over de huisarts, sport en de tandarts begrijpen."],
+          goalsEn: ["Use comparative and superlative correctly (incl. 5 irregular ones).", "Correctly distinguish 'hoeven niet te' from 'moeten' and 'mogen niet'.", "Know 30 new words (health, sport, character).", "Understand the texts about the doctor, sport and the dentist."]
         },
         {
           unit: 7, title: "Vrije tijd & feest", titleEn: "Free time & celebrations", weeks: "Week 7",
@@ -1346,7 +1716,7 @@ const lessonPlanData = {
         },
         {
           unit: 8, title: "Wonen & onderweg", titleEn: "Living & getting around", weeks: "Week 8",
-          grammarTopics: ["er-systeem", "voorzetsels-a2"],
+          grammarTopics: ["er-systeem", "voorzetsels-a2", "toekomende-tijd"],
           verbRange: [287, 327],
           verbFocus: ["doorsturen","opschrijven","opleggen","uitvoeren","meebrengen","afzetten","openstellen","aanstellen","afspreken","meedelen","toenemen","verheugen"],
           vocabTopics: [{level:"A2",topic:"reizen"},{level:"A2",topic:"toerisme"},{level:"A2",topic:"huis"},{level:"A2",topic:"architectuur"},{level:"A2",topic:"milieu"},{level:"A2",topic:"landbouw"},{level:"A2",topic:"voorzetsels"}],
@@ -1354,16 +1724,17 @@ const lessonPlanData = {
           readingTexts: ['r-003', 'r-004', 'r-a2-005', 'r-a2-010', 'r-a2-014', 'r-a2-016', 'r-a2-018', 'r-a2-020', 'r-a2-022'],
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Leer het er-systeem en A2-voorzetsels (sinds, tijdens, vanwege, ondanks).", descEn: "Day 1–2: Learn the er system and A2 prepositions (sinds, tijdens, vanwege, ondanks)." },
+            { type: "grammatica", desc: "Dag 2–3: Leer de drie manieren om de toekomst uit te drukken: presens, gaan + inf., zullen + inf.", descEn: "Day 2–3: Learn the three ways to express the future: present tense, gaan + inf., zullen + inf." },
             { type: "werkwoorden", desc: "Dag 2–4: Oefen reis- en woonwerkwoorden in OTT, OVT en VTT.", descEn: "Day 2–4: Practise travel and housing verbs in OTT, OVT and VTT." },
-            { type: "zinnen", desc: "Dag 3–5: Oefen zinnen met 'er' en A2-voorzetsels over huren, reizen en de trein.", descEn: "Day 3–5: Practise sentences with 'er' and A2 prepositions about renting, travel and the train." },
+            { type: "zinnen", desc: "Dag 3–5: Oefen zinnen met 'er', A2-voorzetsels en toekomende tijd over huren, reizen en de trein.", descEn: "Day 3–5: Practise sentences with 'er', A2 prepositions and future tense about renting, travel and the train." },
             { type: "woordenschat", desc: "Dag 6–7: Leer 40 reis- en woonwoorden. Oefen voorzetsels in context.", descEn: "Day 6–7: Learn 40 travel and housing words. Practise prepositions in context." }
           ],
-          goals: ["4 functies van 'er' herkennen en toepassen.", "A2-voorzetsels van tijd en abstractie gebruiken.", "40 reis- en woonwoorden kennen.", "De teksten over een huurhuis, het station en de buurt begrijpen."],
-          goalsEn: ["Recognise and apply 4 functions of 'er'.", "Use A2 prepositions of time and abstraction.", "Know 40 travel and housing words.", "Understand the texts about renting a home, the station and the neighbourhood."]
+          goals: ["4 functies van 'er' herkennen en toepassen.", "A2-voorzetsels van tijd en abstractie gebruiken.", "De drie toekomstvormen correct kiezen en gebruiken.", "40 reis- en woonwoorden kennen.", "De teksten over een huurhuis, het station en de buurt begrijpen."],
+          goalsEn: ["Recognise and apply 4 functions of 'er'.", "Use A2 prepositions of time and abstraction.", "Correctly choose and use the three future forms.", "Know 40 travel and housing words.", "Understand the texts about renting a home, the station and the neighbourhood."]
         },
         {
           unit: 9, title: "Werk, school & routine", titleEn: "Work, school & routine", weeks: "Week 9",
-          grammarTopics: ["scheidbare-werkwoorden", "onderschikkende-vgw-1", "formeel-u"],
+          grammarTopics: ["scheidbare-werkwoorden", "onderschikkende-vgw-1", "formeel-u", "reflexieve-werkwoorden", "progressieve-tijd"],
           verbRange: [328, 368],
           verbFocus: ["zich voelen","concentreren","omdraaien","verzetten","vastgrijpen","inschrijven","beraden","adviseren","behandelen","beschermen","beweren","controleren"],
           vocabTopics: [{level:"A2",topic:"werk"},{level:"A2",topic:"onderwijs"},{level:"A2",topic:"technologie"},{level:"A2",topic:"communicatie"},{level:"A2",topic:"samenleving"},{level:"A2",topic:"relaties"},{level:"A2",topic:"verbinders"},{level:"A2",topic:"verbindingswoorden"}],
@@ -1373,13 +1744,14 @@ const lessonPlanData = {
             { type: "grammatica", desc: "Dag 1–2: Bestudeer scheidbare werkwoorden: prefix schuift naar het einde in een hoofdzin; prefix + stam blijven samen in een bijzin.", descEn: "Day 1–2: Study separable verbs: prefix moves to the end in a main clause; prefix + stem stay together in a sub. clause." },
             { type: "grammatica", desc: "Dag 2–3: Leer het voltooid deelwoord van scheidbare werkwoorden (op+ge+staan = opgestaan). Leer ook formeel 'u' (u, uw).", descEn: "Day 2–3: Learn the past participle of separable verbs (op+ge+staan = opgestaan). Also learn formal 'u' (u, uw)." },
             { type: "grammatica", desc: "Dag 3–4: Bestudeer onderschikkende voegwoorden (omdat, als, dat, terwijl, toen) — werkwoord naar het einde!", descEn: "Day 3–4: Study subordinating conjunctions (omdat, als, dat, terwijl, toen) — verb to the end!" },
-            { type: "werkwoorden", desc: "Dag 2–4: Oefen scheidbare werkwoorden (opstaan, opbellen, meenemen, inschrijven) in OTT, OVT en VTT.", descEn: "Day 2–4: Practise separable verbs (opstaan, opbellen, meenemen, inschrijven) in OTT, OVT and VTT." },
+            { type: "grammatica", desc: "Dag 4–5: Leer reflexieve werkwoorden (zich voelen, zich concentreren) en 'aan het + infinitief' voor lopende acties.", descEn: "Day 4–5: Learn reflexive verbs (zich voelen, zich concentreren) and 'aan het + infinitive' for ongoing actions." },
+            { type: "werkwoorden", desc: "Dag 2–4: Oefen scheidbare en reflexieve werkwoorden (opstaan, opbellen, zich voelen, zich haasten) in OTT, OVT en VTT.", descEn: "Day 2–4: Practise separable and reflexive verbs (opstaan, opbellen, zich voelen, zich haasten) in OTT, OVT and VTT." },
             { type: "zinnen", desc: "Dag 3–5: Oefen scheidbare werkwoorden in Zinnen oefenen → filter 'Scheidbare ww.' — focus op prefix-naar-einde en VTT-vormen.", descEn: "Day 3–5: Practise separable verbs in Zinnen oefenen → filter 'Scheidbare ww.' — focus on prefix-to-end and perfect tense forms." },
-            { type: "zinnen", desc: "Dag 5–7: Oefen bijzinnen met omdat, als en dat over werk en school.", descEn: "Day 5–7: Practise sub. clauses with omdat, als and dat about work and school." },
+            { type: "zinnen", desc: "Dag 5–7: Oefen bijzinnen met omdat, als en dat, en reflexieve/progressieve zinnen over werk en school.", descEn: "Day 5–7: Practise sub. clauses with omdat, als and dat, and reflexive/progressive sentences about work and school." },
             { type: "woordenschat", desc: "Dag 6–7: Leer 40 werk- en onderwijswoorden.", descEn: "Day 6–7: Learn 40 work and education words." }
           ],
-          goals: ["Bijzinnen vormen met 5 onderschikkende voegwoorden (correcte woordvolgorde).", "10 scheidbare werkwoorden correct gebruiken in hoofd- en bijzinnen.", "40 werk- en onderwijswoorden kennen.", "A2 afgerond: dagelijkse communicatie zelfstandig voeren."],
-          goalsEn: ["Form subordinate clauses with 5 subordinating conjunctions (correct word order).", "Correctly use 10 separable verbs in main and subordinate clauses.", "Know 40 work and education words.", "A2 complete: hold daily communication independently."]
+          goals: ["Bijzinnen vormen met 5 onderschikkende voegwoorden (correcte woordvolgorde).", "10 scheidbare werkwoorden correct gebruiken in hoofd- en bijzinnen.", "Reflexieve werkwoorden en 'aan het + infinitief' correct gebruiken.", "40 werk- en onderwijswoorden kennen.", "A2 afgerond: dagelijkse communicatie zelfstandig voeren."],
+          goalsEn: ["Form subordinate clauses with 5 subordinating conjunctions (correct word order).", "Correctly use 10 separable verbs in main and subordinate clauses.", "Correctly use reflexive verbs and 'aan het + infinitive'.", "Know 40 work and education words.", "A2 complete: hold daily communication independently."]
         }
       ]
     },
@@ -1388,7 +1760,7 @@ const lessonPlanData = {
       units: [
         {
           unit: 10, title: "Werk & carrière", titleEn: "Work & career", weeks: "Week 10",
-          grammarTopics: ["betrekkelijke-bijzin"],
+          grammarTopics: ["betrekkelijke-bijzin", "betrekkelijke-bijzin-voorzetsel"],
           verbRange: [369, 409],
           verbFocus: ["discussiëren","geloven","informeren","merken","ontmoeten","plannen","regelen","respecteren","twijfelen","verdienen","vertrouwen","verzorgen"],
           vocabTopics: [{level:"B1",topic:"werk"},{level:"B1",topic:"financiën"},{level:"B1",topic:"uitdrukkingen"},{level:"B1",topic:"economie"},{level:"B1",topic:"recht"},{level:"B1",topic:"collocaties"},{level:"B1",topic:"woordfamilie"}],
@@ -1396,16 +1768,17 @@ const lessonPlanData = {
           readingTexts: ['r-b1-c-001', 'r-b1-c-004'],
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Leer betrekkelijke bijzinnen: die (de-woorden), dat (het-woorden), wat (hele zinnen). Oefen 10 voorbeelden.", descEn: "Day 1–2: Learn relative clauses: die (de words), dat (het words), wat (whole sentences). Practise 10 examples." },
+            { type: "grammatica", desc: "Dag 2–3: Leer betrekkelijke bijzinnen met voorzetsel: 'met wie' voor personen, 'waarover/waaraan' voor dingen.", descEn: "Day 2–3: Learn relative clauses with a preposition: 'met wie' for people, 'waarover/waaraan' for things." },
             { type: "werkwoorden", desc: "Dag 2–5: Oefen werkgerelateerde werkwoorden in OTT, OVT en VTT.", descEn: "Day 2–5: Practise work-related verbs in OTT, OVT and VTT." },
-            { type: "zinnen", desc: "Dag 4–6: Maak complexe zinnen met betrekkelijke bijzinnen over werk en carrière.", descEn: "Day 4–6: Create complex sentences with relative clauses about work and career." },
+            { type: "zinnen", desc: "Dag 4–6: Maak complexe zinnen met betrekkelijke bijzinnen (met en zonder voorzetsel) over werk en carrière.", descEn: "Day 4–6: Create complex sentences with relative clauses (with and without a preposition) about work and career." },
             { type: "woordenschat", desc: "Dag 5–7: Leer 30 werk-, financiën- en juridische woorden en woordfamilies.", descEn: "Day 5–7: Learn 30 work, finance and legal words and word families." }
           ],
-          goals: ["Die, dat en wat correct gebruiken in betrekkelijke bijzinnen.", "30 werk- en financiënwoorden kennen.", "De teksten over werk, een klacht indienen en een kamer zoeken begrijpen."],
-          goalsEn: ["Use die, dat and wat correctly in relative clauses.", "Know 30 work and finance words.", "Understand the texts about work, filing a complaint and finding a room."]
+          goals: ["Die, dat en wat correct gebruiken in betrekkelijke bijzinnen.", "Betrekkelijke bijzinnen met voorzetsel correct vormen ('met wie', 'waarover').", "30 werk- en financiënwoorden kennen.", "De teksten over werk, een klacht indienen en een kamer zoeken begrijpen."],
+          goalsEn: ["Use die, dat and wat correctly in relative clauses.", "Correctly form relative clauses with a preposition ('met wie', 'waarover').", "Know 30 work and finance words.", "Understand the texts about work, filing a complaint and finding a room."]
         },
         {
           unit: 11, title: "Wonen & samenleving", titleEn: "Living & society", weeks: "Week 11",
-          grammarTopics: ["lijdende-vorm"],
+          grammarTopics: ["lijdende-vorm", "laten-plus-infinitief"],
           verbRange: [410, 450],
           verbFocus: ["wennen","bevatten","interviewen","interesseren","bestaan","verlaten","overwegen","betrekken","voorkomen","aanzien","aanpassen","afspreken"],
           vocabTopics: [{level:"B1",topic:"wonen"},{level:"B1",topic:"samenleving"},{level:"B1",topic:"architectuur"},{level:"B1",topic:"huis"},{level:"B1",topic:"voorzetsels"},{level:"B1",topic:"landbouw"},{level:"B1",topic:"karakter"}],
@@ -1414,12 +1787,13 @@ const lessonPlanData = {
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Bestudeer de lijdende vorm in OTT (wordt + vd.) en OVT (werd + vd.). Leer het verschil met actief.", descEn: "Day 1–2: Study passive voice in OTT (wordt + pp) and OVT (werd + pp). Learn the difference with active." },
             { type: "grammatica", desc: "Dag 3–4: Leer worden-passief vs. zijn-passief. Oefen: 'Het huis wordt gebouwd' vs. 'Het huis is gebouwd'.", descEn: "Day 3–4: Learn worden passive vs. zijn passive. Practise: 'Het huis wordt gebouwd' vs. 'Het huis is gebouwd'." },
+            { type: "grammatica", desc: "Dag 4–5: Leer 'laten + infinitief' voor diensten laten uitvoeren: 'Ik laat mijn keuken verbouwen.'", descEn: "Day 4–5: Learn 'laten + infinitive' for having services done: 'Ik laat mijn keuken verbouwen.'" },
             { type: "werkwoorden", desc: "Dag 2–4: Oefen 12 werkwoorden in passieve constructies over wonen en de woningmarkt.", descEn: "Day 2–4: Practise 12 verbs in passive constructions about housing and the property market." },
-            { type: "zinnen", desc: "Dag 4–6: Herschrijf 15 actieve zinnen als passieve zinnen.", descEn: "Day 4–6: Rewrite 15 active sentences as passive sentences." },
+            { type: "zinnen", desc: "Dag 4–6: Herschrijf 15 actieve zinnen als passieve zinnen en oefen 'laten + infinitief'-zinnen.", descEn: "Day 4–6: Rewrite 15 active sentences as passive sentences and practise 'laten + infinitive' sentences." },
             { type: "woordenschat", desc: "Dag 5–7: Leer 40 woon- en maatschappijwoorden.", descEn: "Day 5–7: Learn 40 housing and society words." }
           ],
-          goals: ["Passieve zinnen vormen in OTT en OVT (foutloos bij 10 zinnen).", "Het verschil uitleggen tussen worden- en zijn-passief.", "40 woon- en maatschappijwoorden kennen.", "De teksten over de woningmarkt en een kamer zoeken begrijpen."],
-          goalsEn: ["Form passive sentences in OTT and OVT (error-free for 10 sentences).", "Explain the difference between worden and zijn passive.", "Know 40 housing and society words.", "Understand the texts about the housing market and finding a room."]
+          goals: ["Passieve zinnen vormen in OTT en OVT (foutloos bij 10 zinnen).", "Het verschil uitleggen tussen worden- en zijn-passief.", "'Laten + infinitief' correct gebruiken voor diensten en toestemming.", "40 woon- en maatschappijwoorden kennen.", "De teksten over de woningmarkt en een kamer zoeken begrijpen."],
+          goalsEn: ["Form passive sentences in OTT and OVT (error-free for 10 sentences).", "Explain the difference between worden and zijn passive.", "Correctly use 'laten + infinitive' for services and permission.", "Know 40 housing and society words.", "Understand the texts about the housing market and finding a room."]
         },
         {
           unit: 12, title: "Milieu & wetenschap", titleEn: "Environment & science", weeks: "Week 12",
@@ -1440,7 +1814,7 @@ const lessonPlanData = {
         },
         {
           unit: 13, title: "Media & communicatie", titleEn: "Media & communication", weeks: "Week 13",
-          grammarTopics: ["indirecte-rede"],
+          grammarTopics: ["indirecte-rede", "voornaamwoordelijke-bijwoorden"],
           verbRange: [491, 530],
           verbFocus: ["functioneren","illustreren","investeren","realiseren","structureren","verwijzen","reguleren","verifiëren","samenvatten","voltooien","beschuldigen","verminderen"],
           vocabTopics: [{level:"B1",topic:"media"},{level:"B1",topic:"communicatie"},{level:"B1",topic:"technologie"},{level:"B1",topic:"bijwoord"},{level:"B1",topic:"verbindingswoorden"},{level:"B1",topic:"cultuur"}],
@@ -1448,12 +1822,13 @@ const lessonPlanData = {
           readingTexts: ['r-b1-004'],
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Leer indirecte rede: 'Hij zegt dat...', 'Ze vroeg of...'. Let op tijdsverschuiving en woordvolgorde.", descEn: "Day 1–2: Learn reported speech: 'Hij zegt dat...', 'Ze vroeg of...'. Pay attention to tense shift and word order." },
+            { type: "grammatica", desc: "Dag 2–3: Leer voornaamwoordelijke bijwoorden: erover, daarmee, waarvoor — voor dingen, nooit voorzetsel + het.", descEn: "Day 2–3: Learn pronominal adverbs: erover, daarmee, waarvoor — for things, never preposition + het." },
             { type: "werkwoorden", desc: "Dag 2–4: Oefen zeggen, beweren, vragen in alle tijden. Focus op tijdsverschuiving.", descEn: "Day 2–4: Practise zeggen, beweren, vragen in all tenses. Focus on tense shift." },
-            { type: "zinnen", desc: "Dag 4–6: Zet 15 directe citaten uit een nieuwsbericht om naar indirecte rede.", descEn: "Day 4–6: Convert 15 direct quotes from a news article into reported speech." },
+            { type: "zinnen", desc: "Dag 4–6: Zet 15 directe citaten uit een nieuwsbericht om naar indirecte rede, en oefen er-/daar-/waar-woorden.", descEn: "Day 4–6: Convert 15 direct quotes from a news article into reported speech, and practise er-/daar-/waar- words." },
             { type: "woordenschat", desc: "Dag 5–7: Leer 30 media- en communicatiewoorden.", descEn: "Day 5–7: Learn 30 media and communication words." }
           ],
-          goals: ["Indirecte rede correct toepassen met tijdsverschuiving.", "30 media- en communicatiewoorden kennen.", "De tekst over de invloed van sociale media begrijpen."],
-          goalsEn: ["Apply reported speech correctly with tense shift.", "Know 30 media and communication words.", "Understand the text about the influence of social media."]
+          goals: ["Indirecte rede correct toepassen met tijdsverschuiving.", "Er-, daar- en waar-woorden correct gebruiken voor dingen.", "30 media- en communicatiewoorden kennen.", "De tekst over de invloed van sociale media begrijpen."],
+          goalsEn: ["Apply reported speech correctly with tense shift.", "Correctly use er-, daar- and waar- compounds for things.", "Know 30 media and communication words.", "Understand the text about the influence of social media."]
         },
         {
           unit: 14, title: "Gevoelens & gezondheid", titleEn: "Feelings & health", weeks: "Week 14",
@@ -1474,7 +1849,7 @@ const lessonPlanData = {
         },
         {
           unit: 15, title: "Maatschappij", titleEn: "Society", weeks: "Week 15",
-          grammarTopics: ["woordvolgorde-gevorderd"],
+          grammarTopics: ["woordvolgorde-gevorderd", "woordvorming"],
           verbRange: [571, 610],
           verbFocus: ["bewaken","besturen","branden","definiëren","dienen","dreigen","exporteren","filteren","handelen","inspireren","introduceren","koesteren"],
           vocabTopics: [{level:"B1",topic:"samenleving"},{level:"B1",topic:"politiek"},{level:"B1",topic:"verbinders"},{level:"B1",topic:"onderwijs"},{level:"B1",topic:"toerisme"},{level:"B1",topic:"werkwoorden"},{level:"B1",topic:"bijvoeglijk"},{level:"B1",topic:"reizen"}],
@@ -1482,12 +1857,13 @@ const lessonPlanData = {
           readingTexts: ['r-b1-003', 'r-b1-c-003'],
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Bestudeer gevorderde woordvolgorde: inversie na bijwoord, tijd-wijze-plaats, tangconstructie.", descEn: "Day 1–2: Study advanced word order: inversion after adverb, time-manner-place, brace construction." },
+            { type: "grammatica", desc: "Dag 2–3: Leer woordvorming: on-, her-, ver-, -heid, -ing, -baar — bouw nieuwe woorden uit bekende stammen.", descEn: "Day 2–3: Learn word formation: on-, her-, ver-, -heid, -ing, -baar — build new words from known stems." },
             { type: "werkwoorden", desc: "Dag 2–5: Oefen VVT (voltooid verleden tijd: had + vd.) voor verhalen over vrijwilligerswerk.", descEn: "Day 2–5: Practise VVT (pluperfect: had + pp) for stories about volunteering." },
             { type: "zinnen", desc: "Dag 4–6: Schrijf een kort verhaal (100 woorden) met gevorderde woordvolgorde over openbaar vervoer of vrijwilligerswerk.", descEn: "Day 4–6: Write a short story (100 words) with advanced word order about public transport or volunteering." },
-            { type: "woordenschat", desc: "Dag 5–7: Leer 30 woorden over samenleving, politiek en onderwijs.", descEn: "Day 5–7: Learn 30 words about society, politics and education." }
+            { type: "woordenschat", desc: "Dag 5–7: Leer 30 woorden over samenleving, politiek en onderwijs. Herken woordfamilies met on-/her-/ver-/-heid/-ing.", descEn: "Day 5–7: Learn 30 words about society, politics and education. Recognise word families with on-/her-/ver-/-heid/-ing." }
           ],
-          goals: ["Gevorderde woordvolgorde toepassen (inversie, tangconstructie).", "30 woorden over samenleving en politiek kennen.", "De teksten over vrijwilligerswerk en openbaar vervoer begrijpen.", "B1 afgerond: zelfstandig communiceren over alle alledaagse thema's."],
-          goalsEn: ["Apply advanced word order (inversion, brace construction).", "Know 30 words about society and politics.", "Understand the texts about volunteering and public transport.", "B1 complete: communicate independently on all everyday topics."]
+          goals: ["Gevorderde woordvolgorde toepassen (inversie, tangconstructie).", "Nieuwe woorden herkennen en vormen met voor-/achtervoegsels.", "30 woorden over samenleving en politiek kennen.", "De teksten over vrijwilligerswerk en openbaar vervoer begrijpen.", "B1 afgerond: zelfstandig communiceren over alle alledaagse thema's."],
+          goalsEn: ["Apply advanced word order (inversion, brace construction).", "Recognise and form new words with prefixes/suffixes.", "Know 30 words about society and politics.", "Understand the texts about volunteering and public transport.", "B1 complete: communicate independently on all everyday topics."]
         }
       ]
     },
@@ -1530,7 +1906,7 @@ const lessonPlanData = {
         },
         {
           unit: 18, title: "Onderwijs & wetenschap", titleEn: "Education & science", weeks: "Week 20–21",
-          grammarTopics: ["partitief"],
+          grammarTopics: ["partitief", "deelwoord-als-bijvoeglijk"],
           verbRange: [691, 730],
           verbFocus: ["afkomen","afrekenen","afvallen","bijwonen","doordringen","inbrengen","instappen","invallen","meerijden","nastreven","neerslaan","omvormen"],
           vocabTopics: [{level:"B2",topic:"onderwijs"},{level:"B2",topic:"academisch"},{level:"B2",topic:"wetenschap"},{level:"B2",topic:"psychologie"},{level:"B2",topic:"natuur"},{level:"B2",topic:"architectuur"}],
@@ -1538,16 +1914,17 @@ const lessonPlanData = {
           readingTexts: ['r-b2-002'],
           activities: [
             { type: "grammatica", desc: "Dag 1–4: Bestudeer partitief gebruik: 'een van de', 'sommige van', 'de meeste van'. Oefen in zinnen.", descEn: "Day 1–4: Study partitive constructions: 'een van de', 'sommige van', 'de meeste van'. Practise in sentences." },
+            { type: "grammatica", desc: "Dag 4–5: Leer deelwoorden als bijvoeglijk naamwoord: 'een groeiend aantal studenten', 'de uitgenodigde gasten'.", descEn: "Day 4–5: Learn participles used as adjectives: 'een groeiend aantal studenten', 'de uitgenodigde gasten'." },
             { type: "werkwoorden", desc: "Dag 3–8: Oefen academische werkwoorden (onderzoeken, evalueren, formuleren) in alle tijden.", descEn: "Day 3–8: Practise academic verbs (onderzoeken, evalueren, formuleren) in all tenses." },
-            { type: "zinnen", desc: "Dag 6–11: Analyseer de tekst over ongelijkheid in het onderwijs. Schrijf een korte reactie (150 woorden) met partitief.", descEn: "Day 6–11: Analyse the text about inequality in education. Write a short response (150 words) with partitive." },
+            { type: "zinnen", desc: "Dag 6–11: Analyseer de tekst over ongelijkheid in het onderwijs. Schrijf een korte reactie (150 woorden) met partitief en deelwoorden als bijvoeglijk naamwoord.", descEn: "Day 6–11: Analyse the text about inequality in education. Write a short response (150 words) with partitive and participial adjectives." },
             { type: "woordenschat", desc: "Dag 8–14: Leer 50 onderwijs- en wetenschapswoorden.", descEn: "Day 8–14: Learn 50 education and science words." }
           ],
-          goals: ["Partitieve constructies toepassen in 10 zinnen.", "50 onderwijs- en wetenschapswoorden kennen.", "De tekst over ongelijkheid in het Nederlandse onderwijs begrijpen."],
-          goalsEn: ["Apply partitive constructions in 10 sentences.", "Know 50 education and science words.", "Understand the text about inequality in Dutch education."]
+          goals: ["Partitieve constructies toepassen in 10 zinnen.", "Deelwoorden correct als bijvoeglijk naamwoord gebruiken.", "50 onderwijs- en wetenschapswoorden kennen.", "De tekst over ongelijkheid in het Nederlandse onderwijs begrijpen."],
+          goalsEn: ["Apply partitive constructions in 10 sentences.", "Correctly use participles as adjectives.", "Know 50 education and science words.", "Understand the text about inequality in Dutch education."]
         },
         {
           unit: 19, title: "Milieu & technologie", titleEn: "Environment & technology", weeks: "Week 22–23",
-          grammarTopics: ["voltooide-voorwaardelijke"],
+          grammarTopics: ["voltooide-voorwaardelijke", "hoe-hoe-vergelijking"],
           verbRange: [731, 770],
           verbFocus: ["opschalen","opvolgen","overplaatsen","rondkijken","rondsturen","samenvoegen","terugleggen","thuisblijven","toelichten","uitdelen","uitlenen","uitvinden"],
           vocabTopics: [{level:"B2",topic:"milieu"},{level:"B2",topic:"technologie"},{level:"B2",topic:"abstract"},{level:"B2",topic:"landbouw"},{level:"B2",topic:"tijd"},{level:"B2",topic:"gezondheid"}],
@@ -1555,16 +1932,17 @@ const lessonPlanData = {
           readingTexts: ['r-b2-003', 'r-b2-004'],
           activities: [
             { type: "grammatica", desc: "Dag 1–4: Leer de voltooide voorwaardelijke wijs: zou hebben/zijn + voltooid deelwoord. Voorbeeld: 'als we eerder hadden gehandeld...'.", descEn: "Day 1–4: Learn the perfect conditional: zou hebben/zijn + past participle. Example: 'als we eerder hadden gehandeld...'." },
+            { type: "grammatica", desc: "Dag 4–5: Leer 'hoe...hoe...' voor evenredige vergelijking: 'Hoe meer we uitstoten, hoe warmer het wordt.'", descEn: "Day 4–5: Learn 'hoe...hoe...' for proportional comparison: 'Hoe meer we uitstoten, hoe warmer het wordt.'" },
             { type: "werkwoorden", desc: "Dag 3–7: Oefen VVT gecombineerd met voorwaardelijke wijs. Gebruik technologie- en klimaatwerkwoorden.", descEn: "Day 3–7: Practise pluperfect combined with conditional mood. Use technology and climate verbs." },
-            { type: "zinnen", desc: "Dag 5–10: Oefen 'als X was gebeurd, dan zou Y...'-constructies over klimaatbeleid en AI.", descEn: "Day 5–10: Practise 'if X had happened, then Y would...'-constructions about climate policy and AI." },
+            { type: "zinnen", desc: "Dag 5–10: Oefen 'als X was gebeurd, dan zou Y...'-constructies en 'hoe...hoe...'-zinnen over klimaatbeleid en AI.", descEn: "Day 5–10: Practise 'if X had happened, then Y would...'-constructions and 'hoe...hoe...' sentences about climate policy and AI." },
             { type: "woordenschat", desc: "Dag 7–12: Leer 40 milieu- en technologiewoorden.", descEn: "Day 7–12: Learn 40 environment and technology words." }
           ],
-          goals: ["Voltooide voorwaardelijke zinnen correct vormen.", "40 milieu- en technologiewoorden kennen.", "De teksten over klimaatbeleid en kunstmatige intelligentie begrijpen."],
-          goalsEn: ["Correctly form perfect conditional sentences.", "Know 40 environment and technology words.", "Understand the texts about climate policy and artificial intelligence."]
+          goals: ["Voltooide voorwaardelijke zinnen correct vormen.", "'Hoe...hoe...'-zinnen correct vormen met inversie in beide delen.", "40 milieu- en technologiewoorden kennen.", "De teksten over klimaatbeleid en kunstmatige intelligentie begrijpen."],
+          goalsEn: ["Correctly form perfect conditional sentences.", "Correctly form 'hoe...hoe...' sentences with inversion in both parts.", "Know 40 environment and technology words.", "Understand the texts about climate policy and artificial intelligence."]
         },
         {
           unit: 20, title: "Idioom & afronding", titleEn: "Idiom & wrap-up", weeks: "Week 24–26",
-          grammarTopics: ["idioom"],
+          grammarTopics: ["idioom", "iets-niets-plus-s"],
           verbRange: [771, 810],
           verbFocus: ["voltrekken","voorspellen","wegleggen","wegvallen","zich afvragen","zich ergeren","zich ontspannen","zich realiseren","zich vergissen","zich voorstellen"],
           vocabTopics: [{level:"B2",topic:"uitdrukkingen"},{level:"B2",topic:"collocaties"},{level:"B2",topic:"woordfamilie"},{level:"B2",topic:"cultuur"},{level:"B2",topic:"toerisme"},{level:"B2",topic:"bijwoord"}],
@@ -1572,13 +1950,14 @@ const lessonPlanData = {
           readingTexts: ['r-b2-006'],
           activities: [
             { type: "grammatica", desc: "Dag 1–4: Leer idiomatische uitdrukkingen (10+): 'de kat uit de boom kijken', 'iets voor lief nemen', 'het hart op de tong hebben'.", descEn: "Day 1–4: Learn idiomatic expressions (10+): 'de kat uit de boom kijken', 'iets voor lief nemen', 'het hart op de tong hebben'." },
+            { type: "grammatica", desc: "Dag 4–5: Leer 'iets/niets/wat + bijvoeglijk naamwoord + -s': 'iets leuks', 'niets bijzonders'.", descEn: "Day 4–5: Learn 'iets/niets/wat + adjective + -s': 'iets leuks', 'niets bijzonders'." },
             { type: "werkwoorden", desc: "Dag 1–4: Grote eindherhalingsronde: oefen werkwoorden 0–810 in alle tijden. Test 50 willekeurige werkwoorden.", descEn: "Day 1–4: Major final revision round: practise verbs 0–810 in all tenses. Test 50 random verbs." },
-            { type: "zinnen", desc: "Dag 5–10: Oefen alle zinstypen op B2-niveau: passief, conditionaal, indirecte rede, bijzinnen, idioom.", descEn: "Day 5–10: Practise all sentence types at B2 level: passive, conditional, reported speech, clauses, idioms." },
+            { type: "zinnen", desc: "Dag 5–10: Oefen alle zinstypen op B2-niveau: passief, conditionaal, indirecte rede, bijzinnen, idioom, iets/niets + -s.", descEn: "Day 5–10: Practise all sentence types at B2 level: passive, conditional, reported speech, clauses, idioms, iets/niets + -s." },
             { type: "woordenschat", desc: "Dag 7–11: Herhaal alle woordenschatcategorieën A1–B2. Doel: 500 woorden actief beheersen.", descEn: "Day 7–11: Revise all vocabulary categories A1–B2. Goal: actively master 500 words." },
             { type: "zinnen", desc: "Dag 10–14: Schrijf een essay van 300 woorden over een maatschappelijk thema. Gebruik alle B2-structuren en minstens 3 idiomen.", descEn: "Day 10–14: Write an essay of 300 words about a societal topic. Use all B2 structures and at least 3 idioms." }
           ],
-          goals: ["10+ idiomatische uitdrukkingen correct gebruiken.", "50 werkwoorden in alle tijden foutloos vervoegen.", "500 woorden actief beheersen.", "Een essay van 300 woorden schrijven op B2-niveau.", "B2 afgerond: effectieve taalvaardigheid in alle situaties."],
-          goalsEn: ["Correctly use 10+ idiomatic expressions.", "Conjugate 50 verbs in all tenses without errors.", "Actively master 500 words.", "Write an essay of 300 words at B2 level.", "B2 complete: effective language proficiency in all situations."]
+          goals: ["10+ idiomatische uitdrukkingen correct gebruiken.", "De extra -s na iets/niets/wat correct toepassen.", "50 werkwoorden in alle tijden foutloos vervoegen.", "500 woorden actief beheersen.", "Een essay van 300 woorden schrijven op B2-niveau.", "B2 afgerond: effectieve taalvaardigheid in alle situaties."],
+          goalsEn: ["Correctly use 10+ idiomatic expressions.", "Correctly apply the extra -s after iets/niets/wat.", "Conjugate 50 verbs in all tenses without errors.", "Actively master 500 words.", "Write an essay of 300 words at B2 level.", "B2 complete: effective language proficiency in all situations."]
         }
       ]
     }

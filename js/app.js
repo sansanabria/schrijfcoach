@@ -622,6 +622,17 @@ const exGrammarMap = {
   omte:       s => s.gtopic === 'omte'     || (s.stype || '').includes('om…te'),
   passief:    s => s.gtopic === 'passief'  || s.stype === 'Lijdende vorm',
   'scheidbare-werkwoorden': s => s.gtopic === 'scheidbare-werkwoorden',
+  'reflexieve-werkwoorden': s => s.gtopic === 'reflexieve-werkwoorden',
+  'toekomende-tijd': s => s.gtopic === 'toekomende-tijd',
+  'progressieve-tijd': s => s.gtopic === 'progressieve-tijd',
+  'hoeven-te': s => s.gtopic === 'hoeven-te',
+  'voornaamwoordelijke-bijwoorden': s => s.gtopic === 'voornaamwoordelijke-bijwoorden',
+  'betrekkelijke-bijzin-voorzetsel': s => s.gtopic === 'betrekkelijke-bijzin-voorzetsel',
+  'laten-plus-infinitief': s => s.gtopic === 'laten-plus-infinitief',
+  'woordvorming': s => s.gtopic === 'woordvorming',
+  'hoe-hoe-vergelijking': s => s.gtopic === 'hoe-hoe-vergelijking',
+  'deelwoord-als-bijvoeglijk': s => s.gtopic === 'deelwoord-als-bijvoeglijk',
+  'iets-niets-plus-s': s => s.gtopic === 'iets-niets-plus-s',
 };
 
 function _buildPool() {

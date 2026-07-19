@@ -1718,6 +1718,346 @@ const defaultSentences = [
     en: "It is important that you throw away your rubbish properly.",
     level: "B1", stype: "Bijzin + hoofdzin", gtopic: "scheidbare-werkwoorden",
     srule: "bijzin: weggooien → samen aan het einde · sub. clause: weggooien stays together at the end: dat S → O → weggooit" },
+  // ── Reflexieve werkwoorden ──────────────────────────────────────────────────────
+  { nl: "Ik voel me vandaag niet zo lekker.",
+    en: "I don't feel so well today.",
+    level: "A2", stype: "Reflexief werkwoord", gtopic: "reflexieve-werkwoorden",
+    srule: "S → V → reflexief → bijw. — reflexief vnw 'me' direct na het werkwoord" },
+
+  { nl: "Vergis jij je vaak in de tijd?",
+    en: "Do you often get the time wrong?",
+    level: "A2", stype: "Vraagzin", gtopic: "reflexieve-werkwoorden",
+    srule: "V → S → reflexief → bijw. — inversie in vraagzin, reflexief na onderwerp" },
+
+  { nl: "Wij haasten ons naar het station.",
+    en: "We are hurrying to the station.",
+    level: "A2", stype: "Reflexief werkwoord", gtopic: "reflexieve-werkwoorden",
+    srule: "S → V → reflexief → plaatsbep. — 'ons' direct na 'haasten'" },
+
+  { nl: "Herinnert hij zich haar naam nog?",
+    en: "Does he still remember her name?",
+    level: "A2", stype: "Vraagzin", gtopic: "reflexieve-werkwoorden",
+    srule: "V → S → reflexief → O → bijw. — inversie, reflexief 'zich' na onderwerp" },
+
+  { nl: "Jullie moeten je beter concentreren.",
+    en: "You need to concentrate better.",
+    level: "A2", stype: "Reflexief werkwoord", gtopic: "reflexieve-werkwoorden",
+    srule: "S → V(modaal) → reflexief → bijw. → inf. — 'je' vóór het bijwoord, infinitief aan het einde" },
+
+  { nl: "Zij verontschuldigt zich voor de fout.",
+    en: "She apologises for the mistake.",
+    level: "A2", stype: "Reflexief werkwoord", gtopic: "reflexieve-werkwoorden",
+    srule: "S → V → reflexief → voorzetselbep. — 'zich' direct na het werkwoord" },
+
+  // ── Toekomende tijd ──────────────────────────────────────────────────────────────
+  { nl: "Volgend weekend gaan we naar het strand.",
+    en: "Next weekend we're going to the beach.",
+    level: "A2", stype: "Toekomende tijd", gtopic: "toekomende-tijd",
+    srule: "Tijd → V → S → plaatsbep. — inversie: tijdsbepaling vooraan, dan werkwoord" },
+
+  { nl: "Ik ga een nieuwe taal leren dit jaar.",
+    en: "I am going to learn a new language this year.",
+    level: "A2", stype: "Toekomende tijd", gtopic: "toekomende-tijd",
+    srule: "S → V(gaan) → O → inf. → tijd — 'gaan' + infinitief voor intentie" },
+
+  { nl: "Zal ik je helpen met de tas?",
+    en: "Shall I help you with the bag?",
+    level: "A2", stype: "Toekomende tijd", gtopic: "toekomende-tijd",
+    srule: "V(zullen) → S → inf. → O → voorzetselbep. — beleefd aanbod met 'zullen'" },
+
+  { nl: "Het zal wel lukken, maak je geen zorgen.",
+    en: "It will work out, don't worry.",
+    level: "A2", stype: "Toekomende tijd", gtopic: "toekomende-tijd",
+    srule: "S → V(zullen) → bijw. → inf. — 'zullen' voor voorspelling/aanname" },
+
+  { nl: "Morgen begint mijn nieuwe baan.",
+    en: "Tomorrow my new job starts.",
+    level: "A2", stype: "Toekomende tijd", gtopic: "toekomende-tijd",
+    srule: "Tijd → V → S — presens met tijdsaanduiding voor een geplande gebeurtenis" },
+
+  { nl: "Zij gaan volgend jaar trouwen.",
+    en: "They are going to get married next year.",
+    level: "A2", stype: "Toekomende tijd", gtopic: "toekomende-tijd",
+    srule: "S → V(gaan) → tijd → inf. — 'gaan' + infinitief voor een plan" },
+
+  // ── Progressieve tijd (aan het) ──────────────────────────────────────────────────
+  { nl: "Wat ben je aan het doen?",
+    en: "What are you doing (right now)?",
+    level: "A2", stype: "Progressieve tijd", gtopic: "progressieve-tijd",
+    srule: "Vraagw. → V → S → aan het → inf. — 'aan het' + infinitief helemaal aan het einde" },
+
+  { nl: "Hij zit tv te kijken op de bank.",
+    en: "He is sitting on the couch watching TV.",
+    level: "A2", stype: "Progressieve tijd", gtopic: "progressieve-tijd",
+    srule: "S → V(zitten) → O → te → inf. → plaatsbep. — houding + te + infinitief" },
+
+  { nl: "We zijn het huis aan het schoonmaken.",
+    en: "We are cleaning the house.",
+    level: "A2", stype: "Progressieve tijd", gtopic: "progressieve-tijd",
+    srule: "S → V(zijn) → O → aan het → inf. — 'aan het' benadrukt een lopende actie" },
+
+  { nl: "De baby ligt eindelijk te slapen.",
+    en: "The baby is finally sleeping.",
+    level: "A2", stype: "Progressieve tijd", gtopic: "progressieve-tijd",
+    srule: "S → V(liggen) → bijw. → te → inf. — liggende houding + te + infinitief" },
+
+  { nl: "Ben je nog steeds aan het werken?",
+    en: "Are you still working?",
+    level: "A2", stype: "Progressieve tijd", gtopic: "progressieve-tijd",
+    srule: "V → S → bijw. → aan het → inf. — inversie in vraagzin" },
+
+  { nl: "Zij staat buiten op de bus te wachten.",
+    en: "She is standing outside waiting for the bus.",
+    level: "A2", stype: "Progressieve tijd", gtopic: "progressieve-tijd",
+    srule: "S → V(staan) → plaatsbep. → O → te → inf. — staande houding + te + infinitief" },
+
+  // ── Hoeven (niet) te ──────────────────────────────────────────────────────────────
+  { nl: "Je hoeft niet te wachten, ga maar vast.",
+    en: "You don't have to wait, go ahead.",
+    level: "A2", stype: "Hoeven niet te", gtopic: "hoeven-te",
+    srule: "S → V(hoeven) → niet → te → inf. — 'hoeven' bijna altijd met 'niet'" },
+
+  { nl: "Wij hoeven dit weekend niet te werken.",
+    en: "We don't have to work this weekend.",
+    level: "A2", stype: "Hoeven niet te", gtopic: "hoeven-te",
+    srule: "S → V(hoeven) → tijd → niet → te → inf. — 'niet' vlak voor 'te + infinitief'" },
+
+  { nl: "Je hoeft geen cadeau mee te nemen.",
+    en: "You don't need to bring a gift.",
+    level: "A2", stype: "Hoeven niet te", gtopic: "hoeven-te",
+    srule: "S → V(hoeven) → geen → O → te → deeltje → inf. — 'geen' i.p.v. 'niet' bij een zelfstandig naamwoord" },
+
+  { nl: "Hoeft u vandaag nog naar de bank te gaan?",
+    en: "Do you still need to go to the bank today?",
+    level: "A2", stype: "Vraagzin", gtopic: "hoeven-te",
+    srule: "V(hoeven) → S → tijd → bijw. → plaatsbep. → te → inf. — inversie in vraagzin met hoeven" },
+
+  { nl: "Zij hoeft zich geen zorgen te maken.",
+    en: "She doesn't need to worry.",
+    level: "A2", stype: "Hoeven niet te", gtopic: "hoeven-te",
+    srule: "S → V(hoeven) → reflexief → geen → O → te → inf. — hoeven + reflexief + geen + te + infinitief" },
+
+  { nl: "Je hoeft het niet allemaal in één dag te doen.",
+    en: "You don't have to do it all in one day.",
+    level: "A2", stype: "Hoeven niet te", gtopic: "hoeven-te",
+    srule: "S → V(hoeven) → O → niet → bijw. → voorzetselbep. → te → inf. — 'niet' vóór de rest van de zin" },
+
+  // ── Voornaamwoordelijke bijwoorden ───────────────────────────────────────────────
+  { nl: "Ik heb het gehoord, maar ik geloof er niets van.",
+    en: "I heard it, but I don't believe any of it.",
+    level: "B1", stype: "Voornaamwoordelijk bijwoord", gtopic: "voornaamwoordelijke-bijwoorden",
+    srule: "S → V → er → O → van — 'er...van' voor een onbepaald, niet eerder genoemd ding" },
+
+  { nl: "Dat is een lastig probleem — daar moeten we over praten.",
+    en: "That's a tricky problem — we need to talk about that.",
+    level: "B1", stype: "Voornaamwoordelijk bijwoord", gtopic: "voornaamwoordelijke-bijwoorden",
+    srule: "daar → V(modaal) → S → over → inf. — 'daar' verwijst terug naar het probleem" },
+
+  { nl: "Waar ben je naar op zoek?",
+    en: "What are you looking for?",
+    level: "B1", stype: "Vraagzin", gtopic: "voornaamwoordelijke-bijwoorden",
+    srule: "waar → V → S → naar → O → bijw. — 'waar' gesplitst met 'naar' aan het einde" },
+
+  { nl: "Ik weet niet waar hij het over heeft.",
+    en: "I don't know what he's talking about.",
+    level: "B1", stype: "Bijzin", gtopic: "voornaamwoordelijke-bijwoorden",
+    srule: "S → V → niet → waar → S → O → over → V — 'waar' in een bijzin, werkwoord aan het einde" },
+
+  { nl: "Hier ben ik het helemaal mee eens.",
+    en: "I completely agree with this.",
+    level: "B1", stype: "Voornaamwoordelijk bijwoord", gtopic: "voornaamwoordelijke-bijwoorden",
+    srule: "hier → V → S → O → bijw. → mee → bijv. — 'hier...mee' verwijst naar iets net genoemd" },
+
+  { nl: "Daar heb ik nog nooit aan gedacht.",
+    en: "I've never thought about that.",
+    level: "B1", stype: "Voornaamwoordelijk bijwoord", gtopic: "voornaamwoordelijke-bijwoorden",
+    srule: "daar → V → S → bijw. → bijw. → aan → VD — 'daar...aan' verwijst terug, VD aan het einde" },
+
+  // ── Betrekkelijke bijzin met voorzetsel ──────────────────────────────────────────
+  { nl: "Dit is de vriend over wie ik je vertelde.",
+    en: "This is the friend I told you about.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "betrekkelijke-bijzin-voorzetsel",
+    srule: "hoofdzin → over wie → S → O → V — voorzetsel + 'wie' voor personen" },
+
+  { nl: "Het huis waarin wij wonen is honderd jaar oud.",
+    en: "The house we live in is a hundred years old.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "betrekkelijke-bijzin-voorzetsel",
+    srule: "O → waarin → S → V → V → bijv. → bijw. — 'waarin' samengesteld voor een ding" },
+
+  { nl: "Dat is het probleem waar ik me zorgen over maak.",
+    en: "That's the problem I'm worried about.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "betrekkelijke-bijzin-voorzetsel",
+    srule: "hoofdzin → waar → S → reflexief → O → over → V — 'waar' gesplitst met 'over' aan het einde" },
+
+  { nl: "De collega met wie ik samenwerk is heel aardig.",
+    en: "The colleague I work with is very nice.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "betrekkelijke-bijzin-voorzetsel",
+    srule: "O → met wie → S → V → V → bijv. — 'met wie' voor personen, bijzin binnen de hoofdzin" },
+
+  { nl: "Dit is het project waaraan ik het hele jaar werk.",
+    en: "This is the project I'm working on all year.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "betrekkelijke-bijzin-voorzetsel",
+    srule: "hoofdzin → waaraan → S → tijd → V — 'waaraan' samengesteld voor een ding" },
+
+  { nl: "Ken je de buren over wie iedereen het heeft?",
+    en: "Do you know the neighbours everyone is talking about?",
+    level: "B1", stype: "Vraagzin", gtopic: "betrekkelijke-bijzin-voorzetsel",
+    srule: "V → S → O → over wie → S → O → V — 'over wie' voor personen in een vraagzin" },
+
+  // ── Laten + infinitief ────────────────────────────────────────────────────────────
+  { nl: "Zij laat haar haar knippen bij de kapper.",
+    en: "She's getting her hair cut at the hairdresser.",
+    level: "B1", stype: "Laten + infinitief", gtopic: "laten-plus-infinitief",
+    srule: "S → V(laten) → O → inf. → plaatsbep. — 'laten' + infinitief zonder 'te'" },
+
+  { nl: "Laat hem even uitpraten, alsjeblieft.",
+    en: "Let him finish speaking, please.",
+    level: "B1", stype: "Gebiedende wijs", gtopic: "laten-plus-infinitief",
+    srule: "V(laten) → O → bijw. → inf. → bijw. — imperatief met 'laten' + infinitief" },
+
+  { nl: "Ik heb de kinderen buiten laten spelen.",
+    en: "I let the children play outside.",
+    level: "B1", stype: "Hoofdzin (vtt)", gtopic: "laten-plus-infinitief",
+    srule: "S → V(hebben) → O → plaatsbep. → laten → inf. — VTT: 'laten' blijft infinitief" },
+
+  { nl: "Wij lieten de auto nakijken voor de vakantie.",
+    en: "We had the car checked before the holiday.",
+    level: "B1", stype: "Laten + infinitief", gtopic: "laten-plus-infinitief",
+    srule: "S → V(laten, ovt) → O → inf. → voorzetselbep. — 'lieten' + infinitief in de OVT" },
+
+  { nl: "Ik zag hem gisteren de straat oversteken.",
+    en: "I saw him crossing the street yesterday.",
+    level: "B1", stype: "Hoofdzin", gtopic: "laten-plus-infinitief",
+    srule: "S → V(zien) → O → tijd → O → inf. — waarnemingswerkwoord 'zien' + infinitief zonder 'te'" },
+
+  { nl: "Hoorde jij de wekker vanmorgen afgaan?",
+    en: "Did you hear the alarm go off this morning?",
+    level: "B1", stype: "Vraagzin", gtopic: "laten-plus-infinitief",
+    srule: "V(horen) → S → O → tijd → inf. — inversie, waarnemingswerkwoord + infinitief" },
+
+  // ── Woordvorming ──────────────────────────────────────────────────────────────────
+  { nl: "Dit probleem is helaas onoplosbaar.",
+    en: "Unfortunately, this problem is unsolvable.",
+    level: "B1", stype: "Woordvorming", gtopic: "woordvorming",
+    srule: "S → V → bijw. → bijv. — 'op-los-baar' met on- ontkennend voorvoegsel" },
+
+  { nl: "De veiligheid van de kinderen staat voorop.",
+    en: "The children's safety comes first.",
+    level: "B1", stype: "Woordvorming", gtopic: "woordvorming",
+    srule: "S → V → deeltje — 'veilig' + achtervoegsel -heid wordt een zelfstandig naamwoord" },
+
+  { nl: "Zijn uitleg zorgde voor veel verwarring.",
+    en: "His explanation caused a lot of confusion.",
+    level: "B1", stype: "Woordvorming", gtopic: "woordvorming",
+    srule: "S → V → voorzetselbep. — 'ver-warren' wordt met -ing een zelfstandig naamwoord" },
+
+  { nl: "Deze fles is helaas niet herbruikbaar.",
+    en: "Unfortunately, this bottle is not reusable.",
+    level: "B1", stype: "Woordvorming", gtopic: "woordvorming",
+    srule: "S → V → bijw. → niet → bijv. — 'her-' (opnieuw) + 'gebruik' + -baar" },
+
+  { nl: "De mogelijkheden voor verbetering zijn eindeloos.",
+    en: "The possibilities for improvement are endless.",
+    level: "B1", stype: "Woordvorming", gtopic: "woordvorming",
+    srule: "S → V → bijv. — 'mogelijk' + -heid, 'ver-beteren' als zelfstandig naamwoord" },
+
+  { nl: "Haar onvriendelijke reactie verraste iedereen.",
+    en: "Her unfriendly reaction surprised everyone.",
+    level: "B1", stype: "Woordvorming", gtopic: "woordvorming",
+    srule: "S → V → O — 'on-' + 'vriendelijk' maakt het bijvoeglijk naamwoord negatief" },
+
+  // ── Hoe...hoe... (evenredige vergelijking) ───────────────────────────────────────
+  { nl: "Hoe langer ik hier woon, hoe meer ik ervan hou.",
+    en: "The longer I live here, the more I love it.",
+    level: "B2", stype: "Hoe...hoe...", gtopic: "hoe-hoe-vergelijking",
+    srule: "hoe → comp. → S → V, hoe → comp. → S → V — inversie in beide delen" },
+
+  { nl: "Hoe drukker het is, des te zenuwachtiger ik word.",
+    en: "The busier it is, the more nervous I get.",
+    level: "B2", stype: "Hoe...hoe...", gtopic: "hoe-hoe-vergelijking",
+    srule: "hoe → comp. → S → V, des te → comp. → S → V — 'des te' als formeler alternatief" },
+
+  { nl: "Hoe eerder je begint, hoe minder stress je hebt.",
+    en: "The earlier you start, the less stress you have.",
+    level: "B2", stype: "Hoe...hoe...", gtopic: "hoe-hoe-vergelijking",
+    srule: "hoe → comp. → S → V, hoe → comp. → O → S → V — beide delen met inversie" },
+
+  { nl: "Hoe meer je oefent, hoe beter je Nederlands wordt.",
+    en: "The more you practise, the better your Dutch gets.",
+    level: "B2", stype: "Hoe...hoe...", gtopic: "hoe-hoe-vergelijking",
+    srule: "hoe → comp. → S → V, hoe → comp. → S → O → V — comparatief altijd direct na 'hoe'" },
+
+  { nl: "Hoe ouder ik word, hoe meer ik van rust hou.",
+    en: "The older I get, the more I love peace and quiet.",
+    level: "B2", stype: "Hoe...hoe...", gtopic: "hoe-hoe-vergelijking",
+    srule: "hoe → comp. → S → V, hoe → comp. → S → voorzetselbep. → V — parallelle structuur" },
+
+  { nl: "Hoe dichter we bij de finish kwamen, hoe stiller het werd.",
+    en: "The closer we got to the finish, the quieter it became.",
+    level: "B2", stype: "Hoe...hoe...", gtopic: "hoe-hoe-vergelijking",
+    srule: "hoe → comp. → S → voorzetselbep. → V, hoe → comp. → S → V — OVT in beide delen" },
+
+  // ── Deelwoord als bijvoeglijk naamwoord ──────────────────────────────────────────
+  { nl: "Pas op, het water is nog kokend heet.",
+    en: "Careful, the water is still boiling hot.",
+    level: "B2", stype: "Deelwoord als bijvoeglijk naamwoord", gtopic: "deelwoord-als-bijvoeglijk",
+    srule: "V → S → V → bijw. → deelwoord → bijv. — tegenwoordig deelwoord 'kokend' als bijwoord bij 'heet'" },
+
+  { nl: "De gebroken vaas lag midden op de vloer.",
+    en: "The broken vase lay in the middle of the floor.",
+    level: "B2", stype: "Hoofdzin", gtopic: "deelwoord-als-bijvoeglijk",
+    srule: "O(deelwoord + de) → V → bijw. → plaatsbep. — voltooid deelwoord + -e voor de-woord" },
+
+  { nl: "Een groeiend aantal mensen werkt vanuit huis.",
+    en: "A growing number of people work from home.",
+    level: "B2", stype: "Hoofdzin", gtopic: "deelwoord-als-bijvoeglijk",
+    srule: "S(deelwoord, geen -e) → V → plaatsbep. — tegenwoordig deelwoord zonder -e bij onbepaald het-woord" },
+
+  { nl: "De uitgenodigde gasten kwamen allemaal op tijd.",
+    en: "The invited guests all arrived on time.",
+    level: "B2", stype: "Hoofdzin", gtopic: "deelwoord-als-bijvoeglijk",
+    srule: "S(deelwoord + de) → V → bijw. → bijw. — voltooid deelwoord + -e voor meervoud" },
+
+  { nl: "Ik hou van vers gebakken brood in de ochtend.",
+    en: "I love freshly baked bread in the morning.",
+    level: "B2", stype: "Hoofdzin", gtopic: "deelwoord-als-bijvoeglijk",
+    srule: "S → V → voorzetselbep. → bijw. → deelwoord → O → tijd — voltooid deelwoord als bijvoeglijk naamwoord" },
+
+  { nl: "De dalende temperaturen zorgden voor sneeuw.",
+    en: "The falling temperatures caused snow.",
+    level: "B2", stype: "Hoofdzin", gtopic: "deelwoord-als-bijvoeglijk",
+    srule: "S(deelwoord + de) → V → voorzetselbep. — tegenwoordig deelwoord + -e voor meervoud" },
+
+  // ── Iets/niets/wat + bijvoeglijk naamwoord + -s ──────────────────────────────────
+  { nl: "Heb je iets leuks gedaan dit weekend?",
+    en: "Did you do anything fun this weekend?",
+    level: "B2", stype: "Vraagzin", gtopic: "iets-niets-plus-s",
+    srule: "V → S → iets + bijv.-s → VD → tijd — extra -s na 'iets'" },
+
+  { nl: "Er stond niets interessants in de krant.",
+    en: "There was nothing interesting in the newspaper.",
+    level: "B2", stype: "Hoofdzin", gtopic: "iets-niets-plus-s",
+    srule: "er → V → niets + bijv.-s → voorzetselbep. — extra -s na 'niets'" },
+
+  { nl: "Ik heb wat lekkers meegenomen voor bij de koffie.",
+    en: "I brought something tasty for with the coffee.",
+    level: "B2", stype: "Hoofdzin (vtt)", gtopic: "iets-niets-plus-s",
+    srule: "S → V(hebben) → wat + bijv.-s → VD → voorzetselbep. — extra -s na 'wat'" },
+
+  { nl: "Er is genoeg lekkers voor iedereen.",
+    en: "There's enough tasty stuff for everyone.",
+    level: "B2", stype: "Hoofdzin", gtopic: "iets-niets-plus-s",
+    srule: "er → V → genoeg + bijv.-s → voorzetselbep. — extra -s na 'genoeg'" },
+
+  { nl: "Zij vertelde ons iets grappigs over haar reis.",
+    en: "She told us something funny about her trip.",
+    level: "B2", stype: "Hoofdzin", gtopic: "iets-niets-plus-s",
+    srule: "S → V → O → iets + bijv.-s → voorzetselbep. — extra -s na 'iets'" },
+
+  { nl: "Er valt hier weinig moois te zien.",
+    en: "There's little beautiful to see here.",
+    level: "B2", stype: "Hoofdzin", gtopic: "iets-niets-plus-s",
+    srule: "er → V → bijw. → weinig + bijv.-s → te → inf. — extra -s na 'weinig'" },
 ];
 
 // ─── VERBS ────────────────────────────────────────────────────────────────────
