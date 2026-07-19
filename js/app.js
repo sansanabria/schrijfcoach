@@ -1954,9 +1954,9 @@ function _buildA1GrammarRulesHtml() {
       <div class="cj-block">
         <div class="cj-block-title">${cd.pastTense.title}</div>
         <div class="cj-block-subtitle">${cd.pastTense.enTitle}</div>
-        <table class="cj-table"><thead>
+        <div class="cj-table-wrap"><table class="cj-table"><thead>
           <tr><th>Persoon</th><th>Uitgang</th><th>Voorbeeld</th></tr>
-        </thead><tbody>${pastRows}</tbody></table>
+        </thead><tbody>${pastRows}</tbody></table></div>
         <div class="cj-tip">💡 ${cd.pastTense.tipNl}<br><em>${cd.pastTense.tipEn}</em></div>
       </div>
 
@@ -1970,9 +1970,9 @@ function _buildA1GrammarRulesHtml() {
       <div class="cj-block">
         <div class="cj-block-title">${cd.modalVerbs.title}</div>
         <div class="cj-block-subtitle">${cd.modalVerbs.enTitle}</div>
-        <table class="cj-table"><thead>
+        <div class="cj-table-wrap"><table class="cj-table"><thead>
           <tr><th>Infinitief</th><th>Betekenis</th><th>ik</th><th>jij</th><th>hij/zij</th><th>wij/jullie/zij</th><th>Gebruik</th></tr>
-        </thead><tbody>${modalRows}</tbody></table>
+        </thead><tbody>${modalRows}</tbody></table></div>
         <div class="cj-tip">💡 ${cd.modalVerbs.tip}<br><em>${cd.modalVerbs.tipEn}</em></div>
       </div>
     </div>`;

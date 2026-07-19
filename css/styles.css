@@ -1112,6 +1112,8 @@ footer {
 .cj-step-nl { font-size:0.8rem; font-weight:600; color:var(--text); }
 .cj-step-en { font-size:0.74rem; color:var(--text-muted); font-style:italic; }
 .cj-step-ex { font-family:'Courier New',monospace; font-size:0.72rem; color:var(--primary); background:var(--primary-faint); border-radius:4px; padding:2px 6px; display:inline-block; margin-top:3px; }
+.cj-table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; margin-bottom:10px; }
+.cj-table-wrap .cj-table { margin-bottom:0; }
 .cj-table { width:100%; border-collapse:collapse; font-size:0.78rem; margin-bottom:10px; }
 .cj-table thead tr { background:var(--surface2); }
 .cj-table th { text-align:left; padding:5px 8px; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); border-bottom:2px solid var(--border); }
