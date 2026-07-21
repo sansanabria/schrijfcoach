@@ -4285,6 +4285,8 @@ let _vpList = [];
 let _vpIdx = 0;
 let _vpCorrect = 0;
 let _vpWrong = 0;
+let _vpLocked = false;
+let _vpAdvanceTimer = null;
 
 function startVocabPractice() {
   _vpList = _getVocabList().sort(() => Math.random() - 0.5);
@@ -4298,6 +4300,8 @@ function startVocabPractice() {
 }
 
 function _renderVpCard() {
+  clearTimeout(_vpAdvanceTimer);
+  _vpLocked = false;
   const area = document.getElementById('vocab-practice-area');
   const total = _vpList.length;
   if (_vpIdx >= total) { _renderVpResult(); return; }
@@ -4325,7 +4329,8 @@ function _renderVpCard() {
     <div id="vp-mc-options" style="display:flex; flex-direction:column; gap:10px; max-width:400px; margin:0 auto">
       ${optionsHtml}
     </div>
-    <div style="text-align:center; margin-top:16px">
+    <div id="vp-feedback-row" style="text-align:center; margin-top:16px"></div>
+    <div style="text-align:center; margin-top:12px">
       <button class="btn btn-secondary" onclick="stopVocabPractice()" style="font-size:0.8rem">Stoppen</button>
     </div>`;
 }
@@ -4350,8 +4355,11 @@ function _vpDistractors(w) {
 }
 
 function gradeVocabMC(idx) {
+  if (_vpLocked) return;
   const btns = document.querySelectorAll('#vp-mc-options .vp-mc-btn');
   if (!btns.length) return;
+  const w = _vpList[_vpIdx];
+  _vpLocked = true;
   const clicked = btns[idx];
   const isCorrect = clicked.getAttribute('data-correct') === '1';
 
@@ -4374,12 +4382,31 @@ function gradeVocabMC(idx) {
   if (isCorrect) {
     _vpCorrect++;
     _clearMistake('vocab', w.nl);
+    _vpIdx++;
+    // Auto-advance shortly; the feedback row is also tappable to advance immediately.
+    _vpAdvanceTimer = setTimeout(_advanceVpCard, 1000);
+    const row = document.getElementById('vp-feedback-row');
+    if (row) {
+      row.innerHTML = `<span style="color:#16a34a;font-weight:600">✓ Goed!</span>`;
+      row.style.cursor = 'pointer';
+      row.onclick = _advanceVpCard;
+    }
   } else {
     _vpWrong++;
     _addMistake('vocab', w.nl, { nl: w.nl, en: w.en, level: w.level, topic: w.topic, type: w.type || '' });
+    _vpIdx++;
+    const row = document.getElementById('vp-feedback-row');
+    if (row) {
+      row.innerHTML =
+        `<div style="color:#dc2626;font-weight:600;margin-bottom:8px">✗ Fout — het juiste antwoord is: ${w.en}</div>
+         <button class="btn btn-primary" onclick="_advanceVpCard()">Volgende →</button>`;
+    }
   }
-  _vpIdx++;
-  setTimeout(() => _renderVpCard(), isCorrect ? 600 : 1200);
+}
+
+function _advanceVpCard() {
+  clearTimeout(_vpAdvanceTimer);
+  _renderVpCard();
 }
 
 function _renderVpResult() {
