@@ -2058,6 +2058,227 @@ const defaultSentences = [
     en: "There's little beautiful to see here.",
     level: "B2", stype: "Hoofdzin", gtopic: "iets-niets-plus-s",
     srule: "er → V → bijw. → weinig + bijv.-s → te → inf. — extra -s na 'weinig'" },
+
+  // ── Persoonlijke voornaamwoorden ──────────────────────────────────────────────
+  { nl: "Ik werk in een ziekenhuis.",
+    en: "I work in a hospital.",
+    level: "A1", stype: "Hoofdzin", gtopic: "persoonlijke-vnw",
+    srule: "S → V → rest — persoonlijk vnw 'ik' als onderwerp" },
+
+  { nl: "Jij bent mijn beste vriend.",
+    en: "You are my best friend.",
+    level: "A1", stype: "Hoofdzin", gtopic: "persoonlijke-vnw",
+    srule: "S → V → rest — persoonlijk vnw 'jij' als onderwerp" },
+
+  { nl: "Hij komt morgen op bezoek.",
+    en: "He is coming to visit tomorrow.",
+    level: "A1", stype: "Hoofdzin", gtopic: "persoonlijke-vnw",
+    srule: "S → V → bijw. → rest — persoonlijk vnw 'hij' als onderwerp" },
+
+  { nl: "Zij woont sinds vorig jaar in Utrecht.",
+    en: "She has lived in Utrecht since last year.",
+    level: "A1", stype: "Hoofdzin", gtopic: "persoonlijke-vnw",
+    srule: "S → V → bijw. → rest — persoonlijk vnw 'zij' als onderwerp" },
+
+  { nl: "Wij koken vanavond samen.",
+    en: "We are cooking together tonight.",
+    level: "A1", stype: "Hoofdzin", gtopic: "persoonlijke-vnw",
+    srule: "S → V → bijw. → bijw. — persoonlijk vnw 'wij' als onderwerp" },
+
+  { nl: "Jullie spreken al goed Nederlands.",
+    en: "You (plural) already speak Dutch well.",
+    level: "A1", stype: "Hoofdzin", gtopic: "persoonlijke-vnw",
+    srule: "S → V → bijw. → O — persoonlijk vnw 'jullie' als onderwerp" },
+
+  { nl: "Zij spelen elke zaterdag voetbal.",
+    en: "They play football every Saturday.",
+    level: "A1", stype: "Hoofdzin", gtopic: "persoonlijke-vnw",
+    srule: "S → V → bijw. → O — persoonlijk vnw 'zij' (meervoud) als onderwerp" },
+
+  // ── Bezittelijke voornaamwoorden ──────────────────────────────────────────────
+  { nl: "Dat is mijn fiets.",
+    en: "That is my bike.",
+    level: "A1", stype: "Hoofdzin", gtopic: "bezittelijke-vnw",
+    srule: "S → V → bez. vnw + zn — 'mijn' vóór het zelfstandig naamwoord" },
+
+  { nl: "Is dit jouw tas?",
+    en: "Is this your bag?",
+    level: "A1", stype: "Ja/nee-vraagzin",
+    srule: "V → S → bez. vnw + zn — 'jouw' vóór het zelfstandig naamwoord",
+    gtopic: "bezittelijke-vnw" },
+
+  { nl: "Zijn moeder werkt als dokter.",
+    en: "His mother works as a doctor.",
+    level: "A1", stype: "Hoofdzin", gtopic: "bezittelijke-vnw",
+    srule: "S(bez. vnw + zn) → V → rest — 'zijn' vóór het zelfstandig naamwoord" },
+
+  { nl: "Haar broer studeert in Leiden.",
+    en: "Her brother studies in Leiden.",
+    level: "A1", stype: "Hoofdzin", gtopic: "bezittelijke-vnw",
+    srule: "S(bez. vnw + zn) → V → rest — 'haar' vóór het zelfstandig naamwoord" },
+
+  { nl: "Ons appartement heeft twee slaapkamers.",
+    en: "Our apartment has two bedrooms.",
+    level: "A1", stype: "Hoofdzin", gtopic: "bezittelijke-vnw",
+    srule: "S(bez. vnw + het-zn) → V → O — 'ons' bij een het-woord" },
+
+  { nl: "Onze buren zijn heel aardig.",
+    en: "Our neighbours are very nice.",
+    level: "A1", stype: "Hoofdzin", gtopic: "bezittelijke-vnw",
+    srule: "S(bez. vnw + de-zn) → V → bijv. nw — 'onze' bij een de-woord" },
+
+  { nl: "Hebben jullie mijn nummer nog?",
+    en: "Do you still have my number?",
+    level: "A1", stype: "Ja/nee-vraagzin",
+    srule: "V → S → bez. vnw + zn → bijw. — inversie, bez. vnw. na onderwerp",
+    gtopic: "bezittelijke-vnw" },
+
+  // ── Lidwoorden & meervoud ──────────────────────────────────────────────────────
+  { nl: "De kinderen spelen buiten in de tuin.",
+    en: "The children are playing outside in the garden.",
+    level: "A1", stype: "Hoofdzin", gtopic: "lidwoorden-meervoud",
+    srule: "S(de + mv.) → V → bijw. → bijw. — 'kind' → 'kinderen', onregelmatig meervoud" },
+
+  { nl: "De auto's staan voor het huis geparkeerd.",
+    en: "The cars are parked in front of the house.",
+    level: "A1", stype: "Hoofdzin", gtopic: "lidwoorden-meervoud",
+    srule: "S(de + mv.) → V → bijw. → V — 'auto' → 'auto's', meervoud op -'s na klinker" },
+
+  { nl: "De huizen in deze straat zijn heel oud.",
+    en: "The houses on this street are very old.",
+    level: "A1", stype: "Hoofdzin", gtopic: "lidwoorden-meervoud",
+    srule: "S(de + mv.) → bijw. → V → bijv. nw — 'huis' → 'huizen', s wordt z voor -en" },
+
+  { nl: "Het boek ligt op de tafel.",
+    en: "The book is lying on the table.",
+    level: "A1", stype: "Hoofdzin", gtopic: "lidwoorden-meervoud",
+    srule: "S(het-woord) → V → voorzetselbep. — enkelvoud met lidwoord 'het'" },
+
+  { nl: "De boeken liggen op de tafel.",
+    en: "The books are lying on the table.",
+    level: "A1", stype: "Hoofdzin", gtopic: "lidwoorden-meervoud",
+    srule: "S(de + mv.) → V → voorzetselbep. — meervoud krijgt altijd lidwoord 'de'" },
+
+  { nl: "De steden Amsterdam en Rotterdam zijn heel druk.",
+    en: "The cities Amsterdam and Rotterdam are very busy.",
+    level: "A1", stype: "Hoofdzin", gtopic: "lidwoorden-meervoud",
+    srule: "S(de + mv.) → V → bijv. nw — 'stad' → 'steden', klinkerwisseling a→e" },
+
+  { nl: "Wij hebben twee katten en een hond.",
+    en: "We have two cats and one dog.",
+    level: "A1", stype: "Hoofdzin", gtopic: "lidwoorden-meervoud",
+    srule: "S → V → O(mv. + enk.) — meervoud op -en, enkelvoud met 'een'" },
+
+  // ── Verkleinwoorden (-tje) ───────────────────────────────────────────────────
+  { nl: "Wil je een kopje thee?",
+    en: "Would you like a (small) cup of tea?",
+    level: "A1", stype: "Ja/nee-vraagzin",
+    srule: "V → S → O(verkleinw.) — 'kop' → 'kopje', altijd een het-woord",
+    gtopic: "verkleinwoorden" },
+
+  { nl: "Het huisje op de heuvel is te koop.",
+    en: "The little house on the hill is for sale.",
+    level: "A1", stype: "Hoofdzin", gtopic: "verkleinwoorden",
+    srule: "S(het + verkleinw.) → V → bijv. nw — 'huis' → 'huisje'" },
+
+  { nl: "Geef me even een momentje.",
+    en: "Give me just a moment.",
+    level: "A1", stype: "Gebiedende wijs",
+    srule: "V → O → bijw. → O(verkleinw.) — 'moment' → 'momentje', vriendelijke toon",
+    gtopic: "verkleinwoorden" },
+
+  { nl: "Het meisje speelt met haar poppetje.",
+    en: "The girl is playing with her little doll.",
+    level: "A1", stype: "Hoofdzin", gtopic: "verkleinwoorden",
+    srule: "S(het + verkleinw.) → V → voorzetselbep.(verkleinw.) — 'pop' → 'poppetje'" },
+
+  { nl: "Er zit een vlekje op je shirt.",
+    en: "There's a little stain on your shirt.",
+    level: "A1", stype: "Hoofdzin", gtopic: "verkleinwoorden",
+    srule: "er → V → O(verkleinw.) → voorzetselbep. — 'vlek' → 'vlekje'" },
+
+  { nl: "We eten straks een lekker hapje.",
+    en: "We'll have a nice little snack later.",
+    level: "A1", stype: "Hoofdzin", gtopic: "verkleinwoorden",
+    srule: "S → V → bijw. → O(verkleinw.) — 'hap' → 'hapje'" },
+
+  { nl: "Zij woont in een gezellig huisje aan het water.",
+    en: "She lives in a cosy little house by the water.",
+    level: "A1", stype: "Hoofdzin", gtopic: "verkleinwoorden",
+    srule: "S → V → voorzetselbep.(verkleinw.) → voorzetselbep. — 'huis' → 'huisje'" },
+
+  // ── Voorzetsels: plaats & richting ──────────────────────────────────────────────
+  { nl: "Het brood ligt in de kast.",
+    en: "The bread is in the cupboard.",
+    level: "A1", stype: "Hoofdzin", gtopic: "voorzetsels-a1",
+    srule: "S → V → voorzetselbep. — 'in' geeft plaats aan" },
+
+  { nl: "De kat zit onder de tafel.",
+    en: "The cat is sitting under the table.",
+    level: "A1", stype: "Hoofdzin", gtopic: "voorzetsels-a1",
+    srule: "S → V → voorzetselbep. — 'onder' geeft plaats aan" },
+
+  { nl: "Wij lopen naar het station.",
+    en: "We are walking to the station.",
+    level: "A1", stype: "Hoofdzin", gtopic: "voorzetsels-a1",
+    srule: "S → V → voorzetselbep. — 'naar' geeft richting aan" },
+
+  { nl: "De supermarkt is naast de bakker.",
+    en: "The supermarket is next to the bakery.",
+    level: "A1", stype: "Hoofdzin", gtopic: "voorzetsels-a1",
+    srule: "S → V → voorzetselbep. — 'naast' geeft plaats aan" },
+
+  { nl: "Zij fietst door het park.",
+    en: "She is cycling through the park.",
+    level: "A1", stype: "Hoofdzin", gtopic: "voorzetsels-a1",
+    srule: "S → V → voorzetselbep. — 'door' geeft richting aan" },
+
+  { nl: "Het restaurant is tegenover de kerk.",
+    en: "The restaurant is across from the church.",
+    level: "A1", stype: "Hoofdzin", gtopic: "voorzetsels-a1",
+    srule: "S → V → voorzetselbep. — 'tegenover' geeft plaats aan" },
+
+  { nl: "Wij gaan op vakantie naar Spanje.",
+    en: "We are going on holiday to Spain.",
+    level: "A1", stype: "Hoofdzin", gtopic: "voorzetsels-a1",
+    srule: "S → V → bijw. → voorzetselbep. — 'naar' geeft richting aan" },
+
+  // ── Telwoorden ─────────────────────────────────────────────────────────────────
+  { nl: "Zij heeft drie kinderen.",
+    en: "She has three children.",
+    level: "A1", stype: "Hoofdzin", gtopic: "telwoorden",
+    srule: "S → V → O(hoofdtelwoord) — 'drie' is een hoofdtelwoord" },
+
+  { nl: "Ik woon op de tweede verdieping.",
+    en: "I live on the second floor.",
+    level: "A1", stype: "Hoofdzin", gtopic: "telwoorden",
+    srule: "S → V → voorzetselbep.(rangtelwoord) — 'tweede' is een rangtelwoord" },
+
+  { nl: "Wij hebben vijftig euro betaald.",
+    en: "We paid fifty euros.",
+    level: "A1", stype: "Hoofdzin", gtopic: "telwoorden",
+    srule: "S → V → O(hoofdtelwoord) — 'vijftig' is een hoofdtelwoord" },
+
+  { nl: "Hij is jarig op de eerste mei.",
+    en: "His birthday is on the first of May.",
+    level: "A1", stype: "Hoofdzin", gtopic: "telwoorden",
+    srule: "S → V → bijv. nw. → voorzetselbep.(rangtelwoord) — 'eerste' is een rangtelwoord" },
+
+  { nl: "Er wonen honderd mensen in dit dorp.",
+    en: "A hundred people live in this village.",
+    level: "A1", stype: "Hoofdzin", gtopic: "telwoorden",
+    srule: "er → V → O(hoofdtelwoord) → voorzetselbep. — 'honderd' is een hoofdtelwoord" },
+
+  { nl: "Dit is de derde keer dat ik hier ben.",
+    en: "This is the third time I've been here.",
+    level: "A1", stype: "Samengestelde zin",
+    srule: "S → V → O(rangtelwoord) + dat + S → V — 'derde' is een rangtelwoord",
+    gtopic: "telwoorden" },
+
+  { nl: "Zij heeft twintig jaar in Frankrijk gewoond.",
+    en: "She lived in France for twenty years.",
+    level: "A1", stype: "Hoofdzin", gtopic: "telwoorden",
+    srule: "S → V → O(hoofdtelwoord) → voorzetselbep. → V — 'twintig' is een hoofdtelwoord" },
 ];
 
 // ─── VERBS ────────────────────────────────────────────────────────────────────

@@ -633,6 +633,13 @@ const exGrammarMap = {
   'hoe-hoe-vergelijking': s => s.gtopic === 'hoe-hoe-vergelijking',
   'deelwoord-als-bijvoeglijk': s => s.gtopic === 'deelwoord-als-bijvoeglijk',
   'iets-niets-plus-s': s => s.gtopic === 'iets-niets-plus-s',
+  'persoonlijke-vnw': s => s.gtopic === 'persoonlijke-vnw',
+  'bezittelijke-vnw': s => s.gtopic === 'bezittelijke-vnw',
+  'lidwoorden-meervoud': s => s.gtopic === 'lidwoorden-meervoud',
+  'verkleinwoorden': s => s.gtopic === 'verkleinwoorden',
+  'voorzetsels-a1': s => s.gtopic === 'voorzetsels-a1',
+  'telwoorden': s => s.gtopic === 'telwoorden',
+  'ontkenning': s => s.gtopic === 'niet' || s.gtopic === 'geen',
 };
 
 function _buildPool() {
@@ -3616,14 +3623,15 @@ function _grammarTopicErrors(topic) {
   }, 0);
 }
 
-// Jump to oefening tab in errors mode filtered to a grammar topic
-function practiceGrammarErrors(topicFilter) {
+// Jump to oefening tab filtered to a grammar topic. Uses errors mode only when
+// the topic actually has recorded mistakes — otherwise there's nothing to show.
+function practiceGrammarErrors(topicFilter, onlyErrors) {
   exGrammar = topicFilter || 'all';
-  exMode = 'errors';
+  exMode = onlyErrors ? 'errors' : 'all';
   switchTab('oefening');
   // Activate the matching grammar filter button if it exists
   setTimeout(() => {
-    document.querySelectorAll('.ex-mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === 'errors'));
+    document.querySelectorAll('.ex-mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === exMode));
     const grammarBtns = document.querySelectorAll('#ex-grammar-filter .filter-btn');
     grammarBtns.forEach(b => b.classList.toggle('active', b.dataset.grammar === topicFilter));
     rebuildActive();
@@ -3664,7 +3672,7 @@ function _renderGtCard(topic) {
   const filterKey = topic.filter || topic.id;
   const practiceBtn = exGrammarMap[filterKey]
     ? `<button class="gt-practice-btn${errCount > 0 ? ' gt-practice-errors' : ''}"
-        onclick="practiceGrammarErrors('${filterKey}')">
+        onclick="practiceGrammarErrors('${filterKey}', ${errCount > 0})">
         ${errCount > 0 ? `Practice mistakes (${errCount})` : 'Practice sentences'}
       </button>`
     : '';

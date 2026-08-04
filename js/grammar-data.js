@@ -4,7 +4,7 @@ const grammarTopicsData = [
   // ══ A1 ══════════════════════════════════════════════════════════════════════
 
   {
-    id: "persoonlijke-vnw", level: "A1", filter: "voornaamwoord",
+    id: "persoonlijke-vnw", level: "A1", filter: "persoonlijke-vnw",
     title: "Persoonlijke voornaamwoorden", titleEn: "Personal pronouns",
     intro: "Persoonlijke voornaamwoorden vervangen een naam of zelfstandig naamwoord als onderwerp van de zin.",
     introEn: "Personal pronouns replace a name or noun as the subject of the sentence.",
@@ -39,7 +39,7 @@ const grammarTopicsData = [
   },
 
   {
-    id: "bezittelijke-vnw", level: "A1", filter: "voornaamwoord",
+    id: "bezittelijke-vnw", level: "A1", filter: "bezittelijke-vnw",
     title: "Bezittelijke voornaamwoorden", titleEn: "Possessive pronouns",
     intro: "Bezittelijke voornaamwoorden geven aan van wie iets is.",
     introEn: "Possessive pronouns indicate ownership.",
@@ -71,7 +71,7 @@ const grammarTopicsData = [
   },
 
   {
-    id: "lidwoorden-meervoud", level: "A1", filter: "overig",
+    id: "lidwoorden-meervoud", level: "A1", filter: "lidwoorden-meervoud",
     title: "Lidwoorden & meervoud", titleEn: "Articles & plurals",
     intro: "Nederlandse zelfstandige naamwoorden hebben het lidwoord 'de' of 'het'; meervouden eindigen meestal op -en of -s.",
     introEn: "Dutch nouns take the article 'de' or 'het'; plurals usually end in -en or -s.",
@@ -112,7 +112,7 @@ const grammarTopicsData = [
   },
 
   {
-    id: "vraagwoorden", level: "A1", filter: "overig",
+    id: "vraagwoorden", level: "A1", filter: "vraagzin",
     title: "Vraagwoorden", titleEn: "Question words",
     intro: "Vraagwoorden staan aan het begin van een vraag en bepalen het type antwoord.",
     introEn: "Question words come at the start of a question and determine the type of answer.",
@@ -147,7 +147,7 @@ const grammarTopicsData = [
   },
 
   {
-    id: "ontkenning", level: "A1", filter: "overig",
+    id: "ontkenning", level: "A1", filter: "ontkenning",
     title: "Ontkenning: niet & geen", titleEn: "Negation: niet & geen",
     intro: "De gouden regel: GEEN = onbepaald zelfstandig naamwoord (een of geen lidwoord) · NIET = alles andere (werkwoorden, bijvoeglijke naamwoorden, bepaalde zelfstandige naamwoorden, plaatsen…)",
     introEn: "The golden rule: GEEN = indefinite noun (een or no article) · NIET = everything else (verbs, adjectives, definite nouns, places…)",
@@ -257,7 +257,7 @@ const grammarTopicsData = [
   },
 
   {
-    id: "verkleinwoorden", level: "A1", filter: "overig",
+    id: "verkleinwoorden", level: "A1", filter: "verkleinwoorden",
     title: "Verkleinwoorden (-tje)", titleEn: "Diminutives",
     intro: "Verkleinwoorden maken iets kleiner of schattig en zijn altijd het-woorden.",
     introEn: "Diminutives make something smaller or cuter and are always het-words.",
@@ -423,7 +423,7 @@ const grammarTopicsData = [
   },
 
   {
-    id: "telwoorden", level: "A1", filter: "overig",
+    id: "telwoorden", level: "A1", filter: "telwoorden",
     title: "Telwoorden", titleEn: "Numbers",
     intro: "Telwoorden zijn getallen. Er zijn hoofdtelwoorden (één, twee, drie…) voor hoeveelheden en rangtelwoorden (eerste, tweede, derde…) voor volgorde.",
     introEn: "Numbers come in two kinds: cardinal numbers (één, twee, drie…) for quantities and ordinal numbers (eerste, tweede, derde…) for order.",
