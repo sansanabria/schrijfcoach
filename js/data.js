@@ -2279,6 +2279,298 @@ const defaultSentences = [
     en: "She lived in France for twenty years.",
     level: "A1", stype: "Hoofdzin", gtopic: "telwoorden",
     srule: "S → V → O(hoofdtelwoord) → voorzetselbep. → V — 'twintig' is een hoofdtelwoord" },
+
+  // ── Bijvoeglijk naamwoord (buiging) ─────────────────────────────────────────────
+  { nl: "Wij hebben een grote hond en een kleine kat.",
+    en: "We have a big dog and a small cat.",
+    level: "A2", stype: "Hoofdzin", gtopic: "bijvoeglijk-nw",
+    srule: "S → V → O(bijv. nw + de-zn) — bijv. nw krijgt -e vóór een zelfstandig naamwoord" },
+
+  { nl: "Dat is een mooi huis.",
+    en: "That is a beautiful house.",
+    level: "A2", stype: "Hoofdzin", gtopic: "bijvoeglijk-nw",
+    srule: "S → V → O(bijv. nw + het-zn) — geen -e: onbepaald lidwoord + het-woord" },
+
+  { nl: "De koffie is warm.",
+    en: "The coffee is warm.",
+    level: "A2", stype: "Hoofdzin", gtopic: "bijvoeglijk-nw",
+    srule: "S → V → bijv. nw — predicatief gebruik, geen -e" },
+
+  { nl: "Het lekkere eten staat op tafel.",
+    en: "The tasty food is on the table.",
+    level: "A2", stype: "Hoofdzin", gtopic: "bijvoeglijk-nw",
+    srule: "S(bepaald + bijv. nw + het-zn) → V → voorzetselbep. — bepaald lidwoord: altijd -e" },
+
+  { nl: "Zij draagt een rode jas.",
+    en: "She is wearing a red coat.",
+    level: "A2", stype: "Hoofdzin", gtopic: "bijvoeglijk-nw",
+    srule: "S → V → O(bijv. nw + de-zn) — bijv. nw krijgt -e vóór een de-woord" },
+
+  { nl: "Wij wonen in een klein appartement.",
+    en: "We live in a small apartment.",
+    level: "A2", stype: "Hoofdzin", gtopic: "bijvoeglijk-nw",
+    srule: "S → V → voorzetselbep.(onbep. + bijv. nw + het-zn) — geen -e: onbepaald + het-woord" },
+
+  { nl: "De nieuwe collega is heel vriendelijk.",
+    en: "The new colleague is very friendly.",
+    level: "A2", stype: "Hoofdzin", gtopic: "bijvoeglijk-nw",
+    srule: "S(bepaald + bijv. nw + de-zn) → V → bijv. nw — bepaald lidwoord: altijd -e" },
+
+  // ── Vergrotende & overtreffende trap ────────────────────────────────────────────
+  { nl: "Rotterdam is groter dan Utrecht.",
+    en: "Rotterdam is bigger than Utrecht.",
+    level: "A2", stype: "Hoofdzin", gtopic: "vergrotende-trap",
+    srule: "S → V → vergr. trap → dan + vergelijking — '-er' + 'dan' voor vergelijking" },
+
+  { nl: "Dit is het beste restaurant van de stad.",
+    en: "This is the best restaurant in town.",
+    level: "A2", stype: "Hoofdzin", gtopic: "vergrotende-trap",
+    srule: "S → V → O(overtr. trap) — 'het' + '-ste' voor de overtreffende trap" },
+
+  { nl: "Ik loop liever dan dat ik fiets.",
+    en: "I prefer walking to cycling.",
+    level: "A2", stype: "Samengestelde zin",
+    srule: "S → V → vergr. trap(onregelmatig) + dat + S → V — 'liever' is onregelmatig",
+    gtopic: "vergrotende-trap" },
+
+  { nl: "Deze oefening is moeilijker dan de vorige.",
+    en: "This exercise is more difficult than the previous one.",
+    level: "A2", stype: "Hoofdzin", gtopic: "vergrotende-trap",
+    srule: "S → V → vergr. trap → dan + vergelijking — '-er' + 'dan' voor vergelijking" },
+
+  { nl: "Hij is de jongste van de familie.",
+    en: "He is the youngest in the family.",
+    level: "A2", stype: "Hoofdzin", gtopic: "vergrotende-trap",
+    srule: "S → V → O(overtr. trap) → voorzetselbep. — 'de' + '-ste' voor de overtreffende trap" },
+
+  { nl: "Vandaag is het kouder dan gisteren.",
+    en: "Today it's colder than yesterday.",
+    level: "A2", stype: "Hoofdzin", gtopic: "vergrotende-trap",
+    srule: "bijw. → V → S → vergr. trap → dan + vergelijking — '-er' + 'dan'" },
+
+  { nl: "Dit is verreweg het mooiste park van de stad.",
+    en: "This is by far the most beautiful park in the city.",
+    level: "A2", stype: "Hoofdzin", gtopic: "vergrotende-trap",
+    srule: "S → V → bijw. → O(overtr. trap) → voorzetselbep. — 'het' + '-ste'" },
+
+  // ── Voorwerpvoornaamwoorden ──────────────────────────────────────────────────────
+  { nl: "Ik zie hem elke dag op straat.",
+    en: "I see him every day on the street.",
+    level: "A2", stype: "Hoofdzin", gtopic: "object-vnw",
+    srule: "S → V → O(vnw) → bijw. → voorzetselbep. — 'hem' als lijdend voorwerp" },
+
+  { nl: "Kun jij me morgen helpen?",
+    en: "Can you help me tomorrow?",
+    level: "A2", stype: "Ja/nee-vraagzin",
+    srule: "V → S → O(vnw) → bijw. → V — 'me' als lijdend voorwerp",
+    gtopic: "object-vnw" },
+
+  { nl: "Ik geef het cadeau aan haar.",
+    en: "I give the present to her.",
+    level: "A2", stype: "Hoofdzin", gtopic: "object-vnw",
+    srule: "S → V → O → voorzetselbep.(vnw) — 'haar' na voorzetsel 'aan'" },
+
+  { nl: "Wij bellen jullie na het eten.",
+    en: "We'll call you (plural) after dinner.",
+    level: "A2", stype: "Hoofdzin", gtopic: "object-vnw",
+    srule: "S → V → O(vnw) → voorzetselbep. — 'jullie' als lijdend voorwerp" },
+
+  { nl: "Zij vertrouwt hem niet.",
+    en: "She doesn't trust him.",
+    level: "A2", stype: "Hoofdzin", gtopic: "object-vnw",
+    srule: "S → V → O(vnw) → niet — 'hem' als lijdend voorwerp" },
+
+  { nl: "Ik stuur je morgen het adres.",
+    en: "I'll send you the address tomorrow.",
+    level: "A2", stype: "Hoofdzin", gtopic: "object-vnw",
+    srule: "S → V → O(vnw) → bijw. → O — 'je' als meewerkend voorwerp" },
+
+  { nl: "Kan ik jullie iets aanbieden?",
+    en: "Can I offer you (plural) something?",
+    level: "A2", stype: "Ja/nee-vraagzin",
+    srule: "V → S → O(vnw) → O → V — 'jullie' als meewerkend voorwerp",
+    gtopic: "object-vnw" },
+
+  // ── Het 'er'-systeem ─────────────────────────────────────────────────────────────
+  { nl: "Er zijn veel toeristen in de stad.",
+    en: "There are many tourists in the city.",
+    level: "A2", stype: "Hoofdzin", gtopic: "er-systeem",
+    srule: "er(existentieel) → V → O → voorzetselbep. — 'er' introduceert een onbepaald onderwerp" },
+
+  { nl: "Ik houd er niet van om vroeg op te staan.",
+    en: "I don't like getting up early.",
+    level: "A2", stype: "Hoofdzin", gtopic: "er-systeem",
+    srule: "S → V → er(voornaamwoordelijk) → niet → voorzetsel → te → inf. — vast bij 'houden van'" },
+
+  { nl: "Hoeveel broers heb jij? — Ik heb er twee.",
+    en: "How many brothers do you have? — I have two.",
+    level: "A2", stype: "Hoofdzin", gtopic: "er-systeem",
+    srule: "S → V → er(partitief) → telwoord — 'er' vervangt het zelfstandig naamwoord" },
+
+  { nl: "Er wordt hard gewerkt aan het project.",
+    en: "There's a lot of work being done on the project.",
+    level: "A2", stype: "Lijdende vorm",
+    srule: "er(existentieel) → V(passief) → bijw. → V → voorzetselbep. — 'er' bij lijdende vorm zonder onderwerp",
+    gtopic: "er-systeem" },
+
+  { nl: "Woon je nog in Rotterdam? — Nee, ik woon er niet meer.",
+    en: "Do you still live in Rotterdam? — No, I don't live there anymore.",
+    level: "A2", stype: "Hoofdzin", gtopic: "er-systeem",
+    srule: "S → V → er(plaatsaanduidend) → niet → bijw. — 'er' vervangt de plaats" },
+
+  { nl: "Er staat een fiets voor de deur.",
+    en: "There's a bicycle in front of the door.",
+    level: "A2", stype: "Hoofdzin", gtopic: "er-systeem",
+    srule: "er(existentieel) → V → O → voorzetselbep. — 'er' introduceert een onbepaald onderwerp" },
+
+  { nl: "Heb je genoeg geld? — Ja, ik heb er genoeg.",
+    en: "Do you have enough money? — Yes, I have enough.",
+    level: "A2", stype: "Hoofdzin", gtopic: "er-systeem",
+    srule: "S → V → er(partitief) → genoeg — 'er' vervangt het zelfstandig naamwoord" },
+
+  // ── Nevenschikkende voegwoorden ─────────────────────────────────────────────────
+  { nl: "Ik drink koffie, maar mijn broer drinkt thee.",
+    en: "I drink coffee, but my brother drinks tea.",
+    level: "A2", stype: "Samengestelde zin", gtopic: "nevenschikkende-vgw",
+    srule: "S → V → O + maar + S → V → O — geen inversie na 'maar'" },
+
+  { nl: "Wil je thee of wil je koffie?",
+    en: "Do you want tea or do you want coffee?",
+    level: "A2", stype: "Samengestelde zin", gtopic: "nevenschikkende-vgw",
+    srule: "V → S → O + of + V → S → O — geen inversie na 'of'" },
+
+  { nl: "Zij is moe, want zij heeft de hele dag gewerkt.",
+    en: "She is tired, because she worked all day.",
+    level: "A2", stype: "Samengestelde zin", gtopic: "nevenschikkende-vgw",
+    srule: "S → V → bijv. nw + want + S → V → bijw. → V — geen inversie na 'want'" },
+
+  { nl: "Hij is ziek, dus hij blijft thuis.",
+    en: "He is sick, so he is staying home.",
+    level: "A2", stype: "Samengestelde zin", gtopic: "nevenschikkende-vgw",
+    srule: "S → V → bijv. nw + dus + S → V → bijw. — geen inversie na 'dus'" },
+
+  { nl: "Ik lees een boek en ik luister naar muziek.",
+    en: "I read a book and I listen to music.",
+    level: "A2", stype: "Samengestelde zin", gtopic: "nevenschikkende-vgw",
+    srule: "S → V → O + en + S → V → voorzetselbep. — geen inversie na 'en'" },
+
+  { nl: "Zij komt niet, want zij is verkouden.",
+    en: "She isn't coming, because she has a cold.",
+    level: "A2", stype: "Samengestelde zin", gtopic: "nevenschikkende-vgw",
+    srule: "S → V → niet + want + S → V → bijv. nw — geen inversie na 'want'" },
+
+  { nl: "We kunnen binnen blijven, of we kunnen naar buiten gaan.",
+    en: "We can stay inside, or we can go outside.",
+    level: "A2", stype: "Samengestelde zin", gtopic: "nevenschikkende-vgw",
+    srule: "S → V → bijw. → V + of + S → V → voorzetselbep. → V — geen inversie na 'of'" },
+
+  // ── Onderschikkende voegwoorden I ───────────────────────────────────────────────
+  { nl: "Ik weet dat hij morgen komt.",
+    en: "I know that he is coming tomorrow.",
+    level: "A2", stype: "Bijzin + hoofdzin", gtopic: "onderschikkende-vgw-1",
+    srule: "S → V + dat + S → bijw. → V — werkwoord aan het einde van de bijzin" },
+
+  { nl: "Omdat hij ziek is, werkt hij vandaag niet.",
+    en: "Because he is sick, he isn't working today.",
+    level: "A2", stype: "Bijzin + hoofdzin", gtopic: "onderschikkende-vgw-1",
+    srule: "Omdat + S → V, V → S → bijw. → niet — bijzin vooraan → inversie in hoofdzin" },
+
+  { nl: "Toen ik jong was, woonde ik in Groningen.",
+    en: "When I was young, I lived in Groningen.",
+    level: "A2", stype: "Bijzin + hoofdzin", gtopic: "onderschikkende-vgw-1",
+    srule: "Toen + S → V → bijv. nw, V → S → voorzetselbep. — 'toen' voor een gebeurtenis in het verleden" },
+
+  { nl: "Als het regent, blijf ik thuis.",
+    en: "If it rains, I'll stay home.",
+    level: "A2", stype: "Bijzin + hoofdzin", gtopic: "onderschikkende-vgw-1",
+    srule: "Als + S → V, V → S → bijw. — bijzin vooraan → inversie in hoofdzin" },
+
+  { nl: "Ik ga naar bed, hoewel ik niet moe ben.",
+    en: "I'm going to bed, although I'm not tired.",
+    level: "A2", stype: "Hoofdzin + bijzin", gtopic: "onderschikkende-vgw-1",
+    srule: "S → V → voorzetselbep. + hoewel + S → niet → bijv. nw → V — werkwoord aan het einde" },
+
+  { nl: "Zij belt me zodra ze thuis is.",
+    en: "She'll call me as soon as she's home.",
+    level: "A2", stype: "Hoofdzin + bijzin", gtopic: "onderschikkende-vgw-1",
+    srule: "S → V → O + zodra + S → bijw. → V — werkwoord aan het einde van de bijzin" },
+
+  { nl: "Ik weet niet of hij vandaag komt.",
+    en: "I don't know if he's coming today.",
+    level: "A2", stype: "Hoofdzin + bijzin", gtopic: "onderschikkende-vgw-1",
+    srule: "S → V → niet + of + S → bijw. → V — werkwoord aan het einde van de bijzin" },
+
+  // ── Formeel taalgebruik: u ──────────────────────────────────────────────────────
+  { nl: "Goedemiddag, hoe kan ik u helpen?",
+    en: "Good afternoon, how can I help you?",
+    level: "A2", stype: "WH-vraagzin", gtopic: "formeel-u",
+    srule: "Vraagw. → V → S → O(formeel) → V — 'u' als formeel voorwerp" },
+
+  { nl: "Heeft u uw paspoort bij u?",
+    en: "Do you have your passport with you?",
+    level: "A2", stype: "Ja/nee-vraagzin", gtopic: "formeel-u",
+    srule: "V → S(formeel) → O(bez. vnw formeel) → voorzetselbep.(formeel) — 'u' en 'uw' formeel" },
+
+  { nl: "Zou u zo vriendelijk willen zijn om te wachten?",
+    en: "Would you be so kind as to wait?",
+    level: "A2", stype: "Ja/nee-vraagzin", gtopic: "formeel-u",
+    srule: "V(zou) → S(formeel) → bijw. → bijv. nw → V → om → te → inf. — beleefdheidsvorm" },
+
+  { nl: "Kunt u mij vertellen hoe laat het is?",
+    en: "Can you tell me what time it is?",
+    level: "A2", stype: "Ja/nee-vraagzin", gtopic: "formeel-u",
+    srule: "V → S(formeel) → O(vnw) → V + vraagw. → V → S — 'u' als formeel onderwerp" },
+
+  { nl: "Ik wil u bedanken voor uw hulp.",
+    en: "I want to thank you for your help.",
+    level: "A2", stype: "Hoofdzin", gtopic: "formeel-u",
+    srule: "S → V(modaal) → O(formeel) → V → voorzetselbep.(formeel) — 'u' formeel voorwerp" },
+
+  { nl: "Mag ik u om uw naam vragen?",
+    en: "May I ask for your name?",
+    level: "A2", stype: "Ja/nee-vraagzin", gtopic: "formeel-u",
+    srule: "V → S → O(formeel) → voorzetselbep.(formeel) → V — 'u' formeel voorwerp" },
+
+  { nl: "Wilt u nog iets anders bestellen?",
+    en: "Would you like to order anything else?",
+    level: "A2", stype: "Ja/nee-vraagzin", gtopic: "formeel-u",
+    srule: "V(modaal) → S(formeel) → bijw. → O → V — 'u' formeel onderwerp" },
+
+  // ── Voorzetsels: tijd & vaste combinaties ───────────────────────────────────────
+  { nl: "De les begint om negen uur.",
+    en: "The class starts at nine o'clock.",
+    level: "A2", stype: "Hoofdzin", gtopic: "voorzetsels-a2",
+    srule: "S → V → voorzetselbep. — 'om' geeft een tijdstip aan" },
+
+  { nl: "Wij wonen sinds vorig jaar in Delft.",
+    en: "We have lived in Delft since last year.",
+    level: "A2", stype: "Hoofdzin", gtopic: "voorzetsels-a2",
+    srule: "S → V → voorzetselbep. → voorzetselbep. — 'sinds' geeft een beginpunt in de tijd aan" },
+
+  { nl: "Ik wacht al een uur op de bus.",
+    en: "I've been waiting for the bus for an hour.",
+    level: "A2", stype: "Hoofdzin", gtopic: "voorzetsels-a2",
+    srule: "S → V → bijw. → voorzetselbep. → voorzetselbep. — vaste combinatie 'wachten op'" },
+
+  { nl: "Zij is bang voor spinnen.",
+    en: "She is afraid of spiders.",
+    level: "A2", stype: "Hoofdzin", gtopic: "voorzetsels-a2",
+    srule: "S → V → bijv. nw → voorzetselbep. — vaste combinatie 'bang voor'" },
+
+  { nl: "Wij denken vaak aan onze vakantie.",
+    en: "We often think about our holiday.",
+    level: "A2", stype: "Hoofdzin", gtopic: "voorzetsels-a2",
+    srule: "S → V → bijw. → voorzetselbep. — vaste combinatie 'denken aan'" },
+
+  { nl: "Hij is getrouwd met een Française.",
+    en: "He is married to a French woman.",
+    level: "A2", stype: "Hoofdzin", gtopic: "voorzetsels-a2",
+    srule: "S → V → voorzetselbep. — vaste combinatie 'getrouwd met'" },
+
+  { nl: "De winkel is open tot zes uur.",
+    en: "The shop is open until six o'clock.",
+    level: "A2", stype: "Hoofdzin", gtopic: "voorzetsels-a2",
+    srule: "S → V → bijv. nw → voorzetselbep. — 'tot' geeft een eindpunt in de tijd aan" },
 ];
 
 // ─── VERBS ────────────────────────────────────────────────────────────────────

@@ -506,7 +506,7 @@ const grammarTopicsData = [
   // ══ A2 ══════════════════════════════════════════════════════════════════════
 
   {
-    id: "bijvoeglijk-nw", level: "A2", filter: "bijvoeglijk",
+    id: "bijvoeglijk-nw", level: "A2", filter: "bijvoeglijk-nw",
     title: "Bijvoeglijk naamwoord (buiging)", titleEn: "Adjective inflection",
     intro: "Bijvoeglijke naamwoorden krijgen een -e als ze voor een zelfstandig naamwoord staan, behalve in één specifiek geval.",
     introEn: "Adjectives add -e when placed before a noun, except in one specific case.",
@@ -537,7 +537,7 @@ const grammarTopicsData = [
   },
 
   {
-    id: "vergrotende-trap", level: "A2", filter: "bijvoeglijk",
+    id: "vergrotende-trap", level: "A2", filter: "vergrotende-trap",
     title: "Vergrotende & overtreffende trap", titleEn: "Comparative & superlative",
     intro: "De vergrotende trap vergelijkt twee zaken; de overtreffende trap geeft het uiterste aan.",
     introEn: "The comparative compares two things; the superlative expresses the extreme.",
@@ -579,7 +579,7 @@ const grammarTopicsData = [
   },
 
   {
-    id: "object-vnw", level: "A2", filter: "voornaamwoord",
+    id: "object-vnw", level: "A2", filter: "object-vnw",
     title: "Voorwerpvoornaamwoorden", titleEn: "Object pronouns",
     intro: "Voorwerpvoornaamwoorden vervangen het lijdend of meewerkend voorwerp in een zin.",
     introEn: "Object pronouns replace the direct or indirect object in a sentence.",
@@ -613,7 +613,7 @@ const grammarTopicsData = [
   },
 
   {
-    id: "er-systeem", level: "A2", filter: "overig",
+    id: "er-systeem", level: "A2", filter: "er-systeem",
     title: "Het 'er'-systeem", titleEn: "The 'er' system",
     intro: "'Er' heeft vier verschillende functies in het Nederlands.",
     introEn: "'Er' has four different functions in Dutch.",
@@ -642,7 +642,7 @@ const grammarTopicsData = [
   },
 
   {
-    id: "nevenschikkende-vgw", level: "A2", filter: "conjunctie",
+    id: "nevenschikkende-vgw", level: "A2", filter: "nevenschikkende-vgw",
     title: "Nevenschikkende voegwoorden", titleEn: "Coordinating conjunctions",
     intro: "Nevenschikkende voegwoorden verbinden twee hoofdzinnen. De woordvolgorde verandert NIET.",
     introEn: "Coordinating conjunctions connect two main clauses. Word order does NOT change.",
@@ -676,7 +676,7 @@ const grammarTopicsData = [
   },
 
   {
-    id: "onderschikkende-vgw-1", level: "A2", filter: "conjunctie",
+    id: "onderschikkende-vgw-1", level: "A2", filter: "onderschikkende-vgw-1",
     title: "Onderschikkende voegwoorden I", titleEn: "Subordinating conjunctions I",
     intro: "Onderschikkende voegwoorden leiden een bijzin in. Het werkwoord staat aan het EINDE van de bijzin.",
     introEn: "Subordinating conjunctions introduce a subordinate clause. The verb goes to the END.",
@@ -711,7 +711,7 @@ const grammarTopicsData = [
   },
 
   {
-    id: "formeel-u", level: "A2", filter: "voornaamwoord",
+    id: "formeel-u", level: "A2", filter: "formeel-u",
     title: "Formeel taalgebruik: u", titleEn: "Formal register: u",
     intro: "'U' is de formele aanspreekvorm voor onbekenden, ouderen en in professionele situaties.",
     introEn: "'U' is the formal form of address for strangers, elders and in professional contexts.",

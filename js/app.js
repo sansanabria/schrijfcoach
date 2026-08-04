@@ -640,6 +640,14 @@ const exGrammarMap = {
   'voorzetsels-a1': s => s.gtopic === 'voorzetsels-a1',
   'telwoorden': s => s.gtopic === 'telwoorden',
   'ontkenning': s => s.gtopic === 'niet' || s.gtopic === 'geen',
+  'bijvoeglijk-nw': s => s.gtopic === 'bijvoeglijk-nw',
+  'vergrotende-trap': s => s.gtopic === 'vergrotende-trap',
+  'object-vnw': s => s.gtopic === 'object-vnw',
+  'er-systeem': s => s.gtopic === 'er-systeem',
+  'nevenschikkende-vgw': s => s.gtopic === 'nevenschikkende-vgw',
+  'onderschikkende-vgw-1': s => s.gtopic === 'onderschikkende-vgw-1',
+  'formeel-u': s => s.gtopic === 'formeel-u',
+  'voorzetsels-a2': s => s.gtopic === 'voorzetsels-a2',
 };
 
 function _buildPool() {
