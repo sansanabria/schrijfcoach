@@ -1158,7 +1158,7 @@ const grammarTopicsData = [
   },
 
   {
-    id: "betrekkelijke-bijzin", level: "B1", filter: "woordvolgorde",
+    id: "betrekkelijke-bijzin", level: "B1", filter: "betrekkelijke-bijzin",
     title: "Betrekkelijke bijzinnen: die & dat", titleEn: "Relative clauses: die & dat",
     intro: "Betrekkelijke bijzinnen beschrijven een zelfstandig naamwoord met 'die' of 'dat' als betrekkelijk voornaamwoord.",
     introEn: "Relative clauses describe a noun using 'die' or 'dat' as a relative pronoun.",
@@ -1190,7 +1190,7 @@ const grammarTopicsData = [
   },
 
   {
-    id: "indirecte-rede", level: "B1", filter: "woordvolgorde",
+    id: "indirecte-rede", level: "B1", filter: "indirecte-rede",
     title: "Indirecte rede", titleEn: "Reported speech",
     intro: "De indirecte rede rapporteert wat iemand heeft gezegd zonder directe aanhalingstekens.",
     introEn: "Reported speech reports what someone said without direct quotation marks.",
@@ -1220,7 +1220,7 @@ const grammarTopicsData = [
   },
 
   {
-    id: "voorwaardelijke-wijs", level: "B1", filter: "overig",
+    id: "voorwaardelijke-wijs", level: "B1", filter: "voorwaardelijke-wijs",
     title: "Voorwaardelijke wijs", titleEn: "Conditional mood",
     intro: "De voorwaardelijke wijs (zou/zouden) drukt hypothetische situaties en beleefde verzoeken uit.",
     introEn: "The conditional (zou/zouden) expresses hypothetical situations and polite requests.",
@@ -1249,7 +1249,7 @@ const grammarTopicsData = [
   },
 
   {
-    id: "onderschikkende-vgw-2", level: "B1", filter: "conjunctie",
+    id: "onderschikkende-vgw-2", level: "B1", filter: "onderschikkende-vgw-2",
     title: "Onderschikkende voegwoorden II", titleEn: "Subordinating conjunctions II",
     intro: "Gevorderde onderschikkende voegwoorden voor tegenstelling, gevolg, voorwaarde en tijdsbepaling.",
     introEn: "Advanced subordinating conjunctions for contrast, consequence, condition and time.",
@@ -1283,7 +1283,7 @@ const grammarTopicsData = [
   },
 
   {
-    id: "woordvolgorde-gevorderd", level: "B1", filter: "woordvolgorde",
+    id: "woordvolgorde-gevorderd", level: "B1", filter: "woordvolgorde-gevorderd",
     title: "Woordvolgorde gevorderd", titleEn: "Advanced word order",
     intro: "Gevorderde woordvolgorderegels voor scheidbare werkwoorden, infinitief-constructies en dubbele infinitieven.",
     introEn: "Advanced word order rules for separable verbs, infinitive constructions and double infinitives.",

@@ -648,6 +648,11 @@ const exGrammarMap = {
   'onderschikkende-vgw-1': s => s.gtopic === 'onderschikkende-vgw-1',
   'formeel-u': s => s.gtopic === 'formeel-u',
   'voorzetsels-a2': s => s.gtopic === 'voorzetsels-a2',
+  'betrekkelijke-bijzin': s => s.gtopic === 'betrekkelijke-bijzin',
+  'indirecte-rede': s => s.gtopic === 'indirecte-rede',
+  'voorwaardelijke-wijs': s => s.gtopic === 'voorwaardelijke-wijs',
+  'onderschikkende-vgw-2': s => s.gtopic === 'onderschikkende-vgw-2',
+  'woordvolgorde-gevorderd': s => s.gtopic === 'woordvolgorde-gevorderd',
 };
 
 function _buildPool() {

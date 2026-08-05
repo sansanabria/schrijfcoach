@@ -2571,6 +2571,186 @@ const defaultSentences = [
     en: "The shop is open until six o'clock.",
     level: "A2", stype: "Hoofdzin", gtopic: "voorzetsels-a2",
     srule: "S → V → bijv. nw → voorzetselbep. — 'tot' geeft een eindpunt in de tijd aan" },
+
+  // ── Betrekkelijke bijzinnen: die & dat ──────────────────────────────────────────
+  { nl: "De vrouw die daar staat, is mijn moeder.",
+    en: "The woman standing there is my mother.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "betrekkelijke-bijzin",
+    srule: "S + die + V, V → O — 'die' verwijst naar een de-woord" },
+
+  { nl: "Het huis dat wij kopen, is heel oud.",
+    en: "The house we are buying is very old.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "betrekkelijke-bijzin",
+    srule: "S + dat + S → V, V → bijv. nw — 'dat' verwijst naar een het-woord" },
+
+  { nl: "Dat is alles wat ik weet.",
+    en: "That is all I know.",
+    level: "B1", stype: "Hoofdzin + bijzin", gtopic: "betrekkelijke-bijzin",
+    srule: "S → V → O + wat + S → V — 'wat' na 'alles', 'iets', 'niets'" },
+
+  { nl: "De film waarover we praten, is geweldig.",
+    en: "The film we're talking about is great.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "betrekkelijke-bijzin",
+    srule: "S + waarover + S → V, V → bijv. nw — voornaamwoordelijk bijwoord i.p.v. voorzetsel + die" },
+
+  { nl: "De collega's die ik gisteren ontmoette, waren heel aardig.",
+    en: "The colleagues I met yesterday were very nice.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "betrekkelijke-bijzin",
+    srule: "S + die + S → V → bijw., V → bijv. nw — 'die' verwijst naar een meervoud" },
+
+  { nl: "Ik ken niemand die zoveel boeken leest als jij.",
+    en: "I don't know anyone who reads as many books as you.",
+    level: "B1", stype: "Hoofdzin + bijzin", gtopic: "betrekkelijke-bijzin",
+    srule: "S → V → O + die + S → V → O → vergelijking — 'die' na 'niemand'" },
+
+  { nl: "Het boek waarnaar ik op zoek was, stond niet in de winkel.",
+    en: "The book I was looking for wasn't in the shop.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "betrekkelijke-bijzin",
+    srule: "S + waarnaar + S → V → V, V → niet → voorzetselbep. — voornaamwoordelijk bijwoord" },
+
+  // ── Indirecte rede ───────────────────────────────────────────────────────────────
+  { nl: "Ze zegt dat ze morgen komt.",
+    en: "She says she is coming tomorrow.",
+    level: "B1", stype: "Hoofdzin + bijzin", gtopic: "indirecte-rede",
+    srule: "S → V + dat + S → bijw. → V — werkwoord aan het einde van de bijzin" },
+
+  { nl: "Hij vraagt of ik Nederlands spreek.",
+    en: "He asks if I speak Dutch.",
+    level: "B1", stype: "Hoofdzin + bijzin", gtopic: "indirecte-rede",
+    srule: "S → V + of + S → O → V — indirecte ja/nee-vraag met 'of'" },
+
+  { nl: "De docent vroeg waar wij woonden.",
+    en: "The teacher asked where we lived.",
+    level: "B1", stype: "Hoofdzin + bijzin", gtopic: "indirecte-rede",
+    srule: "S → V + vraagw. + S → V — indirecte WH-vraag, tijd verschuift naar verleden tijd" },
+
+  { nl: "Zij vertelde dat ze de vergadering had gemist.",
+    en: "She said she had missed the meeting.",
+    level: "B1", stype: "Hoofdzin + bijzin", gtopic: "indirecte-rede",
+    srule: "S → V + dat + S → O → V → V — voltooid deelwoord aan het einde" },
+
+  { nl: "Hij zei dat hij het niet begreep.",
+    en: "He said he didn't understand it.",
+    level: "B1", stype: "Hoofdzin + bijzin", gtopic: "indirecte-rede",
+    srule: "S → V + dat + S → O → niet → V — werkwoord aan het einde van de bijzin" },
+
+  { nl: "Ik vroeg me af of hij nog steeds in Utrecht woonde.",
+    en: "I wondered whether he still lived in Utrecht.",
+    level: "B1", stype: "Hoofdzin + bijzin", gtopic: "indirecte-rede",
+    srule: "S → V → reflexief → af + of + S → bijw. → voorzetselbep. → V — indirecte vraag met 'of'" },
+
+  { nl: "Ze legde uit waarom ze te laat was.",
+    en: "She explained why she was late.",
+    level: "B1", stype: "Hoofdzin + bijzin", gtopic: "indirecte-rede",
+    srule: "S → V → uit + vraagw. + S → V → bijv. nw — indirecte WH-vraag" },
+
+  // ── Voorwaardelijke wijs ─────────────────────────────────────────────────────────
+  { nl: "Als ik meer tijd had, zou ik meer lezen.",
+    en: "If I had more time, I would read more.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "voorwaardelijke-wijs",
+    srule: "Als + S → V → O, V(zou) → S → bijw. → V — bijzin vooraan → inversie in hoofdzin" },
+
+  { nl: "Zou jij mij kunnen helpen?",
+    en: "Could you help me? (polite)",
+    level: "B1", stype: "Ja/nee-vraagzin", gtopic: "voorwaardelijke-wijs",
+    srule: "V(zou) → S → O → V(modaal) → V — beleefd verzoek met 'zou'" },
+
+  { nl: "Ik zou graag een kop koffie willen.",
+    en: "I would like a cup of coffee.",
+    level: "B1", stype: "Hoofdzin", gtopic: "voorwaardelijke-wijs",
+    srule: "S → V(zou) → bijw. → O → V(modaal) — beleefde wens met 'zou … willen'" },
+
+  { nl: "Als het niet zou regenen, zouden we buiten eten.",
+    en: "If it weren't going to rain, we would eat outside.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "voorwaardelijke-wijs",
+    srule: "Als + S → niet → V(zou) → V, V(zouden) → S → bijw. → V — dubbele voorwaardelijke wijs" },
+
+  { nl: "Wij zouden graag meer informatie ontvangen.",
+    en: "We would like to receive more information.",
+    level: "B1", stype: "Hoofdzin", gtopic: "voorwaardelijke-wijs",
+    srule: "S → V(zouden) → bijw. → O → V — formele beleefde wens" },
+
+  { nl: "Zonder jouw hulp zou ik dit nooit hebben gehaald.",
+    en: "Without your help, I would never have managed this.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "voorwaardelijke-wijs",
+    srule: "Zonder + O, V(zou) → S → bijw. → V → V — voltooide voorwaardelijke wijs" },
+
+  { nl: "Als ik jou was, zou ik dat baantje aannemen.",
+    en: "If I were you, I would take that job.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "voorwaardelijke-wijs",
+    srule: "Als + S → V → O, V(zou) → S → O → V — hypothetisch advies" },
+
+  // ── Onderschikkende voegwoorden II ──────────────────────────────────────────────
+  { nl: "Hoewel ik moe was, maakte ik de oefening af.",
+    en: "Although I was tired, I finished the exercise.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "onderschikkende-vgw-2",
+    srule: "Hoewel + S → V → bijv. nw, V → S → O → V — tegenstelling, bijzin vooraan → inversie" },
+
+  { nl: "Ik ga zwemmen, tenzij het te koud is.",
+    en: "I will go swimming unless it's too cold.",
+    level: "B1", stype: "Hoofdzin + bijzin", gtopic: "onderschikkende-vgw-2",
+    srule: "S → V → O + tenzij + S → bijw. → bijv. nw → V — voorwaarde met uitzondering" },
+
+  { nl: "Hij deed alsof hij niets wist.",
+    en: "He acted as if he knew nothing.",
+    level: "B1", stype: "Hoofdzin + bijzin", gtopic: "onderschikkende-vgw-2",
+    srule: "S → V + alsof + S → O → V — vergelijking, werkwoord aan het einde" },
+
+  { nl: "Zodat wij op tijd zouden zijn, vertrokken we vroeg.",
+    en: "So that we would be on time, we left early.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "onderschikkende-vgw-2",
+    srule: "Zodat + S → bijw. → V(zouden) → V, V → S → bijw. — doel, bijzin vooraan → inversie" },
+
+  { nl: "Terwijl zij kookte, dekte hij de tafel.",
+    en: "While she was cooking, he set the table.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "onderschikkende-vgw-2",
+    srule: "Terwijl + S → V, V → S → O — gelijktijdigheid, bijzin vooraan → inversie" },
+
+  { nl: "Nu ik hier woon, spreek ik elke dag Nederlands.",
+    en: "Now that I live here, I speak Dutch every day.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "onderschikkende-vgw-2",
+    srule: "Nu + S → V → bijw., V → S → bijw. → O — reden/oorzaak, bijzin vooraan → inversie" },
+
+  { nl: "Voordat we vertrekken, moeten we de koffers pakken.",
+    en: "Before we leave, we need to pack the suitcases.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "onderschikkende-vgw-2",
+    srule: "Voordat + S → V, V → S → O → V — tijd, bijzin vooraan → inversie" },
+
+  // ── Woordvolgorde gevorderd ──────────────────────────────────────────────────────
+  { nl: "Ik weet dat hij morgen vroeg opstaat.",
+    en: "I know that he gets up early tomorrow.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "woordvolgorde-gevorderd",
+    srule: "S → V + dat + S → bijw. → bijw. → V(scheidbaar) — 'opstaat' blijft samen in de bijzin" },
+
+  { nl: "Hij had het kunnen doen.",
+    en: "He could have done it.",
+    level: "B1", stype: "Hoofdzin", gtopic: "woordvolgorde-gevorderd",
+    srule: "S → V(had) → O → V(kunnen) → V(doen) — dubbele infinitief aan het einde" },
+
+  { nl: "Ze gaat naar de bibliotheek om boeken te lenen.",
+    en: "She goes to the library to borrow books.",
+    level: "B1", stype: "Hoofdzin", gtopic: "woordvolgorde-gevorderd",
+    srule: "S → V → voorzetselbep. → om → O → te → inf. — om-te-constructie" },
+
+  { nl: "Wij hebben het rapport moeten herschrijven.",
+    en: "We had to rewrite the report.",
+    level: "B1", stype: "Hoofdzin", gtopic: "woordvolgorde-gevorderd",
+    srule: "S → V(hebben) → O → V(moeten) → V(herschrijven) — dubbele infinitief" },
+
+  { nl: "Ik denk dat ze het boek al had uitgelezen.",
+    en: "I think she had already finished reading the book.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "woordvolgorde-gevorderd",
+    srule: "S → V + dat + S → O → bijw. → V(had) → V(uitgelezen) — voltooid deelwoord scheidbaar werkwoord" },
+
+  { nl: "Hij probeert elke ochtend vroeg op te staan.",
+    en: "He tries to get up early every morning.",
+    level: "B1", stype: "Hoofdzin", gtopic: "woordvolgorde-gevorderd",
+    srule: "S → V → bijw. → bijw. → om te + V(scheidbaar gesplitst) — 'op te staan' bij te-infinitief" },
+
+  { nl: "Zij zei dat ze het probleem had kunnen oplossen.",
+    en: "She said she could have solved the problem.",
+    level: "B1", stype: "Bijzin + hoofdzin", gtopic: "woordvolgorde-gevorderd",
+    srule: "S → V + dat + S → O → V(had) → V(kunnen) → V(oplossen) — drievoudige werkwoordgroep aan het einde" },
 ];
 
 // ─── VERBS ────────────────────────────────────────────────────────────────────
