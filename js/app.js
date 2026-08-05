@@ -3625,11 +3625,12 @@ function _totalGrammarErrors() {
   return sentences.filter(s => { const st = sentenceStats[s.nl]; return st && st.w > st.c; }).length;
 }
 
-// Returns error count for sentences matching a grammar topic filter/id
+// Returns error count for sentences matching a grammar topic filter/id, scoped
+// to the topic's own level (shared filters like 'tijden' span multiple levels).
 function _grammarTopicErrors(topic) {
   const filterKey = topic.filter || topic.id;
   const matcher = exGrammarMap[filterKey] || (s => s.gtopic === filterKey || s.gtopic === topic.id);
-  const pool = sentences.filter(matcher);
+  const pool = sentences.filter(s => s.level === topic.level && matcher(s));
   return pool.reduce((n, s) => {
     const st = sentenceStats[s.nl];
     return n + (st && st.w > st.c ? 1 : 0);
@@ -3638,15 +3639,21 @@ function _grammarTopicErrors(topic) {
 
 // Jump to oefening tab filtered to a grammar topic. Uses errors mode only when
 // the topic actually has recorded mistakes — otherwise there's nothing to show.
-function practiceGrammarErrors(topicFilter, onlyErrors) {
+// topicLevel scopes the pool to that topic's own CEFR level, since several
+// grammar filters (tijden, passief, vraagzin, ontkenning…) match sentences
+// spanning multiple levels — without this a practice session mixes A1-B2.
+function practiceGrammarErrors(topicFilter, onlyErrors, topicLevel) {
   exGrammar = topicFilter || 'all';
   exMode = onlyErrors ? 'errors' : 'all';
+  exLevel = topicLevel || 'all';
   switchTab('oefening');
   // Activate the matching grammar filter button if it exists
   setTimeout(() => {
     document.querySelectorAll('.ex-mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === exMode));
     const grammarBtns = document.querySelectorAll('#ex-grammar-filter .filter-btn');
     grammarBtns.forEach(b => b.classList.toggle('active', b.dataset.grammar === topicFilter));
+    const levelBtns = document.querySelectorAll('#ex-level-filter .filter-btn');
+    levelBtns.forEach(b => b.classList.toggle('active', b.dataset.exlevel === exLevel));
     rebuildActive();
     exIdx = 0;
     loadSentence();
@@ -3685,7 +3692,7 @@ function _renderGtCard(topic) {
   const filterKey = topic.filter || topic.id;
   const practiceBtn = exGrammarMap[filterKey]
     ? `<button class="gt-practice-btn${errCount > 0 ? ' gt-practice-errors' : ''}"
-        onclick="practiceGrammarErrors('${filterKey}', ${errCount > 0})">
+        onclick="practiceGrammarErrors('${filterKey}', ${errCount > 0}, '${topic.level}')">
         ${errCount > 0 ? `Practice mistakes (${errCount})` : 'Practice sentences'}
       </button>`
     : '';
