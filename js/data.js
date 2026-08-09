@@ -2751,6 +2751,126 @@ const defaultSentences = [
     en: "She said she could have solved the problem.",
     level: "B1", stype: "Bijzin + hoofdzin", gtopic: "woordvolgorde-gevorderd",
     srule: "S → V + dat + S → O → V(had) → V(kunnen) → V(oplossen) — drievoudige werkwoordgroep aan het einde" },
+  // ── A2 · Extra eenvoudige oefenzinnen per grammaticaonderwerp ────────────────
+  // ── bijvoeglijk naamwoord ──
+  { nl: "De grote hond slaapt.", en: "The big dog is sleeping.", level: "A2", stype: "Hoofdzin", srule: "S(bepaald + bijv. nw + de-zn) → V — bepaald lidwoord: altijd -e", gtopic: "bijvoeglijk-nw" },
+  { nl: "Ik heb een nieuwe fiets.", en: "I have a new bike.", level: "A2", stype: "Hoofdzin", srule: "S → V → O(bijv. nw + de-zn) — bijv. nw krijgt -e vóór een de-woord", gtopic: "bijvoeglijk-nw" },
+  { nl: "Het water is koud.", en: "The water is cold.", level: "A2", stype: "Hoofdzin", srule: "S → V → bijv. nw — predicatief gebruik, geen -e", gtopic: "bijvoeglijk-nw" },
+  { nl: "Dat is een klein kind.", en: "That is a small child.", level: "A2", stype: "Hoofdzin", srule: "S → V → O(bijv. nw + het-zn) — geen -e: onbepaald lidwoord + het-woord", gtopic: "bijvoeglijk-nw" },
+  { nl: "De oude film is mooi.", en: "The old film is beautiful.", level: "A2", stype: "Hoofdzin", srule: "S(bepaald + bijv. nw) → V → bijv. nw — bepaald lidwoord: altijd -e", gtopic: "bijvoeglijk-nw" },
+  { nl: "Zij koopt een groen boek.", en: "She buys a green book.", level: "A2", stype: "Hoofdzin", srule: "S → V → O(bijv. nw + het-zn) — geen -e: onbepaald + het-woord", gtopic: "bijvoeglijk-nw" },
+
+  // ── vergrotende trap ──
+  { nl: "Deze tas is duurder.", en: "This bag is more expensive.", level: "A2", stype: "Hoofdzin", srule: "S → V → vergrotende trap — bijv. nw + -er", gtopic: "vergrotende-trap" },
+  { nl: "Mijn broer is ouder dan ik.", en: "My brother is older than me.", level: "A2", stype: "Hoofdzin", srule: "S → V → vergrotende trap → dan + vergelijking", gtopic: "vergrotende-trap" },
+  { nl: "Dit boek is het beste.", en: "This book is the best.", level: "A2", stype: "Hoofdzin", srule: "S → V → overtreffende trap — onregelmatig: goed → beter → best", gtopic: "vergrotende-trap" },
+  { nl: "De trein gaat sneller.", en: "The train goes faster.", level: "A2", stype: "Hoofdzin", srule: "S → V → vergrotende trap — bijwoord + -er", gtopic: "vergrotende-trap" },
+  { nl: "Zij is jonger dan haar zus.", en: "She is younger than her sister.", level: "A2", stype: "Hoofdzin", srule: "S → V → vergrotende trap → dan + vergelijking", gtopic: "vergrotende-trap" },
+  { nl: "Dat is de grootste kamer.", en: "That is the biggest room.", level: "A2", stype: "Hoofdzin", srule: "S → V → overtreffende trap + zn — bepaald lidwoord + -ste", gtopic: "vergrotende-trap" },
+
+  // ── object-voornaamwoorden ──
+  { nl: "Ik zie je morgen.", en: "I'll see you tomorrow.", level: "A2", stype: "Hoofdzin", srule: "S → V → O(vnw) → bijw. — 'je' als lijdend voorwerp", gtopic: "object-vnw" },
+  { nl: "Hij helpt ons altijd.", en: "He always helps us.", level: "A2", stype: "Hoofdzin", srule: "S → V → O(vnw) → bijw. — 'ons' als lijdend voorwerp", gtopic: "object-vnw" },
+  { nl: "Wij bellen hem vanavond.", en: "We'll call him tonight.", level: "A2", stype: "Hoofdzin", srule: "S → V → O(vnw) → tijdsbep. — 'hem' als lijdend voorwerp", gtopic: "object-vnw" },
+  { nl: "Zij kent mij goed.", en: "She knows me well.", level: "A2", stype: "Hoofdzin", srule: "S → V → O(vnw) → bijw. — 'mij' als lijdend voorwerp", gtopic: "object-vnw" },
+  { nl: "De leraar helpt hen.", en: "The teacher helps them.", level: "A2", stype: "Hoofdzin", srule: "S → V → O(vnw) — 'hen' als lijdend voorwerp", gtopic: "object-vnw" },
+  { nl: "Ik geef het aan hem.", en: "I give it to him.", level: "A2", stype: "Hoofdzin", srule: "S → V → O → voorzetselbep.(vnw) — 'hem' na voorzetsel 'aan'", gtopic: "object-vnw" },
+
+  // ── er-systeem ──
+  { nl: "Ik werk er niet meer.", en: "I don't work there anymore.", level: "A2", stype: "Hoofdzin", srule: "S → V → er(plaats) → niet meer — 'er' vervangt de plaats", gtopic: "er-systeem" },
+  { nl: "Wij hebben er vier.", en: "We have four of them.", level: "A2", stype: "Hoofdzin", srule: "S → V → er → telwoord — 'er' bij een hoeveelheid", gtopic: "er-systeem" },
+  { nl: "Er staat een fiets buiten.", en: "There is a bike outside.", level: "A2", stype: "Hoofdzin", srule: "Er → V → S(onbepaald) → plaatsbep. — 'er' als loos onderwerp", gtopic: "er-systeem" },
+  { nl: "Er wonen hier veel mensen.", en: "Many people live here.", level: "A2", stype: "Hoofdzin", srule: "Er → V → plaatsbep. → S(onbepaald) — 'er' als loos onderwerp", gtopic: "er-systeem" },
+  { nl: "Ik denk er vaak aan.", en: "I often think about it.", level: "A2", stype: "Hoofdzin", srule: "S → V → er → bijw. → voorzetsel — voornaamwoordelijk bijwoord: er … aan", gtopic: "er-systeem" },
+  { nl: "Er is geen brood meer.", en: "There is no bread left.", level: "A2", stype: "Hoofdzin", srule: "Er → V → geen + zn → meer — 'er' als loos onderwerp", gtopic: "er-systeem" },
+
+  // ── nevenschikkende voegwoorden ──
+  { nl: "Hij leest en zij schrijft.", en: "He reads and she writes.", level: "A2", stype: "Samengestelde zin", srule: "hoofdzin → en → hoofdzin — 'en' verandert de woordvolgorde niet", gtopic: "nevenschikkende-vgw" },
+  { nl: "Ik ben moe, maar ik werk.", en: "I am tired, but I work.", level: "A2", stype: "Samengestelde zin", srule: "hoofdzin → maar → hoofdzin — 'maar' verandert de woordvolgorde niet", gtopic: "nevenschikkende-vgw" },
+  { nl: "Wij blijven thuis, want het regent.", en: "We are staying home, because it is raining.", level: "A2", stype: "Samengestelde zin", srule: "hoofdzin → want → hoofdzin — na 'want' blijft S → V", gtopic: "nevenschikkende-vgw" },
+  { nl: "Kom je of blijf je thuis?", en: "Are you coming or staying home?", level: "A2", stype: "Ja/nee-vraagzin", srule: "vraagzin → of → vraagzin — 'of' verbindt twee gelijke delen", gtopic: "nevenschikkende-vgw" },
+  { nl: "Het is laat, dus ik ga.", en: "It is late, so I am going.", level: "A2", stype: "Samengestelde zin", srule: "hoofdzin → dus → hoofdzin — 'dus' geeft een gevolg aan", gtopic: "nevenschikkende-vgw" },
+  { nl: "Zij zingt en danst graag.", en: "She likes to sing and dance.", level: "A2", stype: "Samengestelde zin", srule: "S → V → en → V → bijw. — één onderwerp, twee werkwoorden", gtopic: "nevenschikkende-vgw" },
+
+  // ── onderschikkende voegwoorden 1 ──
+  { nl: "Ik blijf thuis omdat ik ziek ben.", en: "I am staying home because I am ill.", level: "A2", stype: "Hoofdzin + bijzin", srule: "hoofdzin → omdat → S → rest → V(eind) — werkwoord achteraan in de bijzin", gtopic: "onderschikkende-vgw-1" },
+  { nl: "Hij zegt dat het regent.", en: "He says that it is raining.", level: "A2", stype: "Hoofdzin + bijzin", srule: "hoofdzin → dat → S → V(eind) — werkwoord achteraan in de bijzin", gtopic: "onderschikkende-vgw-1" },
+  { nl: "Als het sneeuwt, blijf ik binnen.", en: "If it snows, I stay inside.", level: "A2", stype: "Bijzin + hoofdzin", srule: "Als → S → V(eind) → V → S — inversie in de hoofdzin na de bijzin", gtopic: "onderschikkende-vgw-1" },
+  { nl: "Zij wacht tot de bus komt.", en: "She waits until the bus comes.", level: "A2", stype: "Hoofdzin + bijzin", srule: "hoofdzin → tot → S → V(eind) — werkwoord achteraan in de bijzin", gtopic: "onderschikkende-vgw-1" },
+  { nl: "Ik weet dat je gelijk hebt.", en: "I know that you are right.", level: "A2", stype: "Hoofdzin + bijzin", srule: "hoofdzin → dat → S → O → V(eind) — werkwoord achteraan in de bijzin", gtopic: "onderschikkende-vgw-1" },
+  { nl: "Wij eten terwijl de kinderen spelen.", en: "We eat while the children play.", level: "A2", stype: "Hoofdzin + bijzin", srule: "hoofdzin → terwijl → S → V(eind) — werkwoord achteraan in de bijzin", gtopic: "onderschikkende-vgw-1" },
+
+  // ── formeel u ──
+  { nl: "Wilt u koffie of thee?", en: "Would you like coffee or tea?", level: "A2", stype: "Ja/nee-vraagzin", srule: "V → S(formeel) → O → of → O — 'u' als formeel onderwerp", gtopic: "formeel-u" },
+  { nl: "Kunt u ons helpen?", en: "Can you help us?", level: "A2", stype: "Ja/nee-vraagzin", srule: "V(modaal) → S(formeel) → O(vnw) → inf. — 'u' als formeel onderwerp", gtopic: "formeel-u" },
+  { nl: "Hoe heet u?", en: "What is your name?", level: "A2", stype: "WH-vraagzin", srule: "Vraagw. → V → S(formeel) — 'u' als formeel onderwerp", gtopic: "formeel-u" },
+  { nl: "Waar woont u nu?", en: "Where do you live now?", level: "A2", stype: "WH-vraagzin", srule: "Vraagw. → V → S(formeel) → bijw. — 'u' als formeel onderwerp", gtopic: "formeel-u" },
+  { nl: "Ik dank u hartelijk.", en: "Thank you very much.", level: "A2", stype: "Hoofdzin", srule: "S → V → O(formeel) → bijw. — 'u' als formeel voorwerp", gtopic: "formeel-u" },
+  { nl: "Mag ik uw jas aannemen?", en: "May I take your coat?", level: "A2", stype: "Ja/nee-vraagzin", srule: "V(modaal) → S → O(bez. vnw formeel) → inf. — 'uw' formeel bezittelijk", gtopic: "formeel-u" },
+
+  // ── voorzetsels A2 ──
+  { nl: "Ik wacht op de trein.", en: "I am waiting for the train.", level: "A2", stype: "Hoofdzin", srule: "S → V → voorzetselbep. — vaste combinatie 'wachten op'", gtopic: "voorzetsels-a2" },
+  { nl: "Zij denkt aan haar moeder.", en: "She is thinking of her mother.", level: "A2", stype: "Hoofdzin", srule: "S → V → voorzetselbep. — vaste combinatie 'denken aan'", gtopic: "voorzetsels-a2" },
+  { nl: "Wij praten over het werk.", en: "We are talking about work.", level: "A2", stype: "Hoofdzin", srule: "S → V → voorzetselbep. — vaste combinatie 'praten over'", gtopic: "voorzetsels-a2" },
+  { nl: "Hij is trots op zijn zoon.", en: "He is proud of his son.", level: "A2", stype: "Hoofdzin", srule: "S → V → bijv. nw → voorzetselbep. — vaste combinatie 'trots op'", gtopic: "voorzetsels-a2" },
+  { nl: "De sleutel ligt onder de mat.", en: "The key is under the mat.", level: "A2", stype: "Hoofdzin", srule: "S → V → plaatsbep. — 'onder' geeft een plaats aan", gtopic: "voorzetsels-a2" },
+  { nl: "Wij gaan na het eten weg.", en: "We leave after dinner.", level: "A2", stype: "Hoofdzin", srule: "S → V → tijdsbep. → deel(weg) — 'na' geeft een tijdsvolgorde aan", gtopic: "voorzetsels-a2" },
+
+  // ── scheidbare werkwoorden ──
+  { nl: "Ik sta altijd vroeg op.", en: "I always get up early.", level: "A2", stype: "Hoofdzin", srule: "S → V → bijw. → deel(op) — het voorvoegsel gaat naar het einde", gtopic: "scheidbare-werkwoorden" },
+  { nl: "Zij belt haar zus op.", en: "She calls her sister.", level: "A2", stype: "Hoofdzin", srule: "S → V → O → deel(op) — het voorvoegsel gaat naar het einde", gtopic: "scheidbare-werkwoorden" },
+  { nl: "Wij gaan om acht uur weg.", en: "We leave at eight o'clock.", level: "A2", stype: "Hoofdzin", srule: "S → V → tijdsbep. → deel(weg) — het voorvoegsel gaat naar het einde", gtopic: "scheidbare-werkwoorden" },
+  { nl: "Hij ruimt zijn kamer op.", en: "He tidies up his room.", level: "A2", stype: "Hoofdzin", srule: "S → V → O → deel(op) — het voorvoegsel gaat naar het einde", gtopic: "scheidbare-werkwoorden" },
+  { nl: "De trein komt om zes uur aan.", en: "The train arrives at six o'clock.", level: "A2", stype: "Hoofdzin", srule: "S → V → tijdsbep. → deel(aan) — het voorvoegsel gaat naar het einde", gtopic: "scheidbare-werkwoorden" },
+  { nl: "Ik neem de telefoon op.", en: "I answer the phone.", level: "A2", stype: "Hoofdzin", srule: "S → V → O → deel(op) — het voorvoegsel gaat naar het einde", gtopic: "scheidbare-werkwoorden" },
+
+  // ── reflexieve werkwoorden ──
+  { nl: "Ik was me elke ochtend.", en: "I wash myself every morning.", level: "A2", stype: "Reflexief werkwoord", srule: "S → V → reflexief → tijdsbep. — 'me' direct na het werkwoord", gtopic: "reflexieve-werkwoorden" },
+  { nl: "Hij scheert zich elke dag.", en: "He shaves every day.", level: "A2", stype: "Reflexief werkwoord", srule: "S → V → reflexief → tijdsbep. — 'zich' direct na het werkwoord", gtopic: "reflexieve-werkwoorden" },
+  { nl: "Wij vervelen ons niet.", en: "We are not bored.", level: "A2", stype: "Reflexief werkwoord", srule: "S → V → reflexief → niet — 'ons' direct na het werkwoord", gtopic: "reflexieve-werkwoorden" },
+  { nl: "Zij kleedt zich snel aan.", en: "She gets dressed quickly.", level: "A2", stype: "Reflexief werkwoord", srule: "S → V → reflexief → bijw. → deel(aan) — reflexief vóór het bijwoord", gtopic: "reflexieve-werkwoorden" },
+  { nl: "Voel je je beter?", en: "Do you feel better?", level: "A2", stype: "Ja/nee-vraagzin", srule: "V → S → reflexief → bijv. nw — inversie, reflexief na het onderwerp", gtopic: "reflexieve-werkwoorden" },
+  { nl: "Ik herinner me die dag.", en: "I remember that day.", level: "A2", stype: "Reflexief werkwoord", srule: "S → V → reflexief → O — 'me' direct na het werkwoord", gtopic: "reflexieve-werkwoorden" },
+
+  // ── toekomende tijd ──
+  { nl: "Ik ga morgen werken.", en: "I am going to work tomorrow.", level: "A2", stype: "Toekomende tijd", srule: "S → gaan → tijdsbep. → inf. — infinitief aan het einde", gtopic: "toekomende-tijd" },
+  { nl: "Wij zullen later komen.", en: "We will come later.", level: "A2", stype: "Toekomende tijd", srule: "S → zullen → bijw. → inf. — infinitief aan het einde", gtopic: "toekomende-tijd" },
+  { nl: "Zij gaat een brief schrijven.", en: "She is going to write a letter.", level: "A2", stype: "Toekomende tijd", srule: "S → gaan → O → inf. — infinitief aan het einde", gtopic: "toekomende-tijd" },
+  { nl: "Het gaat morgen regenen.", en: "It is going to rain tomorrow.", level: "A2", stype: "Toekomende tijd", srule: "S → gaan → tijdsbep. → inf. — infinitief aan het einde", gtopic: "toekomende-tijd" },
+  { nl: "Hij zal het begrijpen.", en: "He will understand it.", level: "A2", stype: "Toekomende tijd", srule: "S → zullen → O → inf. — infinitief aan het einde", gtopic: "toekomende-tijd" },
+  { nl: "Ik ga vanavond koken.", en: "I am going to cook tonight.", level: "A2", stype: "Toekomende tijd", srule: "S → gaan → tijdsbep. → inf. — infinitief aan het einde", gtopic: "toekomende-tijd" },
+
+  // ── progressieve tijd ──
+  { nl: "Ik ben aan het lezen.", en: "I am reading.", level: "A2", stype: "Progressieve tijd", srule: "S → V(zijn) → aan het → inf. — 'aan het' + infinitief aan het einde", gtopic: "progressieve-tijd" },
+  { nl: "Zij is aan het koken.", en: "She is cooking.", level: "A2", stype: "Progressieve tijd", srule: "S → V(zijn) → aan het → inf. — 'aan het' + infinitief aan het einde", gtopic: "progressieve-tijd" },
+  { nl: "De kinderen zijn aan het spelen.", en: "The children are playing.", level: "A2", stype: "Progressieve tijd", srule: "S → V(zijn) → aan het → inf. — 'aan het' + infinitief aan het einde", gtopic: "progressieve-tijd" },
+  { nl: "Hij zit te wachten.", en: "He is sitting waiting.", level: "A2", stype: "Progressieve tijd", srule: "S → V(zitten) → te → inf. — houding + te + infinitief", gtopic: "progressieve-tijd" },
+  { nl: "Wij staan te praten.", en: "We are standing talking.", level: "A2", stype: "Progressieve tijd", srule: "S → V(staan) → te → inf. — houding + te + infinitief", gtopic: "progressieve-tijd" },
+  { nl: "Wat ben je aan het maken?", en: "What are you making?", level: "A2", stype: "Progressieve tijd", srule: "Vraagw. → V → S → aan het → inf. — 'aan het' + infinitief aan het einde", gtopic: "progressieve-tijd" },
+
+  // ── hoeven te ──
+  { nl: "Je hoeft niet te komen.", en: "You don't have to come.", level: "A2", stype: "Hoeven niet te", srule: "S → hoeven → niet → te → inf. — 'hoeven' altijd met 'niet' of 'geen'", gtopic: "hoeven-te" },
+  { nl: "Ik hoef vandaag niet te werken.", en: "I don't have to work today.", level: "A2", stype: "Hoeven niet te", srule: "S → hoeven → tijdsbep. → niet → te → inf.", gtopic: "hoeven-te" },
+  { nl: "Zij hoeft niet te betalen.", en: "She doesn't have to pay.", level: "A2", stype: "Hoeven niet te", srule: "S → hoeven → niet → te → inf. — 'hoeven' altijd met 'niet' of 'geen'", gtopic: "hoeven-te" },
+  { nl: "Wij hoeven niet te wachten.", en: "We don't have to wait.", level: "A2", stype: "Hoeven niet te", srule: "S → hoeven → niet → te → inf. — 'hoeven' altijd met 'niet' of 'geen'", gtopic: "hoeven-te" },
+  { nl: "Hij hoeft niets te doen.", en: "He doesn't have to do anything.", level: "A2", stype: "Hoeven niet te", srule: "S → hoeven → niets → te → inf. — 'niets' vóór te + infinitief", gtopic: "hoeven-te" },
+  { nl: "Hoef je morgen niet te werken?", en: "Don't you have to work tomorrow?", level: "A2", stype: "Vraagzin", srule: "V(hoeven) → S → tijdsbep. → niet → te → inf. — inversie in de vraagzin", gtopic: "hoeven-te" },
+
+  // ── gebiedende wijs ──
+  { nl: "Doe het raam dicht.", en: "Close the window.", level: "A2", stype: "Gebiedende wijs", srule: "V(stam) → O → deel(dicht) — geen onderwerp, werkwoord vooraan", gtopic: "gebiedende" },
+  { nl: "Kom snel hier.", en: "Come here quickly.", level: "A2", stype: "Gebiedende wijs", srule: "V(stam) → bijw. → plaatsbep. — geen onderwerp, werkwoord vooraan", gtopic: "gebiedende" },
+  { nl: "Wacht even op mij.", en: "Wait for me a moment.", level: "A2", stype: "Gebiedende wijs", srule: "V(stam) → bijw. → voorzetselbep. — geen onderwerp, werkwoord vooraan", gtopic: "gebiedende" },
+  { nl: "Lees deze tekst hardop.", en: "Read this text out loud.", level: "A2", stype: "Gebiedende wijs", srule: "V(stam) → O → bijw. — geen onderwerp, werkwoord vooraan", gtopic: "gebiedende" },
+  { nl: "Neem je jas mee.", en: "Take your coat with you.", level: "A2", stype: "Gebiedende wijs", srule: "V(stam) → O → deel(mee) — scheidbaar deel aan het einde", gtopic: "gebiedende" },
+  { nl: "Wees voorzichtig op straat.", en: "Be careful in the street.", level: "A2", stype: "Gebiedende wijs", srule: "V(wees) → bijv. nw → plaatsbep. — onregelmatige gebiedende wijs van 'zijn'", gtopic: "gebiedende" },
+
+  // ── om … te ──
+  { nl: "Ik bel om iets te vragen.", en: "I am calling to ask something.", level: "A2", stype: "Hoofdzin + om…te", srule: "S → V → om → O → te → inf. — doel met 'om … te', infinitief aan het einde", gtopic: "omte" },
+  { nl: "Zij komt om te helpen.", en: "She is coming to help.", level: "A2", stype: "Hoofdzin + om…te", srule: "S → V → om → te → inf. — doel met 'om … te'", gtopic: "omte" },
+  { nl: "Hij werkt om geld te verdienen.", en: "He works to earn money.", level: "A2", stype: "Hoofdzin + om…te", srule: "S → V → om → O → te → inf. — doel met 'om … te'", gtopic: "omte" },
+  { nl: "Wij eten om gezond te blijven.", en: "We eat to stay healthy.", level: "A2", stype: "Hoofdzin + om…te", srule: "S → V → om → bijv. nw → te → inf. — doel met 'om … te'", gtopic: "omte" },
+  { nl: "Het is tijd om te gaan.", en: "It is time to go.", level: "A2", stype: "Hoofdzin + om…te", srule: "S → V → zn → om → te → inf. — vaste combinatie 'tijd om te'", gtopic: "omte" },
+  { nl: "Ik heb geen tijd om te praten.", en: "I have no time to talk.", level: "A2", stype: "Hoofdzin + om…te", srule: "S → V → geen + zn → om → te → inf. — doel met 'om … te'", gtopic: "omte" },
 ];
 
 // ─── VERBS ────────────────────────────────────────────────────────────────────
