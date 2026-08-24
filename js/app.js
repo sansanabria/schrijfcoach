@@ -2240,18 +2240,51 @@ function getVerbForm(v, p, tenseKey) {
 
 // ─── CONJUGATION TABLE ────────────────────────────────────────────────────────
 
+const CT_TENSE_KEY = 'schrijfcoach_conj_tense_pref';
+
+// which tense columns the conjugation table shows: 'all' or a single tense key
+let ctTenseFilter = (function () {
+  const saved = _lsGet(CT_TENSE_KEY);
+  return (saved === 'all' || verbTenses.some(t => t.key === saved)) ? saved : 'all';
+})();
+
+function setConjTense(key) {
+  ctTenseFilter = key;
+  _lsSet(CT_TENSE_KEY, key);
+  renderConjTable(verbs[currentVerb]);
+}
+
+function ctVisibleTenses() {
+  if (ctTenseFilter === 'all') return verbTenses;
+  return verbTenses.filter(t => t.key === ctTenseFilter);
+}
+
+function renderConjTensePicker() {
+  const btn = (key, label, cls) =>
+    `<button class="ct-tense-pick ${cls} ${ctTenseFilter === key ? 'active' : ''}"
+             onclick="setConjTense('${key}')">${label}</button>`;
+  return `
+    <div class="ct-tense-picker">
+      <span class="ct-picker-label">Toon tijd &nbsp;·&nbsp; Show tense</span>
+      ${btn('all', 'Alle · All', 'ctp-all')}
+      ${verbTenses.map(t => btn(t.key, `${t.abbr} — ${t.nl}`, 'tense-' + t.key)).join('')}
+    </div>`;
+}
+
 function renderConjTable(v) {
   const auxHeb = v.aux === 'hebben';
   const vtypeLabel = { regelmatig:'Regelmatig · Regular', onregelmatig:'Onregelmatig · Irregular', modaal:'Modaal · Modal', scheidbaar:'Scheidbaar · Separable', reflexief:'Reflexief · Reflexive' }[v.vtype] || v.vtype;
   const vtypeClass = { regelmatig:'vref-regular', onregelmatig:'vref-irregular', modaal:'vref-modal', scheidbaar:'vref-modal', reflexief:'vref-irregular' }[v.vtype] || '';
 
+  const shown = ctVisibleTenses();
   const bodyRows = verbPronouns.map(p => `
     <tr>
       <td class="ct-pronoun">${p.nl}<span class="ct-pronoun-en">${p.en}</span></td>
-      ${verbTenses.map(t => `<td class="ct-cell">${getVerbForm(v, p, t.key)}</td>`).join('')}
+      ${shown.map(t => `<td class="ct-cell">${getVerbForm(v, p, t.key)}</td>`).join('')}
     </tr>`).join('');
 
   document.getElementById('conjtool-table').innerHTML = `
+    ${renderConjTensePicker()}
     <div class="ct-header">
       <span class="vref-type ${vtypeClass}">${vtypeLabel}</span>
       <span class="ct-participle">🇳🇱 Deelwoord: <strong>${v.participle}</strong> &nbsp;·&nbsp; Hulpww: <strong>${v.aux}</strong> &nbsp;·&nbsp; 🇬🇧 Participle: <strong>${v.participle}</strong> &nbsp;·&nbsp; Auxiliary: <strong>${auxHeb ? 'to have' : 'to be'}</strong></span>
@@ -2260,7 +2293,7 @@ function renderConjTable(v) {
       <table class="ct-table">
         <thead><tr>
           <th class="ct-th-pronoun">Persoon / Person</th>
-          ${verbTenses.map(t => `<th>🇳🇱 ${t.nl}<br><span class="ct-th-en">🇬🇧 ${t.en} (${t.abbr})</span></th>`).join('')}
+          ${shown.map(t => `<th>🇳🇱 ${t.nl}<br><span class="ct-th-en">🇬🇧 ${t.en} (${t.abbr})</span></th>`).join('')}
         </tr></thead>
         <tbody>${bodyRows}</tbody>
       </table>
@@ -2324,6 +2357,44 @@ function vexDistractors(v, p, tenseKey, count) {
   return [...pool].sort(() => Math.random() - 0.5).slice(0, count);
 }
 
+const VEX_TENSE_KEY = 'schrijfcoach_verb_tense_pref';
+
+// 'all' = walk through every tense in order; otherwise a single tense key ('ott', 'ovt', …)
+let vexTenseFilter = (function () {
+  const saved = _lsGet(VEX_TENSE_KEY);
+  return (saved === 'all' || verbTenses.some(t => t.key === saved)) ? saved : 'all';
+})();
+
+function vexActiveTense() {
+  if (vexTenseFilter === 'all') return verbTenses[vexTenseIdx];
+  return verbTenses.find(t => t.key === vexTenseFilter) || verbTenses[0];
+}
+
+function setVexTense(key) {
+  vexTenseFilter = key;
+  _lsSet(VEX_TENSE_KEY, key);
+  vexTenseIdx = key === 'all' ? 0 : Math.max(0, verbTenses.findIndex(t => t.key === key));
+  loadVerbExercise();
+}
+
+function renderVexTensePicker() {
+  const btn = (key, nl, en, abbr, cls) => `
+    <button class="vex-tense-pick ${cls} ${vexTenseFilter === key ? 'active' : ''}"
+            onclick="setVexTense('${key}')">
+      <span class="vtp-abbr">${abbr}</span>
+      <span class="vtp-nl">${nl}</span>
+      <span class="vtp-en">${en}</span>
+    </button>`;
+  return `
+    <div class="vex-tense-picker">
+      <div class="vex-picker-label">Welke tijd wil je oefenen? &nbsp;·&nbsp; Which tense do you want to practise?</div>
+      <div class="vex-tense-pick-row">
+        ${verbTenses.map(t => btn(t.key, t.nl, t.en, t.abbr, 'tense-' + t.key)).join('')}
+        ${btn('all', 'Alle tijden', 'All tenses', '∀', 'vtp-all')}
+      </div>
+    </div>`;
+}
+
 function renderVexProgress() {
   const pct = Math.round((vexTenseIdx / verbTenses.length) * 100);
   return `
@@ -2343,7 +2414,14 @@ function renderVexProgress() {
 
 function loadVerbExercise() {
   const v  = verbs[currentVerb];
-  const t  = verbTenses[vexTenseIdx];
+  const t  = vexActiveTense();
+  const allMode = vexTenseFilter === 'all';
+  const titleEl = document.getElementById('verb-ex-title');
+  if (titleEl) {
+    titleEl.textContent = allMode
+      ? 'Oefenen — alle tijden  ·  Practice — all tenses'
+      : 'Oefenen — ' + t.nl + '  ·  Practice — ' + t.en;
+  }
 
   const tableRows = verbPronouns.map((p, pi) => {
     const correct = getVerbForm(v, p, t.key);
@@ -2370,7 +2448,8 @@ function loadVerbExercise() {
   }).join('');
 
   document.getElementById('verb-ex-content').innerHTML = `
-    ${renderVexProgress()}
+    ${renderVexTensePicker()}
+    ${allMode ? renderVexProgress() : ''}
     <div class="vex-mode-toggle">
       <button class="vex-mode-btn ${vexMode==='type'?'active':''}" onclick="setVexMode('type')">✏️ Typ zelf / Type</button>
       <button class="vex-mode-btn ${vexMode==='select'?'active':''}" onclick="setVexMode('select')">☰ Kies / Select</button>
@@ -2388,7 +2467,9 @@ function loadVerbExercise() {
     <div class="vex-actions" style="margin-top:12px">
       ${vexMode === 'type' ? `<button class="btn btn-primary" onclick="checkVerbTable()">Controleer / Check</button>` : ''}
       <button class="btn btn-secondary" onclick="showVerbTableAnswers()">Toon antwoorden / Show answers</button>
-      <button class="btn btn-secondary" onclick="jumpToTense(${(vexTenseIdx+1) % verbTenses.length})">Volgende tijd / Next tense →</button>
+      ${allMode
+        ? `<button class="btn btn-secondary" onclick="jumpToTense(${(vexTenseIdx+1) % verbTenses.length})">Volgende tijd / Next tense →</button>`
+        : `<button class="btn btn-secondary" onclick="repeatCurrentTense()">↺ Opnieuw / Again</button>`}
     </div>
     <div id="vex-feedback"></div>`;
 
@@ -2416,19 +2497,22 @@ function checkVerbTable() {
   });
 
   const nextTenseIdx = (vexTenseIdx + 1) % verbTenses.length;
+  const nextBtn = vexTenseFilter === 'all'
+    ? `<button class="btn btn-primary" onclick="jumpToTense(${nextTenseIdx})">Volgende tijd →</button>`
+    : `<button class="btn btn-primary" onclick="repeatCurrentTense()">↺ Opnieuw</button>`;
   const fb = document.getElementById('vex-feedback');
   if (wrong > 0) {
     fb.innerHTML = `
       <div class="vex-result-bar vex-result-wrong">
         <span>✗ ${wrong} fout${wrong > 1 ? 'en' : ''} — bekijk de antwoorden hierboven</span>
         <button class="btn btn-secondary" onclick="_vexRetry()">↺ Probeer opnieuw</button>
-        <button class="btn btn-primary" onclick="jumpToTense(${nextTenseIdx})">Volgende tijd →</button>
+        ${nextBtn}
       </div>`;
   } else if (correct > 0) {
     fb.innerHTML = `
       <div class="vex-result-bar vex-result-correct">
         <span>✓ Alles goed!</span>
-        <button class="btn btn-primary" onclick="jumpToTense(${nextTenseIdx})">Volgende tijd →</button>
+        ${nextBtn}
       </div>`;
   }
 }
@@ -2479,19 +2563,22 @@ function vexSelectOption(btn) {
 
   const rowWrong = [...allContainers].filter(c => c.querySelector('.opt-wrong')).length;
   const nextTenseIdx = (vexTenseIdx + 1) % verbTenses.length;
+  const nextBtn = vexTenseFilter === 'all'
+    ? `<button class="btn btn-primary" onclick="jumpToTense(${nextTenseIdx})">Volgende tijd →</button>`
+    : `<button class="btn btn-primary" onclick="repeatCurrentTense()">↺ Opnieuw</button>`;
   const fb = document.getElementById('vex-feedback');
   if (rowWrong > 0) {
     fb.innerHTML = `
       <div class="vex-result-bar vex-result-wrong">
         <span>✗ ${rowWrong} fout${rowWrong > 1 ? 'en' : ''}</span>
         <button class="btn btn-secondary" onclick="loadVerbExercise()">↺ Probeer opnieuw</button>
-        <button class="btn btn-primary" onclick="jumpToTense(${nextTenseIdx})">Volgende tijd →</button>
+        ${nextBtn}
       </div>`;
   } else {
     fb.innerHTML = `
       <div class="vex-result-bar vex-result-correct">
         <span>✓ Alles goed!</span>
-        <button class="btn btn-primary" onclick="jumpToTense(${nextTenseIdx})">Volgende tijd →</button>
+        ${nextBtn}
       </div>`;
   }
 }
@@ -2626,7 +2713,8 @@ function showVerbExercise() {
   document.getElementById('verb-ex-card').style.display    = '';
   document.getElementById('verb-study-card').style.display = 'none';
   document.getElementById('verb-quiz-card').style.display  = 'none';
-  vexCorrect = 0; vexWrong = 0; vexTenseIdx = 0; vexPronounIdx = 0;
+  vexCorrect = 0; vexWrong = 0; vexPronounIdx = 0;
+  vexTenseIdx = vexTenseFilter === 'all' ? 0 : Math.max(0, verbTenses.findIndex(t => t.key === vexTenseFilter));
   document.getElementById('vex-correct').textContent = '✓ 0';
   document.getElementById('vex-wrong').textContent   = '✗ 0';
   loadVerbExercise();
