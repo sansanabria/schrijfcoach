@@ -653,6 +653,10 @@ const exGrammarMap = {
   'voorwaardelijke-wijs': s => s.gtopic === 'voorwaardelijke-wijs',
   'onderschikkende-vgw-2': s => s.gtopic === 'onderschikkende-vgw-2',
   'woordvolgorde-gevorderd': s => s.gtopic === 'woordvolgorde-gevorderd',
+  'voltooide-voorwaardelijke': s => s.gtopic === 'voltooide-voorwaardelijke',
+  'partitief': s => s.gtopic === 'partitief',
+  'formeel-zakelijk': s => s.gtopic === 'formeel-zakelijk',
+  'idioom': s => s.gtopic === 'idioom',
 };
 
 function _buildPool() {
@@ -3713,6 +3717,216 @@ function _totalGrammarErrors() {
   return sentences.filter(s => { const st = sentenceStats[s.nl]; return st && st.w > st.c; }).length;
 }
 
+// ─── PER-TOPIC GAP-FILL PRACTICE (invuloefening) ──────────────────────────────
+// Every grammar topic gets a drill that targets the topic's own words, not just
+// whole-sentence translation. `words` blanks one of the listed forms; `re`
+// blanks capture group 1 of the regex.
+
+const GRAMMAR_CLOZE = {
+  'persoonlijke-vnw':  { words: ['ik','jij','je','u','hij','zij','ze','het','wij','we','jullie'] },
+  'bezittelijke-vnw':  { words: ['mijn','jouw','je','uw','zijn','haar','ons','onze','hun'] },
+  'lidwoorden-meervoud': { words: ['de','het','een'] },
+  'vraagwoorden':      { words: ['wat','wie','waar','wanneer','waarom','hoe','welke','welk','hoeveel'] },
+  'ontkenning':        { words: ['niet','geen'] },
+  'verkleinwoorden':   { re: /\b(\w{3,}(?:tje|pje|kje|etje))\b/i },
+  'voorzetsels-a1':    { words: ['in','op','aan','met','van','naar','bij','voor','uit','om','tot','over','onder','achter','naast','tussen','door','tegen'] },
+  'hebben-of-zijn':    { words: ['heb','hebt','heeft','hebben','ben','bent','is','zijn','was','waren','had','hadden'] },
+  'telwoorden':        { words: ['een','twee','drie','vier','vijf','zes','zeven','acht','negen','tien','elf','twaalf','honderd','duizend','eerste','tweede','derde'] },
+  'bijvoeglijk-nw':    { re: /\b(?:de|het|een)\s+(\w{3,}e)\s+(?!is\b|was\b|zijn\b|waren\b|wordt\b|werd\b|heeft\b|had\b|staat\b|ligt\b|komt\b|gaat\b|blijft\b|lijkt\b|kost\b|smaakt\b|hangt\b|zit\b|past\b|doet\b)\w{3,}/i },
+  'vergrotende-trap':  { words: ['dan','meer','meest','beter','best','liever','minder','groter','grotere','kleiner','ouder','jonger','duurder','goedkoper','langer','korter','sneller','mooier','hoger','lager'] },
+  'object-vnw':        { words: ['mij','me','jou','je','u','hem','haar','ons','jullie','hen','hun','ze','het'] },
+  'er-systeem':        { words: ['er','ervan','erover','eraan','ermee','erop','ernaar','erbij','eruit'] },
+  'nevenschikkende-vgw': { words: ['en','maar','want','of','dus'] },
+  'onderschikkende-vgw-1': { words: ['omdat','als','dat','of','toen','terwijl','voordat','nadat','zodat','hoewel'] },
+  'onderschikkende-vgw-2': { words: ['hoewel','terwijl','zodra','tenzij','mits','voordat','nadat','doordat','zodat','aangezien','omdat','als'] },
+  'formeel-u':         { words: ['u','uw','kunt','wilt','heeft','bent','neemt','doet','spreekt','begrijpt'] },
+  'voorzetsels-a2':    { words: ['op','aan','van','met','over','voor','naar','in','bij','om','tot','door','tegen','uit'] },
+  'scheidbare-werkwoorden': { words: ['mee','op','in','uit','af','terug','langs','klaar','weg','aan','door','over','bij','samen'] },
+  'reflexieve-werkwoorden': { words: ['me','je','zich','ons','mij','zichzelf'] },
+  'toekomende-tijd':   { words: ['zal','zult','zullen','ga','gaat','gaan'] },
+  'progressieve-tijd': { words: ['aan','het','bezig','ben','is','zijn'] },
+  'hoeven-te':         { words: ['hoef','hoeft','hoeven','te','niet','geen'] },
+  'gebiedende-wijs':   { re: /^(\w+)/ },
+  'omte-infinitief':   { words: ['om','te'] },
+  'voornaamwoordelijke-bijwoorden': { words: ['er','daar','hier','waar','ervan','erover','eraan','ermee','erop','daarover','daaraan','daarmee','hiermee','waarover','waarnaar'] },
+  'betrekkelijke-bijzin': { words: ['die','dat','wat','wie','welke'] },
+  'betrekkelijke-bijzin-voorzetsel': { re: /\b(waar\w{2,}|wie|die|dat)\b/i },
+  'laten-plus-infinitief': { words: ['laat','laten','liet','lieten'] },
+  'woordvorming':      { re: /\b(\w{9,})\b/ },
+  'lijdende-vorm':     { words: ['wordt','worden','werd','werden','door','is','zijn'] },
+  'gevorderd-passief': { words: ['wordt','worden','werd','werden','door','geworden','dient'] },
+  'indirecte-rede':    { words: ['dat','of','zei','vroeg','vertelde','zou','zouden'] },
+  'voorwaardelijke-wijs': { words: ['als','zou','zouden','had','hadden','was','waren'] },
+  'hoe-hoe-vergelijking': { words: ['hoe','des te'], extra: ['zo','als','dan','wat','veel'] },
+  'deelwoord-als-bijvoeglijk': { re: /\b(\w{3,}end(?:e)?|(?:uit|aan|op|in|af|mee|over)?ge\w{2,}(?:en|de|te|d|t))\b/i },
+  'iets-niets-plus-s': { re: /\b(?:iets|niets|alles|wat)\s+(\w{4,}s)\b/i },
+  'voltooide-voorwaardelijke': { words: ['zou','zouden','had','hadden','was','waren','hebben','als'] },
+  'partitief':         { words: ['iets','niets','wat','genoeg','sommige','enkele','weinig','veel'] },
+  'formeel-zakelijk':  { words: ['hierbij','derhalve','tevens','betreffende','verzoeken','aanleiding','voorbaat','danken','ontvangt','bevestig'] },
+  'idioom':            { words: ['kat','boom','storm','glas','spijker','kop','puntjes','boeg','boekje','blad','mond'] },
+  // word order: blank the sentence-final verb, the position that actually matters
+  'woordvolgorde-gevorderd': { re: /(\w+)[.?!]\s*$/ },
+};
+
+const _clozeState = {};   // topicId -> { items, idx, correct, wrong, locked, timer }
+
+// Blank one target occurrence in a sentence. Returns null when nothing matches.
+function _clozeItem(sentence, spec) {
+  const nl = sentence.nl;
+  if (spec.re) {
+    const m = nl.match(spec.re);
+    if (!m || !m[1]) return null;
+    const answer = m[1];
+    const at = nl.indexOf(answer, m.index);
+    if (at < 0) return null;
+    return { nl, en: sentence.en, answer, text: nl.slice(0, at) + '____' + nl.slice(at + answer.length) };
+  }
+  const hits = [];
+  spec.words.forEach(w => {
+    const re = new RegExp('(^|[^\\p{L}])(' + w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')(?![\\p{L}])', 'giu');
+    let m;
+    while ((m = re.exec(nl)) !== null) hits.push({ word: m[2], at: m.index + m[1].length });
+  });
+  if (!hits.length) return null;
+  const pick = hits[Math.floor(Math.random() * hits.length)];
+  return {
+    nl, en: sentence.en, answer: pick.word,
+    text: nl.slice(0, pick.at) + '____' + nl.slice(pick.at + pick.word.length),
+  };
+}
+
+function _clozeOptions(item, spec, pool) {
+  const answer = item.answer.toLowerCase();
+  const bag = new Set();
+  if (spec.words) {
+    spec.words.forEach(w => { if (w.toLowerCase() !== answer) bag.add(w); });
+  } else {
+    pool.forEach(s => {
+      const m = s.nl.match(spec.re);
+      if (m && m[1] && m[1].toLowerCase() !== answer) bag.add(m[1].toLowerCase());
+    });
+  }
+  (spec.extra || []).forEach(w => { if (w.toLowerCase() !== answer) bag.add(w); });
+  const distractors = [...bag].sort(() => Math.random() - 0.5).slice(0, 3);
+  return [item.answer, ...distractors].sort(() => Math.random() - 0.5);
+}
+
+function buildTopicCloze(topic) {
+  const spec = GRAMMAR_CLOZE[topic.id];
+  if (!spec) return [];
+  const filterKey = topic.filter || topic.id;
+  const matcher = exGrammarMap[filterKey] || (s => s.gtopic === topic.id);
+  const pool = sentences.filter(s => s.level === topic.level && matcher(s));
+  const items = [];
+  pool.forEach(s => {
+    const item = _clozeItem(s, spec);
+    if (item) { item.options = _clozeOptions(item, spec, pool); items.push(item); }
+  });
+  return items.filter(it => it.options.length >= 2).sort(() => Math.random() - 0.5).slice(0, 12);
+}
+
+function startTopicCloze(topicId) {
+  const topic = grammarTopicsData.find(t => t.id === topicId);
+  if (!topic) return;
+  const items = buildTopicCloze(topic);
+  const host = document.getElementById('gt-cloze-' + topicId);
+  if (!host) return;
+  if (!items.length) {
+    host.innerHTML = '<div class="gtc-empty">Nog geen invuloefening voor dit onderwerp.</div>';
+    host.style.display = '';
+    return;
+  }
+  _clozeState[topicId] = { items, idx: 0, correct: 0, wrong: 0, locked: false, timer: null };
+  host.style.display = '';
+  renderTopicCloze(topicId);
+  host.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function closeTopicCloze(topicId) {
+  const st = _clozeState[topicId];
+  if (st) clearTimeout(st.timer);
+  const host = document.getElementById('gt-cloze-' + topicId);
+  if (host) { host.style.display = 'none'; host.innerHTML = ''; }
+}
+
+function renderTopicCloze(topicId) {
+  const st = _clozeState[topicId];
+  const host = document.getElementById('gt-cloze-' + topicId);
+  if (!st || !host) return;
+  clearTimeout(st.timer);
+  st.locked = false;
+
+  if (st.idx >= st.items.length) {
+    host.innerHTML =
+      '<div class="gtc-box gtc-done">' +
+        '<div class="gtc-done-score">✓ ' + st.correct + ' &nbsp;·&nbsp; ✗ ' + st.wrong + '</div>' +
+        '<div class="gtc-done-msg">Oefening klaar · Exercise complete</div>' +
+        '<div class="gtc-actions">' +
+          '<button class="btn btn-primary" onclick="startTopicCloze(\'' + topicId + '\')">↺ Nog een ronde</button>' +
+          '<button class="btn btn-secondary" onclick="closeTopicCloze(\'' + topicId + '\')">Sluiten</button>' +
+        '</div>' +
+      '</div>';
+    return;
+  }
+
+  const it = st.items[st.idx];
+  const pct = Math.round((st.idx / st.items.length) * 100);
+  host.innerHTML =
+    '<div class="gtc-box">' +
+      '<div class="gtc-head">' +
+        '<span class="gtc-count">' + (st.idx + 1) + ' / ' + st.items.length + '</span>' +
+        '<span class="gtc-score">✓ ' + st.correct + ' &nbsp; ✗ ' + st.wrong + '</span>' +
+        '<button class="gtc-close" onclick="closeTopicCloze(\'' + topicId + '\')" title="Sluiten">✕</button>' +
+      '</div>' +
+      '<div class="gtc-bar"><div class="gtc-bar-fill" style="width:' + pct + '%"></div></div>' +
+      '<div class="gtc-sentence">' + it.text.replace('____', '<span class="gtc-blank">____</span>') + '</div>' +
+      '<div class="gtc-en">' + it.en + '</div>' +
+      '<div class="gtc-opts">' +
+        it.options.map(o => '<button class="gtc-opt" onclick="answerTopicCloze(\'' + topicId + '\', this)">' + o + '</button>').join('') +
+      '</div>' +
+      '<div class="gtc-feedback" id="gtc-fb-' + topicId + '"></div>' +
+    '</div>';
+}
+
+function answerTopicCloze(topicId, btn) {
+  const st = _clozeState[topicId];
+  if (!st || st.locked) return;
+  st.locked = true;
+  const it = st.items[st.idx];
+  const chosen = btn.textContent.trim();
+  const ok = chosen.toLowerCase() === it.answer.toLowerCase();
+  const host = document.getElementById('gt-cloze-' + topicId);
+
+  host.querySelectorAll('.gtc-opt').forEach(b => {
+    b.disabled = true;
+    if (b.textContent.trim().toLowerCase() === it.answer.toLowerCase()) b.classList.add('gtc-opt-correct');
+  });
+  if (!ok) btn.classList.add('gtc-opt-wrong');
+  if (ok) st.correct++; else st.wrong++;
+
+  const fb = document.getElementById('gtc-fb-' + topicId);
+  const esc = it.answer.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const full = it.nl.replace(new RegExp('(' + esc + ')'), '<strong>$1</strong>');
+  if (ok) {
+    fb.innerHTML = '<div class="gtc-fb gtc-fb-ok" onclick="nextTopicCloze(\'' + topicId + '\')">✓ Goed! &nbsp; ' + full + '</div>';
+    st.timer = setTimeout(() => nextTopicCloze(topicId), 1000);
+  } else {
+    fb.innerHTML =
+      '<div class="gtc-fb gtc-fb-bad">' +
+        '<span>✗ Het juiste antwoord is <strong>' + it.answer + '</strong> &nbsp;·&nbsp; ' + full + '</span>' +
+        '<button class="btn btn-primary gtc-next" onclick="nextTopicCloze(\'' + topicId + '\')">Volgende →</button>' +
+      '</div>';
+  }
+}
+
+function nextTopicCloze(topicId) {
+  const st = _clozeState[topicId];
+  if (!st) return;
+  clearTimeout(st.timer);
+  st.idx++;
+  renderTopicCloze(topicId);
+}
+
 // Returns error count for sentences matching a grammar topic filter/id, scoped
 // to the topic's own level (shared filters like 'tijden' span multiple levels).
 function _grammarTopicErrors(topic) {
@@ -3784,13 +3998,16 @@ function _renderGtCard(topic) {
         ${errCount > 0 ? `Practice mistakes (${errCount})` : 'Practice sentences'}
       </button>`
     : '';
+  const clozeBtn = GRAMMAR_CLOZE[topic.id]
+    ? `<button class="gt-cloze-btn" onclick="startTopicCloze('${topic.id}')">✏️ Invuloefening</button>`
+    : '';
   return `
     <div class="gt-card gt-topic-block" data-gtlevel="${topic.level}" data-gtfilter="${topic.filter}" data-pill="${topic.id}">
       <div class="gt-card-header">
         <span class="level-badge ${levelClass}">${topic.level}</span>
         <span class="gt-title">${topic.title}</span>
         <span class="gt-title-en">${topic.titleEn}</span>
-        <div class="gt-card-actions">${readBtn}${practiceBtn}</div>
+        <div class="gt-card-actions">${readBtn}${clozeBtn}${practiceBtn}</div>
       </div>
       <div class="gt-card-body">
         <div class="gt-intro-en">${topic.introEn || topic.intro}</div>
@@ -3798,6 +4015,7 @@ function _renderGtCard(topic) {
         ${rulesHtml ? `<div class="gt-rules">${rulesHtml}</div>` : ''}
         ${examplesHtml ? `<div class="gt-examples"><div class="gt-examples-label">Examples</div>${examplesHtml}</div>` : ''}
         ${topic.tip ? `<div class="gt-tip"><span class="gt-tip-en">${topic.tipEn || topic.tip}</span></div>` : ''}
+        <div class="gt-cloze-host" id="gt-cloze-${topic.id}" style="display:none"></div>
       </div>
     </div>`;
 }

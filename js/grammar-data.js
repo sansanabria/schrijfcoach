@@ -1395,7 +1395,7 @@ const grammarTopicsData = [
     tipEn: "This -s is one of the smallest but most common mistakes for advanced learners — pay extra attention after iets/niets/wat."
   },
   {
-    id: "voltooide-voorwaardelijke", level: "B2", filter: "overig",
+    id: "voltooide-voorwaardelijke", level: "B2", filter: "voltooide-voorwaardelijke",
     title: "Voltooide voorwaardelijke wijs", titleEn: "Perfect conditional",
     intro: "De voltooide voorwaardelijke wijs beschrijft hypothetische situaties in het verleden die niet zijn uitgekomen.",
     introEn: "The perfect conditional describes hypothetical past situations that did not happen.",
@@ -1454,7 +1454,7 @@ const grammarTopicsData = [
   },
 
   {
-    id: "partitief", level: "B2", filter: "overig",
+    id: "partitief", level: "B2", filter: "partitief",
     title: "Onbepaald gebruik & partitief", titleEn: "Partitive constructions",
     intro: "Partitieve constructies beschrijven onbepaalde hoeveelheden en bijvoeglijk gebruik zonder lidwoord.",
     introEn: "Partitive constructions describe indefinite quantities and adjectival use without articles.",
@@ -1494,7 +1494,7 @@ const grammarTopicsData = [
   },
 
   {
-    id: "formeel-zakelijk", level: "B2", filter: "overig",
+    id: "formeel-zakelijk", level: "B2", filter: "formeel-zakelijk",
     title: "Formeel & zakelijk taalgebruik", titleEn: "Formal and professional register",
     intro: "Formeel zakelijk Nederlands gebruikt specifieke constructies en woordenschat voor professionele teksten.",
     introEn: "Formal professional Dutch uses specific constructions and vocabulary found in professional texts.",
@@ -1527,7 +1527,7 @@ const grammarTopicsData = [
   },
 
   {
-    id: "idioom", level: "B2", filter: "overig",
+    id: "idioom", level: "B2", filter: "idioom",
     title: "Veelgebruikte uitdrukkingen & idioom", titleEn: "Common idioms & expressions",
     intro: "Nederlandse uitdrukkingen die je letterlijk niet kunt vertalen maar wel moet kennen.",
     introEn: "Dutch expressions that cannot be translated literally but are essential to know.",

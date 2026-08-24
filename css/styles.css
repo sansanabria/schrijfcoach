@@ -3015,3 +3015,40 @@ html, body {
   /* Verb exercise input rows */
   .vex-input-row { flex-wrap: wrap; }
 }
+
+/* ── Per-topic gap-fill practice (invuloefening) ────────────────────────── */
+.gt-cloze-btn { font-size:0.72rem; padding:3px 10px; border-radius:20px; cursor:pointer;
+  border:1px solid var(--primary); background:var(--primary); color:#fff;
+  transition:opacity 0.15s, transform 0.1s; }
+.gt-cloze-btn:hover { opacity:0.88; transform:translateY(-1px); }
+.gt-cloze-host { margin-top:14px; }
+.gtc-box { border:1px solid var(--border-light); border-radius:12px; padding:16px; background:var(--surface2); }
+.gtc-head { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+.gtc-count { font-size:0.72rem; font-weight:700; color:var(--text-muted); }
+.gtc-score { font-size:0.72rem; color:var(--text-muted); margin-left:auto; }
+.gtc-close { border:none; background:none; cursor:pointer; font-size:0.9rem; color:var(--text-muted); padding:0 2px; line-height:1; }
+.gtc-close:hover { color:var(--text); }
+.gtc-bar { height:4px; border-radius:4px; background:var(--border-light); margin-bottom:14px; overflow:hidden; }
+.gtc-bar-fill { height:4px; background:var(--primary); border-radius:4px; transition:width 0.25s; }
+.gtc-sentence { font-family:'Playfair Display',serif; font-size:1.12rem; line-height:1.55; color:var(--text); margin-bottom:4px; }
+.gtc-blank { display:inline-block; min-width:64px; border-bottom:2px solid var(--primary); color:transparent; letter-spacing:2px; }
+.gtc-en { font-size:0.78rem; font-style:italic; color:var(--text-muted); margin-bottom:14px; }
+.gtc-opts { display:flex; flex-wrap:wrap; gap:8px; }
+.gtc-opt { flex:1 1 auto; min-width:96px; padding:10px 14px; font-size:0.92rem; font-weight:600;
+  border-radius:9px; cursor:pointer; background:var(--surface); color:var(--text);
+  border:1px solid var(--border-light); transition:border-color 0.15s, transform 0.1s; }
+.gtc-opt:hover:not(:disabled) { border-color:var(--primary); transform:translateY(-1px); }
+.gtc-opt:disabled { cursor:default; }
+.gtc-opt-correct { background:var(--success-bg); border-color:var(--success); color:var(--success); }
+.gtc-opt-wrong { background:var(--danger-bg,#FCEAEA); border-color:var(--danger,#B32020); color:var(--danger,#B32020); }
+.gtc-fb { margin-top:12px; padding:10px 14px; border-radius:9px; font-size:0.85rem; line-height:1.5; }
+.gtc-fb-ok { background:var(--success-bg); color:var(--success); border:1px solid var(--success); cursor:pointer; }
+.gtc-fb-bad { background:var(--danger-bg,#FCEAEA); color:var(--danger,#B32020); border:1px solid var(--danger,#B32020);
+  display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
+.gtc-next { margin-left:auto; }
+.gtc-done { text-align:center; }
+.gtc-done-score { font-size:1.3rem; font-weight:700; color:var(--text); margin-bottom:4px; }
+.gtc-done-msg { font-size:0.82rem; color:var(--text-muted); margin-bottom:14px; }
+.gtc-actions { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+.gtc-empty { font-size:0.82rem; color:var(--text-muted); padding:10px 0; }
+@media (max-width:640px) { .gtc-opt { min-width:calc(50% - 4px); flex:1 1 calc(50% - 4px); } }
