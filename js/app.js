@@ -84,7 +84,7 @@ function switchTab(id) {
   document.querySelectorAll('.tab-dropdown-item').forEach(b => b.classList.toggle('active', b.dataset.tab === id));
   document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + id));
   if (id === 'home')         renderHome();
-  if (id === 'oefening')     { loadSentence(); renderUnitBar('oefening'); }
+  if (id === 'oefening')     { renderExGrammarFilter(); loadSentence(); renderUnitBar('oefening'); }
   if (id === 'bewerken')     { renderEditTable(); renderFlagsSection(); }
   if (id === 'woordenschat') { renderVocab(); renderUnitBar('woordenschat'); }
   if (id === 'werkwoorden')  renderUnitBar('werkwoorden');
@@ -659,6 +659,73 @@ const exGrammarMap = {
   'idioom': s => s.gtopic === 'idioom',
 };
 
+
+// ─── EXERCISE GRAMMAR FILTER ROW (built from the real topic list) ─────────────
+// The row used to be 11 hardcoded legacy buckets in index.html, so a unit could
+// only ever point at a coarse filter. It is now generated from grammarTopicsData
+// for the level in view, and from the active unit's own topics when one is set.
+
+let exUnitTopics = null;   // string[] of grammar topic ids, or null
+
+// Matches a sentence against any topic of the active unit.
+exGrammarMap['_unit'] = function (s) {
+  if (!exUnitTopics || !exUnitTopics.length) return true;
+  return exUnitTopics.some(id => {
+    const key = _topicFilterKey(id);
+    const m = key ? exGrammarMap[key] : null;
+    return m ? m(s) : s.gtopic === id;
+  });
+};
+
+// A topic's practice filter key is not always its id (vraagwoorden -> vraagzin,
+// hebben-of-zijn -> tijden, lijdende-vorm -> passief, ...).
+function _topicFilterKey(id) {
+  const t = (typeof grammarTopicsData !== 'undefined')
+    ? grammarTopicsData.find(x => x.id === id) : null;
+  const key = (t && t.filter) || id;
+  return exGrammarMap[key] ? key : (exGrammarMap[id] ? id : null);
+}
+
+function _topicLabel(id) {
+  const t = (typeof grammarTopicsData !== 'undefined')
+    ? grammarTopicsData.find(x => x.id === id) : null;
+  return t ? t.title : id;
+}
+
+function renderExGrammarFilter() {
+  const row = document.getElementById('ex-grammar-filter');
+  if (!row || typeof grammarTopicsData === 'undefined') return;
+
+  const btn = (key, label, extraCls) =>
+    `<button class="filter-btn ${extraCls || ''} ${exGrammar === key ? 'active' : ''}"
+             data-exgrammar="${key}" data-grammar="${key}"
+             onclick="filterExGrammar('${key}', this)">${label}</button>`;
+
+  let html = '<span class="ex-filter-label">Grammatica</span>';
+
+  if (exUnitTopics && exUnitTopics.length) {
+    html += btn('_unit', 'Hele unit', 'ex-unit-btn');
+    exUnitTopics.forEach(id => {
+      const key = _topicFilterKey(id);
+      if (key) html += btn(key, _topicLabel(id));
+    });
+    html += btn('all', 'Alle zinnen');
+  } else {
+    html += btn('all', 'Alle');
+    const topics = grammarTopicsData.filter(t => exLevel === 'all' || t.level === exLevel);
+    topics.forEach(t => {
+      const key = t.filter || t.id;
+      if (exGrammarMap[key]) html += btn(key, t.title);
+    });
+  }
+  row.innerHTML = html;
+}
+
+function setExUnitTopics(topics) {
+  exUnitTopics = (topics && topics.length) ? topics.slice() : null;
+  renderExGrammarFilter();
+}
+
 function _buildPool() {
   let pool = [...sentences];
   if (exLevel !== 'all')   pool = pool.filter(s => s.level === exLevel);
@@ -670,9 +737,18 @@ function filterExLevel(level, btn) {
   document.querySelectorAll('#ex-level-filter .filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   exLevel = level;
+  if (!exUnitTopics && exGrammar !== 'all' && !_grammarKeyValidForLevel(exGrammar, level)) exGrammar = 'all';
+  renderExGrammarFilter();
   rebuildActive();
   exIdx = 0; // start at first unanswered in new pool
   loadSentence();
+}
+
+// A topic filter only makes sense while its own level is in view.
+function _grammarKeyValidForLevel(key, level) {
+  if (level === 'all' || key === '_unit') return true;
+  if (typeof grammarTopicsData === 'undefined') return true;
+  return grammarTopicsData.some(t => (t.filter || t.id) === key && t.level === level);
 }
 
 function filterExGrammar(grammar, btn) {
@@ -4111,6 +4187,8 @@ function clearActiveUnit() {
   dhUnitTopics = null;
   verbUnitRange = null;
   vquizFilter = 'all';
+  exGrammar = 'all';
+  setExUnitTopics(null);
   renderAllUnitBars();
   renderVocab();
   _filterVerbs();
@@ -4120,13 +4198,13 @@ function _applyUnitFilters() {
   if (!activeUnit) return;
   const u = activeUnit;
 
-  // Zinnen oefenen: level + sentenceFilter
+  // Zinnen oefenen: the unit's own grammar topics, not a legacy bucket
   const levelBtn = document.querySelector(`#ex-level-filter [data-level="${u.level}"]`);
   if (levelBtn) filterExLevel(u.level, levelBtn);
+  setExUnitTopics(u.grammarTopics);
   setTimeout(() => {
-    const sf = u.sentenceFilter || 'all';
-    const gramBtn = document.querySelector(`#ex-grammar-filter [data-grammar="${sf}"]`);
-    if (gramBtn) filterExGrammar(sf, gramBtn);
+    const unitBtn = document.querySelector('#ex-grammar-filter [data-grammar="_unit"]');
+    if (unitBtn) filterExGrammar('_unit', unitBtn);
   }, 50);
 
   // De/Het: filter by unit topics + level
@@ -4282,6 +4360,23 @@ function navigateToVerb(verbName) {
   }, 50);
 }
 
+// Open Zinnen oefenen scoped to one unit — either the whole unit's topics or
+// a single topic within it.
+function navigateToUnitSentences(unitNo, level, topicId) {
+  const all = _allUnits();
+  const u = all.find(x => x.unit === unitNo);
+  switchTab('oefening');
+  setTimeout(() => {
+    const levelBtn = document.querySelector(`#ex-level-filter [data-level="${level}"]`);
+    if (levelBtn) filterExLevel(level, levelBtn);
+    setExUnitTopics(u ? u.grammarTopics : (topicId ? [topicId] : null));
+    const key = topicId || '_unit';
+    const btn = document.querySelector(`#ex-grammar-filter [data-grammar="${key}"]`);
+    if (btn) filterExGrammar(key, btn);
+    document.getElementById('panel-oefening')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 50);
+}
+
 function navigateToOefening(level, grammarFilter) {
   switchTab('oefening');
   setTimeout(() => {
@@ -4408,19 +4503,25 @@ function renderLessonPlan() {
                     </div>
                   </div>`) : '';
 
-              const sentenceRow = unit.sentenceFilter
-                ? (sub++, `<div class="lp-subtopic">
+              // One entry per grammar topic of this unit, plus the whole unit,
+              // instead of a single legacy bucket filter.
+              const unitTopics = (unit.grammarTopics || []).filter(id => _topicFilterKey(id));
+              const sentenceRow = (sub++, `<div class="lp-subtopic">
                     <span class="lp-sub-num">${tn}.${sub}</span>
                     <span class="lp-sub-icon">✏️</span>
                     <div class="lp-sub-content">
                       <span class="lp-sub-label">Zinnen oefenen</span>
-                      <span class="lp-tag lp-tag-zinnen lp-tag-link"
-                        onclick="navigateToOefening('${lv.level}','${unit.sentenceFilter}')"
-                        title="Open in Zinnen oefenen">
-                        ${lv.level} zinnen${unit.sentenceFilter !== 'all' ? ' · ' + (grammarFilterLabels[unit.sentenceFilter] || unit.sentenceFilter) : ''} ↗
-                      </span>
+                      <div class="lp-tags">
+                        <span class="lp-tag lp-tag-zinnen lp-tag-link"
+                          onclick="navigateToUnitSentences(${unit.unit},'${lv.level}')"
+                          title="Alle zinnen van deze unit">Hele unit · ${lv.level} ↗</span>
+                        ${unitTopics.map(id =>
+                          `<span class="lp-tag lp-tag-zinnen lp-tag-link"
+                            onclick="navigateToUnitSentences(${unit.unit},'${lv.level}','${_topicFilterKey(id)}')"
+                            title="Open in Zinnen oefenen">${_topicLabel(id)} ↗</span>`).join('')}
+                      </div>
                     </div>
-                  </div>`) : '';
+                  </div>`);
 
               const readingRow = (unit.readingTexts && unit.readingTexts.length)
                 ? (() => {
@@ -4559,6 +4660,7 @@ if (_savedLastPos) { try { lastStudyPosition = JSON.parse(_savedLastPos); } catc
 
 loadProgress();
 initSRS();
+renderExGrammarFilter();
 
 // ─── THEME (dark default, light optional) ─────────────────────────────────────
 
