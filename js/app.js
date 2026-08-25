@@ -717,8 +717,21 @@ function renderExGrammarFilter() {
       const key = t.filter || t.id;
       if (exGrammarMap[key]) html += btn(key, t.title);
     });
+    // 42 topics is a wall of chips on a phone — collapse until asked for.
+    if (topics.length > 12) {
+      html += `<button class="filter-btn ex-more-btn" onclick="toggleExGrammarMore(this)">Meer ▾</button>`;
+    }
   }
   row.innerHTML = html;
+  if (row.querySelector('.ex-more-btn')) row.classList.add('ex-row-collapsed');
+  else row.classList.remove('ex-row-collapsed');
+}
+
+function toggleExGrammarMore(btn) {
+  const row = document.getElementById('ex-grammar-filter');
+  if (!row) return;
+  const collapsed = row.classList.toggle('ex-row-collapsed');
+  btn.textContent = collapsed ? 'Meer ▾' : 'Minder ▴';
 }
 
 function setExUnitTopics(topics) {
@@ -4241,6 +4254,37 @@ function _applyUnitFilters() {
   _filterVerbs();
 }
 
+// ─── UNIT PICKER ──────────────────────────────────────────────────────────────
+
+function toggleUnitPicker(panelId) {
+  const panel = document.getElementById('unit-picker-' + panelId);
+  if (!panel) return;
+  const open = panel.hasAttribute('hidden');
+  // only one open at a time
+  document.querySelectorAll('.unit-picker').forEach(p => p.setAttribute('hidden', ''));
+  document.querySelectorAll('.unit-bar-choose').forEach(b => b.setAttribute('aria-expanded', 'false'));
+  if (open) {
+    panel.removeAttribute('hidden');
+    panel.previousElementSibling?.setAttribute('aria-expanded', 'true');
+  }
+}
+
+function chooseUnit(n) {
+  document.querySelectorAll('.unit-picker').forEach(p => p.setAttribute('hidden', ''));
+  setActiveUnit(n);
+}
+
+document.addEventListener('click', e => {
+  if (e.target.closest('.unit-bar--inactive')) return;
+  document.querySelectorAll('.unit-picker').forEach(p => p.setAttribute('hidden', ''));
+  document.querySelectorAll('.unit-bar-choose').forEach(b => b.setAttribute('aria-expanded', 'false'));
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  document.querySelectorAll('.unit-picker').forEach(p => p.setAttribute('hidden', ''));
+});
+
 function renderUnitBar(panelId) {
   const container = document.getElementById('unit-bar-' + panelId);
   if (!container) return;
@@ -4315,15 +4359,43 @@ function renderUnitBar(panelId) {
       </div>
     </div>`;
   } else {
-    let opts = '<option value="">Kies een unit…</option>';
-    all.forEach(u => {
-      opts += `<option value="${u.unit}">Unit ${u.unit}: ${u.title} (${u.level})</option>`;
-    });
+    // In-app unit picker: a native <select> could not show level, theme or
+    // progress, and rendered as an OS list on phones.
+    const byLevel = {};
+    all.forEach(u => { (byLevel[u.level] = byLevel[u.level] || []).push(u); });
+
+    const groups = Object.keys(byLevel).map(lv => `
+      <div class="up-group">
+        <div class="up-group-head">
+          <span class="level-badge level-${lv.toLowerCase()}">${lv}</span>
+          <span class="up-group-name">${levelNames[lv] || ''}</span>
+        </div>
+        <div class="up-grid">
+          ${byLevel[lv].map(u => {
+            const prog = unitProgress[u.unit] || {};
+            const done = ['vocab', 'dehet', 'sentences', 'werkwoorden'].filter(k => prog[k]).length;
+            const topics = (u.grammarTopics || []).slice(0, 2).map(id => _topicLabel(id)).join(' · ');
+            return `<button class="up-card ${done === 4 ? 'up-card--done' : ''}"
+                            onclick="chooseUnit(${u.unit})">
+              <span class="up-card-top">
+                <span class="up-card-num">Unit ${u.unit}</span>
+                ${done > 0 ? `<span class="up-card-prog">${done === 4 ? '✓' : done + '/4'}</span>` : ''}
+              </span>
+              <span class="up-card-title">${u.title}</span>
+              <span class="up-card-sub">${topics}</span>
+            </button>`;
+          }).join('')}
+        </div>
+      </div>`).join('');
+
     container.innerHTML = `<div class="unit-bar unit-bar--inactive">
-      <span class="unit-bar-label">🎯 Kies een unit:</span>
-      <select class="unit-bar-select" onchange="if(this.value) setActiveUnit(parseInt(this.value)); this.value='';">
-        ${opts}
-      </select>
+      <button class="unit-bar-choose" onclick="toggleUnitPicker('${panelId}')"
+              aria-expanded="false" aria-controls="unit-picker-${panelId}">
+        <span class="ubc-icon">🎯</span>
+        <span class="ubc-text">Kies een unit…</span>
+        <span class="ubc-caret">▾</span>
+      </button>
+      <div class="unit-picker" id="unit-picker-${panelId}" hidden>${groups}</div>
     </div>`;
   }
 }
