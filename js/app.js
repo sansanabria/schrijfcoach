@@ -4559,6 +4559,33 @@ if (_savedLastPos) { try { lastStudyPosition = JSON.parse(_savedLastPos); } catc
 
 loadProgress();
 initSRS();
+
+// ─── THEME (dark default, light optional) ─────────────────────────────────────
+
+const THEME_KEY = 'schrijfcoach_theme';
+
+function _applyTheme(theme) {
+  if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  else document.documentElement.removeAttribute('data-theme');
+  const btn = document.getElementById('theme-toggle');
+  if (btn) {
+    btn.textContent = theme === 'light' ? '\u2600\uFE0F' : '\uD83C\uDF19';
+    btn.title = theme === 'light' ? 'Donker thema' : 'Licht thema';
+  }
+}
+
+function toggleTheme() {
+  const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+  _lsSet(THEME_KEY, next);
+  _applyTheme(next);
+}
+
+function initTheme() {
+  _applyTheme(_lsGet(THEME_KEY) === 'light' ? 'light' : 'dark');
+}
+
+initTheme();
+
 updateDueBadge();
 rebuildActive();
 loadSentence();
