@@ -2002,7 +2002,11 @@ details[open] .tense-ref-summary::before { transform:rotate(90deg); }
 
 /* Alle zinnen — star column & flagged rows */
 .star-cell { width: 28px; text-align: center; }
-.zinnen-star { font-size: 1rem; color: var(--c-f5a623); }
+.zinnen-star { font-size: 1.05rem; line-height: 1; color: var(--text-muted); background: none;
+  border: none; padding: 2px 4px; cursor: pointer; border-radius: 6px;
+  transition: color 0.15s, transform 0.1s; }
+.zinnen-star:hover { color: var(--c-f5a623); transform: scale(1.18); }
+.zinnen-star.starred { color: var(--c-f5a623); }
 .filter-btn--star { color: var(--c-7a5c00); background: var(--warning-bg); border-color: var(--c-e8cc80) !important; }
 .filter-btn--star.active { background: var(--c-f5a623); color: var(--on-solid); border-color: var(--c-f5a623) !important; }
 .row-flagged { background: var(--c-fffdf0); }

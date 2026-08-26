@@ -1018,6 +1018,37 @@ function deleteStarComment() {
   showToast('Opmerking verwijderd');
 }
 
+// One delegated handler for the table: sentence text cannot be embedded in an
+// onclick attribute (quotes and apostrophes break it), so rows carry data-nl.
+document.addEventListener('click', e => {
+  const btn = e.target.closest('#sentence-tbody [data-act]');
+  if (!btn) return;
+  const nl = btn.dataset.nl;
+  switch (btn.dataset.act) {
+    case 'star':   toggleStarInTable(nl); break;
+    case 'edit':   openInlineCommentEditor(btn, nl); break;
+    case 'del':    deleteCommentOnly(nl); break;
+    case 'save':   saveInlineComment(nl, btn); break;
+    case 'cancel': renderSentences(_currentSentenceFilter); break;
+  }
+});
+
+// Star any sentence straight from the Alle zinnen table. Unstarring keeps an
+// existing comment instead of throwing it away.
+function toggleStarInTable(nl) {
+  const f = sentenceFlags[nl];
+  if (f?.starred) {
+    if (f.comment) sentenceFlags[nl] = { starred: false, comment: f.comment };
+    else delete sentenceFlags[nl];
+  } else {
+    sentenceFlags[nl] = { starred: true, comment: (f && f.comment) || '' };
+  }
+  _saveFlags();
+  renderFlagsSection();
+  renderSentences(_currentSentenceFilter);
+  if (typeof _updateStarBtn === 'function') _updateStarBtn();
+}
+
 // ── Alle zinnen — inline comment editing ────────────────────────────────────
 function openInlineCommentEditor(btn, nl) {
   const row = btn.closest('tr');
@@ -1027,8 +1058,8 @@ function openInlineCommentEditor(btn, nl) {
     <div class="sentence-comment sentence-comment--editing">
       <textarea class="inline-comment-ta" rows="2">${escapeHtml(current)}</textarea>
       <div class="inline-comment-btns">
-        <button class="btn btn-primary btn-sm" onclick="saveInlineComment(${JSON.stringify(nl)}, this)">Opslaan</button>
-        <button class="btn btn-secondary btn-sm" onclick="renderSentences(_currentSentenceFilter)">Annuleren</button>
+        <button class="btn btn-primary btn-sm" data-act="save" data-nl="${escapeHtml(nl)}">Opslaan</button>
+        <button class="btn btn-secondary btn-sm" data-act="cancel">Annuleren</button>
       </div>
     </div>`;
   row.querySelector('.inline-comment-ta').focus();
@@ -1036,15 +1067,20 @@ function openInlineCommentEditor(btn, nl) {
 
 function saveInlineComment(nl, btn) {
   const comment = btn.closest('.sentence-comment--editing').querySelector('textarea').value.trim();
-  if (!sentenceFlags[nl]) sentenceFlags[nl] = { starred: true };
+  if (!sentenceFlags[nl]) sentenceFlags[nl] = { starred: false, comment: '' };
   sentenceFlags[nl].comment = comment;
+  // a comment on its own is not a flag: drop the entry when both are empty
+  if (!comment && !sentenceFlags[nl].starred) delete sentenceFlags[nl];
   _saveFlags();
   renderFlagsSection();
   renderSentences(_currentSentenceFilter);
 }
 
 function deleteCommentOnly(nl) {
-  if (sentenceFlags[nl]) sentenceFlags[nl].comment = '';
+  if (sentenceFlags[nl]) {
+    sentenceFlags[nl].comment = '';
+    if (!sentenceFlags[nl].starred) delete sentenceFlags[nl];
+  }
   _saveFlags();
   renderFlagsSection();
   renderSentences(_currentSentenceFilter);
@@ -2254,27 +2290,31 @@ function renderSentences(filter) {
     const st   = sentenceStats[s.nl];
     const flag = sentenceFlags[s.nl];
     const nlJson = JSON.stringify(s.nl);
+    const nlAttr = escapeHtml(s.nl);   // safe inside a double-quoted attribute
     const statsHtml = st
       ? `<div class="sentence-stats"><span class="stat-correct">✓ ${st.c}</span><span class="stat-wrong">✗ ${st.w}</span></div>`
       : '';
     let commentHtml = '';
-    if (flag?.starred) {
-      if (flag.comment) {
+    {
+      if (flag && flag.comment) {
         commentHtml = `<div class="sentence-comment">
           <span class="sentence-comment-icon">💬</span>
           <span class="sentence-comment-text">${escapeHtml(flag.comment)}</span>
-          <button class="comment-action-btn" onclick="openInlineCommentEditor(this,${nlJson})" title="Bewerken">✏</button>
-          <button class="comment-action-btn comment-action-btn--del" onclick="deleteCommentOnly(${nlJson})" title="Verwijder opmerking">🗑</button>
+          <button class="comment-action-btn" data-act="edit" data-nl="${nlAttr}" title="Bewerken">✏</button>
+          <button class="comment-action-btn comment-action-btn--del" data-act="del" data-nl="${nlAttr}" title="Verwijder opmerking">🗑</button>
         </div>`;
       } else {
         commentHtml = `<div class="sentence-add-comment">
-          <button class="add-comment-btn" onclick="openInlineCommentEditor(this,${nlJson})">+ opmerking toevoegen</button>
+          <button class="add-comment-btn" data-act="edit" data-nl="${nlAttr}">+ opmerking toevoegen</button>
         </div>`;
       }
     }
-    const starCell = flag?.starred
-      ? `<td class="star-cell"><span class="zinnen-star starred" title="Vraag gemarkeerd">★</span></td>`
-      : `<td class="star-cell"></td>`;
+    const starred = !!flag?.starred;
+    const starCell = `<td class="star-cell">
+        <button class="zinnen-star${starred ? ' starred' : ''}" data-act="star" data-nl="${nlAttr}"
+                aria-pressed="${starred}"
+                title="${starred ? 'Markering verwijderen' : 'Markeer als vraag'}">${starred ? '★' : '☆'}</button>
+      </td>`;
     return `
     <tr class="${st && st.w > st.c ? 'row-has-errors' : ''}${flag?.starred ? ' row-flagged' : ''}">
       ${starCell}
@@ -2294,7 +2334,7 @@ function renderSentences(filter) {
   }).join('');
 
   if (filter === 'flagged' && list.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:24px">Geen gemarkeerde zinnen — druk op ⭐ tijdens het oefenen om een vraag te markeren.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:24px">Geen gemarkeerde zinnen — tik op ☆ in deze tabel of druk op ⭐ tijdens het oefenen.</td></tr>`;
   }
 }
 
