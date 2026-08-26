@@ -353,7 +353,7 @@
           <span class="ex-mode-count" id="ex-mode-count"></span>
         </div>
         <div class="ex-filter-bar">
-          <div class="filter-row" id="ex-level-filter" style="display:none">
+          <div class="filter-row" id="ex-level-filter">
             <span class="ex-filter-label">Niveau</span>
             <button class="filter-btn active" data-exlevel="all" data-level="all" onclick="filterExLevel('all',this)">Alle</button>
             <button class="filter-btn a1-btn" data-exlevel="A1"  data-level="A1"  onclick="filterExLevel('A1',this)">A1</button>
@@ -826,13 +826,16 @@
           <span class="badge badge-a1" style="opacity:0.6" id="sentence-count-badge">8 zinnen</span>
         </div>
         <div class="card-body">
-          <div class="filter-row">
-            <button class="filter-btn active" onclick="filterSentences('all', this)">Alle niveaus</button>
-            <button class="filter-btn" onclick="filterSentences('A1', this)">A1</button>
-            <button class="filter-btn" onclick="filterSentences('A2', this)">A2</button>
-            <button class="filter-btn" onclick="filterSentences('B1', this)">B1</button>
+          <div class="filter-row" id="zinnen-level-filter">
+            <span class="ex-filter-label">Niveau</span>
+            <button class="filter-btn active" data-zlevel="all" onclick="filterSentences('all', this)">Alle niveaus</button>
+            <button class="filter-btn a1-btn" data-zlevel="A1" onclick="filterSentences('A1', this)">A1</button>
+            <button class="filter-btn a2-btn" data-zlevel="A2" onclick="filterSentences('A2', this)">A2</button>
+            <button class="filter-btn b1-btn" data-zlevel="B1" onclick="filterSentences('B1', this)">B1</button>
+            <button class="filter-btn b2-btn" data-zlevel="B2" onclick="filterSentences('B2', this)">B2</button>
             <button class="filter-btn filter-btn--star" onclick="filterSentences('flagged', this)" id="zinnen-flagged-btn">⭐ Vragen</button>
           </div>
+          <div class="filter-row" id="zinnen-grammar-filter"><span class="ex-filter-label">Grammatica</span></div>
           <table class="sentence-table">
             <thead>
               <tr>

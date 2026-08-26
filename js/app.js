@@ -85,6 +85,7 @@ function switchTab(id) {
   document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + id));
   if (id === 'home')         renderHome();
   if (id === 'oefening')     { renderExGrammarFilter(); loadSentence(); renderUnitBar('oefening'); }
+  if (id === 'zinnen')       { renderZinnenGrammarFilter(); renderSentences(_currentSentenceFilter); }
   if (id === 'bewerken')     { renderEditTable(); renderFlagsSection(); }
   if (id === 'woordenschat') { renderVocab(); renderUnitBar('woordenschat'); }
   if (id === 'werkwoorden')  renderUnitBar('werkwoorden');
@@ -750,6 +751,12 @@ function filterExLevel(level, btn) {
   document.querySelectorAll('#ex-level-filter .filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   exLevel = level;
+  // Choosing a level by hand that is not the active unit's level drops the
+  // unit scoping, otherwise the unit's topics would filter to an empty pool.
+  if (exUnitTopics && activeUnit && level !== 'all' && level !== activeUnit.level) {
+    exUnitTopics = null;
+    exGrammar = 'all';
+  }
   if (!exUnitTopics && exGrammar !== 'all' && !_grammarKeyValidForLevel(exGrammar, level)) exGrammar = 'all';
   renderExGrammarFilter();
   rebuildActive();
@@ -2234,6 +2241,13 @@ function renderSentences(filter) {
   else if (filter === 'all') list = sentences;
   else list = sentences.filter(s => s.level === filter);
 
+  if (_zinnenGrammar !== 'all' && exGrammarMap[_zinnenGrammar]) {
+    list = list.filter(exGrammarMap[_zinnenGrammar]);
+  }
+
+  const badge = document.getElementById('sentence-count-badge');
+  if (badge) badge.textContent = list.length + ' zinnen';
+
   tbody.innerHTML = list.map(raw => {
     const s = resolveGrammar(raw);
     const enRule = s.stype ? (stypeEN[s.stype] || '') : '';
@@ -2284,11 +2298,53 @@ function renderSentences(filter) {
   }
 }
 
+let _zinnenGrammar = 'all';   // grammar topic filter for the Alle zinnen table
+
 function filterSentences(filter, btn) {
-  document.querySelectorAll('#panel-zinnen .filter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('#zinnen-level-filter .filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   _currentSentenceFilter = filter;
+  // a topic only exists within its own level
+  if (_zinnenGrammar !== 'all' && !_grammarKeyValidForLevel(_zinnenGrammar, filter)) _zinnenGrammar = 'all';
+  renderZinnenGrammarFilter();
   renderSentences(filter);
+}
+
+function filterZinnenGrammar(key, btn) {
+  document.querySelectorAll('#zinnen-grammar-filter .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  _zinnenGrammar = key;
+  renderSentences(_currentSentenceFilter);
+}
+
+function toggleZinnenGrammarMore(btn) {
+  const row = document.getElementById('zinnen-grammar-filter');
+  if (!row) return;
+  const collapsed = row.classList.toggle('ex-row-collapsed');
+  btn.textContent = collapsed ? 'Meer \u25BE' : 'Minder \u25B4';
+}
+
+// Same topic list as Zinnen oefenen, scoped to the level in view.
+function renderZinnenGrammarFilter() {
+  const row = document.getElementById('zinnen-grammar-filter');
+  if (!row || typeof grammarTopicsData === 'undefined') return;
+  const level = _currentSentenceFilter;
+  const btn = (key, label) =>
+    `<button class="filter-btn ${_zinnenGrammar === key ? 'active' : ''}"
+             data-zgrammar="${key}" onclick="filterZinnenGrammar('${key}', this)">${label}</button>`;
+
+  let html = '<span class="ex-filter-label">Grammatica</span>' + btn('all', 'Alle');
+  const topics = grammarTopicsData.filter(t =>
+    level === 'all' || level === 'flagged' || t.level === level);
+  let n = 0;
+  topics.forEach(t => {
+    const key = t.filter || t.id;
+    if (exGrammarMap[key]) { html += btn(key, t.title); n++; }
+  });
+  if (n > 12) html += `<button class="filter-btn ex-more-btn" onclick="toggleZinnenGrammarMore(this)">Meer \u25BE</button>`;
+  row.innerHTML = html;
+  if (row.querySelector('.ex-more-btn')) row.classList.add('ex-row-collapsed');
+  else row.classList.remove('ex-row-collapsed');
 }
 
 // ─── VERB PRACTICE ────────────────────────────────────────────────────────────
