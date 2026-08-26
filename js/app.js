@@ -2270,21 +2270,15 @@ function buildStructureDetail(stype) {
     </div>`;
 }
 
-function renderSentences(filter) {
-  const tbody = document.getElementById('sentence-tbody');
-  let list;
-  if (filter === 'flagged') list = sentences.filter(s => sentenceFlags[s.nl]?.starred);
-  else if (filter === 'all') list = sentences;
-  else list = sentences.filter(s => s.level === filter);
+// The table can hold ~950 rows and each row carries a star button, stats and a
+// comment affordance — rendering them all cost ~300ms of layout per filter
+// click. Rows are now rendered in chunks as they are scrolled to.
+const ZINNEN_CHUNK = 60;
+let _zinnenList = [];
+let _zinnenShown = 0;
+let _zinnenObserver = null;
 
-  if (_zinnenGrammar !== 'all' && exGrammarMap[_zinnenGrammar]) {
-    list = list.filter(exGrammarMap[_zinnenGrammar]);
-  }
-
-  const badge = document.getElementById('sentence-count-badge');
-  if (badge) badge.textContent = list.length + ' zinnen';
-
-  tbody.innerHTML = list.map(raw => {
+function _zinnenRowHtml(raw) {
     const s = resolveGrammar(raw);
     const enRule = s.stype ? (stypeEN[s.stype] || '') : '';
     const st   = sentenceStats[s.nl];
@@ -2331,10 +2325,62 @@ function renderSentences(filter) {
       <td><span class="badge badge-${s.level.toLowerCase()}">${s.level}</span></td>
       <td>${s.stype ? `<span class="stype-badge stype-${s.stype.toLowerCase().replace(/[^a-z]/g,'-')}">${s.stype}</span>` : ''}</td>
     </tr>`;
-  }).join('');
+}
+
+function _appendZinnenRows() {
+  const tbody = document.getElementById('sentence-tbody');
+  if (!tbody || _zinnenShown >= _zinnenList.length) return;
+  const slice = _zinnenList.slice(_zinnenShown, _zinnenShown + ZINNEN_CHUNK);
+  const sentinel = document.getElementById('zinnen-sentinel');
+  const html = slice.map(_zinnenRowHtml).join('');
+  if (sentinel) sentinel.insertAdjacentHTML('beforebegin', html);
+  else tbody.insertAdjacentHTML('beforeend', html);
+  _zinnenShown += slice.length;
+  if (_zinnenShown >= _zinnenList.length) {
+    sentinel?.remove();
+    _zinnenObserver?.disconnect();
+  }
+}
+
+function renderSentences(filter) {
+  const tbody = document.getElementById('sentence-tbody');
+  if (!tbody) return;
+  let list;
+  if (filter === 'flagged') list = sentences.filter(s => sentenceFlags[s.nl]?.starred);
+  else if (filter === 'all') list = sentences;
+  else list = sentences.filter(s => s.level === filter);
+
+  if (_zinnenGrammar !== 'all' && exGrammarMap[_zinnenGrammar]) {
+    list = list.filter(exGrammarMap[_zinnenGrammar]);
+  }
+
+  const badge = document.getElementById('sentence-count-badge');
+  if (badge) badge.textContent = list.length + ' zinnen';
+
+  _zinnenObserver?.disconnect();
+  _zinnenList = list;
+  _zinnenShown = 0;
 
   if (filter === 'flagged' && list.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:24px">Geen gemarkeerde zinnen — tik op ☆ in deze tabel of druk op ⭐ tijdens het oefenen.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:24px">Geen gemarkeerde zinnen — tik op \u2606 in deze tabel of druk op \u2B50 tijdens het oefenen.</td></tr>`;
+    return;
+  }
+  if (list.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:24px">Geen zinnen voor deze filter.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = '<tr id="zinnen-sentinel"><td colspan="5" class="zinnen-sentinel-cell"></td></tr>';
+  _appendZinnenRows();
+
+  const sentinel = document.getElementById('zinnen-sentinel');
+  if (sentinel && 'IntersectionObserver' in window) {
+    _zinnenObserver = new IntersectionObserver(entries => {
+      if (entries.some(e => e.isIntersecting)) _appendZinnenRows();
+    }, { rootMargin: '600px' });
+    _zinnenObserver.observe(sentinel);
+  } else {
+    while (_zinnenShown < _zinnenList.length) _appendZinnenRows();
   }
 }
 

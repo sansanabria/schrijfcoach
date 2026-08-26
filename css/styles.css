@@ -3380,3 +3380,13 @@ html, body {
 @media (max-width: 640px) {
   #ex-grammar-filter.ex-row-collapsed { max-height: 74px; }
 }
+
+.zinnen-sentinel-cell { height: 1px; padding: 0; border: none; }
+
+/* Skip layout/paint for offscreen cards — the grammar and vocabulary panels
+   hold thousands of nodes and were costing ~150-200ms on every tab switch. */
+.gt-card { content-visibility: auto; contain-intrinsic-size: 0 520px; contain: layout style paint; }
+.gt-level-section { content-visibility: auto; contain-intrinsic-size: 0 2400px; }
+.vocab-card { content-visibility: auto; contain-intrinsic-size: 0 96px; }
+.vocab-section { content-visibility: auto; contain-intrinsic-size: 0 400px; }
+.lp-unit, .lp-session { content-visibility: auto; contain-intrinsic-size: 0 600px; }
