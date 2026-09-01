@@ -22,9 +22,12 @@ function _lsGet(key) {
 }
 function _lsSet(key, value) {
   try { localStorage.setItem(key, value); } catch (e) { _logError('lsSet:' + key, e); }
+  // Mirror the write to Supabase when signed in (js/supabase-sync.js).
+  if (typeof _sbOnLocalWrite === 'function') _sbOnLocalWrite(key);
 }
 function _lsRemove(key) {
   try { localStorage.removeItem(key); } catch (e) { _logError('lsRemove:' + key, e); }
+  if (typeof _sbOnLocalWrite === 'function') _sbOnLocalWrite(key);
 }
 
 // ─── MISTAKES TRACKING ───────────────────────────────────────────────────────

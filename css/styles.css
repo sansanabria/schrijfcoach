@@ -3390,3 +3390,48 @@ html, body {
 .vocab-card { content-visibility: auto; contain-intrinsic-size: 0 96px; }
 .vocab-section { content-visibility: auto; contain-intrinsic-size: 0 400px; }
 .lp-unit, .lp-session { content-visibility: auto; contain-intrinsic-size: 0 600px; }
+
+/* ─── LOGIN DIALOG ─────────────────────────────────────────────────────────── */
+.auth-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+}
+.auth-box {
+  width: 100%; max-width: 360px; padding: 22px;
+  border-radius: var(--radius);
+  background: var(--surface); border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+}
+.auth-box h2 { font-size: 1.15rem; color: var(--text); margin-bottom: 4px; }
+.auth-sub { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 16px; }
+.auth-label {
+  display: block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.05em; color: var(--text-muted); margin: 12px 0 5px;
+}
+.auth-input {
+  width: 100%; padding: 10px 12px; font-size: 0.95rem; font-family: inherit;
+  color: var(--text); background: var(--bg);
+  border: 1px solid var(--border); border-radius: 8px;
+}
+.auth-input:focus { outline: none; border-color: var(--primary); }
+.auth-error {
+  margin-top: 12px; padding: 9px 11px; border-radius: 8px;
+  font-size: 0.82rem; color: var(--error); background: var(--error-bg);
+}
+.auth-actions { display: flex; gap: 8px; margin-top: 18px; }
+.auth-btn {
+  flex: 1; padding: 10px; font-size: 0.88rem; font-weight: 600; font-family: inherit;
+  cursor: pointer; border-radius: 8px;
+  color: var(--text); background: var(--surface2); border: 1px solid var(--border);
+}
+.auth-btn:hover { border-color: var(--primary); }
+.auth-btn-primary { color: #fff; background: var(--primary); border-color: var(--primary); }
+.auth-btn-primary:hover { background: var(--primary-light); border-color: var(--primary-light); }
+.auth-close {
+  display: block; width: 100%; margin-top: 10px; padding: 6px;
+  font-size: 0.82rem; font-family: inherit; cursor: pointer;
+  color: var(--text-muted); background: none; border: none;
+}
+.auth-close:hover { color: var(--text); }
