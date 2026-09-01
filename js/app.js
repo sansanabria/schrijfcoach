@@ -22,9 +22,19 @@ function _lsGet(key) {
 }
 function _lsSet(key, value) {
   try { localStorage.setItem(key, value); } catch (e) { _logError('lsSet:' + key, e); }
+  _lsAfterWrite(key);
 }
 function _lsRemove(key) {
   try { localStorage.removeItem(key); } catch (e) { _logError('lsRemove:' + key, e); }
+  _lsAfterWrite(key);
+}
+
+// Every persisted change — writes AND deletes — funnels through here, so cloud
+// sync can never drift out of date with a write site someone forgot to wire up.
+// syncNoteLocalWrite lives in js/cloud-sync.js, which loads after this file and
+// may be absent entirely (CDN blocked, opened from file://), hence the guard.
+function _lsAfterWrite(key) {
+  if (typeof syncNoteLocalWrite === 'function') syncNoteLocalWrite(key);
 }
 
 // ─── MISTAKES TRACKING ───────────────────────────────────────────────────────
@@ -567,7 +577,6 @@ function _migrateUnitProgress() {
 
 function _saveUnitProgress() {
   _lsSet(UNIT_PROGRESS_KEY, JSON.stringify(unitProgress));
-  syncSchedulePush();
 }
 
 function _ensureUP(n) {
@@ -957,7 +966,6 @@ let _currentSentenceFilter = 'all';
 
 function _saveFlags() {
   _lsSet(FLAGS_KEY, JSON.stringify(sentenceFlags));
-  syncSchedulePush();
 }
 
 function _refreshFlaggedViews() {
@@ -1375,7 +1383,6 @@ function updateSRS(nl, correct) {
   entry.nextReview = next.toISOString();
   _lsSet(SRS_KEY, JSON.stringify(srsData));
   updateDueBadge();
-  syncSchedulePush();
 }
 
 function updateDueBadge() {
@@ -3737,7 +3744,7 @@ function saveProgress() {
   _lsSet(STORAGE_KEY, JSON.stringify(data));
   showToast('✓ Voortgang opgeslagen!');
   updateSaveDate(data.savedAt);
-  clearTimeout(_syncTimer); _syncPush();
+  if (typeof syncFlushNow === 'function') syncFlushNow();
   const btn = document.getElementById('save-btn');
   btn.classList.add('saved');
   setTimeout(() => btn.classList.remove('saved'), 1500);
@@ -3901,7 +3908,6 @@ function _goNextUnitStep(fromTab) {
 function markGrammarTopicRead(id) {
   grammarReadData[id] = true;
   _lsSet(GRAMMAR_READ_KEY, JSON.stringify(grammarReadData));
-  syncSchedulePush();
   // Update the button in place
   const btn = document.querySelector(`[data-gtread="${id}"]`);
   if (btn) {
@@ -5146,7 +5152,6 @@ function _unknownWords() {
 
 function _saveUnknownWords(map) {
   _lsSet(UNKNOWN_WORDS_KEY, JSON.stringify(map));
-  syncSchedulePush();
 }
 
 function _normalizeWord(w) {

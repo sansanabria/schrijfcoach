@@ -43,6 +43,11 @@
   <symbol id="i-edit" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></symbol>
   <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></symbol>
   <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="i-log-out" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></symbol>
+  <!-- Google's mark is four solid colours, so this one carries its own fills and
+       must not inherit the stroke styling the other icons use. -->
+  <symbol id="i-google" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.5 12.27c0-.79-.07-1.54-.2-2.27H12v4.51h6.47a5.53 5.53 0 01-2.4 3.63v3h3.87c2.26-2.09 3.56-5.17 3.56-8.87z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.08 7.94-2.91l-3.87-3a7.2 7.2 0 01-10.73-3.78H1.34v3.09A12 12 0 0012 24z"/><path fill="#FBBC05" d="M5.34 14.31a7.19 7.19 0 010-4.61V6.61H1.34a12 12 0 000 10.78l4-3.08z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0A12 12 0 001.34 6.61l4 3.09A7.16 7.16 0 0112 4.75z"/></symbol>
 </svg>
 
 <header>
@@ -57,8 +62,9 @@
     <div class="header-actions">
       <span class="save-date" id="save-date"></span>
       <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Licht / donker" aria-label="Licht of donker thema">🌙</button>
-      <button class="sync-btn" id="sync-icon" onclick="syncShowSetup()" data-status="off" title="Sync instellen" aria-label="Sync instellen">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-sync"/></svg>
+      <span class="save-date" id="sync-status"></span>
+      <button class="sync-btn" id="account-btn" onclick="authOpenPanel()" data-status="off" title="Inloggen om te synchroniseren" aria-label="Account en synchronisatie">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-user" id="account-icon"/></svg>
       </button>
       <button class="save-btn" id="save-btn" onclick="saveProgress()" aria-label="Opslaan">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-save"/></svg>
@@ -918,10 +924,24 @@
 <div class="toast" id="toast"></div>
 <div id="reading-hover-tip" aria-hidden="true"></div>
 
-<script src="js/sync.js"></script>
+<!-- Account modal — body rendered by js/auth.js (login / account / recovery) -->
+<div class="modal-overlay" id="auth-modal" hidden onclick="if(event.target===this)authCloseModal()">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+    <button class="modal-close" onclick="authCloseModal()" aria-label="Sluiten">&times;</button>
+    <h2 id="auth-title">Inloggen</h2>
+    <div id="auth-body"></div>
+  </div>
+</div>
+
+<!-- Supabase SDK. Version pinned deliberately: there is no lockfile here, so a
+     floating @2 would let a different build arrive on any page load. -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.4/dist/umd/supabase.js"
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="js/data.js"></script>
 <script src="js/grammar-data.js"></script>
 <script src="js/reading-data.js"></script>
 <script src="js/app.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/cloud-sync.js"></script>
 </body>
 </html>
