@@ -28,7 +28,7 @@ Vercel picks up the push and deploys automatically. There is no CI, no build com
 
 ## Architecture
 
-Everything lives in four JS files loaded in order by `index.html`:
+Everything lives in six JS files loaded in order by `index.html`:
 
 | File | Purpose | Size |
 |------|---------|------|
@@ -36,9 +36,13 @@ Everything lives in four JS files loaded in order by `index.html`:
 | `js/grammar-data.js` | Grammar reference (`grammarTopicsData[]`) + study plan (`lessonPlanData`) | ~2000 lines |
 | `js/reading-data.js` | Reading texts — exports `readingTexts[]` | ~3750 lines |
 | `js/app.js` | All application logic | ~6100 lines |
+| `js/auth.js` | Supabase client, session, login/account modal | ~320 lines |
+| `js/cloud-sync.js` | Push/pull of progress to the `progress` table | ~380 lines |
 | `css/styles.css` | All styles | — |
 
 All JS is global-scope; functions and variables are shared across files. There is no module system.
+
+`auth.js` and `cloud-sync.js` load **after** `app.js` (they depend on `showToast`, `_lsGet` and the DOM), preceded by the Supabase UMD bundle from jsDelivr. That CDN script is the only external runtime dependency; there is still no npm, bundler or build step.
 
 ### Tab system
 
@@ -77,6 +81,21 @@ All user progress is stored in localStorage. All keys are prefixed `schrijfcoach
 | `schrijfcoach_progress` | Save/load slot (JSON export via Opslaan button) |
 
 Helper functions `_lsGet(key)`, `_lsSet(key, value)`, `_lsRemove(key)` wrap localStorage with error handling. Use these, not `localStorage` directly.
+
+### Accounts & cloud sync
+
+Login is Supabase (email/password + Google OAuth), **invite-only** — public signup is disabled in the dashboard, so new accounts are created via Authentication → Users → Invite user. `supabase/schema.sql` holds the table and row-level-security policies; re-run it there if the schema changes.
+
+The `SUPABASE_URL` / `SUPABASE_ANON_KEY` constants at the top of `js/auth.js` are **deliberately committed**. The anon key is not a secret — it identifies an anonymous visitor, and RLS restricts every request to the row matching the logged-in user. The `service_role` key must never appear in this repo.
+
+Sync rules worth knowing before touching this:
+
+- **`_lsSet` and `_lsRemove` are the sync trigger.** Both call `syncNoteLocalWrite(key)`, which pushes if the key is in `SYNCED_KEYS` (`js/cloud-sync.js`). To make new state sync, add its key to that set — do not add push calls at write sites. Before this, only 5 of 18 write sites pushed and no delete site did, so deletions never propagated.
+- **`schrijfcoach_sentences` has its own column**, because it is ~207 KB and would otherwise be re-uploaded on every answered sentence.
+- **`schrijfcoach_theme` is not synced** — it is a per-device preference.
+- **Conflicts are last-write-wins** on a server-generated `updated_at`. Two silent safety nets guard it: a backup of whatever is about to be overwritten (`progress_backup` plus a local slot and a one-time file download), and a refusal to push an empty local state over a non-empty cloud one.
+- **A pull that changes data ends in `location.reload()`.** This is intentional: `ctTenseFilter` and `vexTenseFilter` are initialized by top-level IIFEs with no function to re-call, and several other values are read from localStorage lazily. Pulls only happen at boot or on tab focus, never mid-exercise.
+- Everything degrades to a no-op when logged out or when the CDN fails. **The app must stay fully usable with no account and no network** — never gate content behind login.
 
 ### Exercise UX pattern
 
