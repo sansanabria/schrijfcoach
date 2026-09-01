@@ -1267,36 +1267,10 @@ function previousSentence() {
 
 function retrySentence() { loadSentence(); }
 
+// Skip a sentence you don't want to do: move on with no penalty — doesn't
+// touch stats or SRS scheduling, unlike an actual wrong answer.
 function skipSentence() {
-  if (exAnswered) { nextSentence(); return; }
-  exAnswered = true;
-  const s = activeSentences[exIdx];
-  let correctAnswer;
-  if (exInputMode === 'tiles') {
-    disableTiles();
-    document.getElementById('ex-check-btn-tiles').style.display = 'none';
-    correctAnswer = s.nl;
-  } else if (exInputMode === 'fillblank') {
-    const fi = document.getElementById('fillblank-input');
-    if (fi) fi.disabled = true;
-    const fb = document.getElementById('ex-check-btn-fillblank');
-    if (fb) fb.style.display = 'none';
-    correctAnswer = blankWord;
-  } else if (exInputMode === 'translate') {
-    document.getElementById('ex-input').disabled = true;
-    document.getElementById('ex-check-btn').style.display = 'none';
-    correctAnswer = s.en;
-  } else {
-    document.getElementById('ex-input').disabled = true;
-    document.getElementById('ex-check-btn').style.display = 'none';
-    correctAnswer = s.nl;
-  }
-  document.getElementById('ex-next-btn').style.display = '';
-  showFeedback(false, correctAnswer);
-  if (!sentenceStats[s.nl]) sentenceStats[s.nl] = { c: 0, w: 0 };
-  sentenceStats[s.nl].w++;
-  _lsSet(STATS_KEY, JSON.stringify(sentenceStats));
-  syncSchedulePush();
+  nextSentence();
 }
 
 function showCongrats() {
