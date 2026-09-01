@@ -924,6 +924,15 @@
 <div class="toast" id="toast"></div>
 <div id="reading-hover-tip" aria-hidden="true"></div>
 
+<!-- Account modal — body rendered by js/auth.js (login / account / recovery) -->
+<div class="modal-overlay" id="auth-modal" hidden onclick="if(event.target===this)authCloseModal()">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+    <button class="modal-close" onclick="authCloseModal()" aria-label="Sluiten">&times;</button>
+    <h2 id="auth-title">Inloggen</h2>
+    <div id="auth-body"></div>
+  </div>
+</div>
+
 <script src="js/data.js"></script>
 <script src="js/grammar-data.js"></script>
 <script src="js/reading-data.js"></script>
