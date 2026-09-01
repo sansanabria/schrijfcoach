@@ -1159,6 +1159,8 @@ function loadSentence() {
   document.getElementById('ex-next-btn').style.display = 'none';
   const retryBtnLoad = document.getElementById('ex-retry-btn');
   if (retryBtnLoad) retryBtnLoad.style.display = 'none';
+  const prevBtnLoad = document.getElementById('ex-prev-btn');
+  if (prevBtnLoad) prevBtnLoad.disabled = exIdx === 0;
   document.getElementById('ex-btn-row').style.display  = '';
   document.getElementById('ex-congrats').classList.remove('show');
   hideFeedback();
@@ -1255,6 +1257,12 @@ function hideFeedback() {
 function nextSentence() {
   if (_exAutoAdvanceTimer) { clearTimeout(_exAutoAdvanceTimer); _exAutoAdvanceTimer = null; }
   exIdx++; _autoSaveIdx(); loadSentence();
+}
+
+function previousSentence() {
+  if (exIdx === 0) return;
+  if (_exAutoAdvanceTimer) { clearTimeout(_exAutoAdvanceTimer); _exAutoAdvanceTimer = null; }
+  exIdx--; _autoSaveIdx(); loadSentence();
 }
 
 function retrySentence() { loadSentence(); }
