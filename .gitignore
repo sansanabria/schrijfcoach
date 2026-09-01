@@ -12,3 +12,4 @@ Nederlands_Lezen_A1_A2.pdf
 Thumbs.db
 
 .vercel
+.env*.local
