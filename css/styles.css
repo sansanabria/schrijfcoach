@@ -1953,26 +1953,44 @@ details[open] .tense-ref-summary::before { transform:rotate(90deg); }
 /* ── Star / flag feature ─────────────────────────────────── */
 .exercise-card { position: relative; }
 
-.ex-star-btn {
-  position: absolute;
-  top: 10px; right: 10px;
-  background: none;
-  border: none;
+/* Mark / note actions. These replaced a 20px unlabelled star stroked in
+   var(--border) — the lowest-contrast token in the palette — which was so hard
+   to see that the feature read as missing entirely. Labelled text buttons now,
+   using the same ☆/★ glyphs as the Alle zinnen table. */
+.ex-mark-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: -4px 0 12px;
+}
+.ex-mark-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 13px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 99px;
   cursor: pointer;
-  padding: 4px;
-  border-radius: 6px;
-  transition: transform 0.15s;
-  line-height: 1;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
 }
-.ex-star-btn svg {
-  width: 20px; height: 20px;
-  stroke: var(--border);
-  fill: none;
-  transition: stroke 0.15s, fill 0.15s;
+.ex-mark-btn:hover { color: var(--text); border-color: var(--text-muted); }
+.ex-mark-icon { font-size: 0.95rem; line-height: 1; }
+
+.ex-mark-btn.starred {
+  color: var(--c-f5a623);
+  border-color: var(--c-f5a623);
+  background: var(--warning-bg);
 }
-.ex-star-btn:hover svg { stroke: var(--c-f5a623); }
-.ex-star-btn.starred svg { stroke: var(--c-f5a623); fill: var(--c-f5a623); }
-.ex-star-btn:hover { transform: scale(1.15); }
+.ex-mark-btn.has-note {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: var(--primary-faint);
+}
 
 .ex-comment-wrap {
   background: var(--warning-bg);
