@@ -210,7 +210,7 @@ function renderHome() {
   const totalErr = _totalMistakeCount();
   _setStat('home-stat-fouten', totalErr > 0 ? totalErr + ' fouten om te oefenen' : '✓ Geen fouten');
   _setStat('home-stat-zinnen', sentences.length + ' zinnen totaal');
-  const flagCount = Object.values(sentenceFlags).filter(f => f.starred).length;
+  const flagCount = Object.values(sentenceFlags).filter(f => f && (f.starred || f.comment)).length;
   const editStat = sentences.length + ' zinnen' + (flagCount ? ' · ' + flagCount + ' gemarkeerd' : '');
   _setStat('home-stat-bewerken', editStat);
 
@@ -973,34 +973,69 @@ function _refreshFlaggedViews() {
   renderFlagsSection();
 }
 
+// A sentence counts as flagged if it is starred OR carries a comment. Commenting
+// without starring is a legitimate state (the Alle zinnen table creates it), and
+// every view that lists "flagged" sentences must agree on that — otherwise a
+// comment-only sentence is saved but findable nowhere.
+function _isFlagged(nl) {
+  const f = sentenceFlags[nl];
+  return !!(f && (f.starred || f.comment));
+}
+
+// Star/unstar without ever discarding a comment the user wrote. Shared by the
+// exercise view and the Alle zinnen table so the two cannot drift apart.
+function _toggleFlagStar(nl) {
+  const f = sentenceFlags[nl];
+  if (f?.starred) {
+    if (f.comment) sentenceFlags[nl] = { starred: false, comment: f.comment };
+    else delete sentenceFlags[nl];
+  } else {
+    sentenceFlags[nl] = { starred: true, comment: (f && f.comment) || '' };
+  }
+  _saveFlags();
+}
+
 function _updateStarBtn() {
   const s = activeSentences[exIdx];
   if (!s) return;
-  const flag = sentenceFlags[s.nl];
   const btn  = document.getElementById('ex-star-btn');
   const wrap = document.getElementById('ex-comment-wrap');
   const inp  = document.getElementById('ex-comment-input');
   if (!btn) return;
-  if (flag?.starred) {
-    btn.classList.add('starred');
-    wrap.style.display = '';
-    inp.value = flag.comment || '';
-  } else {
-    btn.classList.remove('starred');
-    wrap.style.display = 'none';
-    inp.value = '';
-  }
+  const flag       = sentenceFlags[s.nl] || {};
+  const starred    = !!flag.starred;
+  const hasComment = !!flag.comment;
+
+  btn.classList.toggle('starred', starred);
+  btn.setAttribute('aria-pressed', String(starred));
+  const icon  = document.getElementById('ex-star-icon');
+  const label = document.getElementById('ex-star-label');
+  if (icon)  icon.textContent  = starred ? '★' : '☆';
+  if (label) label.textContent = starred ? 'Gemarkeerd' : 'Markeer';
+
+  const noteBtn   = document.getElementById('ex-note-btn');
+  const noteLabel = document.getElementById('ex-note-label');
+  if (noteLabel) noteLabel.textContent = hasComment ? 'Notitie bewerken' : 'Notitie';
+  if (noteBtn)   noteBtn.classList.toggle('has-note', hasComment);
+
+  // Open the box when there is something to show; otherwise it waits for the
+  // Notitie button, so a comment no longer requires starring first.
+  if (wrap) wrap.style.display = (starred || hasComment) ? '' : 'none';
+  if (inp)  inp.value = flag.comment || '';
+}
+
+function toggleExComment() {
+  const wrap = document.getElementById('ex-comment-wrap');
+  if (!wrap) return;
+  const isOpen = wrap.style.display !== 'none';
+  wrap.style.display = isOpen ? 'none' : '';
+  if (!isOpen) document.getElementById('ex-comment-input')?.focus();
 }
 
 function toggleStarSentence() {
   const s = activeSentences[exIdx];
   if (!s) return;
-  if (sentenceFlags[s.nl]?.starred) {
-    delete sentenceFlags[s.nl];
-  } else {
-    sentenceFlags[s.nl] = { starred: true, comment: '' };
-  }
-  _saveFlags();
+  _toggleFlagStar(s.nl);
   _updateStarBtn();
   _refreshFlaggedViews();
 }
@@ -1009,11 +1044,15 @@ function saveStarComment() {
   const s = activeSentences[exIdx];
   if (!s) return;
   const comment = document.getElementById('ex-comment-input').value.trim();
-  if (!sentenceFlags[s.nl]) sentenceFlags[s.nl] = { starred: true };
+  // Deliberately does NOT force starred:true — a note on its own is valid, and
+  // an entry with neither a star nor a comment is not worth keeping.
+  if (!sentenceFlags[s.nl]) sentenceFlags[s.nl] = { starred: false, comment: '' };
   sentenceFlags[s.nl].comment = comment;
+  if (!comment && !sentenceFlags[s.nl].starred) delete sentenceFlags[s.nl];
   _saveFlags();
+  _updateStarBtn();
   _refreshFlaggedViews();
-  showToast('✓ Opmerking opgeslagen');
+  showToast(comment ? '✓ Opmerking opgeslagen' : 'Opmerking verwijderd');
 }
 
 function deleteStarComment() {
@@ -1037,24 +1076,43 @@ document.addEventListener('click', e => {
     case 'edit':   openInlineCommentEditor(btn, nl); break;
     case 'del':    deleteCommentOnly(nl); break;
     case 'save':   saveInlineComment(nl, btn); break;
-    case 'cancel': renderSentences(_currentSentenceFilter); break;
+    case 'cancel': _refreshZinnenRow(nl); break;
   }
 });
+
+// Repaint a single row instead of the whole table. renderSentences() rebuilds
+// the tbody and resets the lazy-loaded list to its first chunk, so acting on a
+// row hundreds deep used to make that row vanish and the scroll position
+// collapse. Returns false when the row is not on screen and a caller may need
+// a full re-render.
+function _refreshZinnenRow(nl) {
+  const tbody = document.getElementById('sentence-tbody');
+  if (!tbody || typeof CSS === 'undefined' || !CSS.escape) return false;
+  const row = tbody.querySelector('tr[data-nl="' + CSS.escape(nl) + '"]');
+  if (!row) return false;
+  const raw = sentences.find(s => s.nl === nl);
+  if (!raw) return false;
+  row.outerHTML = _zinnenRowHtml(raw);
+  return true;
+}
+
+// Under the ⭐ Vragen filter a row that stops qualifying has to actually
+// disappear, which only a full re-render can do.
+function _afterTableFlagChange(nl) {
+  renderFlagsSection();
+  if (_currentSentenceFilter === 'flagged' && !_isFlagged(nl)) {
+    renderSentences(_currentSentenceFilter);
+  } else if (!_refreshZinnenRow(nl)) {
+    renderSentences(_currentSentenceFilter);
+  }
+  if (typeof _updateStarBtn === 'function') _updateStarBtn();
+}
 
 // Star any sentence straight from the Alle zinnen table. Unstarring keeps an
 // existing comment instead of throwing it away.
 function toggleStarInTable(nl) {
-  const f = sentenceFlags[nl];
-  if (f?.starred) {
-    if (f.comment) sentenceFlags[nl] = { starred: false, comment: f.comment };
-    else delete sentenceFlags[nl];
-  } else {
-    sentenceFlags[nl] = { starred: true, comment: (f && f.comment) || '' };
-  }
-  _saveFlags();
-  renderFlagsSection();
-  renderSentences(_currentSentenceFilter);
-  if (typeof _updateStarBtn === 'function') _updateStarBtn();
+  _toggleFlagStar(nl);
+  _afterTableFlagChange(nl);
 }
 
 // ── Alle zinnen — inline comment editing ────────────────────────────────────
@@ -1080,8 +1138,7 @@ function saveInlineComment(nl, btn) {
   // a comment on its own is not a flag: drop the entry when both are empty
   if (!comment && !sentenceFlags[nl].starred) delete sentenceFlags[nl];
   _saveFlags();
-  renderFlagsSection();
-  renderSentences(_currentSentenceFilter);
+  _afterTableFlagChange(nl);
 }
 
 function deleteCommentOnly(nl) {
@@ -1090,8 +1147,7 @@ function deleteCommentOnly(nl) {
     if (!sentenceFlags[nl].starred) delete sentenceFlags[nl];
   }
   _saveFlags();
-  renderFlagsSection();
-  renderSentences(_currentSentenceFilter);
+  _afterTableFlagChange(nl);
 }
 
 // ── Bewerken — flags section ─────────────────────────────────────────────────
@@ -1099,10 +1155,10 @@ function renderFlagsSection() {
   const body  = document.getElementById('flags-body');
   const badge = document.getElementById('flags-count-badge');
   if (!body) return;
-  const flagged = sentences.filter(s => sentenceFlags[s.nl]?.starred);
+  const flagged = sentences.filter(s => _isFlagged(s.nl));
   if (badge) badge.textContent = flagged.length + ' gemarkeerd';
   if (flagged.length === 0) {
-    body.innerHTML = '<p style="color:var(--text-muted);font-size:0.83rem">Geen vragen gemarkeerd. Gebruik de ⭐ knop tijdens het oefenen om een zin te markeren.</p>';
+    body.innerHTML = '<p style="color:var(--text-muted);font-size:0.83rem">Geen vragen gemarkeerd. Gebruik “☆ Markeer” of “💬 Notitie” tijdens het oefenen.</p>';
     return;
   }
   body.innerHTML = flagged.map(s => `
@@ -2271,7 +2327,6 @@ function _zinnenRowHtml(raw) {
     const enRule = s.stype ? (stypeEN[s.stype] || '') : '';
     const st   = sentenceStats[s.nl];
     const flag = sentenceFlags[s.nl];
-    const nlJson = JSON.stringify(s.nl);
     const nlAttr = escapeHtml(s.nl);   // safe inside a double-quoted attribute
     const statsHtml = st
       ? `<div class="sentence-stats"><span class="stat-correct">✓ ${st.c}</span><span class="stat-wrong">✗ ${st.w}</span></div>`
@@ -2298,7 +2353,7 @@ function _zinnenRowHtml(raw) {
                 title="${starred ? 'Markering verwijderen' : 'Markeer als vraag'}">${starred ? '★' : '☆'}</button>
       </td>`;
     return `
-    <tr class="${st && st.w > st.c ? 'row-has-errors' : ''}${flag?.starred ? ' row-flagged' : ''}">
+    <tr data-nl="${nlAttr}" class="${st && st.w > st.c ? 'row-has-errors' : ''}${flag?.starred ? ' row-flagged' : ''}">
       ${starCell}
       <td class="sentence-nl">
         ${s.nl}
@@ -2334,7 +2389,7 @@ function renderSentences(filter) {
   const tbody = document.getElementById('sentence-tbody');
   if (!tbody) return;
   let list;
-  if (filter === 'flagged') list = sentences.filter(s => sentenceFlags[s.nl]?.starred);
+  if (filter === 'flagged') list = sentences.filter(s => _isFlagged(s.nl));
   else if (filter === 'all') list = sentences;
   else list = sentences.filter(s => s.level === filter);
 
@@ -2350,7 +2405,7 @@ function renderSentences(filter) {
   _zinnenShown = 0;
 
   if (filter === 'flagged' && list.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:24px">Geen gemarkeerde zinnen — tik op \u2606 in deze tabel of druk op \u2B50 tijdens het oefenen.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:24px">Geen gemarkeerde zinnen — tik op \u2606 in deze tabel, of gebruik \u201C\u2606 Markeer\u201D of \u201C\uD83D\uDCAC Notitie\u201D tijdens het oefenen.</td></tr>`;
     return;
   }
   if (list.length === 0) {

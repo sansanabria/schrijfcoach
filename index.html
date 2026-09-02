@@ -387,9 +387,6 @@
           </div>
 
           <div class="exercise-card">
-            <button class="ex-star-btn" id="ex-star-btn" onclick="toggleStarSentence()" title="Markeer als vraag" aria-label="Markeer als vraag">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><use href="#i-star-outline"/></svg>
-            </button>
             <div class="exercise-direction" id="ex-direction">Vertaal naar het Nederlands</div>
             <div class="exercise-prompt" id="ex-prompt">I go to school.</div>
             <div class="ex-stype-row" id="ex-stype-row" style="display:none">
@@ -398,7 +395,20 @@
             </div>
           </div>
 
-          <!-- Comment / question area (shown when starred) -->
+          <!-- Mark this sentence as a question, and/or attach a note. Both show
+               up in Alle zinnen and in Bewerken. -->
+          <div class="ex-mark-row">
+            <button class="ex-mark-btn" id="ex-star-btn" onclick="toggleStarSentence()" aria-pressed="false" title="Markeer deze zin als vraag">
+              <span class="ex-mark-icon" id="ex-star-icon" aria-hidden="true">☆</span>
+              <span id="ex-star-label">Markeer</span>
+            </button>
+            <button class="ex-mark-btn" id="ex-note-btn" onclick="toggleExComment()" title="Schrijf een notitie bij deze zin">
+              <span class="ex-mark-icon" aria-hidden="true">💬</span>
+              <span id="ex-note-label">Notitie</span>
+            </button>
+          </div>
+
+          <!-- Comment / question area -->
           <div class="ex-comment-wrap" id="ex-comment-wrap" style="display:none">
             <div class="ex-comment-label">📝 Mijn vraag / opmerking</div>
             <textarea class="ex-comment-input" id="ex-comment-input" placeholder="Schrijf hier je vraag of opmerking..." rows="2"></textarea>
