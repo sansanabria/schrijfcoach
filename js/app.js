@@ -4481,7 +4481,7 @@ function renderUnitBar(panelId) {
     if (panelId === 'werkwoorden') {
       const verbCount = u.verbRange ? (u.verbRange[1] - u.verbRange[0] + 1) : 0;
       extraHtml = `<span class="unit-bar-count">${verbCount} werkwoorden te oefenen</span>`;
-      if (u.verbFocus && u.verbFocus.length && u.verbFocus[0] !== 'alle werkwoorden herhalen') {
+      if (u.verbFocus && u.verbFocus.length) {
         extraHtml += `<span class="unit-bar-verbs">${u.verbFocus.map(v =>
           `<span class="lp-tag lp-tag-verb lp-tag-link" onclick="navigateToVerb('${v}')">${v}</span>`
         ).join('')}</span>`;
@@ -4605,14 +4605,34 @@ function navigateToVocab(level, topic) {
 
 function navigateToVerb(verbName) {
   switchTab('werkwoorden');
+  // Any of these can filter the target chip out of the DOM, and a chip that is
+  // not rendered cannot be clicked — which is what makes a link look dead.
+  verbUnitRange  = null;
+  verbTypeFilter = 'all';
+  const search = document.getElementById('verb-search');
+  if (search) search.value = '';
+  _filterVerbs();
   setTimeout(() => {
-    const chips = document.querySelectorAll('.verb-chip');
-    chips.forEach(chip => {
-      if (chip.textContent.trim().toLowerCase() === verbName.toLowerCase()) {
-        chip.click();
-        chip.scrollIntoView({ behavior:'smooth', block:'center' });
-      }
-    });
+    const want = verbName.trim().toLowerCase();
+    // Match the infinitive span, not the whole chip: a chip also holds the
+    // English meaning, so its textContent is "zijn\n to be" and never equals
+    // the bare infinitive.
+    const chip = [...document.querySelectorAll('.verb-chip')].find(c =>
+      (c.querySelector('.verb-chip-inf')?.textContent || '').trim().toLowerCase() === want);
+    if (!chip) return;
+    chip.click();
+    chip.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 50);
+}
+
+// Open Werkwoorden scoped to one unit's verb range. The filtering already
+// exists — setActiveUnit runs _applyUnitFilters, which maps the unit's
+// verbRange onto verbUnitRange and the meaning quiz.
+function navigateToUnitVerbs(unitNo) {
+  setActiveUnit(unitNo);
+  switchTab('werkwoorden');
+  setTimeout(() => {
+    document.getElementById('panel-werkwoorden')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, 50);
 }
 
@@ -4732,13 +4752,21 @@ function renderLessonPlan() {
                     </div>`;
                   }).join('') : '';
 
-              const verbRow = unit.verbFocus && unit.verbFocus.length
+              // Mirrors the Zinnen row: a whole-unit link first, then the
+              // individual items.
+              const verbCount = unit.verbRange ? (unit.verbRange[1] - unit.verbRange[0] + 1) : 0;
+              const unitVerbTag = verbCount
+                ? `<span class="lp-tag lp-tag-verb lp-tag-link"
+                    onclick="navigateToUnitVerbs(${unit.unit})"
+                    title="Alle werkwoorden van deze unit">Hele unit · ${verbCount} werkwoorden ↗</span>`
+                : '';
+              const verbRow = (verbCount || (unit.verbFocus && unit.verbFocus.length))
                 ? (sub++, `<div class="lp-subtopic">
                     <span class="lp-sub-num">${tn}.${sub}</span>
                     <span class="lp-sub-icon">🔤</span>
                     <div class="lp-sub-content">
                       <span class="lp-sub-label">Werkwoorden oefenen</span>
-                      <div class="lp-tags">${unit.verbFocus.map(v =>
+                      <div class="lp-tags">${unitVerbTag}${(unit.verbFocus || []).map(v =>
                         `<span class="lp-tag lp-tag-verb lp-tag-link"
                           onclick="navigateToVerb('${v}')"
                           title="Open in Werkwoorden">${v} ↗</span>`).join('')}</div>
