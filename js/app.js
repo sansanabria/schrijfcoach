@@ -5062,11 +5062,11 @@ function _renderVpCard() {
   area.innerHTML = `
     <div style="text-align:center; padding: 8px 0 16px">
       <span style="font-size:0.85rem; color:var(--text-muted)">${_vpIdx + 1} / ${total}</span>
-      <div style="background:var(--bg-progress,#e5e7eb); height:4px; border-radius:4px; margin:8px 0">
-        <div style="background:var(--color-primary,#276047); height:4px; border-radius:4px; width:${Math.round((_vpIdx/total)*100)}%"></div>
+      <div style="background:var(--surface2); height:4px; border-radius:4px; margin:8px 0">
+        <div style="background:var(--primary); height:4px; border-radius:4px; width:${Math.round((_vpIdx/total)*100)}%"></div>
       </div>
     </div>
-    <div style="background:var(--card-bg,#fff); border:1px solid var(--border,#e5e7eb); border-radius:12px; padding:32px 24px; text-align:center; margin-bottom:16px">
+    <div style="background:var(--surface); color:var(--text); border:1px solid var(--border); border-radius:var(--radius); padding:32px 24px; text-align:center; margin-bottom:16px">
       <div style="font-size:1.6rem; font-weight:700; margin-bottom:8px">${w.nl}</div>
       <div style="font-size:0.85rem; color:var(--text-muted)">${w.type} · ${topicLabels[w.topic] || w.topic}</div>
     </div>
@@ -5112,15 +5112,15 @@ function gradeVocabMC(idx) {
     b.disabled = true;
     b.style.cursor = 'default';
     if (b.getAttribute('data-correct') === '1') {
-      b.style.background = '#16a34a';
-      b.style.color = '#fff';
-      b.style.borderColor = '#16a34a';
+      b.style.background = 'var(--success-bg)';
+      b.style.color = 'var(--success)';
+      b.style.borderColor = 'var(--success)';
     }
   });
   if (!isCorrect) {
-    clicked.style.background = '#dc2626';
-    clicked.style.color = '#fff';
-    clicked.style.borderColor = '#dc2626';
+    clicked.style.background = 'var(--error-bg)';
+    clicked.style.color = 'var(--error)';
+    clicked.style.borderColor = 'var(--error)';
   }
 
   if (isCorrect) {
@@ -5131,7 +5131,7 @@ function gradeVocabMC(idx) {
     _vpAdvanceTimer = setTimeout(_advanceVpCard, 1000);
     const row = document.getElementById('vp-feedback-row');
     if (row) {
-      row.innerHTML = `<span style="color:#16a34a;font-weight:600">✓ Goed!</span>`;
+      row.innerHTML = `<span style="color:var(--success);font-weight:600">✓ Goed!</span>`;
       row.style.cursor = 'pointer';
       row.onclick = _advanceVpCard;
     }
@@ -5142,7 +5142,7 @@ function gradeVocabMC(idx) {
     const row = document.getElementById('vp-feedback-row');
     if (row) {
       row.innerHTML =
-        `<div style="color:#dc2626;font-weight:600;margin-bottom:8px">✗ Fout — het juiste antwoord is: ${w.en}</div>
+        `<div style="color:var(--error);font-weight:600;margin-bottom:8px">✗ Fout — het juiste antwoord is: ${w.en}</div>
          <button class="btn btn-primary" onclick="_advanceVpCard()">Volgende →</button>`;
     }
   }
@@ -5166,11 +5166,11 @@ function _renderVpResult() {
       <div style="font-size:1.4rem; font-weight:700; margin-bottom:20px">Oefening voltooid!</div>
       <div style="display:flex; gap:32px; justify-content:center; margin-bottom:8px; flex-wrap:wrap">
         <div style="text-align:center">
-          <div style="font-size:2.2rem; font-weight:700; color:#16a34a">${_vpCorrect}</div>
+          <div style="font-size:2.2rem; font-weight:700; color:var(--success)">${_vpCorrect}</div>
           <div style="font-size:0.85rem; color:var(--text-muted)">✓ goed</div>
         </div>
         <div style="text-align:center">
-          <div style="font-size:2.2rem; font-weight:700; color:#dc2626">${_vpWrong}</div>
+          <div style="font-size:2.2rem; font-weight:700; color:var(--error)">${_vpWrong}</div>
           <div style="font-size:0.85rem; color:var(--text-muted)">✗ fout</div>
         </div>
         <div style="text-align:center">
