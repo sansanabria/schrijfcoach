@@ -570,7 +570,6 @@ function _migrateUnitProgress() {
 
 function _saveUnitProgress() {
   _lsSet(UNIT_PROGRESS_KEY, JSON.stringify(unitProgress));
-  syncSchedulePush();
 }
 
 function _ensureUP(n) {
@@ -960,7 +959,6 @@ let _currentSentenceFilter = 'all';
 
 function _saveFlags() {
   _lsSet(FLAGS_KEY, JSON.stringify(sentenceFlags));
-  syncSchedulePush();
 }
 
 function _refreshFlaggedViews() {
@@ -1434,7 +1432,6 @@ function updateSRS(nl, correct) {
   entry.nextReview = next.toISOString();
   _lsSet(SRS_KEY, JSON.stringify(srsData));
   updateDueBadge();
-  syncSchedulePush();
 }
 
 function updateDueBadge() {
@@ -3959,7 +3956,6 @@ function _goNextUnitStep(fromTab) {
 function markGrammarTopicRead(id) {
   grammarReadData[id] = true;
   _lsSet(GRAMMAR_READ_KEY, JSON.stringify(grammarReadData));
-  syncSchedulePush();
   // Update the button in place
   const btn = document.querySelector(`[data-gtread="${id}"]`);
   if (btn) {
@@ -5232,7 +5228,6 @@ function _unknownWords() {
 
 function _saveUnknownWords(map) {
   _lsSet(UNKNOWN_WORDS_KEY, JSON.stringify(map));
-  syncSchedulePush();
 }
 
 function _normalizeWord(w) {
