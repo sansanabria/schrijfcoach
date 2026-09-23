@@ -103,6 +103,7 @@
       <div class="tab-dropdown-menu" id="tab-dropdown-menu">
         <button class="tab-dropdown-item" data-tab="dehet" onclick="switchTab('dehet'); closeTabDropdown();">De / Het</button>
         <button class="tab-dropdown-item" data-tab="ontkenning" onclick="switchTab('ontkenning'); closeTabDropdown();">Niet &amp; Geen</button>
+        <button class="tab-dropdown-item" data-tab="hebbenzijn" onclick="switchTab('hebbenzijn'); closeTabDropdown();">Hebben of zijn</button>
       </div>
     </div>
     <button class="tab-btn" data-tab="woordenschat" onclick="switchTab('woordenschat')">
@@ -205,6 +206,11 @@
                 </button>
                 <button class="home-card-sub" onclick="switchTab('ontkenning')">
                   <span class="home-card-sub-label">Niet &amp; Geen</span>
+                  <span class="home-card-sub-arrow">›</span>
+                </button>
+                <button class="home-card-sub" onclick="switchTab('hebbenzijn')">
+                  <span class="home-card-sub-label">Hebben of zijn</span>
+                  <span class="home-card-sub-stat" id="home-stat-hebbenzijn"></span>
                   <span class="home-card-sub-arrow">›</span>
                 </button>
               </span>
@@ -723,6 +729,97 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- HEBBEN OF ZIJN -->
+    <div id="panel-hebbenzijn" class="panel">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Hebben of zijn?</h2>
+          <span class="card-subtitle">Kies het juiste hulpwerkwoord in de voltooide tijd</span>
+        </div>
+        <div class="card-body" style="padding-bottom:0">
+          <div class="hz-filter-label">Persoon</div>
+          <div class="vocab-filters" id="hz-pronoun-filters"></div>
+          <div class="hz-filter-label">Werkwoorden</div>
+          <div class="vocab-filters" id="hz-type-filters"></div>
+        </div>
+        <div class="dehet-card">
+          <div class="dehet-score">
+            <div class="score-item">
+              <div class="score-num green" id="hz-correct">0</div>
+              <div class="score-label">Goed</div>
+            </div>
+            <div class="score-item">
+              <div class="score-num red" id="hz-wrong">0</div>
+              <div class="score-label">Fout</div>
+            </div>
+            <div class="score-item">
+              <div class="score-num" id="hz-remaining">0</div>
+              <div class="score-label">Resterend</div>
+            </div>
+          </div>
+
+          <!-- Active question -->
+          <div id="hz-question-panel">
+            <div class="dehet-noun-wrap">
+              <div class="dehet-article-hint">Welk hulpwerkwoord?</div>
+              <div class="hz-verb" id="hz-verb">gaan</div>
+              <div class="dehet-translation" id="hz-meaning">to go</div>
+              <div class="hz-sentence" id="hz-sentence">hij <span class="hz-blank">______</span> gegaan.</div>
+              <div class="hz-pronoun-en" id="hz-pronoun-en">he</div>
+            </div>
+            <div class="dehet-buttons">
+              <button class="dehet-btn" id="hz-heb" onclick="answerHebZijn('hebben')">heeft</button>
+              <button class="dehet-btn" id="hz-zijn" onclick="answerHebZijn('zijn')">is</button>
+            </div>
+            <div class="dehet-feedback" id="hz-feedback"></div>
+            <button class="btn btn-secondary" id="hz-retry-btn" style="display:none" onclick="retryHebZijn()">↩ Opnieuw proberen</button>
+          </div>
+
+          <!-- Completion screen -->
+          <div id="hz-done-panel" style="display:none" class="dh-done">
+            <div class="dh-done-icon">🎉</div>
+            <div class="dh-done-title">Klaar!</div>
+            <div class="dh-done-stats" id="hz-done-stats"></div>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+              <button class="btn btn-secondary" onclick="restartHebZijn()">Opnieuw beginnen</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <details class="card">
+        <summary class="card-header" style="cursor:pointer">
+          <h2 class="card-title" style="display:inline">Snel overzicht · Quick reference</h2>
+        </summary>
+        <div class="card-body">
+          <p class="hz-ref-lead"><strong>ZIJN</strong> bij drie groepen — al het andere krijgt <strong>hebben</strong>.</p>
+          <table class="hz-ref-table">
+            <tr><th>Beweging van A naar B</th><td>gaan, komen, vertrekken, aankomen, verhuizen<br><em>Hij <strong>is</strong> naar huis gegaan.</em></td></tr>
+            <tr><th>Verandering van toestand</th><td>worden, groeien, sterven, trouwen, verdwijnen<br><em>Zij <strong>is</strong> dokter geworden.</em></td></tr>
+            <tr><th>Vaste uitzonderingen</th><td>zijn, blijven, beginnen, gebeuren, slagen, lukken, vallen<br><em>Ik <strong>ben</strong> thuis gebleven.</em></td></tr>
+            <tr><th>Al het andere → hebben</th><td>eten, werken, lezen, maken, zien, denken<br><em>Wij <strong>hebben</strong> hard gewerkt.</em></td></tr>
+          </table>
+
+          <p class="hz-ref-lead" style="margin-top:18px">Vormen per persoon</p>
+          <table class="hz-ref-table">
+            <tr><th>ik</th><td>heb · ben</td><th>wij</th><td>hebben · zijn</td></tr>
+            <tr><th>jij / u</th><td>hebt · bent</td><th>jullie</th><td>hebben · zijn</td></tr>
+            <tr><th>hij / zij / het</th><td>heeft · is</td><th>zij (mv.)</th><td>hebben · zijn</td></tr>
+          </table>
+
+          <p class="hz-ref-lead" style="margin-top:18px">Allebei mogelijk — daarom niet in de oefening</p>
+          <p class="hz-ref-note">
+            Bewegingswerkwoorden als <em>lopen, fietsen, rijden, zwemmen, wandelen, vliegen</em> krijgen
+            <strong>hebben</strong> als je de activiteit bedoelt, en <strong>zijn</strong> zodra er een
+            bestemming bij staat:<br>
+            <em>Ik <strong>heb</strong> gefietst.</em> &nbsp;·&nbsp; <em>Ik <strong>ben</strong> naar school gefietst.</em><br>
+            Ook <em>vergeten</em> (ben = het is me ontschoten / heb = ik heb het nagelaten) en
+            <em>veranderen</em> (zonder lijdend voorwerp → zijn).
+          </p>
+        </div>
+      </details>
     </div>
 
     <!-- NIET & GEEN -->

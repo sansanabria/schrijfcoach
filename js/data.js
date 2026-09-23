@@ -4022,7 +4022,7 @@ const verbs = [
   r('parkeren',  'to park',         'parkeer', 'parkeerde','parkeerden','geparkeerd'),
   r('delen',     'to share / divide','deel',   'deelde',   'deelden',   'gedeeld'),
   r('mopperen',  'to grumble',      'moppert', 'mopperde', 'mopperden', 'gemopperd'),
-  r('trouwen',   'to marry',        'trouw',   'trouwde',  'trouwden',  'getrouwd'),
+  r('trouwen',   'to marry',        'trouw',   'trouwde',  'trouwden',  'getrouwd',  'zijn'),
   r('scheiden',  'to separate',     'scheid',  'scheidde', 'scheidden', 'gescheiden'),
   r('zwaaien',   'to wave',         'zwaai',   'zwaaide',  'zwaaiden',  'gezwaaid'),
   r('gooien',    'to throw',        'gooi',    'gooide',   'gooiden',   'gegooid'),
@@ -4455,7 +4455,7 @@ const verbs = [
   r('fascineren',      'to fascinate',             'fascineer',    'fascineerde',    'fascineerden',    'gefascineerd'),
   r('filteren',        'to filter',                'filter',       'filterde',       'filterden',       'gefilterd'),
   r('focussen',        'to focus',                 'focus',        'focuste',        'focusten',        'gefocust'),
-  r('groeien',         'to grow',                  'groei',        'groeide',        'groeiden',        'gegroeid'),
+  r('groeien',         'to grow',                  'groei',        'groeide',        'groeiden',        'gegroeid',        'zijn'),
   r('handelen',        'to act / trade',           'handel',       'handelde',       'handelden',       'gehandeld'),
   r('herstellen',      'to restore / recover',     'herstel',      'herstelde',      'herstelden',      'hersteld'),
   r('hinderen',        'to hinder',                'hinder',       'hinderde',       'hinderden',       'gehinderd'),
@@ -4685,6 +4685,67 @@ const verbs = [
   rf('zich uitsloven',     'to go all out / show off',  'slooft uit',  'sloofde uit',  'sloofden uit',  'uitgeslooft'),
   rf('zich aanpassen',     'to adapt oneself',          'pas aan',     'paste aan',    'pasten aan',    'aangepast'),
 ];
+
+// ─── HEBBEN OF ZIJN? (VTT) ────────────────────────────────────────────────────
+// Supporting data for the "Hebben of zijn" drill. The auxiliary itself already
+// lives on each verb as `aux`; what is missing is WHY, which is the whole point
+// of the exercise — so each zijn-verb gets its BAGS category here.
+//
+// Kept as a separate map rather than a 7th argument on ~85 verb lines: fewer
+// edits to the big array, and the categories can be refined without touching it.
+
+// Verbs where BOTH auxiliaries are genuinely correct, with a meaning difference:
+//   "Ik heb gefietst."            → the activity
+//   "Ik ben naar school gefietst." → movement towards a destination
+// A two-button drill cannot ask these fairly, so they stay out of the pool and
+// are explained in the reference block instead.
+const hebZijnDual = [
+  // Movement: hebben for the activity, zijn once a destination is named.
+  'lopen', 'fietsen', 'rijden', 'zwemmen', 'wandelen', 'reizen', 'vliegen',
+  'varen', 'springen', 'klimmen', 'rennen', 'duiken',
+  'doorlopen', 'overlopen', 'uitlopen', 'aanlopen',
+  // Transitive → hebben, intransitive → zijn.
+  'veranderen', 'genezen', 'smelten', 'verminderen', 'afnemen', 'ontlopen',
+  // Meaning shifts with the auxiliary, or usage is genuinely split.
+  'vergeten',   // "ben vergeten" (slipped my mind) vs "heb vergeten" (failed to)
+  'omgaan',     // "heeft ermee omgegaan" is at least as common as "is omgegaan"
+  'schijnen',   // "de zon heeft geschenen" — hebben in the everyday sense
+  'wennen',     // usually "ben eraan gewend geraakt" / "heb moeten wennen"
+  'lijken',     // rare in the perfect and disputed; not worth drilling
+];
+
+// Why a verb takes zijn. b = beweging (A→B), v = verandering van toestand,
+// u = vaste uitzondering (memorise).
+const hebZijnReason = {
+  gaan:'b', komen:'b', aankomen:'b', afkomen:'b', opkomen:'b', nakomen:'b',
+  neerkomen:'b', meegaan:'b', uitgaan:'b', weggaan:'b', terugkomen:'b',
+  terugkeren:'b', thuiskomen:'b', tegenkomen:'b', uitkomen:'b', vertrekken:'b',
+  verhuizen:'b', vluchten:'b', instappen:'b', overstappen:'b', landen:'b',
+  ontsnappen:'b', ontlopen:'b', weglopen:'b', wegrijden:'b', doordringen:'b',
+  stijgen:'b', rijzen:'b', omgaan:'b', doorgaan:'b', toekomen:'b', optreden:'b',
+  aftreden:'b', afwijken:'b', invallen:'b',
+
+  worden:'v', groeien:'v', opgroeien:'v', sterven:'v', genezen:'v', smelten:'v',
+  verdwijnen:'v', verschijnen:'v', vergaan:'v', veranderen:'v', trouwen:'v',
+  toenemen:'v', afnemen:'v', verminderen:'v', afvallen:'v', terugvallen:'v',
+  wegvallen:'v', wennen:'v', schrikken:'v',
+
+  zijn:'u', blijven:'u', thuisblijven:'u', wegblijven:'u', verblijven:'u',
+  beginnen:'u', gebeuren:'u', lukken:'u', slagen:'u', mislukken:'u',
+  blijken:'u', schijnen:'u', vallen:'u', opstaan:'u', meevallen:'u',
+  opvallen:'u', overkomen:'u',
+};
+
+const hebZijnReasonText = {
+  b: { nl: 'Beweging van A naar B — verplaatsing.',
+       en: 'Movement from A to B.' },
+  v: { nl: 'Verandering van toestand — er wordt iets anders.',
+       en: 'Change of state — something becomes different.' },
+  u: { nl: 'Vaste uitzondering — leer deze uit je hoofd.',
+       en: 'Fixed exception — memorise this one.' },
+  h: { nl: 'Geen beweging en geen verandering van toestand → hebben. Dit geldt voor de grote meerderheid van de werkwoorden.',
+       en: 'No movement and no change of state → hebben. This covers the vast majority of verbs.' },
+};
 
 // ─── VOCABULARY LIST ──────────────────────────────────────────────────────────
 // type: zn. = noun · ww. = verb · bn. = adjective · bw. = adverb · vw. = conjunction · uitdr. = expression

@@ -42,7 +42,7 @@ All JS is global-scope; functions and variables are shared across files. There i
 
 ### Tab system
 
-The app has 11 tabs, each with a corresponding `#panel-<id>` div in `index.html`. `switchTab(id)` in `app.js` activates the correct panel and calls the tab's render/init function.
+The app has 13 tabs, each with a corresponding `#panel-<id>` div in `index.html`. `switchTab(id)` in `app.js` activates the correct panel and calls the tab's render/init function. Tabs listed in the `dropdownTabs` array inside `switchTab` live in the "Per onderwerp" dropdown rather than the main nav.
 
 | Tab ID | Label | Function called |
 |--------|-------|-----------------|
@@ -53,6 +53,7 @@ The app has 11 tabs, each with a corresponding `#panel-<id>` div in `index.html`
 | `mijnwoorden` | Mijn woorden | `renderMijnWoorden()` |
 | `dehet` | De / Het | `renderUnitBar()` |
 | `ontkenning` | Niet & Geen | `_initNegExercises()` |
+| `hebbenzijn` | Hebben of zijn | `_initHebZijn()` |
 | `woordenschat` | Woordenschat | `renderVocab()`, `renderUnitBar()` |
 | `zinnen` | Alle zinnen | `renderSentences()` |
 | `bewerken` | Bewerken | `renderEditTable()`, `renderFlagsSection()` |
@@ -102,6 +103,24 @@ Each sentence object:
 ```
 
 Levels: `A1`, `A2`, `B1`, `B2`. Grammar types (`stype`): `Hoofdzin`, `Vraagzin`, `Bijzin`, `WH-vraagzin`, `Samengestelde zin`, `Vaste uitdrukking`, etc.
+
+### Verb auxiliaries (`aux`) and the Hebben-of-zijn drill
+
+Every verb in `verbs[]` carries `aux: 'hebben'|'zijn'` (the 7th argument of the `r`/`ii`/`sp`/`rf`
+helpers, defaulting to `hebben`) plus a bare `participle`. The Hebben-of-zijn tab generates its
+questions from these — no sentences are authored.
+
+Two supporting lists sit next to `verbs[]` in `js/data.js`:
+
+- **`hebZijnDual`** — verbs where *both* auxiliaries are correct (`lopen`, `fietsen`, `veranderen`,
+  `vergeten`, …). These are excluded from the drill, because a two-button question cannot have two
+  right answers. Add to this list rather than forcing a single `aux` when a verb is genuinely split.
+- **`hebZijnReason`** — the BAGS category (`b` beweging / `v` verandering / `u` uitzondering) for
+  each zijn-verb, used for the feedback that explains *why*. Every `aux:'zijn'` verb outside the
+  dual list needs an entry.
+
+Note `verbRange` in `lessonPlanData` indexes `verbs[]` **positionally**, so never insert a verb
+mid-array — it would silently shift every unit's verb range.
 
 ### Curriculum structure (`js/grammar-data.js` → `lessonPlanData`)
 

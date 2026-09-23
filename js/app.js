@@ -75,7 +75,7 @@ function switchTab(id) {
   if (current && current.dataset.tab === 'bewerken' && id !== 'bewerken') {
     _autoSaveEdits();
   }
-  const dropdownTabs = ['dehet', 'ontkenning'];
+  const dropdownTabs = ['dehet', 'ontkenning', 'hebbenzijn'];
   const isDropdownTab = dropdownTabs.includes(id);
   document.querySelectorAll('.tab-btn').forEach(b => {
     if (b.classList.contains('tab-btn--dropdown')) {
@@ -96,6 +96,7 @@ function switchTab(id) {
   if (id === 'grammatica')   { renderGrammarContent(); renderUnitBar('grammatica'); }
   if (id === 'leerplan')     renderLessonPlan();
   if (id === 'ontkenning')   _initNegExercises();
+  if (id === 'hebbenzijn')   _initHebZijn();
   if (id === 'lezen')        { openReadingLibrary(); setTimeout(function() {
     var vw = document.documentElement.clientWidth;
     document.querySelectorAll('#panel-lezen .card-body, #panel-lezen .reading-text, #panel-lezen .reading-toolbar, #panel-lezen .reading-section').forEach(function(el) {
@@ -190,6 +191,7 @@ function renderHome() {
 
   _setStat('home-stat-werkwoorden', (typeof verbs !== 'undefined' ? verbs.length : 0) + ' werkwoorden');
   _setStat('home-stat-dehet', dhCorrect + ' correct · ' + dhWrong + ' fout');
+  _setStat('home-stat-hebbenzijn', hzCorrect + ' correct · ' + hzWrong + ' fout');
   _setStat('home-stat-woordenschat', (typeof vocabulary !== 'undefined' ? vocabulary.length : 0) + ' woorden');
   if (typeof grammarTopicsData !== 'undefined') {
     const total = grammarTopicsData.length;
@@ -3673,6 +3675,230 @@ function retryDeHet() {
   document.getElementById('dh-de').disabled = false;
   document.getElementById('dh-het').disabled = false;
   document.getElementById('dh-retry-btn').style.display = 'none';
+}
+
+// ─── HEBBEN OF ZIJN? (VTT) ────────────────────────────────────────────────────
+// Which auxiliary does a verb take in the perfect tense, and which form does it
+// take for this pronoun? Questions are generated from verbs[] — every verb
+// already carries `aux` and `participle`, so nothing is hand-authored.
+
+// The drill's own pronoun table. verbPronouns (see VERB PRONOUNS & TENSES META)
+// has only six rows and no 'u', and is indexed positionally by forms[],
+// vexDistractors() and checkVerbTable() — so it must not be extended here.
+// `nl` labels the filter button; `s` is what goes into the sentence — "zij (mv.)"
+// is a grammar label, not something you would ever write in a Dutch sentence.
+const hzPronouns = [
+  { nl: 'ik',        s: 'Ik',     en: 'I',            heb: 'heb',    zijn: 'ben'  },
+  { nl: 'jij',       s: 'Jij',    en: 'you',          heb: 'hebt',   zijn: 'bent' },
+  { nl: 'u',         s: 'U',      en: 'you (formal)', heb: 'hebt',   zijn: 'bent' },
+  { nl: 'hij',       s: 'Hij',    en: 'he',           heb: 'heeft',  zijn: 'is'   },
+  { nl: 'zij',       s: 'Zij',    en: 'she',          heb: 'heeft',  zijn: 'is'   },
+  { nl: 'het',       s: 'Het',    en: 'it',           heb: 'heeft',  zijn: 'is'   },
+  { nl: 'wij',       s: 'Wij',    en: 'we',           heb: 'hebben', zijn: 'zijn' },
+  { nl: 'jullie',    s: 'Jullie', en: 'you (plural)', heb: 'hebben', zijn: 'zijn' },
+  { nl: 'zij (mv.)', s: 'Zij',    en: 'they',         heb: 'hebben', zijn: 'zijn' },
+];
+
+// First occurrence wins, and verbs where both auxiliaries are correct are left
+// out entirely — a two-button drill cannot ask those fairly.
+const _hzPool = (function () {
+  const dual = new Set(typeof hebZijnDual !== 'undefined' ? hebZijnDual : []);
+  const seen = new Set();
+  const out  = [];
+  (typeof verbs !== 'undefined' ? verbs : []).forEach(v => {
+    if (!v || !v.inf || !v.participle || seen.has(v.inf)) return;
+    seen.add(v.inf);
+    if (dual.has(v.inf)) return;
+    out.push(v);
+  });
+  return out;
+})();
+
+let hzOrder = [], hzIdx = 0, hzCorrect = 0, hzWrong = 0;
+let hzPronounFilter = 'all';   // 'all' or an index into hzPronouns
+let hzTypeFilter    = 'all';   // 'all' | 'zijn' | 'hebben'
+
+function _hzVerbPool() {
+  if (hzTypeFilter === 'all') return _hzPool;
+  return _hzPool.filter(v => v.aux === hzTypeFilter);
+}
+
+function _hzBuildOrder() {
+  const pool = _hzVerbPool();
+  // A question is a (verb, pronoun) pair. With the pronoun filter on 'all' each
+  // verb gets one random pronoun, so every pronoun keeps coming round.
+  hzOrder = _shuffleArray([...pool]).map(v => ({
+    v,
+    p: hzPronounFilter === 'all'
+      ? Math.floor(Math.random() * hzPronouns.length)
+      : Number(hzPronounFilter),
+  }));
+  hzIdx = 0;
+}
+
+function _hzReason(v) {
+  const t = typeof hebZijnReasonText !== 'undefined' ? hebZijnReasonText : {};
+  if (v.aux !== 'zijn') return t.h;
+  const cat = (typeof hebZijnReason !== 'undefined' && hebZijnReason[v.inf]) || 'u';
+  return t[cat] || t.u;
+}
+
+function _renderHzFilters() {
+  const pw = document.getElementById('hz-pronoun-filters');
+  if (pw) {
+    pw.innerHTML = `<button class="filter-btn ${hzPronounFilter === 'all' ? 'active' : ''}" onclick="setHzPronoun('all', this)">Alle</button>`
+      + hzPronouns.map((p, i) =>
+        `<button class="filter-btn ${String(hzPronounFilter) === String(i) ? 'active' : ''}" onclick="setHzPronoun(${i}, this)">${p.nl}</button>`
+      ).join('');
+  }
+  const tw = document.getElementById('hz-type-filters');
+  if (tw) {
+    const counts = {
+      all:    _hzPool.length,
+      zijn:   _hzPool.filter(v => v.aux === 'zijn').length,
+      hebben: _hzPool.filter(v => v.aux === 'hebben').length,
+    };
+    const labels = { all: 'Alle werkwoorden', zijn: 'Alleen zijn', hebben: 'Alleen hebben' };
+    tw.innerHTML = ['all', 'zijn', 'hebben'].map(k =>
+      `<button class="filter-btn ${hzTypeFilter === k ? 'active' : ''}" onclick="setHzType('${k}', this)">${labels[k]} <span class="badge-count">${counts[k]}</span></button>`
+    ).join('');
+  }
+}
+
+function setHzPronoun(val, btn) {
+  hzPronounFilter = val;
+  document.querySelectorAll('#hz-pronoun-filters .filter-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  restartHebZijn();
+}
+
+function setHzType(val, btn) {
+  hzTypeFilter = val;
+  document.querySelectorAll('#hz-type-filters .filter-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  restartHebZijn();
+}
+
+function loadHebZijn() {
+  if (!document.getElementById('hz-question-panel')) return;
+  if (hzOrder.length === 0) _hzBuildOrder();
+
+  if (hzIdx >= hzOrder.length) {
+    document.getElementById('hz-question-panel').style.display = 'none';
+    const done = document.getElementById('hz-done-panel');
+    done.style.display = '';
+    const total = hzCorrect + hzWrong;
+    const pct = total ? Math.round(hzCorrect / total * 100) : 0;
+    document.getElementById('hz-done-stats').innerHTML =
+      `<strong>${hzCorrect}</strong> correct &nbsp;·&nbsp; <strong>${hzWrong}</strong> fout &nbsp;·&nbsp; <strong>${pct}%</strong> score`;
+    _hzUpdateCounts();
+    return;
+  }
+
+  document.getElementById('hz-question-panel').style.display = '';
+  document.getElementById('hz-done-panel').style.display = 'none';
+
+  const q = hzOrder[hzIdx];
+  const p = hzPronouns[q.p];
+  document.getElementById('hz-verb').textContent = q.v.inf;
+  document.getElementById('hz-meaning').textContent = q.v.meaning || '';
+  document.getElementById('hz-sentence').innerHTML =
+    `${p.s} <span class="hz-blank">______</span> ${q.v.participle}.`;
+  document.getElementById('hz-pronoun-en').textContent = p.en;
+
+  const hebBtn = document.getElementById('hz-heb');
+  const zijnBtn = document.getElementById('hz-zijn');
+  hebBtn.textContent = p.heb;
+  zijnBtn.textContent = p.zijn;
+  hebBtn.className = 'dehet-btn';
+  zijnBtn.className = 'dehet-btn';
+  hebBtn.disabled = false;
+  zijnBtn.disabled = false;
+
+  const fb = document.getElementById('hz-feedback');
+  fb.innerHTML = '';
+  fb.className = 'dehet-feedback';
+  document.getElementById('hz-retry-btn').style.display = 'none';
+  _hzUpdateCounts();
+}
+
+function _hzUpdateCounts() {
+  const c = document.getElementById('hz-correct');
+  const w = document.getElementById('hz-wrong');
+  const r = document.getElementById('hz-remaining');
+  if (c) c.textContent = hzCorrect;
+  if (w) w.textContent = hzWrong;
+  if (r) r.textContent = Math.max(0, hzOrder.length - hzIdx);
+}
+
+function answerHebZijn(choice) {
+  const q = hzOrder[hzIdx];
+  if (!q) return;
+  const p = hzPronouns[q.p];
+  const correct = choice === q.v.aux;
+
+  const hebBtn = document.getElementById('hz-heb');
+  const zijnBtn = document.getElementById('hz-zijn');
+  hebBtn.disabled = true;
+  zijnBtn.disabled = true;
+  const chosenBtn  = choice === 'hebben' ? hebBtn : zijnBtn;
+  const correctBtn = q.v.aux === 'hebben' ? hebBtn : zijnBtn;
+
+  const auxForm = q.v.aux === 'hebben' ? p.heb : p.zijn;
+  const full = `${p.s} <strong>${auxForm}</strong> ${q.v.participle}.`;
+  const reason = _hzReason(q.v);
+  const reasonHtml = reason
+    ? `<div class="dh-reason">🇳🇱 ${reason.nl}<br>🇬🇧 ${reason.en}</div>`
+    : '';
+
+  const fb = document.getElementById('hz-feedback');
+  if (correct) {
+    chosenBtn.className = 'dehet-btn selected-correct';
+    hzCorrect++;
+    _clearMistake('hebzijn', q.v.inf);
+    fb.innerHTML = '✓ Correct! ' + full + reasonHtml;
+    fb.className = 'dehet-feedback correct';
+    setTimeout(function () { nextHebZijn(); }, 1000);
+  } else {
+    chosenBtn.className = 'dehet-btn selected-wrong';
+    correctBtn.className = 'dehet-btn reveal-correct';
+    hzWrong++;
+    _addMistake('hebzijn', q.v.inf, {
+      inf: q.v.inf, aux: q.v.aux, en: q.v.meaning || '', participle: q.v.participle,
+    });
+    fb.innerHTML = '✗ Fout. Het is: ' + full + reasonHtml;
+    fb.className = 'dehet-feedback wrong';
+    document.getElementById('hz-retry-btn').style.display = 'inline-flex';
+  }
+  _hzUpdateCounts();
+}
+
+function nextHebZijn() {
+  hzIdx++;
+  loadHebZijn();
+}
+
+function retryHebZijn() {
+  const fb = document.getElementById('hz-feedback');
+  fb.innerHTML = '';
+  fb.className = 'dehet-feedback';
+  document.getElementById('hz-heb').className = 'dehet-btn';
+  document.getElementById('hz-zijn').className = 'dehet-btn';
+  document.getElementById('hz-heb').disabled = false;
+  document.getElementById('hz-zijn').disabled = false;
+  document.getElementById('hz-retry-btn').style.display = 'none';
+}
+
+function restartHebZijn() {
+  hzCorrect = 0; hzWrong = 0;
+  _hzBuildOrder();
+  loadHebZijn();
+}
+
+function _initHebZijn() {
+  _renderHzFilters();
+  if (hzOrder.length === 0) _hzBuildOrder();
+  loadHebZijn();
 }
 
 // ─── EDIT SENTENCES ───────────────────────────────────────────────────────────

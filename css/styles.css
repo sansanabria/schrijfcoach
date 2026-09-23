@@ -945,6 +945,49 @@ h3.home-section-label { margin-top: 0; }
 .dehet-feedback.wrong { color: var(--accent); }
 .dh-reason { margin-top: 6px; font-size: 0.78rem; font-weight: 400; color: var(--text-muted); font-style: italic; line-height: 1.4; }
 
+/* ── HEBBEN OF ZIJN ───────────────────────────────────────────────────── */
+/* Buttons, score strip and feedback are the De/Het ones; only the question
+   layout and the reference tables are new here. */
+.card-subtitle { display: block; font-size: 0.78rem; color: var(--text-muted); margin-top: 3px; }
+
+.hz-filter-label {
+  font-size: 0.68rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.07em; color: var(--text-muted); margin: 4px 0 6px;
+}
+.hz-filter-label + .vocab-filters { margin-bottom: 12px; }
+
+.hz-verb {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 700; color: var(--text);
+}
+.hz-sentence {
+  margin-top: 14px;
+  font-size: 1.15rem; line-height: 1.6; color: var(--text);
+}
+.hz-blank {
+  display: inline-block; min-width: 68px;
+  color: var(--primary); font-weight: 700; letter-spacing: 0.05em;
+}
+.hz-pronoun-en { margin-top: 4px; font-size: 0.76rem; color: var(--text-muted); font-style: italic; }
+
+.hz-ref-lead { font-size: 0.86rem; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+.hz-ref-note { font-size: 0.8rem; line-height: 1.6; color: var(--text-muted); }
+.hz-ref-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+.hz-ref-table th,
+.hz-ref-table td {
+  border: 1px solid var(--border-light);
+  padding: 7px 10px; text-align: left; vertical-align: top; line-height: 1.5;
+}
+.hz-ref-table th { background: var(--surface2); color: var(--text); font-weight: 600; white-space: nowrap; }
+.hz-ref-table td { color: var(--text-muted); }
+.hz-ref-table em { color: var(--text); }
+
+@media (max-width: 480px) {
+  .hz-verb { font-size: 1.25rem; }
+  .hz-sentence { font-size: 1rem; }
+  .hz-ref-table th { white-space: normal; }
+}
+
 /* ── FOOTER ──────────────────────────────────────────────────────────── */
 footer {
   border-top: 1px solid var(--border);
