@@ -3704,36 +3704,75 @@ const hzPronouns = [
 // a `band` so the drill can be narrowed to beginner verbs: without that, 35% of
 // the pool is B2/rare and you spend the drill decoding vocabulary instead of
 // learning the rule.
+// Per-level bands, derived from the same verbRange values as VERB_LEVEL_RANGES
+// but WITHOUT collapsing A1 and A2 into one key. VERB_LEVEL_RANGES itself must
+// stay as it is — the Werkwoorden meaning quiz builds its filter buttons from
+// it, and widening it there would change a tab this drill has nothing to do
+// with. Splitting matters because the merged band spans units 1–9 and drags in
+// words like 'beheersen' and 'abonneren', which are not A2.
+const HZ_BANDS = (function () {
+  const units = (typeof lessonPlanData !== 'undefined')
+    ? lessonPlanData.levels.flatMap(lv => lv.units.map(u => ({ ...u, level: lv.level })))
+    : [];
+  const byLevel = {};
+  units.forEach(u => {
+    if (!u.verbRange) return;
+    const r = byLevel[u.level];
+    if (!r) byLevel[u.level] = { from: u.verbRange[0], to: u.verbRange[1] };
+    else { r.from = Math.min(r.from, u.verbRange[0]); r.to = Math.max(r.to, u.verbRange[1]); }
+  });
+  return ['A1', 'A2', 'B1', 'B2'].filter(k => byLevel[k])
+    .map(k => ({ key: k, from: byLevel[k].from, to: byLevel[k].to }));
+})();
+
+function _hzBand(idx) {
+  for (const b of HZ_BANDS) { if (idx >= b.from && idx <= b.to) return b.key; }
+  return 'Extra';
+}
+
 const _hzPool = (function () {
   const dual  = new Set(typeof hebZijnDual !== 'undefined' ? hebZijnDual : []);
-  const early = new Set(typeof hebZijnA1A2 !== 'undefined' ? hebZijnA1A2 : []);
+  const early = new Set(typeof hebZijnBeginner !== 'undefined' ? hebZijnBeginner : []);
   const seen  = new Set();
   const out   = [];
   (typeof verbs !== 'undefined' ? verbs : []).forEach((v, i) => {
     if (!v || !v.inf || !v.participle || seen.has(v.inf)) return;
     seen.add(v.inf);
     if (dual.has(v.inf)) return;
-    const band = early.has(v.inf) ? 'A1/A2'
-               : (typeof _verbLevel === 'function' ? _verbLevel(i) : 'A1/A2');
-    out.push({ ...v, band });
+    out.push({ ...v, band: early.has(v.inf) ? 'A1' : _hzBand(i) });
   });
   (typeof hebZijnExtra !== 'undefined' ? hebZijnExtra : []).forEach(v => {
     if (seen.has(v.inf)) return;
     seen.add(v.inf);
-    out.push({ ...v, band: 'A1/A2' });
+    out.push({ ...v, band: 'A1' });
   });
   return out;
 })();
 
 let hzOrder = [], hzIdx = 0, hzCorrect = 0, hzWrong = 0;
-let hzPronounFilter = 'all';     // 'all' or an index into hzPronouns
-let hzTypeFilter    = 'all';     // 'all' | 'zijn' | 'hebben'
-let hzLevelFilter   = 'A1/A2';   // start on the common verbs, not a random walk
+let hzPronounFilter = 'all';   // 'all' or an index into hzPronouns
+let hzTypeFilter    = 'mix';   // 'mix' (balanced 50/50) | 'zijn' | 'hebben'
+let hzLevelFilter   = 'A1';    // start on beginner verbs, not a random walk
 
+function _hzAtLevel() {
+  return _hzPool.filter(v => hzLevelFilter === 'all' || v.band === hzLevelFilter);
+}
+
+// Only about one verb in ten takes zijn, so an unweighted pool lets you answer
+// "hebben" every time and still score ~90% — the judgement the exercise exists
+// to train never actually gets made. A session is therefore every zijn-verb at
+// this level plus an equal number of hebben-verbs, sampled fresh each restart
+// so repeated sessions gradually cover different hebben-verbs.
 function _hzVerbPool() {
-  return _hzPool.filter(v =>
-    (hzTypeFilter  === 'all' || v.aux  === hzTypeFilter) &&
-    (hzLevelFilter === 'all' || v.band === hzLevelFilter));
+  const at = _hzAtLevel();
+  if (hzTypeFilter === 'zijn' || hzTypeFilter === 'hebben') {
+    return at.filter(v => v.aux === hzTypeFilter);
+  }
+  const zijn = at.filter(v => v.aux === 'zijn');
+  const heb  = at.filter(v => v.aux === 'hebben');
+  if (!zijn.length || !heb.length) return at;        // nothing to balance against
+  const n = Math.min(zijn.length, heb.length);
+  return zijn.slice(0, n).concat(_shuffleArray([...heb]).slice(0, n));
 }
 
 function _hzBuildOrder() {
@@ -3766,7 +3805,7 @@ function _renderHzFilters() {
   }
   const lw = document.getElementById('hz-level-filters');
   if (lw) {
-    const bands = ['A1/A2', 'B1', 'B2', 'Extra'].filter(k => _hzPool.some(v => v.band === k));
+    const bands = ['A1', 'A2', 'B1', 'B2', 'Extra'].filter(k => _hzPool.some(v => v.band === k));
     lw.innerHTML = bands.map(k =>
       `<button class="filter-btn ${hzLevelFilter === k ? 'active' : ''}" onclick="setHzLevel('${k}', this)">${k} <span class="badge-count">${_hzPool.filter(v => v.band === k).length}</span></button>`
     ).join('')
@@ -3775,15 +3814,18 @@ function _renderHzFilters() {
 
   const tw = document.getElementById('hz-type-filters');
   if (tw) {
-    // Counts respect the level filter, so they match what you will actually be asked.
-    const atLevel = _hzPool.filter(v => hzLevelFilter === 'all' || v.band === hzLevelFilter);
+    // Counts are session sizes at the chosen level, so each badge is exactly how
+    // many questions that button will give you.
+    const at   = _hzAtLevel();
+    const zijn = at.filter(v => v.aux === 'zijn').length;
+    const heb  = at.filter(v => v.aux === 'hebben').length;
     const counts = {
-      all:    atLevel.length,
-      zijn:   atLevel.filter(v => v.aux === 'zijn').length,
-      hebben: atLevel.filter(v => v.aux === 'hebben').length,
+      mix:    (zijn && heb) ? Math.min(zijn, heb) * 2 : at.length,
+      zijn:   zijn,
+      hebben: heb,
     };
-    const labels = { all: 'Alle werkwoorden', zijn: 'Alleen zijn', hebben: 'Alleen hebben' };
-    tw.innerHTML = ['all', 'zijn', 'hebben'].map(k =>
+    const labels = { mix: 'Gemengd 50/50', zijn: 'Alleen zijn', hebben: 'Alleen hebben' };
+    tw.innerHTML = ['mix', 'zijn', 'hebben'].map(k =>
       `<button class="filter-btn ${hzTypeFilter === k ? 'active' : ''}" onclick="setHzType('${k}', this)">${labels[k]} <span class="badge-count">${counts[k]}</span></button>`
     ).join('');
   }

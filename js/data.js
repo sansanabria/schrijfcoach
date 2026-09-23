@@ -4717,7 +4717,7 @@ const hebZijnDual = [
 // Everyday verbs that are missing from verbs[] altogether. They cannot be
 // inserted there — verbRange in lessonPlanData indexes that array positionally,
 // so anything added mid-array would silently shift every unit's verb range.
-// They are drill-only entries instead, and all count as A1/A2.
+// They are drill-only entries instead, and all count as A1.
 const hebZijnExtra = [
   { inf: 'gebeuren',  meaning: 'to happen',      participle: 'gebeurd',    aux: 'zijn'   },
   { inf: 'dalen',     meaning: 'to fall / drop', participle: 'gedaald',    aux: 'zijn'   },
@@ -4729,9 +4729,9 @@ const hebZijnExtra = [
 ];
 
 // Common verbs that sit late in verbs[] purely because of where the curriculum
-// introduces them, and would therefore be hidden behind a B1/B2 filter. For
-// this drill they belong with the beginner verbs.
-const hebZijnA1A2 = ['verhuizen', 'groeien', 'lukken', 'slagen', 'mislukken', 'blijken'];
+// introduces them. Without this an A1 filter would hide exactly the zijn-verbs
+// a beginner most needs, so for this drill they count as A1.
+const hebZijnBeginner = ['verhuizen', 'groeien', 'lukken', 'slagen', 'mislukken', 'blijken'];
 
 // Why a verb takes zijn. b = beweging (A→B), v = verandering van toestand,
 // u = vaste uitzondering (memorise).

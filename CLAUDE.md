@@ -110,7 +110,7 @@ Every verb in `verbs[]` carries `aux: 'hebben'|'zijn'` (the 7th argument of the 
 helpers, defaulting to `hebben`) plus a bare `participle`. The Hebben-of-zijn tab generates its
 questions from these — no sentences are authored.
 
-Two supporting lists sit next to `verbs[]` in `js/data.js`:
+Four supporting lists sit next to `verbs[]` in `js/data.js`:
 
 - **`hebZijnDual`** — verbs where *both* auxiliaries are correct (`lopen`, `fietsen`, `veranderen`,
   `vergeten`, …). These are excluded from the drill, because a two-button question cannot have two
@@ -118,6 +118,20 @@ Two supporting lists sit next to `verbs[]` in `js/data.js`:
 - **`hebZijnReason`** — the BAGS category (`b` beweging / `v` verandering / `u` uitzondering) for
   each zijn-verb, used for the feedback that explains *why*. Every `aux:'zijn'` verb outside the
   dual list needs an entry.
+- **`hebZijnExtra`** — everyday verbs absent from `verbs[]` (`gebeuren`, `dalen`, `verkopen`, …),
+  added as drill-only entries because they cannot be inserted into the array (see below).
+- **`hebZijnBeginner`** — common zijn-verbs that sit late in `verbs[]` only because of where the
+  curriculum introduces them; forced into the A1 band so a beginner filter doesn't hide them.
+
+**Sessions are balanced 50/50, not proportional.** Only ~1 verb in 10 takes zijn, so an
+unweighted pool lets you answer "hebben" every time and still score ~90% without ever making the
+judgement. `_hzVerbPool()` therefore pairs every zijn-verb at the chosen level with an equal
+sample of hebben-verbs, resampled each restart. The "Gemengd 50/50" badge is a *session size*
+(2 × the smaller side), not a pool count.
+
+The drill derives its own A1/A2/B1/B2 bands (`HZ_BANDS`) rather than using `VERB_LEVEL_RANGES`,
+which deliberately merges A1+A2 for the Werkwoorden meaning quiz. Don't unify them — widening
+`VERB_LEVEL_RANGES` would change that quiz's filter buttons.
 
 Note `verbRange` in `lessonPlanData` indexes `verbs[]` **positionally**, so never insert a verb
 mid-array — it would silently shift every unit's verb range.
