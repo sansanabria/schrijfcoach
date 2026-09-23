@@ -3700,27 +3700,40 @@ const hzPronouns = [
 ];
 
 // First occurrence wins, and verbs where both auxiliaries are correct are left
-// out entirely — a two-button drill cannot ask those fairly.
+// out entirely — a two-button drill cannot ask those fairly. Each entry carries
+// a `band` so the drill can be narrowed to beginner verbs: without that, 35% of
+// the pool is B2/rare and you spend the drill decoding vocabulary instead of
+// learning the rule.
 const _hzPool = (function () {
-  const dual = new Set(typeof hebZijnDual !== 'undefined' ? hebZijnDual : []);
-  const seen = new Set();
-  const out  = [];
-  (typeof verbs !== 'undefined' ? verbs : []).forEach(v => {
+  const dual  = new Set(typeof hebZijnDual !== 'undefined' ? hebZijnDual : []);
+  const early = new Set(typeof hebZijnA1A2 !== 'undefined' ? hebZijnA1A2 : []);
+  const seen  = new Set();
+  const out   = [];
+  (typeof verbs !== 'undefined' ? verbs : []).forEach((v, i) => {
     if (!v || !v.inf || !v.participle || seen.has(v.inf)) return;
     seen.add(v.inf);
     if (dual.has(v.inf)) return;
-    out.push(v);
+    const band = early.has(v.inf) ? 'A1/A2'
+               : (typeof _verbLevel === 'function' ? _verbLevel(i) : 'A1/A2');
+    out.push({ ...v, band });
+  });
+  (typeof hebZijnExtra !== 'undefined' ? hebZijnExtra : []).forEach(v => {
+    if (seen.has(v.inf)) return;
+    seen.add(v.inf);
+    out.push({ ...v, band: 'A1/A2' });
   });
   return out;
 })();
 
 let hzOrder = [], hzIdx = 0, hzCorrect = 0, hzWrong = 0;
-let hzPronounFilter = 'all';   // 'all' or an index into hzPronouns
-let hzTypeFilter    = 'all';   // 'all' | 'zijn' | 'hebben'
+let hzPronounFilter = 'all';     // 'all' or an index into hzPronouns
+let hzTypeFilter    = 'all';     // 'all' | 'zijn' | 'hebben'
+let hzLevelFilter   = 'A1/A2';   // start on the common verbs, not a random walk
 
 function _hzVerbPool() {
-  if (hzTypeFilter === 'all') return _hzPool;
-  return _hzPool.filter(v => v.aux === hzTypeFilter);
+  return _hzPool.filter(v =>
+    (hzTypeFilter  === 'all' || v.aux  === hzTypeFilter) &&
+    (hzLevelFilter === 'all' || v.band === hzLevelFilter));
 }
 
 function _hzBuildOrder() {
@@ -3751,18 +3764,37 @@ function _renderHzFilters() {
         `<button class="filter-btn ${String(hzPronounFilter) === String(i) ? 'active' : ''}" onclick="setHzPronoun(${i}, this)">${p.nl}</button>`
       ).join('');
   }
+  const lw = document.getElementById('hz-level-filters');
+  if (lw) {
+    const bands = ['A1/A2', 'B1', 'B2', 'Extra'].filter(k => _hzPool.some(v => v.band === k));
+    lw.innerHTML = bands.map(k =>
+      `<button class="filter-btn ${hzLevelFilter === k ? 'active' : ''}" onclick="setHzLevel('${k}', this)">${k} <span class="badge-count">${_hzPool.filter(v => v.band === k).length}</span></button>`
+    ).join('')
+    + `<button class="filter-btn ${hzLevelFilter === 'all' ? 'active' : ''}" onclick="setHzLevel('all', this)">Alle <span class="badge-count">${_hzPool.length}</span></button>`;
+  }
+
   const tw = document.getElementById('hz-type-filters');
   if (tw) {
+    // Counts respect the level filter, so they match what you will actually be asked.
+    const atLevel = _hzPool.filter(v => hzLevelFilter === 'all' || v.band === hzLevelFilter);
     const counts = {
-      all:    _hzPool.length,
-      zijn:   _hzPool.filter(v => v.aux === 'zijn').length,
-      hebben: _hzPool.filter(v => v.aux === 'hebben').length,
+      all:    atLevel.length,
+      zijn:   atLevel.filter(v => v.aux === 'zijn').length,
+      hebben: atLevel.filter(v => v.aux === 'hebben').length,
     };
     const labels = { all: 'Alle werkwoorden', zijn: 'Alleen zijn', hebben: 'Alleen hebben' };
     tw.innerHTML = ['all', 'zijn', 'hebben'].map(k =>
       `<button class="filter-btn ${hzTypeFilter === k ? 'active' : ''}" onclick="setHzType('${k}', this)">${labels[k]} <span class="badge-count">${counts[k]}</span></button>`
     ).join('');
   }
+}
+
+function setHzLevel(val, btn) {
+  hzLevelFilter = val;
+  document.querySelectorAll('#hz-level-filters .filter-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  _renderHzFilters();   // the type counts depend on the level
+  restartHebZijn();
 }
 
 function setHzPronoun(val, btn) {
@@ -3779,6 +3811,13 @@ function setHzType(val, btn) {
   restartHebZijn();
 }
 
+// A filter combination can legitimately match nothing (e.g. B2 + alleen zijn),
+// which would otherwise land straight on the "Klaar!" screen as if finished.
+function _hzEmptyHtml() {
+  return `<div class="hz-empty">Geen werkwoorden voor deze combinatie.<br>
+    <span>Kies een ander niveau of zet het werkwoordfilter op “Alle”.</span></div>`;
+}
+
 function loadHebZijn() {
   if (!document.getElementById('hz-question-panel')) return;
   if (hzOrder.length === 0) _hzBuildOrder();
@@ -3789,8 +3828,11 @@ function loadHebZijn() {
     done.style.display = '';
     const total = hzCorrect + hzWrong;
     const pct = total ? Math.round(hzCorrect / total * 100) : 0;
-    document.getElementById('hz-done-stats').innerHTML =
-      `<strong>${hzCorrect}</strong> correct &nbsp;·&nbsp; <strong>${hzWrong}</strong> fout &nbsp;·&nbsp; <strong>${pct}%</strong> score`;
+    document.getElementById('hz-done-stats').innerHTML = hzOrder.length === 0
+      ? _hzEmptyHtml()
+      : `<strong>${hzCorrect}</strong> correct &nbsp;·&nbsp; <strong>${hzWrong}</strong> fout &nbsp;·&nbsp; <strong>${pct}%</strong> score`;
+    done.querySelector('.dh-done-title').textContent = hzOrder.length === 0 ? 'Niets te oefenen' : 'Klaar!';
+    done.querySelector('.dh-done-icon').textContent = hzOrder.length === 0 ? '🔍' : '🎉';
     _hzUpdateCounts();
     return;
   }

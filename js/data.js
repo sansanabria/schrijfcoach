@@ -4714,6 +4714,25 @@ const hebZijnDual = [
   'lijken',     // rare in the perfect and disputed; not worth drilling
 ];
 
+// Everyday verbs that are missing from verbs[] altogether. They cannot be
+// inserted there — verbRange in lessonPlanData indexes that array positionally,
+// so anything added mid-array would silently shift every unit's verb range.
+// They are drill-only entries instead, and all count as A1/A2.
+const hebZijnExtra = [
+  { inf: 'gebeuren',  meaning: 'to happen',      participle: 'gebeurd',    aux: 'zijn'   },
+  { inf: 'dalen',     meaning: 'to fall / drop', participle: 'gedaald',    aux: 'zijn'   },
+  { inf: 'verkopen',  meaning: 'to sell',        participle: 'verkocht',   aux: 'hebben' },
+  { inf: 'lenen',     meaning: 'to borrow / lend', participle: 'geleend',  aux: 'hebben' },
+  { inf: 'sparen',    meaning: 'to save (money)', participle: 'gespaard',  aux: 'hebben' },
+  { inf: 'douchen',   meaning: 'to shower',      participle: 'gedoucht',   aux: 'hebben' },
+  { inf: 'aankleden', meaning: 'to get dressed', participle: 'aangekleed', aux: 'hebben' },
+];
+
+// Common verbs that sit late in verbs[] purely because of where the curriculum
+// introduces them, and would therefore be hidden behind a B1/B2 filter. For
+// this drill they belong with the beginner verbs.
+const hebZijnA1A2 = ['verhuizen', 'groeien', 'lukken', 'slagen', 'mislukken', 'blijken'];
+
 // Why a verb takes zijn. b = beweging (A→B), v = verandering van toestand,
 // u = vaste uitzondering (memorise).
 const hebZijnReason = {
@@ -4734,6 +4753,8 @@ const hebZijnReason = {
   beginnen:'u', gebeuren:'u', lukken:'u', slagen:'u', mislukken:'u',
   blijken:'u', schijnen:'u', vallen:'u', opstaan:'u', meevallen:'u',
   opvallen:'u', overkomen:'u',
+
+  dalen:'v',
 };
 
 const hebZijnReasonText = {

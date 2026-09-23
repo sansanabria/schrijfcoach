@@ -970,6 +970,9 @@ h3.home-section-label { margin-top: 0; }
 }
 .hz-pronoun-en { margin-top: 4px; font-size: 0.76rem; color: var(--text-muted); font-style: italic; }
 
+.hz-empty { font-size: 0.9rem; color: var(--text); line-height: 1.6; }
+.hz-empty span { font-size: 0.8rem; color: var(--text-muted); }
+
 .hz-ref-lead { font-size: 0.86rem; font-weight: 600; color: var(--text); margin-bottom: 8px; }
 .hz-ref-note { font-size: 0.8rem; line-height: 1.6; color: var(--text-muted); }
 .hz-ref-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
