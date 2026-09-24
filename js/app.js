@@ -3222,11 +3222,26 @@ function _pickQuizOption(btn, isCorrect) {
 let _negChoosePool = [], _negChooseIdx = 0, _negChooseOk = 0, _negChooseWrong = 0;
 let _negChooseLocked = false, _negChooseLevel = 'all';
 
+// True only when `word` appears as its own word in `nl` — 'niet' must not match
+// inside 'niets', 'nietwaar', etc. Both exercises need this guarantee: Choose
+// blanks the word with the same word-boundary regex, Place removes and
+// reinserts the exact token — a sentence that only contains a look-alike word
+// (e.g. 'niets' instead of 'niet') can satisfy neither.
+function _negHasWord(nl, word) {
+  return new RegExp('\\b' + word + '\\b', 'i').test(nl);
+}
+
+// A sentence only belongs in this pool if the word it's tagged for is actually
+// present to blank out — 'nooit'/'niemand'/'nergens' sentences carry
+// gtopic:'niet' for grammar filtering elsewhere, but have no 'niet' to remove.
+function _isNegChooseSentence(s) {
+  return (s.gtopic === 'niet' && _negHasWord(s.nl, 'niet')) ||
+         (s.gtopic === 'geen' && _negHasWord(s.nl, 'geen'));
+}
+
 function _buildNegChoosePool() {
-  // Sentences that contain 'niet' or 'geen' with gtopic
   return sentences.filter(s =>
-    (s.gtopic === 'niet' || s.gtopic === 'geen') &&
-    (_negChooseLevel === 'all' || s.level === _negChooseLevel)
+    _isNegChooseSentence(s) && (_negChooseLevel === 'all' || s.level === _negChooseLevel)
   );
 }
 
@@ -3256,8 +3271,8 @@ function _renderNegChooseLevels() {
   const labels = { all: 'All', A1: 'A1', A2: 'A2', B1: 'B1', B2: 'B2' };
   wrap.innerHTML = levels.map(lv => {
     const count = lv === 'all'
-      ? sentences.filter(s => s.gtopic === 'niet' || s.gtopic === 'geen').length
-      : sentences.filter(s => (s.gtopic === 'niet' || s.gtopic === 'geen') && s.level === lv).length;
+      ? sentences.filter(_isNegChooseSentence).length
+      : sentences.filter(s => _isNegChooseSentence(s) && s.level === lv).length;
     if (lv !== 'all' && count === 0) return '';
     return `<button class="filter-btn ${_negChooseLevel === lv ? 'active' : ''}" onclick="_setNegChooseLevel('${lv}', this)">${labels[lv]} <span class="badge-count">${count}</span></button>`;
   }).join('');
@@ -3360,10 +3375,15 @@ function _pickNegChoice(picked, correct) {
 let _negPlacePool = [], _negPlaceIdx = 0, _negPlaceOk = 0, _negPlaceWrong = 0;
 let _negPlaceLocked = false, _negPlaceLevel = 'all';
 
+// Same reasoning as _isNegChooseSentence: only sentences with a real,
+// removable 'niet' token can be turned into a place-the-word question.
+function _isNegPlaceSentence(s) {
+  return s.gtopic === 'niet' && _negHasWord(s.nl, 'niet');
+}
+
 function _buildNegPlacePool() {
   return sentences.filter(s =>
-    s.gtopic === 'niet' && s.nl.includes('niet') &&
-    (_negPlaceLevel === 'all' || s.level === _negPlaceLevel)
+    _isNegPlaceSentence(s) && (_negPlaceLevel === 'all' || s.level === _negPlaceLevel)
   );
 }
 
@@ -3374,8 +3394,8 @@ function _renderNegPlaceLevels() {
   const labels = { all: 'All', A1: 'A1', A2: 'A2', B1: 'B1', B2: 'B2' };
   wrap.innerHTML = levels.map(lv => {
     const count = lv === 'all'
-      ? sentences.filter(s => s.gtopic === 'niet' && s.nl.includes('niet')).length
-      : sentences.filter(s => s.gtopic === 'niet' && s.nl.includes('niet') && s.level === lv).length;
+      ? sentences.filter(_isNegPlaceSentence).length
+      : sentences.filter(s => _isNegPlaceSentence(s) && s.level === lv).length;
     if (lv !== 'all' && count === 0) return '';
     return `<button class="filter-btn ${_negPlaceLevel === lv ? 'active' : ''}" onclick="_setNegPlaceLevel('${lv}', this)">${labels[lv]} <span class="badge-count">${count}</span></button>`;
   }).join('');
@@ -3481,8 +3501,12 @@ function _pickNegSlot(slotIdx, correctIdx) {
   } else {
     chosenSlot.classList.remove('neg-slot-dim');
     chosenSlot.classList.add('neg-slot-wrong');
-    correctSlot.classList.remove('neg-slot-dim');
-    correctSlot.classList.add('neg-slot-correct');
+    // correctIdx can be -1 (no exact 'niet' token) if a future sentence slips
+    // past the pool filter — don't let a data slip hard-crash the exercise.
+    if (correctSlot) {
+      correctSlot.classList.remove('neg-slot-dim');
+      correctSlot.classList.add('neg-slot-correct');
+    }
     _negPlaceWrong++;
     document.getElementById('neg-place-wrong').textContent = '✗ ' + _negPlaceWrong;
     contrast = `Je plaatste niet ${_negSlotDesc(slotIdx, wordsWithout)} — het hoort ${_negSlotDesc(correctIdx, wordsWithout)}.`;

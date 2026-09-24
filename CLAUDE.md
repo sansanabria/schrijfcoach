@@ -103,6 +103,17 @@ is added with no `srule`. It also prefixes a contrastive line naming what was pi
 answer (`_pickNegChoice`) or where "niet" was placed vs. where it belongs (`_pickNegSlot`,
 `_negSlotDesc`) — only on a wrong answer; a correct one still shows the plain rule.
 
+Both pools are built from `gtopic: 'niet'|'geen'` sentences, but a `gtopic` tag alone isn't
+sufficient — Choose blanks the literal word with `/\b(niet|geen)\b/i` and Place removes/reinserts
+the exact token `'niet'`, so a sentence tagged `gtopic:'niet'` that uses a different negation word
+(`nooit`, `niemand`, `niets`, `nergens` — all valid for `ontkenning` grammar filtering elsewhere)
+has nothing for either mechanic to act on. `_negHasWord(nl, word)` (`js/app.js`) is the shared
+word-boundary check both pool builders (`_isNegChooseSentence`, `_isNegPlaceSentence`) use to
+exclude those sentences from these two exercises specifically, without touching the underlying
+data — they stay valid everywhere else `gtopic` is used. Don't loosen either pool filter back to
+a substring test (`.includes('niet')`) or a bare `gtopic` check; that reintroduces a silent
+missing-blank (Choose) or a `null`-slot crash (Place).
+
 ### Reading texts (`js/reading-data.js`)
 
 The freeze that used to apply to this file was lifted 2026-05-17; new texts are welcome. 51 texts currently exist (A1 8, A2 27, B1 10, B2 6).
