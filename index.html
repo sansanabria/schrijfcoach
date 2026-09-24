@@ -827,37 +827,38 @@
     <!-- NIET & GEEN -->
     <div id="panel-ontkenning" class="panel">
 
-      <!-- Exercise 1: Geen of Niet? -->
-      <div class="card">
-        <div class="card-header">
+      <!-- Exercise 1: Geen of Niet? — the two exercises share name="neg-exercise" so
+           opening one natively closes the other; no JS accordion needed. -->
+      <details class="card" name="neg-exercise" open>
+        <summary class="card-header" style="cursor:pointer">
           <h2 class="card-title">Choose the correct negation: geen or niet?</h2>
           <div class="verb-ex-score">
             <span class="stat-correct" id="neg-choose-correct">✓ 0</span>
             <span class="stat-wrong" id="neg-choose-wrong">✗ 0</span>
             <span class="vquiz-progress" id="neg-choose-progress"></span>
           </div>
-        </div>
+        </summary>
         <div class="card-body">
           <div class="neg-level-row" id="neg-choose-levels"></div>
           <div id="neg-choose-content"></div>
         </div>
-      </div>
+      </details>
 
       <!-- Exercise 2: Waar staat niet? -->
-      <div class="card" style="margin-top:16px">
-        <div class="card-header">
+      <details class="card" name="neg-exercise" style="margin-top:16px">
+        <summary class="card-header" style="cursor:pointer">
           <h2 class="card-title">Place niet in the correct position</h2>
           <div class="verb-ex-score">
             <span class="stat-correct" id="neg-place-correct">✓ 0</span>
             <span class="stat-wrong" id="neg-place-wrong">✗ 0</span>
             <span class="vquiz-progress" id="neg-place-progress"></span>
           </div>
-        </div>
+        </summary>
         <div class="card-body">
           <div class="neg-level-row" id="neg-place-levels"></div>
           <div id="neg-place-content"></div>
         </div>
-      </div>
+      </details>
 
       <!-- Quick reference -->
       <details class="card" style="margin-top:16px">

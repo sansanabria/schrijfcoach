@@ -88,6 +88,21 @@ All exercises follow the same feedback pattern:
 
 This pattern applies to: Zinnen oefenen, De/Het, Niet & Geen, Werkwoorden, Woordenschat, and vocabulary practice in Lezen/Mijn woorden.
 
+### Niet & Geen's two exercises
+
+The tab holds two independent drills in `<details class="card" name="neg-exercise">` elements
+(`index.html`) — the shared `name` is what makes opening one natively collapse the other, no JS
+accordion needed. Both still initialize and render their first question on tab load
+(`_initNegExercises()`, `js/app.js`) regardless of which is visually open, so switching to the
+collapsed one shows a ready question instantly rather than a blank card.
+
+Wrong-answer explanations go through `_negExplain()` (`js/app.js`), which always renders a rule —
+`s.srule` when the sentence has one, otherwise the `ontkenning` grammar topic's golden-rule intro
+(`js/grammar-data.js`) — so a mistake is never left silently unexplained even if a future sentence
+is added with no `srule`. It also prefixes a contrastive line naming what was picked vs. the right
+answer (`_pickNegChoice`) or where "niet" was placed vs. where it belongs (`_pickNegSlot`,
+`_negSlotDesc`) — only on a wrong answer; a correct one still shows the plain rule.
+
 ### Reading texts (`js/reading-data.js`)
 
 The freeze that used to apply to this file was lifted 2026-05-17; new texts are welcome. 51 texts currently exist (A1 8, A2 27, B1 10, B2 6).

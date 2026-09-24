@@ -3230,6 +3230,25 @@ function _buildNegChoosePool() {
   );
 }
 
+// Every sentence in both pools currently has an srule, but that's data, not a
+// guarantee — this makes sure a mistake is never left unexplained even if a
+// future sentence is added without one. Falls back to the golden rule from the
+// 'ontkenning' grammar topic, which always applies regardless of which specific
+// rule the sentence was testing.
+function _negFallbackRule() {
+  const topic = (typeof grammarTopicsData !== 'undefined')
+    ? grammarTopicsData.find(t => t.id === 'ontkenning') : null;
+  return (topic && topic.intro) || 'GEEN = onbepaald zelfstandig naamwoord · NIET = alles andere.';
+}
+
+// A wrong answer's hint leads with what was picked and what it should have
+// been — that's the actual "why" — before the rule text explains it further.
+function _negExplain(s, contrast) {
+  const rule = s.srule || _negFallbackRule();
+  const lead = contrast ? `<div class="neg-contrast">${contrast}</div>` : '';
+  return `${lead}<strong>Rule:</strong> ${rule}`;
+}
+
 function _renderNegChooseLevels() {
   const wrap = document.getElementById('neg-choose-levels');
   if (!wrap) return;
@@ -3285,7 +3304,7 @@ function _renderNegChooseCard() {
     <div class="neg-card">
       <div class="neg-english">${s.en}</div>
       <div class="neg-sentence">${blankNl}</div>
-      ${s.srule ? `<div class="neg-rule-hint" id="neg-choose-rule" style="display:none"><strong>Rule:</strong> ${s.srule}</div>` : ''}
+      <div class="neg-rule-hint" id="neg-choose-rule" style="display:none"></div>
       <div class="neg-choose-btns">
         <button class="neg-btn" id="neg-btn-geen" onclick="_pickNegChoice('geen','${answer}')">GEEN</button>
         <button class="neg-btn" id="neg-btn-niet" onclick="_pickNegChoice('niet','${answer}')">NIET</button>
@@ -3297,6 +3316,7 @@ function _pickNegChoice(picked, correct) {
   if (_negChooseLocked) return;
   _negChooseLocked = true;
 
+  const s = _negChoosePool[_negChooseIdx];
   const geenBtn = document.getElementById('neg-btn-geen');
   const nietBtn = document.getElementById('neg-btn-niet');
   const correctBtn = correct === 'geen' ? geenBtn : nietBtn;
@@ -3305,6 +3325,7 @@ function _pickNegChoice(picked, correct) {
   correctBtn.classList.add('neg-btn-correct');
   wrongBtn.classList.add('neg-btn-dim');
 
+  let contrast = '';
   if (picked === correct) {
     _negChooseOk++;
     document.getElementById('neg-choose-correct').textContent = '✓ ' + _negChooseOk;
@@ -3314,14 +3335,14 @@ function _pickNegChoice(picked, correct) {
     const pickedBtn = picked === 'geen' ? geenBtn : nietBtn;
     pickedBtn.classList.remove('neg-btn-dim');
     pickedBtn.classList.add('neg-btn-wrong');
+    contrast = `Je koos <strong>${picked.toUpperCase()}</strong> — dit moet <strong>${correct.toUpperCase()}</strong> zijn.`;
   }
 
-  // Show rule
+  // Show the rule hint — always filled in, never silently blank.
   const ruleEl = document.getElementById('neg-choose-rule');
-  if (ruleEl) ruleEl.style.display = '';
+  if (ruleEl) { ruleEl.innerHTML = _negExplain(s, contrast); ruleEl.style.display = ''; }
 
   // Show correct sentence
-  const s = _negChoosePool[_negChooseIdx];
   const sentEl = document.querySelector('.neg-sentence');
   if (sentEl) sentEl.innerHTML = s.nl.replace(/\b(niet|geen)\b/i, '<strong style="color:var(--primary)">$1</strong>');
 
@@ -3403,7 +3424,7 @@ function _renderNegPlaceCard() {
   let html = `
     <div class="neg-card">
       <div class="neg-english">${s.en}</div>
-      ${s.srule ? `<div class="neg-rule-hint" id="neg-place-rule" style="display:none"><strong>Rule:</strong> ${s.srule}</div>` : ''}
+      <div class="neg-rule-hint" id="neg-place-rule" style="display:none"></div>
       <div class="neg-place-sentence" id="neg-place-slots">`;
 
   for (let i = 0; i <= wordsWithout.length; i++) {
@@ -3417,6 +3438,12 @@ function _renderNegPlaceCard() {
       <div class="neg-place-result" id="neg-place-result"></div>
     </div>`;
   wrap.innerHTML = html;
+}
+
+// "vóór 'X'" for a mid-sentence gap, "aan het eind" for the last one — describes
+// a gap position in plain words for the contrastive wrong-answer explanation.
+function _negSlotDesc(i, wordsWithout) {
+  return i < wordsWithout.length ? `vóór "${wordsWithout[i]}"` : 'aan het eind';
 }
 
 function _pickNegSlot(slotIdx, correctIdx) {
@@ -3445,6 +3472,7 @@ function _pickNegSlot(slotIdx, correctIdx) {
   const chosenSlot = document.querySelector(`[data-slot="${slotIdx}"]`);
   const correctSlot = document.querySelector(`[data-slot="${correctIdx}"]`);
 
+  let contrast = '';
   if (isCorrect) {
     chosenSlot.classList.remove('neg-slot-dim');
     chosenSlot.classList.add('neg-slot-correct');
@@ -3457,13 +3485,14 @@ function _pickNegSlot(slotIdx, correctIdx) {
     correctSlot.classList.add('neg-slot-correct');
     _negPlaceWrong++;
     document.getElementById('neg-place-wrong').textContent = '✗ ' + _negPlaceWrong;
+    contrast = `Je plaatste niet ${_negSlotDesc(slotIdx, wordsWithout)} — het hoort ${_negSlotDesc(correctIdx, wordsWithout)}.`;
   }
 
-  // Show correct sentence and rule
+  // Show correct sentence and the rule hint — always filled in, never silently blank.
   document.getElementById('neg-place-result').innerHTML =
     `<div class="neg-correct-sentence">${s.nl.replace(/\b(niet)\b/i, '<strong style="color:var(--primary)">$1</strong>')}</div>`;
   const ruleEl = document.getElementById('neg-place-rule');
-  if (ruleEl) ruleEl.style.display = '';
+  if (ruleEl) { ruleEl.innerHTML = _negExplain(s, contrast); ruleEl.style.display = ''; }
 
   if (isCorrect) {
     setTimeout(() => { _negPlaceIdx++; _renderNegPlaceCard(); }, 1200);
