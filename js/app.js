@@ -3687,17 +3687,28 @@ function retryDeHet() {
 // vexDistractors() and checkVerbTable() — so it must not be extended here.
 // `nl` labels the filter button; `s` is what goes into the sentence — "zij (mv.)"
 // is a grammar label, not something you would ever write in a Dutch sentence.
+// `refl` is the reflexive pronoun, taken from the same table getVerbForm() uses
+// so the two cannot drift: without it a reflexive verb renders as
+// "Jij ______ vergist" instead of "Jij ______ je vergist".
 const hzPronouns = [
-  { nl: 'ik',        s: 'Ik',     en: 'I',            heb: 'heb',    zijn: 'ben'  },
-  { nl: 'jij',       s: 'Jij',    en: 'you',          heb: 'hebt',   zijn: 'bent' },
-  { nl: 'u',         s: 'U',      en: 'you (formal)', heb: 'hebt',   zijn: 'bent' },
-  { nl: 'hij',       s: 'Hij',    en: 'he',           heb: 'heeft',  zijn: 'is'   },
-  { nl: 'zij',       s: 'Zij',    en: 'she',          heb: 'heeft',  zijn: 'is'   },
-  { nl: 'het',       s: 'Het',    en: 'it',           heb: 'heeft',  zijn: 'is'   },
-  { nl: 'wij',       s: 'Wij',    en: 'we',           heb: 'hebben', zijn: 'zijn' },
-  { nl: 'jullie',    s: 'Jullie', en: 'you (plural)', heb: 'hebben', zijn: 'zijn' },
-  { nl: 'zij (mv.)', s: 'Zij',    en: 'they',         heb: 'hebben', zijn: 'zijn' },
+  { nl: 'ik',        s: 'Ik',     en: 'I',            heb: 'heb',    zijn: 'ben',  refl: 'me'   },
+  { nl: 'jij',       s: 'Jij',    en: 'you',          heb: 'hebt',   zijn: 'bent', refl: 'je'   },
+  { nl: 'u',         s: 'U',      en: 'you (formal)', heb: 'hebt',   zijn: 'bent', refl: 'zich' },
+  { nl: 'hij',       s: 'Hij',    en: 'he',           heb: 'heeft',  zijn: 'is',   refl: 'zich' },
+  { nl: 'zij',       s: 'Zij',    en: 'she',          heb: 'heeft',  zijn: 'is',   refl: 'zich' },
+  { nl: 'het',       s: 'Het',    en: 'it',           heb: 'heeft',  zijn: 'is',   refl: 'zich' },
+  { nl: 'wij',       s: 'Wij',    en: 'we',           heb: 'hebben', zijn: 'zijn', refl: 'ons'  },
+  { nl: 'jullie',    s: 'Jullie', en: 'you (plural)', heb: 'hebben', zijn: 'zijn', refl: 'je'   },
+  { nl: 'zij (mv.)', s: 'Zij',    en: 'they',         heb: 'hebben', zijn: 'zijn', refl: 'zich' },
 ];
+
+// Subject + aux + [reflexive] + [context] + participle — Dutch perfect word
+// order, with the participle always last.
+function _hzSentence(v, p, auxForm) {
+  const ctx = (typeof hebZijnContext !== 'undefined' && hebZijnContext[v.inf]) || null;
+  return [p.s, auxForm, v.reflexive ? p.refl : '', ctx ? ctx.nl : '', v.participle]
+    .filter(Boolean).join(' ') + '.';
+}
 
 // First occurrence wins, and verbs where both auxiliaries are correct are left
 // out entirely — a two-button drill cannot ask those fairly. Each entry carries
@@ -3732,13 +3743,14 @@ function _hzBand(idx) {
 
 const _hzPool = (function () {
   const dual  = new Set(typeof hebZijnDual !== 'undefined' ? hebZijnDual : []);
+  const skip  = new Set(typeof hebZijnSkip !== 'undefined' ? hebZijnSkip : []);
   const early = new Set(typeof hebZijnBeginner !== 'undefined' ? hebZijnBeginner : []);
   const seen  = new Set();
   const out   = [];
   (typeof verbs !== 'undefined' ? verbs : []).forEach((v, i) => {
     if (!v || !v.inf || !v.participle || seen.has(v.inf)) return;
     seen.add(v.inf);
-    if (dual.has(v.inf)) return;
+    if (dual.has(v.inf) || skip.has(v.inf)) return;
     out.push({ ...v, band: early.has(v.inf) ? 'A1' : _hzBand(i) });
   });
   (typeof hebZijnExtra !== 'undefined' ? hebZijnExtra : []).forEach(v => {
@@ -3779,13 +3791,22 @@ function _hzBuildOrder() {
   const pool = _hzVerbPool();
   // A question is a (verb, pronoun) pair. With the pronoun filter on 'all' each
   // verb gets one random pronoun, so every pronoun keeps coming round.
-  hzOrder = _shuffleArray([...pool]).map(v => ({
-    v,
-    p: hzPronounFilter === 'all'
-      ? Math.floor(Math.random() * hzPronouns.length)
-      : Number(hzPronounFilter),
-  }));
+  hzOrder = _shuffleArray([...pool]).map(v => ({ v, p: _hzPickPronoun(v) }));
   hzIdx = 0;
+}
+
+// Some verbs take no personal subject — "Wij zijn gelukt" is not Dutch — so a
+// context entry can pin the subject with `only`. That pin wins over the pronoun
+// filter, because an ungrammatical question is worse than an unfiltered one.
+function _hzPickPronoun(v) {
+  const ctx = (typeof hebZijnContext !== 'undefined' && hebZijnContext[v.inf]) || null;
+  if (ctx && ctx.only) {
+    const i = hzPronouns.findIndex(p => p.nl === ctx.only);
+    if (i >= 0) return i;
+  }
+  return hzPronounFilter === 'all'
+    ? Math.floor(Math.random() * hzPronouns.length)
+    : Number(hzPronounFilter);
 }
 
 function _hzReason(v) {
@@ -3884,11 +3905,14 @@ function loadHebZijn() {
 
   const q = hzOrder[hzIdx];
   const p = hzPronouns[q.p];
+  const ctx = (typeof hebZijnContext !== 'undefined' && hebZijnContext[q.v.inf]) || null;
   document.getElementById('hz-verb').textContent = q.v.inf;
   document.getElementById('hz-meaning').textContent = q.v.meaning || '';
+  // The blank stands where the auxiliary goes; everything after it is fixed.
   document.getElementById('hz-sentence').innerHTML =
-    `${p.s} <span class="hz-blank">______</span> ${q.v.participle}.`;
-  document.getElementById('hz-pronoun-en').textContent = p.en;
+    _hzSentence(q.v, p, '<span class="hz-blank">______</span>');
+  document.getElementById('hz-pronoun-en').textContent =
+    ctx ? `${p.en} — ${ctx.en}` : p.en;
 
   const hebBtn = document.getElementById('hz-heb');
   const zijnBtn = document.getElementById('hz-zijn');
@@ -3929,7 +3953,7 @@ function answerHebZijn(choice) {
   const correctBtn = q.v.aux === 'hebben' ? hebBtn : zijnBtn;
 
   const auxForm = q.v.aux === 'hebben' ? p.heb : p.zijn;
-  const full = `${p.s} <strong>${auxForm}</strong> ${q.v.participle}.`;
+  const full = _hzSentence(q.v, p, `<strong>${auxForm}</strong>`);
   const reason = _hzReason(q.v);
   const reasonHtml = reason
     ? `<div class="dh-reason">🇳🇱 ${reason.nl}<br>🇬🇧 ${reason.en}</div>`
