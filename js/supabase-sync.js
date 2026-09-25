@@ -34,6 +34,15 @@ let _sbSyncing   = false;
 
 function _sbIsSyncKey(key) { return SB_SYNC_KEYS.indexOf(key) !== -1; }
 
+// Timestamps arrive in two shapes: local writes use ISO-8601 with a trailing
+// "Z", Postgres returns "+00:00". Comparing those as strings is wrong ("+" <
+// "Z"), which made every remote row look older than the local one and blocked
+// all incoming merges. Always compare parsed epoch milliseconds instead.
+function _sbTime(v) {
+  const t = Date.parse(v || '');
+  return isNaN(t) ? 0 : t;
+}
+
 function _sbMtimes() {
   try { return JSON.parse(localStorage.getItem(SB_MTIME_KEY)) || {}; }
   catch (e) { return {}; }
@@ -118,7 +127,7 @@ async function _sbPull() {
     remoteKeys.add(row.key);
     const localAt = mt[row.key] || '';
     // Remote is newer than our last local write for this key -> take remote.
-    if (row.updated_at > localAt && _lsGet(row.key) !== row.value) {
+    if (_sbTime(row.updated_at) > _sbTime(localAt) && _lsGet(row.key) !== row.value) {
       try {
         localStorage.setItem(row.key, row.value);
         mt[row.key] = row.updated_at;
@@ -136,7 +145,7 @@ async function _sbPull() {
     if (v === null || v === '') return;
     if (!remoteKeys.has(k)) { _sbDirty.add(k); return; }
     const row = (data || []).find(r => r.key === k);
-    if (row && (mt[k] || '') > row.updated_at) _sbDirty.add(k);
+    if (row && _sbTime(mt[k]) > _sbTime(row.updated_at)) _sbDirty.add(k);
   });
 
   if (_sbDirty.size > 0) await _sbPush();

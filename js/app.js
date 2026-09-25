@@ -475,7 +475,7 @@ function renderVocab() {
   document.getElementById('vocab-count-badge').textContent = list.length + ' woorden';
 
   const practiceBtn = document.getElementById('vocab-practice-btn');
-  if (practiceBtn) practiceBtn.style.display = (vocabUnitTopics && list.length > 0) ? '' : 'none';
+  if (practiceBtn) practiceBtn.style.display = (list.length > 0) ? '' : 'none';
 
   const grid = document.getElementById('vocab-grid');
 
@@ -2864,6 +2864,24 @@ function vexSelectOption(btn) {
 const MODAL_INFS = new Set(['zijn','hebben','worden','kunnen','willen','moeten','mogen','zullen','hoeven']);
 let verbTypeFilter = 'all';
 let verbUnitRange = null; // null = show all, or [from, to] to filter by unit
+let verbLevelFilter = 'all'; // 'all' | 'A1' | 'A2' | 'B1' | 'B2'
+
+// Derives each CEFR level's verb index range from the curriculum's per-unit
+// verbRange values, so it stays in sync automatically if units change.
+function _verbLevelRanges() {
+  const ranges = {};
+  if (typeof lessonPlanData === 'undefined') return ranges;
+  lessonPlanData.levels.forEach(lvl => {
+    let min = Infinity, max = -Infinity;
+    lvl.units.forEach(u => {
+      if (!u.verbRange) return;
+      min = Math.min(min, u.verbRange[0]);
+      max = Math.max(max, u.verbRange[1]);
+    });
+    if (min <= max) ranges[lvl.level] = [min, max];
+  });
+  return ranges;
+}
 
 const VERB_GROUP_LABELS = {
   modaal:        'Modal verbs',
@@ -2884,10 +2902,17 @@ function renderVerbSelector() {
   const counts = { modaal:0, onregelmatig:0, regelmatig:0, scheidbaar:0, reflexief:0 };
   verbs.forEach(v => counts[_verbType(v)]++);
 
+  const levelRanges = _verbLevelRanges();
   const wrap = document.getElementById('verb-selector');
   wrap.innerHTML = `
     <input class="verb-search-input" id="verb-search" type="text"
       placeholder="Search verb… e.g. gaan, to go" oninput="_filterVerbs()" autocomplete="off">
+    <div class="verb-type-filters" id="verb-level-filters">
+      <button class="filter-btn active" data-vlevel="all" onclick="setVerbLevelFilter('all',this)">All levels</button>
+      ${['A1','A2','B1','B2'].filter(lv => levelRanges[lv]).map(lv =>
+        `<button class="filter-btn" data-vlevel="${lv}" onclick="setVerbLevelFilter('${lv}',this)">${lv}</button>`
+      ).join('')}
+    </div>
     <div class="verb-type-filters" id="verb-type-filters">
       <button class="filter-btn active" onclick="setVerbTypeFilter('all',this)">All <span class="vf-count">${verbs.length}</span></button>
       <button class="filter-btn" onclick="setVerbTypeFilter('modaal',this)">Modal <span class="vf-count">${counts.modaal}</span></button>
@@ -2916,6 +2941,17 @@ function setVerbTypeFilter(type, btn) {
   verbTypeFilter = type;
   document.querySelectorAll('#verb-type-filters .filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
+  _filterVerbs();
+}
+
+function setVerbLevelFilter(level, btn) {
+  verbLevelFilter = level;
+  activeUnit = null; // a level covers multiple units, so drop any single-unit selection
+  const ranges = _verbLevelRanges();
+  verbUnitRange = (level === 'all') ? null : (ranges[level] || null);
+  document.querySelectorAll('#verb-level-filters .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderAllUnitBars();
   _filterVerbs();
 }
 
@@ -4744,6 +4780,7 @@ function clearActiveUnit() {
   vocabUnitLevel = null;
   dhUnitTopics = null;
   verbUnitRange = null;
+  verbLevelFilter = 'all';
   vquizFilter = 'all';
   exGrammar = 'all';
   setExUnitTopics(null);
@@ -4795,6 +4832,12 @@ function _applyUnitFilters() {
   } else {
     verbUnitRange = null;
     vquizFilter = 'all';
+  }
+  verbLevelFilter = 'all';
+  const vlevelAllBtn = document.querySelector('#verb-level-filters [data-vlevel="all"]');
+  if (vlevelAllBtn) {
+    document.querySelectorAll('#verb-level-filters .filter-btn').forEach(b => b.classList.remove('active'));
+    vlevelAllBtn.classList.add('active');
   }
   _filterVerbs();
 }
@@ -4970,8 +5013,14 @@ function navigateToVerb(verbName) {
   // not rendered cannot be clicked — which is what makes a link look dead.
   verbUnitRange  = null;
   verbTypeFilter = 'all';
+  verbLevelFilter = 'all';
   const search = document.getElementById('verb-search');
   if (search) search.value = '';
+  const vlevelAllBtn = document.querySelector('#verb-level-filters [data-vlevel="all"]');
+  if (vlevelAllBtn) {
+    document.querySelectorAll('#verb-level-filters .filter-btn').forEach(b => b.classList.remove('active'));
+    vlevelAllBtn.classList.add('active');
+  }
   _filterVerbs();
   setTimeout(() => {
     const want = verbName.trim().toLowerCase();
