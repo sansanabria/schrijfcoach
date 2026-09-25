@@ -40,6 +40,10 @@ Everything lives in four JS files loaded in order by `index.html`:
 
 All JS is global-scope; functions and variables are shared across files. There is no module system.
 
+### Offline support (`sw.js`)
+
+A service worker (registered at the bottom of `index.html`, http/https only — not `file://`) caches the app so it works offline. App files are network-first (always fresh when online); Google Fonts and the Supabase CDN library are cache-first. **If you add a new JS/CSS file, add it to `APP_SHELL` in `sw.js`.** Progress made offline stays in localStorage and syncs via the `online` listener in `supabase-sync.js` when the connection returns.
+
 ### Tab system
 
 The app has 13 tabs, each with a corresponding `#panel-<id>` div in `index.html`. `switchTab(id)` in `app.js` activates the correct panel and calls the tab's render/init function. Tabs listed in the `dropdownTabs` array inside `switchTab` live in the "Per onderwerp" dropdown rather than the main nav.

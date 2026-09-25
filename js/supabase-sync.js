@@ -173,6 +173,9 @@ document.addEventListener('visibilitychange', () => {
   }
 });
 
+// Catch up on progress made offline as soon as the connection returns.
+window.addEventListener('online', () => { if (sbUser()) _sbSyncNow(); });
+
 // Sync on sign-in, and once on load if a session is already restored.
 (function _sbSyncInit() {
   const client = sbClient();
