@@ -71,6 +71,37 @@ const grammarTopicsData = [
   },
 
   {
+    id: "aanwijzende-vnw", level: "A1", filter: "aanwijzende-vnw",
+    title: "Aanwijzende voornaamwoorden", titleEn: "Demonstratives",
+    intro: "Aanwijzende voornaamwoorden ('dit/deze' en 'dat/die') wijzen naar iets specifieks. De keuze hangt af van het lidwoord (de/het) en van afstand (dichtbij/veraf).",
+    introEn: "Demonstratives ('dit/deze' and 'dat/die') point to something specific. The choice depends on the article (de/het) and on distance (near/far).",
+    tables: [{
+      heading: "Dit/deze (dichtbij) vs. dat/die (veraf)", headingEn: "Dit/deze (near) vs. dat/die (far)",
+      cols: ["", "de-woord", "het-woord", "meervoud"],
+      rows: [
+        ["Dichtbij (this/these)", "deze", "dit", "deze"],
+        ["Veraf (that/those)", "die", "dat", "die"]
+      ]
+    }],
+    rules: [
+      { nl: "'Dit' en 'dat' horen bij het-woorden in het enkelvoud.", en: "'Dit' and 'dat' go with singular het-words." },
+      { nl: "'Deze' en 'die' horen bij de-woorden in het enkelvoud én bij ALLE meervouden (ook meervoud van het-woorden).", en: "'Deze' and 'die' go with singular de-words AND all plurals (including plural het-words)." },
+      { nl: "Als je nog niet weet welk woord volgt (bijv. aan het begin van een zin, vóór 'is/zijn'), gebruik je altijd 'dit' of 'dat' — nooit 'deze/die'.", en: "When the noun is not yet named (e.g. at the start of a sentence, before 'is/zijn'), always use 'dit' or 'dat' — never 'deze/die'." },
+      { nl: "Dichtbij = dit/deze. Veraf = dat/die.", en: "Near = dit/deze. Far = dat/die." }
+    ],
+    examples: [
+      { nl: "Dit is mijn broer.", en: "This is my brother.", note: "onderwerp nog onbekend → altijd 'dit'" },
+      { nl: "Dat is een mooi huis.", en: "That is a beautiful house." },
+      { nl: "Deze auto is nieuw.", en: "This car is new.", note: "de-woord: de auto" },
+      { nl: "Dit boek is interessant.", en: "This book is interesting.", note: "het-woord: het boek" },
+      { nl: "Die schoenen zijn te klein.", en: "Those shoes are too small.", note: "meervoud → altijd 'die'" },
+      { nl: "Deze appels zijn lekker.", en: "These apples are tasty.", note: "meervoud → altijd 'deze'" }
+    ],
+    tip: "Weet je het lidwoord nog niet (zin begint met 'Dit is…' / 'Dat is…')? Gebruik dan altijd 'dit' of 'dat'. Ken je het zelfstandig naamwoord al, kijk dan naar de/het en enkelvoud/meervoud.",
+    tipEn: "Don't know the article yet ('Dit is…' / 'Dat is…')? Always use 'dit' or 'dat'. Once you know the noun, check de/het and singular/plural."
+  },
+
+  {
     id: "lidwoorden-meervoud", level: "A1", filter: "lidwoorden-meervoud",
     title: "Lidwoorden & meervoud", titleEn: "Articles & plurals",
     intro: "Nederlandse zelfstandige naamwoorden hebben het lidwoord 'de' of 'het'; meervouden eindigen meestal op -en of -s.",
@@ -501,6 +532,46 @@ const grammarTopicsData = [
     ],
     tip: "Onthoud de uitzonderingen: eerste (niet éénde), tweede (niet twéde), derde (niet driedde), tachtig (niet achtig).",
     tipEn: "Remember the exceptions: eerste, tweede, derde (not éénde/twéde/driedde), and tachtig not achtig."
+  },
+
+  {
+    id: "klok-tijd", level: "A1", filter: "klok-tijd",
+    title: "Klok & tijd", titleEn: "Telling the time",
+    intro: "Nederlandse kloktijden werken rond het HALVE uur, niet het hele uur: 'half negen' betekent 8:30 (half naar negen), niet 9:30.",
+    introEn: "Dutch clock times revolve around the HALF hour, not the full hour: 'half negen' means 8:30 (halfway to nine), not 9:30.",
+    tables: [{
+      heading: "Hoe laat is het?", headingEn: "What time is it?",
+      cols: ["Tijd", "Nederlands", "Letterlijk"],
+      rows: [
+        ["9:00", "negen uur", "nine o'clock"],
+        ["9:05", "vijf over negen", "five past nine"],
+        ["9:10", "tien over negen", "ten past nine"],
+        ["9:15", "kwart over negen", "quarter past nine"],
+        ["9:20", "tien voor half tien", "ten to half [to] ten"],
+        ["9:25", "vijf voor half tien", "five to half [to] ten"],
+        ["9:30", "half tien", "half [to] ten"],
+        ["9:35", "vijf over half tien", "five past half [to] ten"],
+        ["9:40", "tien over half tien", "ten past half [to] ten"],
+        ["9:45", "kwart voor tien", "quarter to ten"],
+        ["9:50", "tien voor tien", "ten to ten"],
+        ["9:55", "vijf voor tien", "five to ten"]
+      ]
+    }],
+    rules: [
+      { nl: "'Half' verwijst altijd naar het VOLGENDE uur: 'half negen' = 8:30, niet 9:30.", en: "'Half' always refers to the NEXT hour: 'half negen' = 8:30, not 9:30." },
+      { nl: "Van :01 t/m :29 gebruik je 'over' (na het hele of halve uur); van :31 t/m :59 gebruik je 'voor'.", en: "From :01 to :29 use 'over' (past); from :31 to :59 use 'voor' (to)." },
+      { nl: "Voor 12-uurstijden op officiële roosters (trein, tv) gebruik je de 24-uursklok: 'veertien uur' = 14:00.", en: "For 24-hour schedules (train, TV) use the 24-hour clock: 'veertien uur' = 14:00." },
+      { nl: "'Hoe laat is het?' = de standaardvraag naar de tijd. 'Om hoe laat...?' vraagt naar het tijdstip van een gebeurtenis.", en: "'Hoe laat is het?' = the standard question for the time. 'Om hoe laat...?' asks at what time something happens." }
+    ],
+    examples: [
+      { nl: "Hoe laat is het? — Het is half acht.", en: "What time is it? — It's 7:30." },
+      { nl: "De trein vertrekt om kwart voor negen.", en: "The train leaves at a quarter to nine." },
+      { nl: "Om hoe laat begint de les?", en: "What time does the lesson start?" },
+      { nl: "Het is vijf over half drie.", en: "It's 2:35.", note: "5 min. na half drie (2:30)" },
+      { nl: "Wij eten om zes uur 's avonds.", en: "We eat at six in the evening." }
+    ],
+    tip: "'Half negen' is 8:30, NIET 9:30 — de valkuil voor beginners. Denk: 'half OP WEG NAAR negen'.",
+    tipEn: "'Half negen' is 8:30, NOT 9:30 — the classic beginner trap. Think: 'half ON THE WAY TO nine'."
   },
 
   // ══ A2 ══════════════════════════════════════════════════════════════════════
@@ -1597,7 +1668,7 @@ const lessonPlanData = {
         },
         {
           unit: 2, title: "Thuis & eten", titleEn: "Home & food", weeks: "Week 2",
-          grammarTopics: ["lidwoorden-meervoud", "verkleinwoorden"],
+          grammarTopics: ["lidwoorden-meervoud", "verkleinwoorden", "aanwijzende-vnw"],
           verbRange: [41, 81],
           verbFocus: ["nemen","laten","staan","slaan","zoeken","kiezen","eten","zingen","bijten","steken","vouwen","gieten"],
           vocabTopics: [{level:"A1",topic:"eten"},{level:"A1",topic:"huis"},{level:"A1",topic:"kleuren"}],
@@ -1606,17 +1677,18 @@ const lessonPlanData = {
           activities: [
             { type: "grammatica", desc: "Dag 1–2: Bestudeer lidwoorden (de/het) en meervoudsvormen (-en, -s, -eren).", descEn: "Day 1–2: Study articles (de/het) and plural forms (-en, -s, -eren)." },
             { type: "grammatica", desc: "Dag 3–4: Leer verkleinwoorden (-je, -tje, -pje, -etje).", descEn: "Day 3–4: Learn diminutives (-je, -tje, -pje, -etje)." },
+            { type: "grammatica", desc: "Dag 4–5: Leer aanwijzende voornaamwoorden: dit/deze (dichtbij) en dat/die (veraf).", descEn: "Day 4–5: Learn demonstratives: dit/deze (near) and dat/die (far)." },
             { type: "werkwoorden", desc: "Dag 1–5: Oefen 10 huishoudelijke werkwoorden in OTT: typ zelf de vervoegingen.", descEn: "Day 1–5: Practise 10 household verbs in OTT: type the conjugations yourself." },
             { type: "dehet", desc: "Dag 3–5: Train de/het voor huis- en eetwoorden (30 nieuwe woorden).", descEn: "Day 3–5: Train de/het for house and food words (30 new words)." },
             { type: "zinnen", desc: "Dag 4–6: Oefen zinnen over eten en het huis.", descEn: "Day 4–6: Practise sentences about food and the house." },
             { type: "woordenschat", desc: "Dag 5–7: Leer 40 woorden over eten, huis en kleuren.", descEn: "Day 5–7: Learn 40 words about food, house and colours." }
           ],
-          goals: ["Meervoudsvormen correct maken voor 15 woorden.", "10 verkleinwoorden correct vormen.", "40 nieuwe woorden leren (eten, huis, kleuren).", "De teksten 'Mijn huis' en 'Boodschappen doen' begrijpen."],
-          goalsEn: ["Correctly form plurals for 15 words.", "Correctly form 10 diminutives.", "Learn 40 new words (food, house, colours).", "Understand the texts 'Mijn huis' and 'Boodschappen doen'."]
+          goals: ["Meervoudsvormen correct maken voor 15 woorden.", "10 verkleinwoorden correct vormen.", "Dit/deze en dat/die correct kiezen op basis van lidwoord en afstand.", "40 nieuwe woorden leren (eten, huis, kleuren).", "De teksten 'Mijn huis' en 'Boodschappen doen' begrijpen."],
+          goalsEn: ["Correctly form plurals for 15 words.", "Correctly form 10 diminutives.", "Correctly choose dit/deze and dat/die based on article and distance.", "Learn 40 new words (food, house, colours).", "Understand the texts 'Mijn huis' and 'Boodschappen doen'."]
         },
         {
           unit: 3, title: "Mijn dag", titleEn: "My day", weeks: "Week 3",
-          grammarTopics: ["bezittelijke-vnw", "ontkenning", "voorzetsels-a1", "gebiedende-wijs"],
+          grammarTopics: ["bezittelijke-vnw", "ontkenning", "voorzetsels-a1", "gebiedende-wijs", "klok-tijd"],
           verbRange: [82, 122],
           verbFocus: ["schijnen","wegen","wassen","meten","beschrijven","verschijnen","vertrekken","sturen","praten","hopen","betalen","wonen"],
           vocabTopics: [{level:"A1",topic:"tijd"},{level:"A1",topic:"kleding"},{level:"A1",topic:"lichaam"},{level:"A1",topic:"werkwoorden"},{level:"A1",topic:"voorzetsels"}],
@@ -1626,13 +1698,14 @@ const lessonPlanData = {
             { type: "grammatica", desc: "Dag 1–2: Bestudeer bezittelijke voornaamwoorden (mijn, jouw, zijn, haar, ons, hun) en ontkenning (niet/geen).", descEn: "Day 1–2: Study possessive pronouns (mijn, jouw, zijn, haar, ons, hun) and negation (niet/geen)." },
             { type: "grammatica", desc: "Dag 3–4: Leer voorzetsels van plaats en tijd (in, op, aan, bij, naar, om).", descEn: "Day 3–4: Learn prepositions of place and time (in, op, aan, bij, naar, om)." },
             { type: "grammatica", desc: "Dag 4–5: Leer de gebiedende wijs (imperatief) voor instructies en verzoeken.", descEn: "Day 4–5: Learn the imperative for instructions and requests." },
+            { type: "grammatica", desc: "Dag 5–6: Leer de klok: hele uren, 'over/voor' en 'half' (let op: half negen = 8:30!).", descEn: "Day 5–6: Learn to tell time: whole hours, 'over/voor' and 'half' (careful: half negen = 8:30!)." },
             { type: "werkwoorden", desc: "Dag 1–5: Oefen dagelijkse routinewerkwoorden in OTT. Doel: foutloos 8 van 10.", descEn: "Day 1–5: Practise daily-routine verbs in OTT. Goal: 8 of 10 error-free." },
             { type: "zinnen", desc: "Dag 4–6: Oefen ontkenningszinnen, imperatiefzinnen en zinnen over de dagelijkse routine.", descEn: "Day 4–6: Practise negation sentences, imperative sentences and sentences about the daily routine." },
             { type: "woordenschat", desc: "Dag 5–7: Leer woorden over tijd, kleding en lichaam.", descEn: "Day 5–7: Learn words about time, clothing and body." },
             { type: "dehet", desc: "Dag 6–7: Train de/het voor kleding- en lichaamswoorden.", descEn: "Day 6–7: Train de/het for clothing and body words." }
           ],
-          goals: ["Bezittelijke voornaamwoorden correct gebruiken in 10 zinnen.", "Zinnen ontkennen met niet en geen zonder fouten.", "8 voorzetsels van tijd en plaats gebruiken in context.", "De gebiedende wijs correct vormen voor instructies.", "De teksten 'Een dag in mijn leven' en 'Wat draag ik vandaag?' begrijpen."],
-          goalsEn: ["Use possessive pronouns correctly in 10 sentences.", "Negate sentences with niet and geen without errors.", "Use 8 prepositions of time and place in context.", "Correctly form the imperative for instructions.", "Understand the texts 'Een dag in mijn leven' and 'Wat draag ik vandaag?'."]
+          goals: ["Bezittelijke voornaamwoorden correct gebruiken in 10 zinnen.", "Zinnen ontkennen met niet en geen zonder fouten.", "8 voorzetsels van tijd en plaats gebruiken in context.", "De gebiedende wijs correct vormen voor instructies.", "De klok correct aflezen en zeggen (hele uren, kwart, half).", "De teksten 'Een dag in mijn leven' en 'Wat draag ik vandaag?' begrijpen."],
+          goalsEn: ["Use possessive pronouns correctly in 10 sentences.", "Negate sentences with niet and geen without errors.", "Use 8 prepositions of time and place in context.", "Correctly form the imperative for instructions.", "Correctly read and say clock times (whole hours, quarter, half).", "Understand the texts 'Een dag in mijn leven' and 'Wat draag ik vandaag?'."]
         },
         {
           unit: 4, title: "Onderweg & herhaling", titleEn: "On the go & review", weeks: "Week 4",
