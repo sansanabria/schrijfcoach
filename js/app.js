@@ -90,8 +90,7 @@ function switchTab(id) {
   if (id === 'oefening')     { renderExGrammarFilter(); loadSentence(); renderUnitBar('oefening'); }
   if (id === 'zinnen')       { renderZinnenGrammarFilter(); renderSentences(_currentSentenceFilter); }
   if (id === 'bewerken')     { renderEditTable(); renderFlagsSection(); }
-  if (id === 'woordenschat') { renderVocab(); renderUnitBar('woordenschat'); }
-  if (id === 'werkwoorden')  renderUnitBar('werkwoorden');
+  if (id === 'woordenschat') renderVocab();
   if (id === 'dehet')        renderUnitBar('dehet');
   if (id === 'grammatica')   { renderGrammarContent(); renderUnitBar('grammatica'); }
   if (id === 'leerplan')     renderLessonPlan();
@@ -503,7 +502,6 @@ function renderVocab() {
 
   renderTopicFilters();
   renderVocabUnitFilters();
-  if (activeUnit) renderUnitBar('woordenschat');
 }
 
 // Units for a given CEFR level that carry vocabulary, so a chosen level can
@@ -2959,6 +2957,7 @@ function renderVerbSelector() {
         `<button class="filter-btn" data-vlevel="${lv}" onclick="setVerbLevelFilter('${lv}',this)">${lv}</button>`
       ).join('')}
     </div>
+    <div class="verb-type-filters" id="verb-unit-filters"></div>
     <div class="verb-type-filters" id="verb-type-filters">
       <button class="filter-btn active" onclick="setVerbTypeFilter('all',this)">All <span class="vf-count">${verbs.length}</span></button>
       <button class="filter-btn" onclick="setVerbTypeFilter('modaal',this)">Modal <span class="vf-count">${counts.modaal}</span></button>
@@ -2980,6 +2979,46 @@ function renderVerbSelector() {
     </div>
     <div id="verb-list"></div>
   `;
+  renderVerbUnitFilters();
+  _filterVerbs();
+}
+
+// Units for a given CEFR level that carry a verbRange, so choosing a level
+// offers "whole level" or "just this unit" without the leerplan's
+// "Kies een unit" flow.
+function _unitsForVerbLevel(level) {
+  if (typeof lessonPlanData === 'undefined') return [];
+  const lv = lessonPlanData.levels.find(l => l.level === level);
+  if (!lv) return [];
+  return lv.units.filter(u => u.verbRange);
+}
+
+function renderVerbUnitFilters() {
+  const wrap = document.getElementById('verb-unit-filters');
+  if (!wrap) return;
+  if (verbLevelFilter === 'all') { wrap.innerHTML = ''; return; }
+  const units = _unitsForVerbLevel(verbLevelFilter);
+  if (!units.length) { wrap.innerHTML = ''; return; }
+  const levelRange = _verbLevelRanges()[verbLevelFilter];
+  const wholeActive = !!verbUnitRange && levelRange &&
+    verbUnitRange[0] === levelRange[0] && verbUnitRange[1] === levelRange[1];
+  wrap.innerHTML =
+    `<button class="filter-btn ${wholeActive ? 'active' : ''}" onclick="setVerbUnitScope(null,this)">Heel ${verbLevelFilter}</button>` +
+    units.map(u => {
+      const active = !!verbUnitRange && verbUnitRange[0] === u.verbRange[0] && verbUnitRange[1] === u.verbRange[1];
+      return `<button class="filter-btn ${active ? 'active' : ''}" onclick="setVerbUnitScope(${u.unit},this)">Unit ${u.unit}</button>`;
+    }).join('');
+}
+
+function setVerbUnitScope(unitNumber, btn) {
+  if (unitNumber === null) {
+    verbUnitRange = _verbLevelRanges()[verbLevelFilter] || null;
+  } else {
+    const u = _unitsForVerbLevel(verbLevelFilter).find(x => x.unit === unitNumber);
+    if (u) verbUnitRange = u.verbRange;
+  }
+  document.querySelectorAll('#verb-unit-filters .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
   _filterVerbs();
 }
 
@@ -2997,7 +3036,7 @@ function setVerbLevelFilter(level, btn) {
   verbUnitRange = (level === 'all') ? null : (ranges[level] || null);
   document.querySelectorAll('#verb-level-filters .filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  renderAllUnitBars();
+  renderVerbUnitFilters();
   _filterVerbs();
 }
 
@@ -4832,6 +4871,7 @@ function clearActiveUnit() {
   setExUnitTopics(null);
   renderAllUnitBars();
   renderVocab();
+  renderVerbUnitFilters();
   _filterVerbs();
 }
 
@@ -4885,6 +4925,7 @@ function _applyUnitFilters() {
     document.querySelectorAll('#verb-level-filters .filter-btn').forEach(b => b.classList.remove('active'));
     vlevelAllBtn.classList.add('active');
   }
+  renderVerbUnitFilters();
   _filterVerbs();
 }
 
@@ -5035,7 +5076,7 @@ function renderUnitBar(panelId) {
 }
 
 function renderAllUnitBars() {
-  ['oefening', 'dehet', 'woordenschat', 'werkwoorden', 'grammatica'].forEach(renderUnitBar);
+  ['oefening', 'dehet', 'grammatica'].forEach(renderUnitBar);
 }
 
 // ─── LESSON PLAN NAVIGATION ───────────────────────────────────────────────────
@@ -5067,6 +5108,7 @@ function navigateToVerb(verbName) {
     document.querySelectorAll('#verb-level-filters .filter-btn').forEach(b => b.classList.remove('active'));
     vlevelAllBtn.classList.add('active');
   }
+  renderVerbUnitFilters();
   _filterVerbs();
   setTimeout(() => {
     const want = verbName.trim().toLowerCase();
