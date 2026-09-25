@@ -502,7 +502,51 @@ function renderVocab() {
   }
 
   renderTopicFilters();
-  if (vocabUnitTopics) renderUnitBar('woordenschat');
+  renderVocabUnitFilters();
+  if (activeUnit) renderUnitBar('woordenschat');
+}
+
+// Units for a given CEFR level that carry vocabulary, so a chosen level can
+// offer "whole level" or "just this unit" without going through the
+// leerplan's "Kies een unit" flow.
+function _unitsForLevel(level) {
+  if (typeof lessonPlanData === 'undefined') return [];
+  const lv = lessonPlanData.levels.find(l => l.level === level);
+  if (!lv) return [];
+  return lv.units.filter(u => u.vocabTopics && u.vocabTopics.length > 0);
+}
+
+function renderVocabUnitFilters() {
+  const wrap = document.getElementById('vocab-unit-filters');
+  if (!wrap) return;
+  if (vocabLevel === 'all') { wrap.innerHTML = ''; return; }
+  const units = _unitsForLevel(vocabLevel);
+  if (!units.length) { wrap.innerHTML = ''; return; }
+  const wholeActive = !vocabUnitTopics;
+  wrap.innerHTML =
+    `<button class="filter-btn ${wholeActive ? 'active' : ''}" onclick="setVocabUnitScope(null,this)">Heel ${vocabLevel}</button>` +
+    units.map(u => {
+      const topics = u.vocabTopics.map(vt => vt.topic);
+      const active = !!vocabUnitTopics && vocabUnitLevel === vocabLevel &&
+        vocabUnitTopics.length === topics.length && topics.every(t => vocabUnitTopics.includes(t));
+      return `<button class="filter-btn ${active ? 'active' : ''}" onclick="setVocabUnitScope(${u.unit},this)">Unit ${u.unit}</button>`;
+    }).join('');
+}
+
+function setVocabUnitScope(unitNumber, btn) {
+  if (unitNumber === null) {
+    vocabUnitTopics = null;
+    vocabUnitLevel = null;
+  } else {
+    const u = _unitsForLevel(vocabLevel).find(x => x.unit === unitNumber);
+    if (u) {
+      vocabUnitTopics = u.vocabTopics.map(vt => vt.topic);
+      vocabUnitLevel = vocabLevel;
+    }
+  }
+  document.querySelectorAll('#vocab-unit-filters .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderVocab();
 }
 
 function renderTopicFilters() {
@@ -524,6 +568,8 @@ function renderTopicFilters() {
 function setVocabLevel(level, btn) {
   vocabLevel = level;
   vocabTopic = 'all';
+  vocabUnitTopics = null;
+  vocabUnitLevel = null;
   document.querySelectorAll('#vocab-level-filters .filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   renderVocab();
